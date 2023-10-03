@@ -1,0 +1,56 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color:var(--color-primary);
+    color: #ffffff;
+    /* Porque quero o header um pouco mais pegajoso*/
+    height: 9.6rem;
+    /* 0 up and bottom,4.8rem right and left*/
+    padding:1rem 0  0 4.8rem;
+    position: relative;
+    text-transform: uppercase;
+
+
+    .logo {
+  
+      height:9rem;
+      margin: 5rem;
+      margin-left: 0;
+    }
+  }
+
+  .main-nav-list {
+    list-style: none;
+    display: flex;
+    gap: 4.8rem;
+    align-items: center;
+  }
+  
+  .main-nav-link:link,
+  .main-nav-link:visited {
+    display: inline-block;
+    text-decoration: none;
+    color:var(--color-primary--light);
+    font-size: 1.8rem;
+    font-weight: 500;
+    transition: all 0.3s;
+  }
+  
+  .main-nav-link:hover,
+  .main-nav-link:active {
+    color: #DBD4AF;
+  }
+  
+  .main-nav-link.nav-cta:link,
+  .main-nav-link.nav-cta:visited {
+    padding: 1.2rem 2.4rem;
+    border-radius: 9px;
+    color: #fff;
+    background-color: #a36026;
+  }
+  
+  .main-nav-link.nav-cta:hover,
+  .main-nav-link.nav-cta:active {
+    background-color: #805221;
+  }

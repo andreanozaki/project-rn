@@ -1,0 +1,65 @@
+.photo-main {
+    max-width: 100vw;
+    height: 80vh;
+    background-color: rgb(13, 13, 13);
+    color: aliceblue;
+    .img-main{
+        width: 100vw;
+        max-width: 100vw;
+        height:auto;
+        background-size: contain;
+        background-position: center;
+
+    }
+}
+.creations{
+   
+
+    &__gallery{
+        background-color: rgb(255, 255, 255);
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+      
+    }
+
+    .gallery-item img {
+        display: block;
+        width: 100%;
+        transition: all 0.4s;
+      }
+}
+.about-me{
+  background-color:#fff;
+
+
+    &__content {
+        display: flex;
+        flex-direction:row;
+       }
+
+   &__title{
+    background-color: var(--color-primary-dark);
+    color: var(--color-primary-light);
+    font-size: 3rem;
+    text-align: center;
+    padding: 2.6rem;
+    text-transform: uppercase;
+
+   
+   }
+    
+   &__subtitle{
+    background-color: var(--color-primary-light);
+    display: inline-block;
+    padding: .8rem;
+
+    font-size: 3rem;
+    text-transform: uppercase;
+    margin: 2rem 0 1rem 4rem;
+
+   }
+
+  
+
+
+}

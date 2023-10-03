@@ -1,0 +1,47 @@
+
+:root {
+    --color-primary:#292929 ;
+    --color-primary-light:#E5E0BC ;
+   
+    --color-primary-dark:#323232 ;/*h2 fundo
+
+   
+
+    --color-grey-dark-1: #606060;barra h1
+    --color-grey-dark-2:#424B51 ;fundo foto
+    --color-grey-dark-3: ;
+    
+    --shadow-dark: 0 2rem 6rem rgba(0,0,0,.3);
+    --shadow-light:0 2rem 5rem rgba(0,0,0,.06);
+    font Montserrat #A29680
+    unica One 20px 20px 2px distancia #DBD4AF
+    texto PT Sans regular 16px 24px alt #606060
+    nome Source Sans pro 42px
+    */
+
+
+}
+
+*{
+    margin: 0;
+    padding: 0;
+ 
+ }
+ *,
+ *::after,
+ *::before{
+    box-sizing: inherit;
+ }
+
+ html {
+    box-sizing: border-box;
+    font-size: 62.5%;
+    font-family: sans-serif;
+    } //1rem = 10px, 10px/16px padrao do nav = 62.5%
+   
+
+ body{
+   background-color: r;
+   min-height: 100vh;
+
+ }   
