@@ -1,0 +1,30 @@
+//transition nome main-section
+@keyframes moveInLeft {
+    0% {
+        opacity: 0;
+        transform: translateX(0rem);
+    }
+    50%{
+        opacity: 0;
+        transform: translateX(-10rem);
+    }
+    100% {
+        opacity: 1;
+        transform: translate(0);
+    }
+  }
+
+  @keyframes moveinRight {
+    0% {
+      opacity: 0;
+      transform: translateX(0);
+    }
+    50%{
+        opacity: 0;
+        transform: translateX(8rem);
+    }
+    100% {
+      opacity: 1;
+      transform: translate(0);
+    }
+  }

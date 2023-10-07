@@ -4,6 +4,33 @@
     font-size: 16px;
 }
 
-.about-me__description{
+.aboutme__description{
     padding: 2rem;
 }
+.heading-secondary {
+    font-size: 4.4rem;
+    line-height: 1.2;
+    margin: 5rem;
+  }
+  .secondary-heading{
+    background-color: var(--color-primary-light);
+    display: inline-block;
+    padding: .8rem;
+    border-radius: .4rem;
+
+    font-size: 3rem;
+    text-transform: uppercase;
+    margin: 2rem 0 1rem 4rem;
+  }
+  .subheading {
+    display: block;
+    font-size: 1.6rem;
+    font-weight: 500;
+    color: #423f3d;
+    text-transform: uppercase;
+    margin: 5rem 0 1.6rem 4rem;
+    letter-spacing: 0.75px;
+  }
+  .center{
+    text-align: center;
+  }

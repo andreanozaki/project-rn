@@ -1,12 +1,91 @@
 
 .logo {
-    height: 4.2rem;
+    height: 12rem;
     margin: 5rem;
-    margin-left: 0;
+   
+    
+  }
+
+.container {
+  max-width: 120rem;
+  padding: 0 3.2rem;
+  margin: 0 auto;
+}
+.profile-photo{
+  width: 55rem;
+  height:100%;
+}
+
+.social-media {
+  font-size: 4rem;
+  align-items: center;
+  display: flex;
+  gap: 6rem;
+  list-style: none;
+  
+  text-decoration: none;
+  padding-right: 7rem;
+  position: absolute;
+
+
+  .icon {
+  
+    
+  
+    color:var(--color-primary--light);
+    text-decoration: none;
+    position: absolute;
+    top: 2rem;
+    margin-left: 20rem;
+  &:hover {
+    transform: translateY(-3px);
+    color:white;
+  }
+
+  &:active {
+  transform: translateY(-1px);
+  box-shadow: 0 .5rem 2rem rgba(white,.2);
   }
 
 
-  .profile-photo{
-    width: 45rem;
-    height:100%;
+
   }
+
+  
+}
+
+
+
+
+/* Adicione o estilo de efeito de flash aqui */
+.flash-effect {
+  animation-name: flash;
+  animation-duration: 1s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: 1; /* Defina como 1 para que o efeito ocorra apenas uma vez */
+}
+
+@keyframes flash {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+
+/* Adicione estas regras CSS para animar os ícones */
+.social-media li {
+  opacity: 0;
+  transform: translateY(20px); /* Inicialmente, mova os ícones para baixo 20px */
+  transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+}
+
+.social-media li.active {
+  opacity: 1;
+  transform: translateY(0); /* Quando ativos, mova os ícones para a posição normal */
+}

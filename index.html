@@ -7,22 +7,32 @@
 
     <link rel="stylesheet" href="css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script
+    type="module"
+    src="https://unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.esm.js"></script>
+  <script
+    nomodule=""
+    src="https://unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.js"></script>
+
 
     <title>Ricardo Nozaki Pastry Chef</title>
 </head>
 
 <body>
     <header class="header">
-        <a href="#">
-          <img src="img/gallery/l.png" alt="logo" class="logo">
+        <a href="#" id="logo">
+          <img src="img/gallery/lo2.png" alt="logo" class="logo">
         </a>
         <nav class="main-nav">
             <ul class="main-nav-list">
-                <li><a class="main-nav-link" href="#how">Chef</a></li>
-                <li><a class="main-nav-link" href="#meals">Creations</a></li>
-                <li><a class="main-nav-link" href="#pricing">Service</a></li>
-                <li><a class="main-nav-link" href="#testimonials">Contact</a></li>
-                <li><a class="main-nav-link nav-cta" href="#cta">E-book</a></li>
+                <li><a class="main-nav-link" href="#aboutme"> Chef</a></li>
+                <li><a class="main-nav-link" href="#creations">Creations</a></li>
+                <li><a class="main-nav-link" href="#">Service</a></li>
+                <li><a class="main-nav-link" href="#cta">Contact</a></li>
+                <li><a class="main-nav-link nav-cta" href="#">E-book</a></li>
             </ul>
         </nav>
         <button class="btn-mobile-nav">
@@ -30,192 +40,231 @@
             <ion-icon class="icon-mobile-nav" name="close-outline"></ion-icon>
         </button>
     </header>
-        <main>
 
-            <section class="photo-main">
-                <h1>Ricardo Nozaki</h1>
-                <img src="img/gallery/profilepastry.png" alt="photo1" class="img-main">
-               
-            </section>
+    <main>
 
-
-            <section class="about-me">
-                
-                <h2 class="about-me__title">About the Chef</h2>
-            
-          <div class="about-me__content">    
-              <div class="profile">
-                    <img src="img/gallery/2.png" class="profile-photo">
-              </div>
-              <div class="about-me__description">
-                <h2 class="about-me__subtitle">My History</h2>
-                <p class="paragraph">Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum nihil, quos distinctio unde dolorem reprehenderit omnis quo nostrum, deleniti quis amet autem! Repellendus asperiores labore tenetur, quas reprehenderit deserunt possimus.</p>
-                <p class="paragraph">Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis dolorum eius harum ex, sapiente expedita dicta eum illum earum ducimus esse, recusandae repellat enim. Labore maiores qui illo in dolorem.</p>
-                
-                <h2 class="about-me__subtitle">Education</h2>
-                <p class="paragraph">Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum nihil, quos distinctio unde dolorem reprehenderit omnis quo nostrum, deleniti quis amet autem! Repellendus asperiores labore tenetur, quas reprehenderit deserunt possimus.</p>
-                <p class="paragraph">Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis dolorum eius harum ex, sapiente expedita dicta eum illum earum ducimus esse, recusandae repellat enim. Labore maiores qui illo in dolorem.</p>
-                
-                <h2 class="about-me__subtitle">Experience</h2>
-                <p class="paragraph">Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum nihil, quos distinctio unde dolorem reprehenderit omnis quo nostrum, deleniti quis amet autem! Repellendus asperiores labore tenetur, quas reprehenderit deserunt possimus.</p>
-                <p class="paragraph">Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis dolorum eius harum ex, sapiente expedita dicta eum illum earum ducimus esse, recusandae repellat enim. Labore maiores qui illo in dolorem.</p>
-                
-                
-                <h2 class="about-me__subtitle">Aming his areas of expertise</h2>
-                <p class="paragraph">Creation of a pastry line for shops <br>Creation of a specific production and laboratory plan <br>Organization and management of a production plan</p>
-
-            </div>
-        </div>   
+        <section class="section-main" >
+            <img id="main-photo" src="img/gallery/main.png" alt="photo1" class="section-main__photo flash-effect">
+            <div class="header__text-box ">     
+                    <h1 class="heading-primary">
+                        <span class="heading-primary--main">Ricardo&nbsp;Nozaki</span>
+                        <span class="heading-primary--sub">Pastry Chef</span>
+    
+                            <ul class="social-media ">
+                              <li><a href="https://www.linkedin.com/in/andreahcodes/" target="_blank" class="icon" ><ion-icon  name="logo-linkedin"></ion-icon></a></li>
+                              <li><a href="https://github.com/andreahcodes" target="_blank" class="icon" ><ion-icon  name="logo-github"></ion-icon></a></li>                         
+                              <li><a href="https://www.instagram.com/andreahcodes/" target="_blank" class="icon" ><ion-icon  name="logo-instagram"></ion-icon></a></li>
+                              
+    
+    
+                            </ul>
+    
+    
+                          </div>
         </section>
 
-            <section class="creations">
-                <div class="description">
-                    <h2 class="about-me__title">Explore my pastries</h2>
-            
-                    <a href="#" class="btn"></a>
+
+        <section class="section-aboutme" id="aboutme">
+            <div class="container">
+               <span id="first" class="subheading">About the Chef</span>
+               <h2 class="">A litle bit of my history</h2>
+            </div>
+
+           <div class="section-aboutme__content container">    
+             <div class="aboutme-profile">
+               <img src="img/gallery/Design sem nome-13.png" class="profile-photo">
+
+             </div>
+
+            <div class="aboutme__description">
+              <h2 class="heading-secondary ">Minha Historia</h2>
+              <p class="paragraph">Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum nihil, quos distinctio unde dolorem reprehenderit omnis quo nostrum, deleniti quis amet autem! Repellendus asperiores labore tenetur, quas reprehenderit deserunt possimus.</p>
+              <p class="paragraph">Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis dolorum eius harum ex, sapiente expedita dicta eum illum earum ducimus esse, recusandae repellat enim. Labore maiores qui illo in dolorem.</p>
+                
+              <h2 class="heading-secondary ">Educação</h2>
+              <p class="paragraph">Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum nihil, quos distinctio unde dolorem reprehenderit omnis quo nostrum, deleniti quis amet autem! Repellendus asperiores labore tenetur, quas reprehenderit deserunt possimus.</p>
+              <p class="paragraph">Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis dolorum eius harum ex, sapiente expedita dicta eum illum earum ducimus esse, recusandae repellat enim. Labore maiores qui illo in dolorem.</p>
+                
+              <h2 class="heading-secondary ">Experience</h2>
+              <p class="paragraph">Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum nihil, quos distinctio unde dolorem reprehenderit omnis quo nostrum, deleniti quis amet autem! Repellendus asperiores labore tenetur, quas reprehenderit deserunt possimus.</p>
+              <p class="paragraph">Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis dolorum eius harum ex, sapiente expedita dicta eum illum earum ducimus esse, recusandae repellat enim. Labore maiores qui illo in dolorem.</p>
+                 
+             
+            </div>
+           </div>   
+        </section>
+
+
+        <section class="section-creations " id="creations">
+            <div class="container">
+               <span class="subheading center">My creations</span>
+               <h2 class=" center">Conheca alguns dos meus trabalhos</h2>
+            </div>
+            <div class="section-creations__gallery grid-3cols">
+                <figure class="gallery-item">
+                    <img src="img/gallery/1.png" alt="photo1">
+                </figure>
+                <figure class="gallery-item">
+                    <img src="img/gallery/2.png" alt="photo1">
+                </figure>
+                <figure class="gallery-item">
+                    <img src="img/gallery/3.png" alt="photo1">
+                </figure>
+                <figure class="gallery-item">
+                    <img src="img/gallery/4.png" alt="photo1">
+                </figure>
+                <figure class="gallery-item">
+                    <img src="img/gallery/5.png" alt="photo1">
+                </figure>
+                <figure class="gallery-item">
+                    <img src="img/gallery/6.png" alt="photo1">
+                </figure>
+                <figure class="gallery-item">
+                     <img src="img/gallery/5.png" alt="photo1">
+                </figure>
+                <figure class="gallery-item">
+                    <img src="img/gallery/3.png" alt="photo1">
+                </figure>
+                <figure class="gallery-item">
+                    <img src="img/gallery/1.png" alt="photo1">
+                </figure>
+                <figure class="gallery-item">
+                    <img src="img/gallery/6.png" alt="photo1">
+                </figure>
+                <figure class="gallery-item">
+                    <img src="img/gallery/1.png" alt="photo1">
+                </figure>
+                <figure class="gallery-item">
+                    <img src="img/gallery/1.png" alt="photo1">
+                </figure>  
+            </div>    
+        </section>
+
+
+        <section class="section-cta" id="cta">
+            <div class="container">
+                <div class="cta">
+                    <div class="cta-text-box">
+                        <h2 class="heading-secondary">
+                            Pegue sua primeira videoaula gratis!</h2>
+                        <p class="cta-text">
+                            Cadastre-se na nossa <strong>Newsletter!</strong>
+                        </p>
+
+                        <form class="cta-form" action="#">
+                            <div>
+                                <label for="full-name">Nome Completo</label>
+                                <input id="full-name" type="text" placeholder="Andrea Codes" required />
+                            </div>
+
+                            <div>
+                                <label for="email">Email address</label>
+                                <input id="email" type="email" placeholder="me@example.com" required />
+                            </div>
+
+                            <div>
+                                <label for="select-where">Onde ficou sabendo sobre nos?</label>
+                                <select id="select-where" required>
+                                    <option value="">Please choose one option:</option>
+                                    <option value="friends">Friends and family</option>
+                                    <option value="youtube">YouTube video</option>
+                                    <option value="podcast">Podcast</option>
+                                    <option value="ad">Facebook ad</option>
+                                    <option value="others">Others</option>
+                                </select>
+                            </div>
+
+                            <button class="btn btn--form">Send</button>
+
+                        </form>
+                    </div>
+                    <div class="cta-img-box" role="img" aria-label="Woman enjoying food"></div>
                 </div>
-                <div class="creations__gallery">
-                    <figure class="gallery-item">
-                        <img src="img/gallery/1.png" alt="photo1">
-                    </figure>
-                    <figure class="gallery-item">
-                        <img src="img/gallery/2.png" alt="photo1">
-                    </figure>
-                    <figure class="gallery-item">
-                        <img src="img/gallery/3.png" alt="photo1">
-                    </figure>
-                    <figure class="gallery-item">
-                        <img src="img/gallery/4.png" alt="photo1">
-                    </figure>
-                    <figure class="gallery-item">
-                        <img src="img/gallery/5.png" alt="photo1">
-                    </figure>
-                    <figure class="gallery-item">
-                        <img src="img/gallery/6.png" alt="photo1">
-                    </figure>
-                    <figure class="gallery-item">
-                        <img src="img/gallery/5.png" alt="photo1">
-                    </figure>
-                    <figure class="gallery-item">
-                        <img src="img/gallery/3.png" alt="photo1">
-                    </figure>
-                    <figure class="gallery-item">
-                        <img src="img/gallery/1.png" alt="photo1">
-                    </figure>
-                    <figure class="gallery-item">
-                        <img src="img/gallery/6.png" alt="photo1">
-                    </figure>
-                    <figure class="gallery-item">
-                        <img src="img/gallery/1.png" alt="photo1">
-                    </figure>
-                    <figure class="gallery-item">
-                        <img src="img/gallery/1.png" alt="photo1">
-                    </figure>
-                    <figure class="gallery-item">
-                        <img src="img/gallery/4.png" alt="photo1">
-                    </figure>
-                    <figure class="gallery-item">
-                        <img src="img/gallery/5.png" alt="photo1">
-                    </figure>
-                    <figure class="gallery-item">
-                        <img src="img/gallery/1.png" alt="photo1">
-                    </figure>
-                  
-                </div>    
-            </section>
+            </div>
+        </section>
 
 
-            <section class="section-cta" id="cta">
-                <div class="container">
-                    <div class="cta">
-                        <div class="cta-text-box">
-                            <h2 class="heading-secondary">
-                                </h2>
-                            <p class="cta-text">
-                                Entre em contato, Contact me for any queries <strong>Conosco!</strong>
-                            </p>
-                            <p>Improving my style every day, making the perfect gesture, discovering new horizons, creating. These are my style.
-                                Let’s continue this dream together.
-                                See you very soon – Grégory Doyen</p>
+        <section class="e-book">
+
+
+        </section>
+        <footer class="footer ">
+            <div class="container grid-5cols">
+                <div class="logo-col">
+                    <a href="#">
+          <img src="img/gallery/lo2.png" alt="logo" class="logo">
+                   </a>
     
-                            <form class="cta-form" action="#">
-                                <div>
-                                    <label for="full-name">Nome Completo</label>
-                                    <input id="full-name" type="text" placeholder="Andrea Codes" required />
-                                </div>
-                                <div>
-                                    <label for="email">Email address</label>
-                                    <input id="email" type="email" placeholder="me@example.com" required />
-                                </div>
-                                <div>
-                                    <label for="select-where">Onde ficou sabendo sobre nos?</label>
-                                    <select id="select-where" required>
-                                        <option value="">Please choose one option:</option>
-                                        <option value="friends">Friends and family</option>
-                                        <option value="youtube">YouTube video</option>
-                                        <option value="podcast">Instagram</option>
-                                        <option value="ad">Facebook </option>
-                                        <option value="others">Others</option>
-                                    </select>
-                                </div>
-                                <button class="btn btn--form">Sign up now</button>
-                            </form>
-                        </div>
-                        <div class="cta-img-box" role="img" aria-label="Woman enjoying food"></div>
-                    </div>
+                    <ul class="social-links">
+    
+                        <li>
+                            <a class="footer-link" href="#"><i class="fa-brands fa-instagram social-icon"></i>
+                            </a>
+                            <i class="fas fa-heart"></i> <!-- Ícone de coração da Font Awesome -->
+
+                        </li>
+                        <li>
+                            <a class="footer-link" href="#"><i class="fa-brands fa-facebook social-icon"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="footer-link" href="#"><i class="fa-brands fa-twitter social-icon"></i>
+                            </a>
+                        </li>
+                    </ul>
+    
+                    <p class="copyright">Copyright &copy; 2023 by ACodes.All rights reserved.</p>
+    
                 </div>
-            </section>
-
-            <section class="e-book">
-
-
-            </section>
-
-            <footer class="footer">
-                <div class="container grid grid--5-cols">
-                    <div class="logo-col">
-                        <a href="#">
-                            <img class="logo" src="img/logos/logo.png" alt="logo">
-                        </a>
-        
-                        <ul class="social-links">
-        
-                            <li>
-                                <a class="footer-link" href="#"><i class="fa-brands fa-instagram social-icon"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="footer-link" href="#"><i class="fa-brands fa-facebook social-icon"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="footer-link" href="#"><i class="fa-brands fa-twitter social-icon"></i>
-                                </a>
-                            </li>
-                        </ul>
-        
-                        <p class="copyright">Copyright &copy; 2023 by Andreah Codes.All rights reserved.</p>
-        
-                    </div>
-        
-                    <div class="address-col">
-                        <p class="footer-heading">Contate-nos</p>
-                        <address class="contacts">
-                            <p>Rua dos Girassóis,123, 2º andar, Dourados, MS.
-                            </p>
-                            <p><br><a class="footer-link" href="tel:43-3433-8763">Tel:43-3433-8763</a><br>
-                                <a class="footer-link" href="mailto:elitecakes@br.com">elitecakes@email.com</a>
-                            </p>
-                        </address>
-                    </div>
-        
-                    
+    
+                <div class="address-col">
+                    <p class="footer-heading">Contate-nos</p>
+                    <address class="contacts">
+                        <p>Rua dos Girassóis,123, 2º andar, Dourados, MS.
+                        </p>
+                        <p><br><a class="footer-link" href="tel:43-3433-8763">Tel:43-3433-8763</a><br>
+                            <a class="footer-link" href="mailto:elitecakes@br.com">elitecakes@email.com</a>
+                        </p>
+                    </address>
                 </div>
-            </footer>
+    
+                <nav class="nav-col">
+                    <p class="footer-heading">Conta</p>
+                    <ul class="footer-nav">
+                        <li><a class="footer-link" href="#">Crie sua conta</a></li>
+                        <li><a class="footer-link" href="#">Entrar</a></li>
+                        <li><a class="footer-link" href="#">IOS app</a></li>
+                        <li><a class="footer-link" href="#">Android app</a></li>
+                    </ul>
+                </nav>
+    
+                <nav class="nav-col">
+                    <p class="footer-heading">Company</p>
+                    <ul class="footer-nav">
+                        <li><a class="footer-link" href="#">Sobre Elite Cake</a></li>
+                        <li><a class="footer-link" href="#">Para Business</a></li>
+                        <li><a class="footer-link" href="#">Parceiros</a></li>
+                        <li><a class="footer-link" href="#">Carreira</a></li>
+                    </ul>
+                </nav>
+    
+                <nav class="nav-col">
+                    <p class="footer-heading">Resources</p>
+                    <ul class="footer-nav">
+                        <li><a class="footer-link" href="#">Diretorio de Receitas</a></li>
+                        <li><a class="footer-link" href="#">Central de Ajuda</a></li>
+                        <li><a class="footer-link" href="#">Privacidade e Termos</a>
+                    </ul>
+                </nav>
+            </div>
+        </footer>
         
+    </main>
+       
+        <script src="js/script.js"></script>
 
-
-        </main>
+        
+        
    
 </body>
 </html>
