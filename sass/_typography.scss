@@ -8,9 +8,13 @@
     padding: 2rem;
 }
 .heading-secondary {
-    font-size: 4.4rem;
-    line-height: 1.2;
+    font-size: 3rem;
     margin: 5rem;
+    text-transform: uppercase;
+    font-weight: 300;
+    font-family:  'Roboto', sans-serif; 
+    
+
   }
   .secondary-heading{
     background-color: var(--color-primary-light);
@@ -24,12 +28,14 @@
   }
   .subheading {
     display: block;
-    font-size: 1.6rem;
-    font-weight: 500;
+    font-size: 32px;
+    font-weight: 400;
     color: #423f3d;
     text-transform: uppercase;
     margin: 5rem 0 1.6rem 4rem;
-    letter-spacing: 0.75px;
+    letter-spacing: .75px;
+    font-family:  'Roboto', sans-serif; 
+
   }
   .center{
     text-align: center;

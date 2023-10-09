@@ -3,6 +3,8 @@
     display: flex;
     gap: 4.8rem;
     align-items: center;
+    font-family:'Unica One', sans-serif;
+
   }
   
   .main-nav-link:link,
@@ -10,7 +12,9 @@
     display: inline-block;
     text-decoration: none;
     color:var(--color-primary--light);
-    font-size: 1.8rem;
+    font-size: 22px;
+    line-height: 22px;
+    letter-spacing: 2px;
     font-weight: 500;
     transition: all 0.3s;
   }
