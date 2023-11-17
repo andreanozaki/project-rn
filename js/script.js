@@ -50,3 +50,8 @@ document.addEventListener('DOMContentLoaded', function() {
     activateAnimations();
   });
 });
+//fue
+document.addEventListener("DOMContentLoaded", function() {
+  var img = document.querySelector('.flash-effect');
+  img.classList.add('flash-effect');
+});

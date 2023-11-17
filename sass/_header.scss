@@ -1,10 +1,10 @@
 .header {
     display: flex;
     align-items: center;
-    background-color:var(--color-primary);
+    background-color:rgba(117, 84, 41, 0.644);
     color: #ffffff;
     /* Porque quero o header um pouco mais pegajoso*/
-    height:11rem;
+    height:12rem;
     /* 0 up and bottom,4.8rem right and left*/
     padding:1rem 0  0 4.8rem;
     text-transform: uppercase;

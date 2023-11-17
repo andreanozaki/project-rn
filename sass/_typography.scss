@@ -1,14 +1,14 @@
 /* About the chef*/
 .paragraph{
     padding:1rem 0 1rem  4rem;/*top,right,bottom and left*/
-    font-size: 16px;
+    font-size: 18px;
 }
 
 .aboutme__description{
     padding: 2rem;
 }
 .heading-secondary {
-    font-size: 3rem;
+    font-size: 4rem;
     margin: 5rem;
     text-transform: uppercase;
     font-weight: 300;
@@ -16,27 +16,22 @@
     
 
   }
-  .secondary-heading{
-    background-color: var(--color-primary-light);
-    display: inline-block;
-    padding: .8rem;
-    border-radius: .4rem;
 
-    font-size: 3rem;
-    text-transform: uppercase;
-    margin: 2rem 0 1rem 4rem;
-  }
   .subheading {
     display: block;
-    font-size: 32px;
-    font-weight: 400;
+    font-size:6rem;
+    font-weight: 700;
     color: #423f3d;
     text-transform: uppercase;
     margin: 5rem 0 1.6rem 4rem;
     letter-spacing: .75px;
     font-family:  'Roboto', sans-serif; 
 
+    padding-top: 6rem;
+  
   }
+  
   .center{
     text-align: center;
   }
+  

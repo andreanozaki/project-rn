@@ -2,10 +2,10 @@
 .header {
   display: flex;
   align-items: center;
-  background-color: var(--color-primary);
+  background-color: rgba(117, 84, 41, 0.644);
   color: #ffffff;
   /* Porque quero o header um pouco mais pegajoso*/
-  height: 11rem;
+  height: 12rem;
   /* 0 up and bottom,4.8rem right and left*/
   padding: 1rem 0  0 4.8rem;
   text-transform: uppercase;
@@ -56,12 +56,9 @@ body {
   margin: 5rem; }
 
 .container {
-  max-width: 120rem;
-  padding: 0 3.2rem;
+  max-width: 70vw;
+  padding: 0 2rem;
   margin: 0 auto; }
-
-.profile-photo {
-  width: 48rem; }
 
 .social-media {
   font-size: 4rem;
@@ -88,7 +85,7 @@ body {
 /* Adicione o estilo de efeito de flash aqui */
 .flash-effect {
   animation-name: flash;
-  animation-duration: 1s;
+  animation-duration: 2.2s;
   animation-timing-function: ease-in-out;
   animation-iteration-count: 1;
   /* Defina como 1 para que o efeito ocorra apenas uma vez */ }
@@ -112,6 +109,31 @@ body {
   opacity: 1;
   transform: translateY(0);
   /* Quando ativos, mova os ícones para a posição normal */ }
+
+.rotate-effect {
+  position: absolute;
+  top: 40%;
+  left: 43%;
+  transform: translate(-50%, -50%);
+  animation-name: rotate;
+  animation: rotate 2s ease-in-out forwards, fadeOut 0.5s 1s ease-in-out forwards;
+  animation-iteration-count: 1;
+  width: 200px;
+  height: 200px;
+  animation-fill-mode: forwards;
+  /* Mantém a última quadro da animação após a conclusão */ }
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1; }
+  100% {
+    opacity: 0; } }
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg); }
+  100% {
+    transform: rotate(360deg); } }
 
 /***************************/
 /*FOOTER*/
@@ -185,36 +207,28 @@ body {
 .paragraph {
   padding: 1rem 0 1rem  4rem;
   /*top,right,bottom and left*/
-  font-size: 16px; }
+  font-size: 18px; }
 
 .aboutme__description {
   padding: 2rem; }
 
 .heading-secondary {
-  font-size: 3rem;
+  font-size: 4rem;
   margin: 5rem;
   text-transform: uppercase;
   font-weight: 300;
   font-family: 'Roboto', sans-serif; }
 
-.secondary-heading {
-  background-color: var(--color-primary-light);
-  display: inline-block;
-  padding: .8rem;
-  border-radius: .4rem;
-  font-size: 3rem;
-  text-transform: uppercase;
-  margin: 2rem 0 1rem 4rem; }
-
 .subheading {
   display: block;
-  font-size: 32px;
-  font-weight: 400;
+  font-size: 6rem;
+  font-weight: 700;
   color: #423f3d;
   text-transform: uppercase;
   margin: 5rem 0 1.6rem 4rem;
   letter-spacing: .75px;
-  font-family: 'Roboto', sans-serif; }
+  font-family: 'Roboto', sans-serif;
+  padding-top: 6rem; }
 
 .center {
   text-align: center; }
@@ -253,10 +267,10 @@ body {
   display: inline-block;
   text-decoration: none;
   color: var(--color-primary--light);
-  font-size: 22px;
+  font-size: 26px;
   line-height: 22px;
   letter-spacing: 2px;
-  font-weight: 500;
+  font-weight: 800;
   transition: all 0.3s; }
 
 .main-nav-link:hover,
@@ -278,17 +292,17 @@ body {
 .section-main {
   position: relative;
   height: 100vh;
-  width: 100%;
+  width: 100vw;
   margin: 0;
   background-image: linear-gradient(to right bottom, rgba(45, 39, 39, 0.1), rgba(13, 13, 13, 0.2)); }
   .section-main__photo {
     position: absolute;
     width: 100%;
     height: 100%;
-    background-size: contain; }
+    object-fit: cover; }
   .section-main .header__text-box {
     position: absolute;
-    top: 70%;
+    top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center; }
@@ -301,8 +315,8 @@ body {
     font-family: 'Roboto', sans-serif; }
     .section-main .heading-primary--main {
       display: block;
-      font-size: 4rem;
-      font-weight: 800;
+      font-size: 6rem;
+      font-weight: 900;
       letter-spacing: .85rem;
       padding-bottom: 1rem;
       animation-name: moveInLeft;
@@ -310,7 +324,7 @@ body {
       animation-timing-function: ease-out; }
     .section-main .heading-primary--sub {
       display: block;
-      font-size: 2rem;
+      font-size: 4rem;
       font-weight: 900;
       letter-spacing: 1.5rem;
       animation: moveinRight 2s ease-out;
@@ -336,10 +350,8 @@ body {
 .section-creations .gallery-item img:hover {
   transform: scale(1.1); }
 
-.section-aboutme {
-  background-color: #fff; }
-  .section-aboutme__content {
-    display: flex; }
+.section-aboutme__content {
+  display: flex; }
 
 .section-cta {
   /* top / horizontal / left */
@@ -413,3 +425,30 @@ body {
   color: #333;
   font-size: 1.5rem;
   font-weight: 500; }
+
+.profile-photo {
+  width: 35vw; }
+
+.ebook-photo {
+  max-width: 550px;
+  height: 100%; }
+
+.ebook {
+  padding: 5rem; }
+
+.ebook-section {
+  display: flex;
+  justify-content: center;
+  width: 100%; }
+
+.cta-ebook {
+  margin-left: 5rem;
+  margin-top: 2rem; }
+
+.ebook-description {
+  max-width: 30vw; }
+
+.star-price {
+  display: flex;
+  flex-direction: column;
+  padding: 0  0 2rem 5rem; }
