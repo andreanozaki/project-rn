@@ -100,3 +100,5 @@ function countAndHide() {
 
 // Chama a função após a página ser totalmente
 window.onload = countAndHide;
+
+

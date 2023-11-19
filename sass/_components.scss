@@ -57,11 +57,17 @@
 /* Adicione o estilo de efeito de flash aqui */
 .flash-effect {
   animation-name: flash;
-  animation-duration: 2.4s;
+  animation-duration: 2.5s;
   animation-timing-function: ease-in-out;
   animation-iteration-count: 1; /* Defina como 1 para que o efeito ocorra apenas uma vez */
 }
 
+.flash-effect-2 {
+  animation-name: flash;
+  animation-duration: 2s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: 1; /* Defina como 1 para que o efeito ocorra apenas uma vez */
+}
 @keyframes flash {
   0% {
     opacity: 0;
