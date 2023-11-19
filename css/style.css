@@ -27,7 +27,7 @@
     
     --shadow-dark: 0 2rem 6rem rgba(0,0,0,.3);
     --shadow-light:0 2rem 5rem rgba(0,0,0,.06);
-    font Montserrat #A29680
+    font Montserrat 0#A2968
     unica One 20px 20px 2px distancia #DBD4AF
     texto PT Sans regular 16px 24px alt #606060
     nome Source Sans pro 42px
@@ -85,7 +85,7 @@ body {
 /* Adicione o estilo de efeito de flash aqui */
 .flash-effect {
   animation-name: flash;
-  animation-duration: 2.2s;
+  animation-duration: 2.4s;
   animation-timing-function: ease-in-out;
   animation-iteration-count: 1;
   /* Defina como 1 para que o efeito ocorra apenas uma vez */ }
@@ -205,12 +205,9 @@ body {
 
 /* About the chef*/
 .paragraph {
-  padding: 1rem 0 1rem  4rem;
+  padding: 1rem 0 6rem  8rem;
   /*top,right,bottom and left*/
-  font-size: 18px; }
-
-.aboutme__description {
-  padding: 2rem; }
+  font-size: 21px; }
 
 .heading-secondary {
   font-size: 3rem;
@@ -233,35 +230,6 @@ body {
 .center {
   text-align: center; }
 
-.chocolate-rain {
-  position: fixed;
-  top: 0;
-  right: 0;
-  width: 250px;
-  /* Ajuste a largura conforme necessário */
-  height: 100%;
-  overflow: hidden;
-  position: absolute; }
-
-.chocolate-piece {
-  width: 100vw;
-  /* Ajuste a largura conforme necessário */
-  height: 980px;
-  /* Ajuste a altura conforme necessário */
-  background-size: cover;
-  animation: chocolateFall  8s linear infinite; }
-
-.chocolate-piece img {
-  width: 100%;
-  /* Certifique-se de que a imagem ocupa todo o espaço da div */
-  height: 100%; }
-
-@keyframes chocolateFall {
-  0% {
-    transform: translateY(-100%); }
-  100% {
-    transform: translateY(0%); } }
-
 @keyframes moveInLeft {
   0% {
     opacity: 0;
@@ -283,6 +251,14 @@ body {
   100% {
     opacity: 1;
     transform: translate(0); } }
+
+.loading-text {
+  font-size: 4rem;
+  z-index: 4;
+  position: absolute;
+  top: 35%;
+  left: 50%;
+  transform: translate(-50%, -50%); }
 
 .main-nav-list {
   list-style: none;
@@ -320,22 +296,40 @@ body {
 
 .section-main {
   position: relative;
-  height: 90vh;
+  height: 100vh;
   width: 100vw;
   margin: 0; }
-  .section-main__photo {
+  .section-main .section-main-fue {
     position: absolute;
     width: 100%;
     height: 100%;
     object-fit: cover; }
+  .section-main .section-main__photo,
+  .section-main .section-main__photopro {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; }
+  .section-main .section-main__photo {
+    z-index: 1;
+    /* Z-index menor para a .__photo */ }
+  .section-main .section-main__photopro {
+    z-index: 2;
+    /* Z-index maior para a .__photopro, fazendo-a sobressair */
+    width: 50vw;
+    height: 100%;
+    left: 50%; }
   .section-main .header__text-box {
     position: absolute;
     top: 50%;
     left: 30%;
-    transform: translate(-50%, -50%); }
+    transform: translate(-50%, -50%);
+    z-index: 3; }
   .section-main .heading-primary {
     display: block;
-    color: #333;
+    color: #333333;
     text-transform: uppercase;
     backface-visibility: hidden;
     margin-bottom: 6rem;
@@ -348,14 +342,16 @@ body {
       padding-bottom: 1rem;
       animation-name: moveInLeft;
       animation-duration: 2s;
-      animation-timing-function: ease-out; }
+      animation-timing-function: ease-out;
+      color: #4e4137; }
     .section-main .heading-primary--sub {
       display: block;
       font-size: 4rem;
       font-weight: 900;
       letter-spacing: 1.5rem;
       animation: moveinRight 2s ease-out;
-      position: relative; }
+      position: relative;
+      color: #3c3c37; }
 
 .section-creations__gallery {
   gap: 2rem;
@@ -379,7 +375,7 @@ body {
 
 .section-aboutme {
   position: relative;
-  padding: 28rem 0 14rem 0;
+  padding: 28rem 0;
   background-color: #1b1b1b;
   color: #e3e0e0; }
   .section-aboutme__content {
@@ -488,10 +484,29 @@ body {
   padding: 0  0 2rem 5rem; }
 
 .fue {
-  width: 500px;
-  height: 500px;
-  top: 110%;
+  position: absolute;
+  width: 650px;
+  height: 650px;
+  top: 100%;
   left: 50%;
   transform: translate(-50%, -50%);
-  z-index: 3;
+  z-index: 2;
   transition: transform 0.5s ease; }
+
+.custom-shape-divider-bottom-1700359886 {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  transform: rotate(180deg); }
+
+.custom-shape-divider-bottom-1700359886 svg {
+  position: relative;
+  display: block;
+  width: calc(210% + 1.3px);
+  height: 100px; }
+
+.custom-shape-divider-bottom-1700359886 .shape-fill {
+  fill: #1b1b1b; }

@@ -1,13 +1,10 @@
 /* About the chef*/
 .paragraph{
-    padding:1rem 0 1rem  4rem;/*top,right,bottom and left*/
-    font-size: 18px;
+    padding:1rem 0 6rem  8rem;/*top,right,bottom and left*/
+    font-size: 21px;
 }
 
-.aboutme__description{
-    padding: 2rem;
-    
-}
+
 
 .heading-secondary {
     font-size: 3rem;
@@ -36,35 +33,6 @@
   .center{
     text-align: center;
   }
-  //choc
 
-  .chocolate-rain {
-    position: fixed;
-    top:0;
-    right: 0;
-    width: 250px; /* Ajuste a largura conforme necessário */
-    height: 100%;
-    overflow: hidden;
-    position: absolute;
-    
 
-}
-
-.chocolate-piece {
-    width: 100vw; /* Ajuste a largura conforme necessário */
-    height:980px; /* Ajuste a altura conforme necessário */
-    background-size: cover;
-    animation: chocolateFall  8s linear infinite;
-}
-.chocolate-piece img {
-    width: 100%; /* Certifique-se de que a imagem ocupa todo o espaço da div */
-    height: 100%;
-}
-@keyframes chocolateFall {
-    0% {
-        transform: translateY(-100%);
-    }
-    100% {
-        transform: translateY(0%);
-    }
-}
+  

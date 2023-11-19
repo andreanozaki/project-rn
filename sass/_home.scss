@@ -2,29 +2,49 @@
 .section-main {
  
  position: relative;
-  height: 90vh;
+  height: 100vh;
   width: 100vw;
   margin: 0;
 
-  
-  &__photo{
+  .section-main-fue {
     position: absolute;
-    width:100%;
-    height:100%;
-    object-fit: cover;
-   
-  }
+    width: 100%;
+    height: 100%;
+object-fit: cover;  
 
+  }
+  .section-main__photo,
+  .section-main__photopro {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+}
+  
+  .section-main__photo {
+      z-index: 1; /* Z-index menor para a .__photo */
+  }
+  
+  .section-main__photopro {
+      z-index: 2; /* Z-index maior para a .__photopro, fazendo-a sobressair */
+   
+      width: 50vw;
+      height: 100%;
+      left: 50%;
+  }
   .header__text-box{
     position: absolute;
     top: 50%;
     left: 30%;
     transform: translate(-50%,-50%);
+    z-index: 3;
  
     }
     .heading-primary {
       display: block;
-      color:#333;
+      color:#333333;
       text-transform: uppercase;
   
       backface-visibility: hidden;
@@ -45,8 +65,9 @@
         animation-name: moveInLeft;
         animation-duration: 2s;
         animation-timing-function: ease-out;
+        color:#4e4137
   
-       
+
              
   
        
@@ -61,6 +82,7 @@
    
       animation:moveinRight 2s ease-out;
       position: relative;
+      color:#3c3c37 ;
   
      
        }
@@ -103,7 +125,7 @@
 //SECTION ABOUT-ME
 .section-aboutme{
   position: relative;
-  padding:28rem 0 14rem 0;
+  padding:28rem 0;
   background-color: #1b1b1b;
   color: #e3e0e0;
       &__content {
@@ -113,6 +135,7 @@
          max-width:70% ;   
       
     }
+    
 
 }
 //SECTION-CTA

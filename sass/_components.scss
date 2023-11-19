@@ -57,7 +57,7 @@
 /* Adicione o estilo de efeito de flash aqui */
 .flash-effect {
   animation-name: flash;
-  animation-duration: 2.2s;
+  animation-duration: 2.4s;
   animation-timing-function: ease-in-out;
   animation-iteration-count: 1; /* Defina como 1 para que o efeito ocorra apenas uma vez */
 }
@@ -86,7 +86,7 @@
   opacity: 1;
   transform: translateY(0); /* Quando ativos, mova os ícones para a posição normal */
 }
-//fue
+//fue pqn
 .rotate-effect {
   position: absolute;
   top: 40%;
