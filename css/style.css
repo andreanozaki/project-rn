@@ -2,8 +2,8 @@
 .header {
   display: flex;
   align-items: center;
-  background-color: rgba(117, 84, 41, 0.644);
   color: #ffffff;
+  background-color: #1b1b1b;
   /* Porque quero o header um pouco mais pegajoso*/
   height: 12rem;
   /* 0 up and bottom,4.8rem right and left*/
@@ -213,7 +213,7 @@ body {
   padding: 2rem; }
 
 .heading-secondary {
-  font-size: 4rem;
+  font-size: 3rem;
   margin: 5rem;
   text-transform: uppercase;
   font-weight: 300;
@@ -221,7 +221,7 @@ body {
 
 .subheading {
   display: block;
-  font-size: 6rem;
+  font-size: 4rem;
   font-weight: 700;
   color: #423f3d;
   text-transform: uppercase;
@@ -232,6 +232,35 @@ body {
 
 .center {
   text-align: center; }
+
+.chocolate-rain {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 250px;
+  /* Ajuste a largura conforme necessário */
+  height: 100%;
+  overflow: hidden;
+  position: absolute; }
+
+.chocolate-piece {
+  width: 100vw;
+  /* Ajuste a largura conforme necessário */
+  height: 980px;
+  /* Ajuste a altura conforme necessário */
+  background-size: cover;
+  animation: chocolateFall  8s linear infinite; }
+
+.chocolate-piece img {
+  width: 100%;
+  /* Certifique-se de que a imagem ocupa todo o espaço da div */
+  height: 100%; }
+
+@keyframes chocolateFall {
+  0% {
+    transform: translateY(-100%); }
+  100% {
+    transform: translateY(0%); } }
 
 @keyframes moveInLeft {
   0% {
@@ -291,10 +320,9 @@ body {
 
 .section-main {
   position: relative;
-  height: 100vh;
+  height: 90vh;
   width: 100vw;
-  margin: 0;
-  background-image: linear-gradient(to right bottom, rgba(45, 39, 39, 0.1), rgba(13, 13, 13, 0.2)); }
+  margin: 0; }
   .section-main__photo {
     position: absolute;
     width: 100%;
@@ -303,20 +331,19 @@ body {
   .section-main .header__text-box {
     position: absolute;
     top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center; }
+    left: 30%;
+    transform: translate(-50%, -50%); }
   .section-main .heading-primary {
     display: block;
-    color: #DBD4AF;
+    color: #333;
     text-transform: uppercase;
     backface-visibility: hidden;
     margin-bottom: 6rem;
     font-family: 'Roboto', sans-serif; }
     .section-main .heading-primary--main {
       display: block;
-      font-size: 6rem;
-      font-weight: 900;
+      font-size: 8rem;
+      font-weight: bolder;
       letter-spacing: .85rem;
       padding-bottom: 1rem;
       animation-name: moveInLeft;
@@ -350,8 +377,15 @@ body {
 .section-creations .gallery-item img:hover {
   transform: scale(1.1); }
 
-.section-aboutme__content {
-  display: flex; }
+.section-aboutme {
+  position: relative;
+  padding: 28rem 0 14rem 0;
+  background-color: #1b1b1b;
+  color: #e3e0e0; }
+  .section-aboutme__content {
+    display: flex; }
+  .section-aboutme .aboutme-chef {
+    max-width: 70%; }
 
 .section-cta {
   /* top / horizontal / left */
@@ -452,3 +486,12 @@ body {
   display: flex;
   flex-direction: column;
   padding: 0  0 2rem 5rem; }
+
+.fue {
+  width: 500px;
+  height: 500px;
+  top: 110%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 3;
+  transition: transform 0.5s ease; }

@@ -38,3 +38,14 @@
     flex-direction: column;
     padding: 0  0 2rem 5rem;
   }
+  //fue main
+  .fue{
+    width: 500px;
+    height: 500px;
+    top:110%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 3;
+    transition: transform 0.5s ease;
+    
+  }

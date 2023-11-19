@@ -2,14 +2,10 @@
 .section-main {
  
  position: relative;
-  height: 100vh;
+  height: 90vh;
   width: 100vw;
   margin: 0;
 
-  background-image:linear-gradient(
-    to right bottom,
-    rgba(rgb(45, 39, 39), 0.1), 
-    rgba(rgb(13, 13, 13), 0.2));
   
   &__photo{
     position: absolute;
@@ -22,13 +18,13 @@
   .header__text-box{
     position: absolute;
     top: 50%;
-    left: 50%;
+    left: 30%;
     transform: translate(-50%,-50%);
-    text-align: center;
+ 
     }
     .heading-primary {
       display: block;
-      color:#DBD4AF;
+      color:#333;
       text-transform: uppercase;
   
       backface-visibility: hidden;
@@ -41,8 +37,8 @@
   
       &--main {
         display: block;
-        font-size: 6rem;
-        font-weight: 900;
+        font-size:8rem;
+        font-weight: bolder;  
         letter-spacing: .85rem;
         padding-bottom: 1rem;
     
@@ -106,10 +102,17 @@
 
 //SECTION ABOUT-ME
 .section-aboutme{
-  
+  position: relative;
+  padding:28rem 0 14rem 0;
+  background-color: #1b1b1b;
+  color: #e3e0e0;
       &__content {
         display: flex;
         }
+        .aboutme-chef{
+         max-width:70% ;   
+      
+    }
 
 }
 //SECTION-CTA

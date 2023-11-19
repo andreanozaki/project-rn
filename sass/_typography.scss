@@ -6,9 +6,11 @@
 
 .aboutme__description{
     padding: 2rem;
+    
 }
+
 .heading-secondary {
-    font-size: 4rem;
+    font-size: 3rem;
     margin: 5rem;
     text-transform: uppercase;
     font-weight: 300;
@@ -19,7 +21,7 @@
 
   .subheading {
     display: block;
-    font-size:6rem;
+    font-size:4rem;
     font-weight: 700;
     color: #423f3d;
     text-transform: uppercase;
@@ -34,4 +36,35 @@
   .center{
     text-align: center;
   }
-  
+  //choc
+
+  .chocolate-rain {
+    position: fixed;
+    top:0;
+    right: 0;
+    width: 250px; /* Ajuste a largura conforme necessário */
+    height: 100%;
+    overflow: hidden;
+    position: absolute;
+    
+
+}
+
+.chocolate-piece {
+    width: 100vw; /* Ajuste a largura conforme necessário */
+    height:980px; /* Ajuste a altura conforme necessário */
+    background-size: cover;
+    animation: chocolateFall  8s linear infinite;
+}
+.chocolate-piece img {
+    width: 100%; /* Certifique-se de que a imagem ocupa todo o espaço da div */
+    height: 100%;
+}
+@keyframes chocolateFall {
+    0% {
+        transform: translateY(-100%);
+    }
+    100% {
+        transform: translateY(0%);
+    }
+}
