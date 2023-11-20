@@ -26,7 +26,7 @@
 </head>
 
 <body>
-    <header class="header">
+    <header class="header flash-effect">
         <a href="#" id="logo">
           <img src="img/gallery/lo2.png" alt="logo" class="logo">
         </a>
@@ -38,11 +38,24 @@
                 <li><a class="main-nav-link" href="#cta">Contact</a></li>
                 <li><a class="main-nav-link nav-cta" href="#">E-book</a></li>
             </ul>
+        
         </nav>
         <button class="btn-mobile-nav">
             <ion-icon class="icon-mobile-nav" name="menu-outline"></ion-icon>
             <ion-icon class="icon-mobile-nav" name="close-outline"></ion-icon>
         </button>
+
+        <div class="switches">
+            <div id="toggle-theme" class="toggle-theme"></div>
+        </div>
+        <div class="flags" id="flags">
+            <div class="flags__item" data-language="pt-br">
+                <img src="img/gallery/13.svg" alt="" class="f">
+            </div>
+            <div class="flags__item" data-language="en">
+                <img src="img/gallery/15.svg" alt="" class="f">
+            </div>
+        </div>
     </header>
 
     <main>
@@ -50,18 +63,14 @@
         <section class="section-main" >
           
             
-            <img id="main-photo" src="img/gallery/perfil2.png" alt="photo1" class="section-main__photo flash-effect">
-            <img id="main-photo" src="img/gallery/ho.png" alt="photo1" class="section-main__photopro flash-effect-2">
+            <img id="main-photo" src="img/gallery/main.png" alt="photo1" class="section-main__photo flash-effect">
 
-            <img src="img/gallery/fuechoc.png" alt="Sua Imagem" class="rotate-effect flash-effect">
-            <img src="img/gallery/fuechoc.png" alt="" class="fue section-main__fue flash-effect">
-            <div class="loading-text">loading0%</div>
+            <div class="loading-text">0%</div>
 
 
             <div class="header__text-box ">     
                     <h1 class="heading-primary">
-                        <span class="heading-primary--main">Ricardo</span>
-                        <span class="heading-primary--main">Bassani</span>
+                        <span class="heading-primary--main">RicardoBassani</span>
 
                         <span class="heading-primary--sub">Pastry Chef</span>
     
@@ -77,50 +86,45 @@
                         
                           </div>
                           
-                          <div class="custom-shape-divider-bottom-1700359886">
-                            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
-                                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
-                            </svg>
-                        </div>
+                        
                           
         </section>
        
 
-        <section class="section-aboutme" id="aboutme">
-           
-            <div class="container">
-                <span id="first" class="subheading center ">The Chef</span>
-               
-            </div>
+        <section class="section-aboutme " id="aboutme">
+            <span id="first" class="subheading ">The Chef</span>
 
-           <div class="section-aboutme__content container">    
-             <div class="aboutme-profile">
-                
-               <img src="img/gallery/Design sem nome-21.png" class="profile-photo">
-
-             </div>
-
-            <div class="aboutme__description">
-                <h2 class="heading-secondary">History</h2>
-
-                <p class="paragraph">Tudo começou na minha infância na cozinha de família, quando a minha mãe me fez descobrir que misturando vários produtos doces poderíamos obter algo mágico e inesquecível.</p>
-                <p class="paragraph">Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis dolorum eius harum ex, sapiente expedita dicta eum illum earum ducimus esse, recusandae repellat enim. Labore maiores qui illo in dolorem.</p>
-
-              <p class="paragraph">Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum nihil, quos distinctio unde dolorem reprehenderit omnis quo nostrum, deleniti quis amet autem! Repellendus asperiores labore tenetur, quas reprehenderit deserunt possimus.</p>
-                
-
-            
-            </div>
+         <div class="section-aboutme__content container">   
+                <div class="section-aboutme__left-side grid-2col">
+                    <img src="img/gallery/Design sem nome-21.png" class="aboutme-photo">
+                </div>   
+                <div class="section-aboutme__right-side">
+                  <div class="box1">
+                    <h2 class="heading-secondary">História</h2>
+                    <p class="paragraph">Lorem ipsum dolor sit amet consecteturmus Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium quam inventore minima voluptatum nisi non, iure consequuntur delectus explicabo atque blanditiis laudantium? Asperiores sunt, minus nostrum beatae tempora dolores aspernatur?.</p>
+                  </div>
+                  <div class="box2">
+                    <h2 class="heading-secondary">Education</h2>
+                    <p class="paragraph">Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis dolorum eius harum ex, sapiente expedita dicta eum illum earum ducimus esse, recusandae repellat enim. Labore maiores qui illo in dolorem.</p>
+                    <p class="paragraph">Lorem ipsum dolor sit amet consecteturmus Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium quam inventore minima voluptatum nisi non, iure consequuntur delectus explicabo atque blanditiis laudantium? Asperiores sunt, minus nostrum beatae tempora dolores aspernatur?.</p>
+                </div>
+                  <div class="box3">
+                    <h2 class="heading-secondary">Education</h2>
+                    <p class="paragraph">Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis dolorum eius harum ex, sapiente expedita dicta eum illum earum ducimus esse, recusandae repellat enim. Labore maiores qui illo in dolorem.</p>
+                  </div>
+                </div>
            </div>   
 
         </section>
 
 
-        <section class="section-creations " id="creations">
+        <section class="section-creations hidden" id="creations">
             <div class="container">
-               <span class="subheading center">My creations</span>
-               <h2 class=" center paragraph">Conheca alguns dos meus trabalhos</h2>
+                <span class="subheading">My creations</span>
+
             </div>
+           
+           
             <div class="section-creations__gallery grid-3cols">
 
                 <figure class="gallery-item">
@@ -156,10 +160,22 @@
             
         </section>
 
-        <section class="ebook">
-            <div class="container center ">
+
+        <section class="section-recipes">
+
+
+
+          
+            </div>
+            
+
+
+        </section>
+
+        <section class="ebook hidden">
+        
                 <span class="subheading">E-book</span>
-             </div>
+          
             <div class=" ebook-section ">
              
                 <div class="ebook-img">

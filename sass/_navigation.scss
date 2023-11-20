@@ -37,4 +37,23 @@
     background-color: var(--color-primary-light);
     color: black;
   }
+  //flags
+  .flags{
+    width: 300px;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+   
+  }
+  .flags__item{
   
+
+  }
+  .flags__img{
+    display: block;
+    cursor: pointer;
+  }
+  .f{
+    width: 45px;
+    cursor: pointer;
+  }

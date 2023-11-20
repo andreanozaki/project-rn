@@ -1,8 +1,8 @@
 
+.aboutme-photo{
+  max-width:35vw;
+}
 
-  .profile-photo{
-    width: 35vw;
-  }
   .ebook-photo {
     max-width:550px;
     height: 100%;
@@ -39,36 +39,15 @@
     padding: 0  0 2rem 5rem;
   }
   //fue main
-  .fue{
-    position: absolute;
-    width: 650px;
-    height: 650px;
-    top:100%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index:2;
-    transition: transform 0.5s ease;
-    
+
+
+//recipes
+
+.section-recipes{
+  padding: 15rem 20rem;
+
+  h1{
+    color: #1b1b1b;
   }
-  .custom-shape-divider-bottom-1700359886 {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    overflow: hidden;
-    line-height: 0;
-    transform: rotate(180deg);
 }
 
-.custom-shape-divider-bottom-1700359886 svg {
-    position: relative;
-    display: block;
-    width: calc(210% + 1.3px);
-    height: 100px;
-}
-
-.custom-shape-divider-bottom-1700359886 .shape-fill {
-    fill:#1b1b1b;
-}
-
-//f

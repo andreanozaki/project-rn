@@ -1,38 +1,40 @@
 /* About the chef*/
 .paragraph{
-    padding:1rem 0 6rem  8rem;/*top,right,bottom and left*/
-    font-size: 21px;
+    font-size: 18px;
+    width: 30vw;
+    padding-top: 1rem;
+  
+  
 }
 
 
 
 .heading-secondary {
     font-size: 3rem;
-    margin: 5rem;
     text-transform: uppercase;
     font-weight: 300;
     font-family:  'Roboto', sans-serif; 
-    
+    background-color: #DBD4AF; 
+    display: inline-block;
+    padding: 0.5rem;
+  
+
+  
 
   }
 
   .subheading {
-    display: block;
-    font-size:4rem;
-    font-weight: 700;
-    color: #423f3d;
-    text-transform: uppercase;
-    margin: 5rem 0 1.6rem 4rem;
-    letter-spacing: .75px;
-    font-family:  'Roboto', sans-serif; 
-
-    padding-top: 6rem;
-  
-  }
-  
-  .center{
     text-align: center;
-  }
+    font-size:6rem;
+    font-weight: 700;
+    color:#333;
+    text-transform: uppercase;
+    letter-spacing: .75px;
+    font-family:'Unica One', sans-serif;
+    display: block;
+    padding-bottom: 6rem;
 
+  }
+  
 
   

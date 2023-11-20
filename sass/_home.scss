@@ -1,45 +1,30 @@
 //SECTION MAIN
 .section-main {
- 
- position: relative;
   height: 100vh;
-  width: 100vw;
+  width: 100%;
+  position: relative;
   margin: 0;
 
-  .section-main-fue {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-object-fit: cover;  
 
-  }
-  .section-main__photo,
-  .section-main__photopro {
+  .section-main__photo{
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
       object-fit: cover;
+      background-image: linear-gradient(
+        to right bottom,
+        rgba(103, 98, 98, 0.7), /* Black with 70% opacity */
+        rgba(19, 15, 15, 0.5) /* Medium gray with 50% opacity */
+      );
 }
-  
-  .section-main__photo {
-      z-index: 1; /* Z-index menor para a .__photo */
-  }
-  
-  .section-main__photopro {
-      z-index: 2; /* Z-index maior para a .__photopro, fazendo-a sobressair */
-   
-      width: 50vw;
-      height: 100%;
-      left: 50%;
-  }
+ 
   .header__text-box{
     position: absolute;
     top: 50%;
-    left: 30%;
+    left: 50%;
     transform: translate(-50%,-50%);
-    z-index: 3;
  
     }
     .heading-primary {
@@ -51,13 +36,9 @@ object-fit: cover;
       margin-bottom: 6rem;
       font-family:  'Roboto', sans-serif; 
 
-
-      
-  
-  
       &--main {
         display: block;
-        font-size:8rem;
+        font-size:5rem;
         font-weight: bolder;  
         letter-spacing: .85rem;
         padding-bottom: 1rem;
@@ -65,31 +46,49 @@ object-fit: cover;
         animation-name: moveInLeft;
         animation-duration: 2s;
         animation-timing-function: ease-out;
-        color:#4e4137
-  
-
-             
-  
-       
-        
+        color:#DBD4AF;
       }
   
       &--sub{
       display: block;
-      font-size: 4rem;
+      font-size: 3rem;
       font-weight: 900;
       letter-spacing: 1.5rem;
    
       animation:moveinRight 2s ease-out;
       position: relative;
-      color:#3c3c37 ;
-  
-     
-       }
+      color:#DBD4AF;
       }
+    }
 }
 
 
+//SECTION ABOUT-ME
+.section-aboutme{
+  padding: 10rem 15rem;
+  width: 100%;
+  height: 100%;
+
+  &__content{
+   display: flex;
+   gap:10rem;
+   
+  }
+  &__left-side{
+    text-align: center;
+
+  }
+  &__right-side{
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+
+    .box1{
+
+    }
+
+  }
+}
 
 
 
@@ -99,7 +98,6 @@ object-fit: cover;
     &__gallery{
         gap: 2rem;
         padding: 5rem;
-     
     }
 
     .gallery-item img {
@@ -122,22 +120,7 @@ object-fit: cover;
       }
 }
 
-//SECTION ABOUT-ME
-.section-aboutme{
-  position: relative;
-  padding:28rem 0;
-  background-color: #1b1b1b;
-  color: #e3e0e0;
-      &__content {
-        display: flex;
-        }
-        .aboutme-chef{
-         max-width:70% ;   
-      
-    }
-    
 
-}
 //SECTION-CTA
 .section-cta {
   /* top / horizontal / left */
@@ -145,91 +128,3 @@ object-fit: cover;
   color: #e4e3e3;
 }
 
-.cta {
-  display: grid;
-  grid-template-columns: 2fr 1fr;
-  box-shadow: 0 2.4rem 4.8rem rgba(0, 0, 0, 0.15);
-  border-radius: 11px;
-
-  background-image: linear-gradient(to right bottom, #f3b784da, #c07432);
-  overflow: hidden;
-}
-
-.cta-title {
-  color: #6f6f6f;
-}
-
-.cta-text-box {
-  padding: 4.8rem 6.4rem 6.4rem 6.4rem;
-  color: #3b3838;
-}
-
-.cta .heading-secondary {
-  color: #a03810;
-  margin-bottom: 3.2rem;
-}
-
-.cta-text {
-  font-size: 1.8rem;
-  line-height: 1.8;
-  margin-bottom: 4.8rem;
-}
-
-.cta-img-box {
-  background-image: linear-gradient(
-      to right bottom,
-      rgba(235, 151, 78, 0.35),
-      rgba(230, 125, 34, 0.35)
-    ),
-    url("../img/gallery/Design\ sem\ nome-13.png");
-  background-size: cover;
-  background-position: center;
-}
-
-.cta-form {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  column-gap: 3.2rem;
-  row-gap: 2.4rem;
-}
-
-.cta-form label {
-  display: block;
-  font-size: 1.6rem;
-  font-weight: 500;
-  margin-bottom: 1.2rem;
-}
-
-.cta-form input,
-.cta-form select {
-  width: 100%;
-  padding: 1.2rem;
-  font-size: 1.8rem;
-  font-family: inherit;
-  color: inherit;
-  border: none;
-  background-color: #fdf2e9;
-  border-radius: 9px;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-}
-
-.cta-form input::placeholder {
-  color: #aaa;
-}
-
-.cta *:focus {
-  outline: none;
-  box-shadow: 0 0 0 0.8rem rgba(210, 130, 65, 0.5);
-}
-
-#select-where {
-  color: #9a3b15;
-}
-
-#texto {
-  text-align: center;
-  color: #333;
-  font-size: 1.5rem;
-  font-weight: 500;
-}
-//section- ebook

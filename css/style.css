@@ -3,7 +3,7 @@
   display: flex;
   align-items: center;
   color: #ffffff;
-  background-color: #1b1b1b;
+  background-color: #333;
   /* Porque quero o header um pouco mais pegajoso*/
   height: 12rem;
   /* 0 up and bottom,4.8rem right and left*/
@@ -56,9 +56,7 @@ body {
   margin: 5rem; }
 
 .container {
-  max-width: 70vw;
-  padding: 0 2rem;
-  margin: 0 auto; }
+  padding: 0 15rem; }
 
 .social-media {
   font-size: 4rem;
@@ -68,7 +66,8 @@ body {
   list-style: none;
   text-decoration: none;
   padding-right: 7rem;
-  position: absolute; }
+  position: absolute;
+  color: #43433e; }
   .social-media .icon {
     color: var(--color-primary--light);
     text-decoration: none;
@@ -77,7 +76,7 @@ body {
     margin-left: 20rem; }
     .social-media .icon:hover {
       transform: translateY(-3px);
-      color: white; }
+      color: #0d0d0d; }
     .social-media .icon:active {
       transform: translateY(-1px);
       box-shadow: 0 0.5rem 2rem rgba(255, 255, 255, 0.2); }
@@ -85,14 +84,14 @@ body {
 /* Adicione o estilo de efeito de flash aqui */
 .flash-effect {
   animation-name: flash;
-  animation-duration: 2.5s;
+  animation-duration: 1.5s;
   animation-timing-function: ease-in-out;
   animation-iteration-count: 1;
   /* Defina como 1 para que o efeito ocorra apenas uma vez */ }
 
 .flash-effect-2 {
   animation-name: flash;
-  animation-duration: 2s;
+  animation-duration: 1.5s;
   animation-timing-function: ease-in-out;
   animation-iteration-count: 1;
   /* Defina como 1 para que o efeito ocorra apenas uma vez */ }
@@ -116,19 +115,6 @@ body {
   opacity: 1;
   transform: translateY(0);
   /* Quando ativos, mova os ícones para a posição normal */ }
-
-.rotate-effect {
-  position: absolute;
-  top: 40%;
-  left: 43%;
-  transform: translate(-50%, -50%);
-  animation-name: rotate;
-  animation: rotate 2s ease-in-out forwards, fadeOut 0.5s 1s ease-in-out forwards;
-  animation-iteration-count: 1;
-  width: 200px;
-  height: 200px;
-  animation-fill-mode: forwards;
-  /* Mantém a última quadro da animação após a conclusão */ }
 
 @keyframes fadeOut {
   0% {
@@ -212,30 +198,29 @@ body {
 
 /* About the chef*/
 .paragraph {
-  padding: 1rem 0 6rem  8rem;
-  /*top,right,bottom and left*/
-  font-size: 21px; }
+  font-size: 18px;
+  width: 30vw;
+  padding-top: 1rem; }
 
 .heading-secondary {
   font-size: 3rem;
-  margin: 5rem;
   text-transform: uppercase;
   font-weight: 300;
-  font-family: 'Roboto', sans-serif; }
+  font-family: 'Roboto', sans-serif;
+  background-color: #DBD4AF;
+  display: inline-block;
+  padding: 0.5rem; }
 
 .subheading {
-  display: block;
-  font-size: 4rem;
+  text-align: center;
+  font-size: 6rem;
   font-weight: 700;
-  color: #423f3d;
+  color: #333;
   text-transform: uppercase;
-  margin: 5rem 0 1.6rem 4rem;
   letter-spacing: .75px;
-  font-family: 'Roboto', sans-serif;
-  padding-top: 6rem; }
-
-.center {
-  text-align: center; }
+  font-family: 'Unica One', sans-serif;
+  display: block;
+  padding-bottom: 6rem; }
 
 @keyframes moveInLeft {
   0% {
@@ -261,7 +246,6 @@ body {
 
 .loading-text {
   font-size: 4rem;
-  z-index: 4;
   position: absolute;
   top: 35%;
   left: 50%;
@@ -301,39 +285,38 @@ body {
   background-color: var(--color-primary-light);
   color: black; }
 
+.flags {
+  width: 300px;
+  display: flex;
+  align-items: center;
+  gap: 2rem; }
+
+.flags__img {
+  display: block;
+  cursor: pointer; }
+
+.f {
+  width: 45px;
+  cursor: pointer; }
+
 .section-main {
-  position: relative;
   height: 100vh;
-  width: 100vw;
+  width: 100%;
+  position: relative;
   margin: 0; }
-  .section-main .section-main-fue {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    object-fit: cover; }
-  .section-main .section-main__photo,
-  .section-main .section-main__photopro {
+  .section-main .section-main__photo {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover; }
-  .section-main .section-main__photo {
-    z-index: 1;
-    /* Z-index menor para a .__photo */ }
-  .section-main .section-main__photopro {
-    z-index: 2;
-    /* Z-index maior para a .__photopro, fazendo-a sobressair */
-    width: 50vw;
-    height: 100%;
-    left: 50%; }
+    object-fit: cover;
+    background-image: linear-gradient(to right bottom, rgba(103, 98, 98, 0.7), rgba(19, 15, 15, 0.5)); }
   .section-main .header__text-box {
     position: absolute;
     top: 50%;
-    left: 30%;
-    transform: translate(-50%, -50%);
-    z-index: 3; }
+    left: 50%;
+    transform: translate(-50%, -50%); }
   .section-main .heading-primary {
     display: block;
     color: #333333;
@@ -343,22 +326,36 @@ body {
     font-family: 'Roboto', sans-serif; }
     .section-main .heading-primary--main {
       display: block;
-      font-size: 8rem;
+      font-size: 5rem;
       font-weight: bolder;
       letter-spacing: .85rem;
       padding-bottom: 1rem;
       animation-name: moveInLeft;
       animation-duration: 2s;
       animation-timing-function: ease-out;
-      color: #4e4137; }
+      color: #DBD4AF; }
     .section-main .heading-primary--sub {
       display: block;
-      font-size: 4rem;
+      font-size: 3rem;
       font-weight: 900;
       letter-spacing: 1.5rem;
       animation: moveinRight 2s ease-out;
       position: relative;
-      color: #3c3c37; }
+      color: #DBD4AF; }
+
+.section-aboutme {
+  padding: 10rem 15rem;
+  width: 100%;
+  height: 100%; }
+  .section-aboutme__content {
+    display: flex;
+    gap: 10rem; }
+  .section-aboutme__left-side {
+    text-align: center; }
+  .section-aboutme__right-side {
+    display: flex;
+    flex-direction: column;
+    gap: 4rem; }
 
 .section-creations__gallery {
   gap: 2rem;
@@ -380,91 +377,12 @@ body {
 .section-creations .gallery-item img:hover {
   transform: scale(1.1); }
 
-.section-aboutme {
-  position: relative;
-  padding: 28rem 0;
-  background-color: #1b1b1b;
-  color: #e3e0e0; }
-  .section-aboutme__content {
-    display: flex; }
-  .section-aboutme .aboutme-chef {
-    max-width: 70%; }
-
 .section-cta {
   /* top / horizontal / left */
   color: #e4e3e3; }
 
-.cta {
-  display: grid;
-  grid-template-columns: 2fr 1fr;
-  box-shadow: 0 2.4rem 4.8rem rgba(0, 0, 0, 0.15);
-  border-radius: 11px;
-  background-image: linear-gradient(to right bottom, #f3b784da, #c07432);
-  overflow: hidden; }
-
-.cta-title {
-  color: #6f6f6f; }
-
-.cta-text-box {
-  padding: 4.8rem 6.4rem 6.4rem 6.4rem;
-  color: #3b3838; }
-
-.cta .heading-secondary {
-  color: #a03810;
-  margin-bottom: 3.2rem; }
-
-.cta-text {
-  font-size: 1.8rem;
-  line-height: 1.8;
-  margin-bottom: 4.8rem; }
-
-.cta-img-box {
-  background-image: linear-gradient(to right bottom, rgba(235, 151, 78, 0.35), rgba(230, 125, 34, 0.35)), url("../img/gallery/Design sem nome-13.png");
-  background-size: cover;
-  background-position: center; }
-
-.cta-form {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  column-gap: 3.2rem;
-  row-gap: 2.4rem; }
-
-.cta-form label {
-  display: block;
-  font-size: 1.6rem;
-  font-weight: 500;
-  margin-bottom: 1.2rem; }
-
-.cta-form input,
-.cta-form select {
-  width: 100%;
-  padding: 1.2rem;
-  font-size: 1.8rem;
-  font-family: inherit;
-  color: inherit;
-  border: none;
-  background-color: #fdf2e9;
-  border-radius: 9px;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); }
-
-.cta-form input::placeholder {
-  color: #aaa; }
-
-.cta *:focus {
-  outline: none;
-  box-shadow: 0 0 0 0.8rem rgba(210, 130, 65, 0.5); }
-
-#select-where {
-  color: #9a3b15; }
-
-#texto {
-  text-align: center;
-  color: #333;
-  font-size: 1.5rem;
-  font-weight: 500; }
-
-.profile-photo {
-  width: 35vw; }
+.aboutme-photo {
+  max-width: 35vw; }
 
 .ebook-photo {
   max-width: 550px;
@@ -490,30 +408,7 @@ body {
   flex-direction: column;
   padding: 0  0 2rem 5rem; }
 
-.fue {
-  position: absolute;
-  width: 650px;
-  height: 650px;
-  top: 100%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 2;
-  transition: transform 0.5s ease; }
-
-.custom-shape-divider-bottom-1700359886 {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  overflow: hidden;
-  line-height: 0;
-  transform: rotate(180deg); }
-
-.custom-shape-divider-bottom-1700359886 svg {
-  position: relative;
-  display: block;
-  width: calc(210% + 1.3px);
-  height: 100px; }
-
-.custom-shape-divider-bottom-1700359886 .shape-fill {
-  fill: #1b1b1b; }
+.section-recipes {
+  padding: 15rem 20rem; }
+  .section-recipes h1 {
+    color: #1b1b1b; }

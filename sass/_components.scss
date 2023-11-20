@@ -2,14 +2,13 @@
 .logo {
     height: 12rem;
     margin: 5rem;
-   
-    
   }
 
 .container {
-  max-width: 70vw;
-  padding: 0 2rem;
-  margin: 0 auto;
+  padding: 0 15rem;
+
+
+ 
 }
 
 
@@ -23,12 +22,9 @@
   text-decoration: none;
   padding-right: 7rem;
   position: absolute;
-
+  color: rgb(67, 67, 62);
 
   .icon {
-  
-    
-  
     color:var(--color-primary--light);
     text-decoration: none;
     position: absolute;
@@ -36,35 +32,27 @@
     margin-left: 20rem;
   &:hover {
     transform: translateY(-3px);
-    color:white;
+    color:rgb(13, 13, 13);
   }
 
   &:active {
   transform: translateY(-1px);
   box-shadow: 0 .5rem 2rem rgba(white,.2);
   }
-
-
-
-  }
-
-  
+ }
 }
-
-
-
 
 /* Adicione o estilo de efeito de flash aqui */
 .flash-effect {
   animation-name: flash;
-  animation-duration: 2.5s;
+  animation-duration: 1.5s;
   animation-timing-function: ease-in-out;
   animation-iteration-count: 1; /* Defina como 1 para que o efeito ocorra apenas uma vez */
 }
 
 .flash-effect-2 {
   animation-name: flash;
-  animation-duration: 2s;
+  animation-duration: 1.5s;
   animation-timing-function: ease-in-out;
   animation-iteration-count: 1; /* Defina como 1 para que o efeito ocorra apenas uma vez */
 }
@@ -79,8 +67,6 @@
     opacity: 1;
   }
 }
-
-
 /* Adicione estas regras CSS para animar os ícones */
 .social-media li {
   opacity: 0;
@@ -92,20 +78,7 @@
   opacity: 1;
   transform: translateY(0); /* Quando ativos, mova os ícones para a posição normal */
 }
-//fue pqn
-.rotate-effect {
-  position: absolute;
-  top: 40%;
-  left: 43%;
-  transform: translate(-50%, -50%);
-  animation-name: rotate;
-  animation: rotate 2s ease-in-out forwards, fadeOut 0.5s 1s ease-in-out forwards;
-  animation-iteration-count: 1;
-  width: 200px;
-  height: 200px;
-  animation-fill-mode: forwards; /* Mantém a última quadro da animação após a conclusão */
 
-}
 @keyframes fadeOut {
   0% {
     opacity: 1;

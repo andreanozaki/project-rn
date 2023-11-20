@@ -102,3 +102,4 @@ function countAndHide() {
 window.onload = countAndHide;
 
 
+//rolagem pag
