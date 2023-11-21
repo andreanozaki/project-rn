@@ -412,3 +412,37 @@ body {
   padding: 15rem 20rem; }
   .section-recipes h1 {
     color: #1b1b1b; }
+
+.recipe__container {
+  position: relative; }
+
+.recipe__imagem {
+  max-width: 400px; }
+
+.recipe__title {
+  position: absolute;
+  top: 70%;
+  left: 16%;
+  border-radius: 3px;
+  font-size: 21px;
+  font-weight: 600; }
+
+.recipe__description {
+  max-width: 400px; }
+
+.recipes {
+  display: flex;
+  gap: 3rem;
+  padding: 15rem 25rem; }
+  .recipes .left-side .left-side-photo {
+    width: 600px;
+    border-radius: 3px; }
+  .recipes .right-side {
+    display: flex;
+    flex-direction: column;
+    display: inline-block; }
+    .recipes .right-side .right-side-title {
+      font-size: 4rem; }
+  .recipes .recipe__link {
+    font-size: 18px;
+    text-transform: uppercase; }
