@@ -1,5 +1,47 @@
 {
-    "":{
-      "rol":""
-    }
+  "header": {
+    "logoAlt": "logo",
+    "navItems": [
+      {"id": "aboutme", "text": "Chef"},
+      {"id": "creations", "text": "Criações"},
+      {"id": "cta", "text": "Contato"},
+      {"class": "nav-cta", "text": "E-book"}
+    ]
+  },
+ 
+  "main": {
+    "photoAlt": "photo1",
+    "loadingText": "0%",
+    "name": "RicardoBassani",
+    "subtitle": "Pastry Chef"
+   
+  },
+  "aboutMe": {
+    "heading": "The Chef",
+    "history": "História",
+    "education": "Educação"
+  },
+  "creations": {
+    "heading": "Minhas criações"
+  },
+  "recipe": {
+    "heading": "Receitas"
+  },
+  "ebook": {
+    "heading": "E-book",
+    "title": "Bolos tradicionais do Brasil",
+    "price": "RS 45,00",
+    "description": [
+      "Lorem ipsum, dolor sit amet consectetur adipisicing elit...",
+      "Lorem, ipsum dolor sit amet consectetur adipisicing elit...",
+      "Lorem, ipsum dolor sit amet consectetur adipisicing elit..."
+    ],
+    "ctaText": "Shop"
+  },
+  "cta": {
+    "heading": "Call to Action"
+  },
+  "footer": {
+    "copyright": "Copyright &copy; 2023 Ricardo Nozaki. Todos os direitos reservados."
+  }
 }

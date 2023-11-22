@@ -50,35 +50,6 @@ document.addEventListener('DOMContentLoaded', function() {
     activateAnimations();
   });
 });
-//fue
-document.addEventListener("DOMContentLoaded", function() {
-  var img = document.querySelector('.flash-effect');
-  img.classList.add('flash-effect');
-});
-//fuechoc
-document.addEventListener("DOMContentLoaded", function() {
-  var fue = document.querySelector(".fue");
-  var scrollPos = window.scrollY || document.documentElement.scrollTop;
-  var accumulatedRotation = 0;
-
-  window.addEventListener("scroll", function() {
-    var newScrollPos = window.scrollY || document.documentElement.scrollTop;
-
-    // Calcula a diferença entre as posições de rolagem
-    var scrollDifference = newScrollPos - scrollPos;
-
-    // Atualiza a rotação com base na diferença e na rotação acumulada
-    accumulatedRotation += scrollDifference / 4; // Ajuste conforme necessário
-
-    // Aplica a rotação à imagem
-    fue.style.transform = "translate(-50%, -50%) rotate(" + accumulatedRotation + "deg)";
-
-    // Atualiza a posição anterior
-    scrollPos = newScrollPos;
-  });
-});
-
-
 //loading-text
 
 function countAndHide() {
@@ -103,3 +74,19 @@ window.onload = countAndHide;
 
 
 //rolagem pag
+const flagsElement = document.getElementById("flags");
+
+  const changeLanguage = async (language)=> {
+   const requestJson = await fetch (`.languages/${language}.json`);
+   const texts = await requestJson.json();
+
+  console.log(texts);
+  };
+
+  flagsElement.addEventListener("click", (e) => {
+    changeLanguage(e.target.parentElement.dataset.language);
+  });
+
+
+
+

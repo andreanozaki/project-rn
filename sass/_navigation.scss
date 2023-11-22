@@ -35,7 +35,7 @@
   .main-nav-link.nav-cta:hover,
   .main-nav-link.nav-cta:active {
     background-color: var(--color-primary-light);
-    color: black;
+    color: rgb(26, 26, 26);
   }
   //flags
   .flags{
@@ -45,10 +45,7 @@
     gap: 2rem;
    
   }
-  .flags__item{
-  
-
-  }
+ 
   .flags__img{
     display: block;
     cursor: pointer;

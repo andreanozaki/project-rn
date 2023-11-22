@@ -22,37 +22,114 @@
     &__description{
         max-width:400px ;
     }
+    &__creator{
+        font-size: 14px;
+        text-transform: uppercase;
+        padding: 1rem 0;
+        line-height: 2;
 
+    }
+    
 }
 // 2 page chocolatquent.html
 
 .recipes{
-   
-    display: flex;
-    gap: 3rem;
-    padding: 15rem 25rem;
-
- .left-side{
-    .left-side-photo{
-        width: 600px;
-        border-radius: 3px;
-    }
- }
-   
-   .right-side{
+    width: 100%;
     display: flex;
     flex-direction: column;
-    display: inline-block;
+    gap: 3rem;
+    padding: 15rem 25rem;
+    text-align: center;  
+    align-items:center;
+   
+   
+  
 
-    .right-side-title{
-        font-size: 4rem;
+ .left-side{
+  
+    .left-side__photo{
+        width:50vw;
+        height: 50vh;
+        border-radius: 3px;
+        object-fit:cover;
     }
-   }
-    .recipe__link{
+    .left-side__title{
+        font-size: 6rem;
+        font-weight: 200;
+        text-align: start;
+       
+
+       
+    }
+    .left-side__subheading{
+        padding: 2rem 0;
+        text-align: start;
         font-size: 18px;
         text-transform: uppercase;
-      
         
+       
+    
+    
     }
+    
+ }
 
+   .right-side{
+
+   
+    .status-recipe{
+     
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        justify-content: space-between;
+       
+        padding: 5rem 0;
+       
+        .time,.nivel,.rendimento{
+            font-size:21px;
+            width: 260px;
+            padding: 4rem 0;
+            background-color:#dbd4af86;
+            
+            
+    
+        }
+
+      
+     
+         .right-side__description{
+     
+         }
+
+    }
+   
+
+
+.paragraph{
+    font-size: 2rem;
+    width: 50vw;
+    text-align: start;
+
+}
+.topic{
+    padding:0.5rem ;
+    background-color: #DBD4AF;
+    text-transform: uppercase;
+    font-size: 21px;
+    display: block;
+    text-align: start;
+    font-weight: 600;
+}
+
+.ingredients{
+    padding-left: 2rem;
+}
+.prepare{
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+
+}
+}
 }

@@ -283,7 +283,7 @@ body {
 .main-nav-link.nav-cta:hover,
 .main-nav-link.nav-cta:active {
   background-color: var(--color-primary-light);
-  color: black; }
+  color: #1a1a1a; }
 
 .flags {
   width: 300px;
@@ -430,19 +430,60 @@ body {
 .recipe__description {
   max-width: 400px; }
 
+.recipe__creator {
+  font-size: 14px;
+  text-transform: uppercase;
+  padding: 1rem 0;
+  line-height: 2; }
+
 .recipes {
+  width: 100%;
   display: flex;
+  flex-direction: column;
   gap: 3rem;
-  padding: 15rem 25rem; }
-  .recipes .left-side .left-side-photo {
-    width: 600px;
-    border-radius: 3px; }
-  .recipes .right-side {
-    display: flex;
-    flex-direction: column;
-    display: inline-block; }
-    .recipes .right-side .right-side-title {
-      font-size: 4rem; }
-  .recipes .recipe__link {
+  padding: 15rem 25rem;
+  text-align: center;
+  align-items: center; }
+  .recipes .left-side .left-side__photo {
+    width: 50vw;
+    height: 50vh;
+    border-radius: 3px;
+    object-fit: cover; }
+  .recipes .left-side .left-side__title {
+    font-size: 6rem;
+    font-weight: 200;
+    text-align: start; }
+  .recipes .left-side .left-side__subheading {
+    padding: 2rem 0;
+    text-align: start;
     font-size: 18px;
     text-transform: uppercase; }
+  .recipes .right-side .status-recipe {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    justify-content: space-between;
+    padding: 5rem 0; }
+    .recipes .right-side .status-recipe .time, .recipes .right-side .status-recipe .nivel, .recipes .right-side .status-recipe .rendimento {
+      font-size: 21px;
+      width: 260px;
+      padding: 4rem 0;
+      background-color: #dbd4af86; }
+  .recipes .right-side .paragraph {
+    font-size: 2rem;
+    width: 50vw;
+    text-align: start; }
+  .recipes .right-side .topic {
+    padding: 0.5rem;
+    background-color: #DBD4AF;
+    text-transform: uppercase;
+    font-size: 21px;
+    display: block;
+    text-align: start;
+    font-weight: 600; }
+  .recipes .right-side .ingredients {
+    padding-left: 2rem; }
+  .recipes .right-side .prepare {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem; }
