@@ -381,20 +381,31 @@ body {
   /* top / horizontal / left */
   color: #e4e3e3; }
 
+.ebook {
+  padding: 15rem 6rem; }
+  .ebook .ebook-description {
+    display: flex;
+    flex-direction: row; }
+
+.container .ebook-content {
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); }
+
+.container .ebook-box .ebook-photo-small {
+  max-width: 400px;
+  height: 100%; }
+
+.ebook-1-content {
+  display: flex;
+  justify-content: space-evenly; }
+
 .aboutme-photo {
   max-width: 35vw; }
 
 .ebook-photo {
-  max-width: 550px;
-  height: 100%; }
-
-.ebook {
-  padding: 5rem; }
-
-.ebook-section {
-  display: flex;
-  justify-content: center;
-  width: 100%; }
+  max-width: 650px;
+  height: 650px; }
 
 .cta-ebook {
   margin-left: 5rem;

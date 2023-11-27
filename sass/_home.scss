@@ -125,3 +125,42 @@
 
   color: #e4e3e3;
 }
+//ebook-description
+.ebook{
+  padding:15rem 6rem;
+
+  .ebook-description{
+    display: flex;
+    flex-direction: row;
+  }
+ 
+
+}
+//ebooks cta
+.container{
+
+  .ebook-content {
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+ 
+  .ebook-box{
+    .ebook-photo-small{
+      max-width: 400px;
+      height: 100%;
+    }
+    .ebook-price{
+
+    }
+    
+
+  }
+
+}
+//ebook-1
+.ebook-1-content {
+ 
+  display: flex;
+  justify-content: space-evenly;
+}
