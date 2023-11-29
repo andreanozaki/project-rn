@@ -1,7 +1,8 @@
 
 .logo {
-    height: 12rem;
-    margin: 5rem;
+    height: 10rem;
+  
+
   }
 
 .container {
@@ -52,10 +53,11 @@
 
 .flash-effect-2 {
   animation-name: flash;
-  animation-duration: 1.5s;
+  animation-duration: 1s;
   animation-timing-function: ease-in-out;
-  animation-iteration-count: 1; /* Defina como 1 para que o efeito ocorra apenas uma vez */
 }
+
+
 @keyframes flash {
   0% {
     opacity: 0;

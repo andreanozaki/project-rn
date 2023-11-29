@@ -74,19 +74,38 @@ window.onload = countAndHide;
 
 
 //rolagem pag
-const flagsElement = document.getElementById("flags");
 
-  const changeLanguage = async (language)=> {
-   const requestJson = await fetch (`.languages/${language}.json`);
-   const texts = await requestJson.json();
 
-  console.log(texts);
-  };
+ 
 
-  flagsElement.addEventListener("click", (e) => {
-    changeLanguage(e.target.parentElement.dataset.language);
+
+//miniaturas ebook abrir na foto principal
+
+function updateMainImage(imageSrc) {
+  var mainImage = document.querySelector('.ebook-photo');
+  mainImage.src = imageSrc;
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+  var thumbnails = document.querySelectorAll('.ebook-mini');
+  thumbnails.forEach(function (thumbnail) {
+      thumbnail.addEventListener('click', function (event) {
+          event.preventDefault();
+          updateMainImage(thumbnail.src);
+      });
   });
+});
+//animacap scroll
+///////////////////////////////////////////////////////////
+// Make mobile navigation work
 
+const btnNavEl = document.querySelector(".btn-mobile-nav");
+const headerEl = document.querySelector(".header");
 
+btnNavEl.addEventListener("click", function () {
+  headerEl.classList.toggle("nav-open");
+});
 
+///////////////////////////////////////////////////////////
+// Smooth scrolling animation
 

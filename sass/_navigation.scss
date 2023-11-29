@@ -4,9 +4,11 @@
     gap: 4.8rem;
     align-items: center;
     font-family:'Unica One', sans-serif;
+  
+   
 
   }
-  
+
   .main-nav-link:link,
   .main-nav-link:visited {
     display: inline-block;
@@ -37,20 +39,48 @@
     background-color: var(--color-primary-light);
     color: rgb(26, 26, 26);
   }
-  //flags
-  .flags{
-    width: 300px;
-    display: flex;
-    align-items: center;
-    gap: 2rem;
-   
-  }
+
+  //Mobile  nav
+
+/* MOBILE */
+.btn-mobile-nav {
+  border: none;
+  background: none;
  
-  .flags__img{
-    display: block;
-    cursor: pointer;
-  }
-  .f{
-    width: 45px;
-    cursor: pointer;
-  }
+
+  color:#333;
+}
+
+.icon-mobile-nav {
+  height: 4.8rem;
+  width: 4.8rem;
+  display:block;
+
+}
+
+.icon-mobile-nav[name="close-outline"] {
+  display: none;
+}
+/* STICKY NAVIGATION */
+/* STICKY NAVIGATION */
+.sticky .header {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  height: 8rem;
+  padding-top: 0;
+  padding-bottom: 0;
+  background-color: rgba(255, 255, 255, 0.97);
+  z-index: 999;
+  box-shadow: 0 1.2rem 3.2rem rgba(0, 0, 0, 0.03);
+}
+
+.sticky .section-hero {
+  margin-top: 9.6rem;
+}
+
+//mobile nav queries
+
+
+ 

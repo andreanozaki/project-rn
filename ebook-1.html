@@ -1,64 +1,116 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Course" />
+
     <link rel="stylesheet" href="css/style.css">
-    <title>E-book | Preferidos dos Brasileiros</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+ 
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script
+    type="module"
+    src="https://unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.esm.js"></script>
+   <script
+    nomodule=""
+    src="https://unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.js"></script>
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Unica+One&display=swap" rel="stylesheet">
+
+
+
+    <title>Ricardo Nozaki Pastry Chef</title>
 </head>
+
 <body>
-    <header class="header ">
-        <a href="#" id="logo">
-          <img src="img/gallery/lo2.png" alt="logo" class="logo">
+    <header class="header flash-effect nav-open">
+        <a href="#">
+            <img class="logo" src="img/gallery/lo2.png" alt="logo">
         </a>
         <nav class="main-nav">
             <ul class="main-nav-list">
-                <li><a class="main-nav-link" href="#aboutme"> Chef</a></li>
-                <li><a class="main-nav-link" href="#creations">Creations</a></li>
-                <li><a class="main-nav-link" href="#">Service</a></li>
-                <li><a class="main-nav-link" href="#cta">Contact</a></li>
-                <li><a class="main-nav-link nav-cta" href="#">E-book</a></li>
+                <li><a class="main-nav-link" href="index.html#aboutme"> Chef</a></li>
+                <li><a class="main-nav-link" href="index.html#creations">Creacoes</a></li>
+                <li><a class="main-nav-link" href="#">Servico</a></li>
+                <li><a class="main-nav-link" href="index.html#cta">Contato</a></li>
+                <li><a class="main-nav-link nav-cta" href="index.html#ebook">E-book</a></li>
             </ul>
-        
         </nav>
         <button class="btn-mobile-nav">
             <ion-icon class="icon-mobile-nav" name="menu-outline"></ion-icon>
             <ion-icon class="icon-mobile-nav" name="close-outline"></ion-icon>
         </button>
-
-        <div class="switches">
-            <div id="toggle-theme" class="toggle-theme"></div>
-        </div>
-        <div class="flags" id="flags">
-            <div class="flags__item" data-language="pt-br">
-                <img src="img/gallery/13.svg" alt="" class="f">
-            </div>
-            <div class="flags__item" data-language="en">
-                <img src="img/gallery/15.svg" alt="" class="f">
-            </div>
-        </div>
     </header>
+
     <main>
-        <p class="paragraph">E-books > Os Queridinhos dos Brasileiros</p>
+        <a href="ebook.html " class="paragraph">E-books ><a href="ebook-1.html" class="paragraph" >Os Queridinhos dos Brasileiros</a></a>
+
         <div class="ebook-1-content">
+
             <div class="ebook-1-left">
                 <img src="img/gallery/ebook-1-capa.png" alt="" class="ebook-photo">
-                
+          <div class="ebook-inside">
+    <a href="#" class="ebook-link" onclick="updateMainImage('img/gallery/ebook-1-capa.png'); return false;">
+        <img src="img/gallery/ebook-1-capa.png" alt="" class="ebook-mini pic">
+    </a>
+    <a href="#" class="ebook-link" onclick="updateMainImage('img/mini-ebooks/16.png'); return false;">
+        <img src="img/mini-ebooks/16.png" alt="" class="ebook-mini pic">
+    </a>
+    <a href="#" class="ebook-link" onclick="updateMainImage('img/mini-ebooks/17.png'); return false;">
+        <img src="img/mini-ebooks/17.png" alt="" class="ebook-mini pic">
+    </a>
+    <a href="#" class="ebook-link" onclick="updateMainImage('img/mini-ebooks/18.png'); return false;">
+        <img src="img/mini-ebooks/18.png" alt="" class="ebook-mini pic">
+    </a>
+    <a href="#" class="ebook-link" onclick="updateMainImage('img/mini-ebooks/19.png'); return false;">
+        <img src="img/mini-ebooks/19.png" alt="" class="ebook-mini pic">
+    </a>
+    <a href="#" class="ebook-link" onclick="updateMainImage('img/mini-ebooks/20.png'); return false;">
+        <img src="img/mini-ebooks/20.png" alt="" class="ebook-mini pic">
+    </a>
+    
+</div>
+
             </div>
+
             <div class="ebook-1-right">
-                <h2 class="heading-secondary">Bolos Tradicionais Brasileiros</h2>
-                <p class="paragraph"> Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nemo nihil laboriosam quos illo dolor ex? Modi provident impedit mollitia officiis, autem veritatis, corporis dignissimos inventore sunt in, reprehenderit voluptatibus sit!</p>
+                <h2 class="heading-secondary ">🇧🇷 Bolos Tradicionais Brasileiros </h2>
+                <p>  <span class="price-cta ">RS 45,00</span></p>
+              
+                <p class="paragraph">📔 Aqui está uma prévia dos "Bolos Tradicionais do Brasil" <br>-Receita bônus:Ganache ao rum</p>
+                <p class="paragraph"><strong> 🍌 Bolo de Banana Fofinho: </strong>Lorem ipsum dolor sit amiusto natus maiores rerum assumenda, temporibus soluta tempore eveniet repellat molestiae similique sed iure.</p>
+                <p class="paragraph"><strong> 🌽 Bolo de Milho : </strong>Lorem ipsum dolor sit amiusto natus maiores rerum assumenda, temporibus soluta tempore eveniet repellat molestiae similique sed iure.</p>
+                <p class="paragraph"><strong> 🥕 Bolo de Cenoura com Ganache ao rum: </strong>Lorem ipsum dolor sit amiusto natus maiores rerum assumenda, temporibus soluta tempore eveniet repellat molestiae similique sed iure.</p>
+                <p class="paragraph"><strong> 🍊 Bolo Chiffon de Laranja: </strong>Lorem ipsum dolor sit amiusto natus maiores rerum assumenda, temporibus soluta tempore eveniet repellat molestiae similique sed iure.</p>
+                
                 <div class="ebook-price">
                     <span class="price">RS 45,00</span>
+                    
                   </div>
-                  <a href="#">Comprar</a>
+                  <div class="div">
+                    <a href="#" class="cta-ebook ">Comprar</a>
+
+                  </div> 
+                  
                   <a href="ebook.html">Voltar</a>
+                  
                 
             </div>
 
+
         </div>
-        
+
+        <p class="ebook-footer " >Mergulhe em "Sobremesas Prateadas Modernas Veganas", um e-book abrangente da chef confeiteira profissional. Em suas páginas, você descobrirá receitas exclusivas como "Exotic Paradise" e "Magic Fusion", meticulosamente detalhadas com instruções, imagens passo a passo e dicas valiosas. Ideal tanto para chefs profissionais como para padeiros caseiros entusiastas, este guia oferece a chave para conquistar o reino das sobremesas veganas contemporâneas.</p>
+
     </main>
     
+    <script src="js/script.js"></script>
+
 </body>
 </html>

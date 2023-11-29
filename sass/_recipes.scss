@@ -1,8 +1,25 @@
 
 //SECTION MAIN RECIPE index.html
 .recipe{
+    padding: 10rem 5rem;
+    height: 100vh;
    
+background-color: #333;
+color:beige;
+.recipe-primary-title{
 
+    text-align: center;
+    font-size:6rem;
+    font-weight: 700;
+    color:#DBD4AF;
+    text-transform: uppercase;
+    letter-spacing: .75px;
+    font-family:'Unica One', sans-serif;
+    display: block;
+  text-align: start;
+   padding-bottom: 8rem;
+
+}
     &__container{
         position: relative;
 
@@ -13,14 +30,16 @@
     }
     &__title{
         position: absolute;
-        top:70%;
+        top:50%;
         left:16%;
-        border-radius: 3px;
+        border-radius: 6px;
         font-size: 21px;
         font-weight: 600;
+        
     }
     &__description{
-        max-width:400px ;
+        max-width:400px;
+        font-size: 21px;
     }
     &__creator{
         font-size: 14px;

@@ -1,20 +1,22 @@
 .header {
+    position: relative;
     display: flex;
     align-items: center;
     color: #ffffff;
     background-color: #333;
+    
     /* Porque quero o header um pouco mais pegajoso*/
-    height:12rem;
+
     /* 0 up and bottom,4.8rem right and left*/
-    padding:1rem 0  0 4.8rem;
+
     text-transform: uppercase;
     justify-content: space-between;
+    height: 9.6rem;
+
+    padding: 0 4.8rem;
 
     
-    &__text-box{
-      text-align: center;
-      }
-      
+   
   }
 
 

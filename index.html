@@ -6,6 +6,7 @@
     <meta name="description" content="Course" />
 
     <link rel="stylesheet" href="css/style.css">
+
     <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
@@ -15,12 +16,12 @@
     <script
     type="module"
     src="https://unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.esm.js"></script>
-  <script
+   <script
     nomodule=""
     src="https://unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.js"></script>
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Unica+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Unica+One&display=swap" rel="stylesheet">
 
 
 
@@ -28,9 +29,9 @@
 </head>
 
 <body>
-    <header class="header flash-effect">
-        <a href="#" id="logo">
-          <img src="img/gallery/lo2.png" alt="logo" class="logo">
+    <header class="header flash-effect nav-open">
+        <a href="#">
+            <img class="logo" src="img/gallery/lo2.png" alt="logo">
         </a>
         <nav class="main-nav">
             <ul class="main-nav-list">
@@ -38,26 +39,13 @@
                 <li><a class="main-nav-link" href="#creations">Creacoes</a></li>
                 <li><a class="main-nav-link" href="#">Servico</a></li>
                 <li><a class="main-nav-link" href="#cta">Contato</a></li>
-                <li><a class="main-nav-link nav-cta" href="#">E-book</a></li>
+                <li><a class="main-nav-link nav-cta" href="#ebook">E-book</a></li>
             </ul>
-        
         </nav>
         <button class="btn-mobile-nav">
             <ion-icon class="icon-mobile-nav" name="menu-outline"></ion-icon>
             <ion-icon class="icon-mobile-nav" name="close-outline"></ion-icon>
         </button>
-
-        <div class="switches">
-            <div id="toggle-theme" class="toggle-theme"></div>
-        </div>
-        <div class="flags" id="flags">
-            <div class="flags__item" data-language="pt-br">
-                <img src="img/gallery/13.svg" alt="" class="f">
-            </div>
-            <div class="flags__item" data-language="en">
-                <img src="img/gallery/15.svg" alt="" class="f">
-            </div>
-        </div>
     </header>
 
     <main>
@@ -86,7 +74,7 @@
         </section>
        
 
-        <section class="section-aboutme " id="aboutme">
+        <section class="section-aboutme show" id="aboutme">
             <span id="first" class="subheading ">The Chef</span>
 
          <div class="section-aboutme__content container">   
@@ -158,7 +146,7 @@
 
         <section class="recipe">    
             <div class="container">
-                <span class="subheading">Recipes</span>
+                <span class="recipe-primary-title">Recipes</span>
             </div> 
 
           <div class="recipe__container container">
@@ -175,14 +163,17 @@
 
          
 
-        <section class="ebook">
+        <section class="ebook" id="ebook">
          
 
                 <div class="ebook-description">
                     <div class="ebook-left">
                        
                         <img src="img/gallery/ebook1.png" alt="" class="ebook-photo">
-                        <div class="star-price">
+
+                    </div>
+                    <div class="ebook-right">
+                        <span class="subheading">E-books <br><div class="star-price">
                             <div class="icon-star">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                                     <path d="M12 2l2.4 6.6h6.6l-5.4 4.8 2.4 6.6-6-4.8-6 4.8 2.4-6.6-5.4-4.8h6.6z"/>
@@ -198,24 +189,20 @@
                                 </svg>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                                     <path d="M12 2l2.4 6.6h6.6l-5.4 4.8 2.4 6.6-6-4.8-6 4.8 2.4-6.6-5.4-4.8h6.6z"/>
-                                </svg> 
+                                </svg> </span>
+                        
                             </div>
                          
                         </div>
-
-                    </div>
-                    <div class="ebook-right">
-                        <span class="subheading">E-books</span>
-                        <p class="paragraph">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquid incidunt iusto
-                            provident sapiente voluptatum enim aut iste dicta necessitatibus! Error, alias
-                            voluptate? Exercitationem dolore quisquam unde explicabo maxime obcaecati deleniti.
+                        <p class="paragraph">Browse & Purchase my selection of Plated Dessert Ebooks that I have created to help you find inspiration, and level up your Plated Desserts. You’ll also be able to download a free copy of my latest Plated Dessert “Essence of Deliciousness” here too. 
                          </p>
      
                          <p class="paragraph">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laboriosam reprehenderit cumque
                             eveniet. Nostrum, aliquid commodi sint quos quod odit sunt quasi quis inventore? Sit,
                             numquam obcaecati perspiciatis voluptas suscipit cumque?
                          </p>
-                         <a href="ebook.html" class="cta-ebook main-nav-link nav-cta">Saiba mais!</a>
+                         <a href="ebook.html" class="cta-ebook main-nav-link nav-cta">Navegue pelos E-books!</a>
+
                     </div>
            
 
