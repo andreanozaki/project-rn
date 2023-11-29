@@ -113,7 +113,7 @@ btnNavEl.addEventListener("click", function () {
 
 const allLinks = document.querySelectorAll("a:link");
 
-allLinks.forEach(function (link) {
+navLinks.forEach(function (link) {
   link.addEventListener("click", function (e) {
     e.preventDefault();
     const href = link.getAttribute("href");
@@ -136,7 +136,8 @@ allLinks.forEach(function (link) {
       headerEl.classList.toggle("nav-open");
   });
 });
-
+//fix bav
+///////////////////////////////////////////////////////////
 // Sticky navigation
 
 const sectionMain = document.querySelector(".section-main");
