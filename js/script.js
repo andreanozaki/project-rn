@@ -108,39 +108,12 @@ btnNavEl.addEventListener("click", function () {
 
 ///////////////////////////////////////////////////////////
 // Smooth scrolling animation
-///////////////////////////////////////////////////////////
-// Smooth scrolling animation
 
-const allLinks = document.querySelectorAll("a:link");
-
-navLinks.forEach(function (link) {
-  link.addEventListener("click", function (e) {
-    e.preventDefault();
-    const href = link.getAttribute("href");
-
-    // Scroll back to top
-    if (href === "#")
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth",
-      });
-
-    // Scroll to other links
-    if (href !== "#" && href.startsWith("#")) {
-      const sectionEl = document.querySelector(href);
-      sectionEl.scrollIntoView({ behavior: "smooth" });
-    }
-
-    // Close mobile navigation
-    if (link.classList.contains("main-nav-link"))
-      headerEl.classList.toggle("nav-open");
-  });
-});
 //fix bav
 ///////////////////////////////////////////////////////////
 // Sticky navigation
 
-const sectionMain = document.querySelector(".section-main");
+const sectionHeroEl = document.querySelector(".section-main");
 
 const obs = new IntersectionObserver(
   function (entries) {
@@ -163,4 +136,4 @@ const obs = new IntersectionObserver(
     rootMargin: "-80px",
   }
 );
-obs.observe(sectionMain);
+obs.observe(sectionHeroEl);
