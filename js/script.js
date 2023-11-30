@@ -113,7 +113,7 @@ btnNavEl.addEventListener("click", function () {
 ///////////////////////////////////////////////////////////
 // Sticky navigation
 
-const sectionHeroEl = document.querySelector(".section-main");
+const sectionMainE = document.querySelector(".section-main");
 
 const obs = new IntersectionObserver(
   function (entries) {

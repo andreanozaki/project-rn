@@ -1,6 +1,11 @@
 
 .logo {
-    height: 10rem;
+    height: 9rem;
+    margin: 4rem;
+ 
+
+    
+
   
 
   }
@@ -23,7 +28,7 @@
   text-decoration: none;
   padding-right: 7rem;
   position: absolute;
-  color: rgb(67, 67, 62);
+  color: rgba(36, 19, 15, 0.875);
 
   .icon {
     color:var(--color-primary--light);
@@ -33,7 +38,7 @@
     margin-left: 20rem;
   &:hover {
     transform: translateY(-3px);
-    color:rgb(13, 13, 13);
+    color:rgb(172, 105, 105);
   }
 
   &:active {

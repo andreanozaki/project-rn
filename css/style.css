@@ -50,7 +50,8 @@ body {
   font-family: 'Roboto', sans-serif; }
 
 .logo {
-  height: 10rem; }
+  height: 9rem;
+  margin: 4rem; }
 
 .container {
   padding: 0 15rem; }
@@ -64,7 +65,7 @@ body {
   text-decoration: none;
   padding-right: 7rem;
   position: absolute;
-  color: #43433e; }
+  color: rgba(36, 19, 15, 0.875); }
   .social-media .icon {
     color: var(--color-primary--light);
     text-decoration: none;
@@ -73,7 +74,7 @@ body {
     margin-left: 20rem; }
     .social-media .icon:hover {
       transform: translateY(-3px);
-      color: #0d0d0d; }
+      color: #ac6969; }
     .social-media .icon:active {
       transform: translateY(-1px);
       box-shadow: 0 0.5rem 2rem rgba(255, 255, 255, 0.2); }
