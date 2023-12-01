@@ -1,7 +1,7 @@
 
 //SECTION MAIN RECIPE index.html
 .recipe{
-    padding: 10rem 5rem;
+    padding:20rem 5rem  10rem 5rem;
     height: 100vh;
    
 background-color: #333;
@@ -16,16 +16,21 @@ color:beige;
     letter-spacing: .75px;
     font-family:'Unica One', sans-serif;
     display: block;
-  text-align: start;
+ 
+    
    padding-bottom: 8rem;
+   
 
 }
     &__container{
         position: relative;
+        display: flex;
+        justify-content: space-evenly;
 
     }
     &__imagem{
         max-width: 400px;
+        border-radius: 3px;
       
     }
     &__title{
@@ -35,6 +40,7 @@ color:beige;
         border-radius: 6px;
         font-size: 21px;
         font-weight: 600;
+        color:#333 ;
         
     }
     &__description{
@@ -47,6 +53,9 @@ color:beige;
         padding: 1rem 0;
         line-height: 2;
 
+    }
+    &__card{
+        position: relative;
     }
     
 }

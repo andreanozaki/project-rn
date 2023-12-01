@@ -26,16 +26,16 @@
   list-style: none;
   
   text-decoration: none;
-  padding-right: 7rem;
+
   position: absolute;
-  color: rgba(36, 19, 15, 0.875);
+  color: #DBD4AF;
 
   .icon {
     color:var(--color-primary--light);
     text-decoration: none;
     position: absolute;
     top: 2rem;
-    margin-left: 20rem;
+    margin-left: 26rem;
   &:hover {
     transform: translateY(-3px);
     color:rgb(172, 105, 105);

@@ -47,6 +47,7 @@ html {
   font-family: sans-serif; }
 
 body {
+  overflow-x: hidden;
   font-family: 'Roboto', sans-serif; }
 
 .logo {
@@ -63,15 +64,14 @@ body {
   gap: 6rem;
   list-style: none;
   text-decoration: none;
-  padding-right: 7rem;
   position: absolute;
-  color: rgba(36, 19, 15, 0.875); }
+  color: #DBD4AF; }
   .social-media .icon {
     color: var(--color-primary--light);
     text-decoration: none;
     position: absolute;
     top: 2rem;
-    margin-left: 20rem; }
+    margin-left: 26rem; }
     .social-media .icon:hover {
       transform: translateY(-3px);
       color: #ac6969; }
@@ -400,7 +400,7 @@ body {
   box-shadow: 0 1.2rem 3.2rem rgba(0, 0, 0, 0.03); }
 
 .section-main {
-  height: 100vh;
+  height: 95vh;
   width: 100%;
   margin: 0; }
   .section-main .section-main__photo {
@@ -412,10 +412,12 @@ body {
     background-image: linear-gradient(to right bottom, rgba(103, 98, 98, 0.7), rgba(19, 15, 15, 0.5)); }
   .section-main .header__text-box {
     position: absolute;
-    top: 50%;
-    left: 50%;
+    top: 60%;
+    left: 48%;
     transform: translate(-50%, -50%); }
   .section-main .heading-primary {
+    align-items: center;
+    text-align: center;
     display: block;
     color: #333333;
     text-transform: uppercase;
@@ -424,8 +426,8 @@ body {
     font-family: 'Roboto', sans-serif; }
     .section-main .heading-primary--main {
       display: block;
-      font-size: 5rem;
-      font-weight: bolder;
+      font-size: 6rem;
+      font-weight: 900;
       letter-spacing: .85rem;
       padding-bottom: 1rem;
       animation-name: moveInLeft;
@@ -455,25 +457,43 @@ body {
     flex-direction: column;
     gap: 4rem; }
 
-.section-creations__gallery {
-  gap: 2rem;
+.section-creations {
   padding: 5rem; }
-
-.section-creations .gallery-item img {
-  display: block;
-  width: 100%;
-  transition: all 0.4s; }
-
-.section-creations .gallery-item {
-  overflow: hidden; }
-
-.section-creations .gallery-item img {
-  display: block;
-  width: 100%;
-  transition: all 0.4s; }
-
-.section-creations .gallery-item img:hover {
-  transform: scale(1.1); }
+  .section-creations__gallery {
+    gap: 2rem; }
+  .section-creations .gallery-link {
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.3s;
+    display: block;
+    overflow: hidden; }
+  .section-creations .gallery-link:hover {
+    transform: scale(1.05); }
+  .section-creations .gallery-item {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    position: relative; }
+  .section-creations .gallery-item img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    transition: all 0.4s; }
+  .section-creations .gallery-box-description {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    font-size: 4rem;
+    text-decoration: none;
+    color: #DBD4AF;
+    opacity: 0;
+    transform: translate(-50%, -50%);
+    transition: opacity 0.4s; }
+  .section-creations .gallery-link:hover .gallery-box-description {
+    opacity: 1; }
+  .section-creations .gallery-link:hover img {
+    transform: scale(1.1);
+    overflow: hidden; }
 
 .section-cta {
   /* top / horizontal / left */
@@ -484,6 +504,9 @@ body {
   .ebook .ebook-description {
     display: flex;
     flex-direction: row; }
+  .ebook .ebook-photo {
+    width: 60rem;
+    height: 100%; }
 
 .container .ebook-content {
   width: 100%;
@@ -578,6 +601,15 @@ body {
   text-decoration: none;
   display: inline-block; }
 
+.section-menu {
+  padding: 15rem;
+  height: 100vh; }
+  .section-menu .menu {
+    width: 60vw;
+    height: 100%; }
+  .section-menu .box-menu {
+    width: 70px; }
+
 .aboutme-photo {
   max-width: 35vw; }
 
@@ -603,7 +635,7 @@ body {
     color: #1b1b1b; }
 
 .recipe {
-  padding: 10rem 5rem;
+  padding: 20rem 5rem  10rem 5rem;
   height: 100vh;
   background-color: #333;
   color: beige; }
@@ -616,19 +648,22 @@ body {
     letter-spacing: .75px;
     font-family: 'Unica One', sans-serif;
     display: block;
-    text-align: start;
     padding-bottom: 8rem; }
   .recipe__container {
-    position: relative; }
+    position: relative;
+    display: flex;
+    justify-content: space-evenly; }
   .recipe__imagem {
-    max-width: 400px; }
+    max-width: 400px;
+    border-radius: 3px; }
   .recipe__title {
     position: absolute;
     top: 50%;
     left: 16%;
     border-radius: 6px;
     font-size: 21px;
-    font-weight: 600; }
+    font-weight: 600;
+    color: #333; }
   .recipe__description {
     max-width: 400px;
     font-size: 21px; }
@@ -637,6 +672,8 @@ body {
     text-transform: uppercase;
     padding: 1rem 0;
     line-height: 2; }
+  .recipe__card {
+    position: relative; }
 
 .recipes {
   width: 100%;

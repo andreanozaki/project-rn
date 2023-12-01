@@ -1,6 +1,6 @@
 //SECTION MAIN
 .section-main {
-  height: 100vh;
+  height: 95vh;
   width: 100%;
 
   margin: 0;
@@ -22,12 +22,14 @@
  
   .header__text-box{
     position: absolute;
-    top: 50%;
-    left: 50%;
+    top: 60%;
+    left: 48%;
     transform: translate(-50%,-50%);
  
     }
     .heading-primary {
+      align-items: center;
+      text-align: center;
       display: block;
       color:#333333;
       text-transform: uppercase;
@@ -38,8 +40,8 @@
 
       &--main {
         display: block;
-        font-size:5rem;
-        font-weight: bolder;  
+        font-size:6rem;
+        font-weight:900;  
         letter-spacing: .85rem;
         padding-bottom: 1rem;
     
@@ -52,6 +54,7 @@
       &--sub{
       display: block;
       font-size: 3rem;
+     
       font-weight: 900;
       letter-spacing: 1.5rem;
    
@@ -85,31 +88,66 @@
   }
 }
 //SECTION CREATIONS
-.section-creations{
+.section-creations {
+  padding: 5rem ;
+  &__gallery {
+      gap: 2rem;
+     
+    
+   
+  }
 
-    &__gallery{
-        gap: 2rem;
-        padding: 5rem;
-    }
+  .gallery-link {
+      text-decoration: none;
+      color: inherit;
+      transition: transform 0.3s;
+      display: block;
+      overflow: hidden;
+  }
 
-    .gallery-item img {
-        display: block;
-        width: 100%;
-        transition: all 0.4s;
-      }
-      .gallery-item {
-        overflow: hidden;
-      }
+  .gallery-link:hover {
+      transform: scale(1.05);
+     
+  }
+
+  .gallery-item {
+    height: 100%;
+    width: 100%;
+      overflow: hidden;
+      position: relative;
       
-      .gallery-item img {
-        display: block;
-        width: 100%;
-        transition: all 0.4s;
-      }
-      
-      .gallery-item img:hover {
-        transform: scale(1.1);
-      }
+     
+  }
+
+  .gallery-item img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      transition: all 0.4s;
+    
+  }
+
+  .gallery-box-description {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      font-size: 4rem;
+      text-decoration: none;
+      color: #DBD4AF;
+      opacity: 0;
+      transform: translate(-50%, -50%);
+      transition: opacity 0.4s;
+  }
+
+  .gallery-link:hover .gallery-box-description {
+      opacity: 1;
+     
+  }
+
+  .gallery-link:hover img {
+      transform: scale(1.1);
+      overflow: hidden;
+  }
 }
 
 
@@ -119,7 +157,7 @@
 
   color: #e4e3e3;
 }
-//ebook-description
+//ebook-section
 .ebook{
   padding:15rem 6rem;
 
@@ -127,10 +165,13 @@
     display: flex;
     flex-direction: row;
   }
- 
+ .ebook-photo{
+  width: 60rem;
+  height: 100%;
+ }
 
 }
-//ebooks cta
+//ebooks cta ebook.html
 .container {
   .ebook-content {
     width: 100%;
@@ -157,6 +198,7 @@
   
   }
   .ebook-title{
+ 
     font-size: 21px;
     color: #333333;
     text-transform: uppercase;
@@ -264,4 +306,17 @@
  
    
    
+}
+//menu.html
+.section-menu{
+  padding: 15rem;
+  height: 100vh;
+  .menu{
+    width: 60vw;
+    height: 100%;
+
+  }
+.box-menu{
+  width:70px;
+}
 }
