@@ -458,7 +458,7 @@ body {
     gap: 4rem; }
 
 .section-creations {
-  padding: 5rem; }
+  padding: 5rem 10rem; }
   .section-creations__gallery {
     gap: 2rem; }
   .section-creations .gallery-link {
@@ -467,33 +467,50 @@ body {
     transition: transform 0.3s;
     display: block;
     overflow: hidden; }
-  .section-creations .gallery-link:hover {
-    transform: scale(1.05); }
   .section-creations .gallery-item {
-    height: 100%;
-    width: 100%;
+    height: 400px;
+    width: 450px;
     overflow: hidden;
-    position: relative; }
+    position: relative;
+    transition: all 0.3s; }
   .section-creations .gallery-item img {
     display: block;
     width: 100%;
     height: 100%;
     transition: all 0.4s; }
+  .section-creations .gallery-item:hover {
+    transform: scale(1.1); }
   .section-creations .gallery-box-description {
     position: absolute;
     top: 50%;
     left: 50%;
-    font-size: 4rem;
+    font-size: 5rem;
     text-decoration: none;
     color: #DBD4AF;
     opacity: 0;
-    transform: translate(-50%, -50%);
-    transition: opacity 0.4s; }
+    transition: opacity 0.1s;
+    font-family: 'Unica One', sans-serif;
+    font-weight: 900;
+    opacity: 0; }
   .section-creations .gallery-link:hover .gallery-box-description {
-    opacity: 1; }
-  .section-creations .gallery-link:hover img {
-    transform: scale(1.1);
-    overflow: hidden; }
+    opacity: 1;
+    position: absolute; }
+  .section-creations .gallery-item::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 400px;
+    width: 450px;
+    background-image: linear-gradient(to right bottom, rgba(255, 255, 255, 0.419), rgba(100, 96, 96, 0.699));
+    opacity: 0; }
+  .section-creations .gallery-item:hover::before {
+    opacity: 1;
+    transform: scale(1.1); }
+  .section-creations .icon-creation {
+    font-size: 3.5rem;
+    display: block;
+    text-align: center; }
 
 .section-cta {
   /* top / horizontal / left */
@@ -610,6 +627,11 @@ body {
   .section-menu .box-menu {
     width: 70px; }
 
+.container-cake {
+  justify-content: center;
+  align-items: center;
+  text-align: center; }
+
 .aboutme-photo {
   max-width: 35vw; }
 
@@ -633,6 +655,11 @@ body {
   padding: 15rem 20rem; }
   .section-recipes h1 {
     color: #1b1b1b; }
+
+.cake-img {
+  padding: 0.5rem;
+  max-width: 500px;
+  height: 100%; }
 
 .recipe {
   padding: 20rem 5rem  10rem 5rem;
