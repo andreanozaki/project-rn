@@ -2,23 +2,25 @@
 //SECTION MAIN RECIPE index.html
 .recipe{
     padding:20rem 5rem  10rem 5rem;
-    height: 100vh;
+    height: 80vh;
    
-background-color: #333;
+background-color: #333333e0;
 color:beige;
 .recipe-primary-title{
-
+    color: #f7f5f5;
     text-align: center;
     font-size:6rem;
     font-weight: 700;
-    color:#DBD4AF;
     text-transform: uppercase;
     letter-spacing: .75px;
     font-family:'Unica One', sans-serif;
     display: block;
+    border-bottom: 2px solid white;
+    display: inline-block;
+    
+    
  
     
-   padding-bottom: 8rem;
    
 
 }
@@ -56,6 +58,7 @@ color:beige;
     }
     &__card{
         position: relative;
+      justify-content:space-evenly;
     }
     
 }

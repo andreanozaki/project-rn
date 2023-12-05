@@ -283,12 +283,21 @@ body {
 
 /* About the chef*/
 .paragraph {
-  font-size: 18px;
-  width: 30vw;
-  padding-top: 1rem; }
+  font-size: 3rem;
+  width: 35vw;
+  padding-top: 2rem;
+  font-family: sans-serif;
+  font-weight: 100; }
+
+.paragraph-chef {
+  font-size: 3.5rem;
+  text-transform: uppercase;
+  font-family: sans-serif;
+  color: #333;
+  line-height: 1.5; }
 
 .heading-secondary {
-  font-size: 3rem;
+  font-size: 4rem;
   text-transform: uppercase;
   font-weight: 300;
   font-family: 'Roboto', sans-serif;
@@ -301,12 +310,15 @@ body {
   text-align: center;
   font-size: 6rem;
   font-weight: 700;
-  color: #333;
+  color: #333333;
   text-transform: uppercase;
   letter-spacing: .75px;
   font-family: 'Unica One', sans-serif;
-  display: block;
-  padding-bottom: 6rem; }
+  display: block; }
+  .subheading--1 {
+    color: #dbd6bc94; }
+  .subheading--2 {
+    color: #808080; }
 
 @keyframes moveInLeft {
   0% {
@@ -446,30 +458,33 @@ body {
 .section-aboutme {
   padding: 10rem 15rem;
   width: 100%;
-  height: 100%; }
+  height: 100vh; }
   .section-aboutme__content {
     display: flex;
-    gap: 10rem; }
+    padding: 15rem 5rem; }
   .section-aboutme__left-side {
-    text-align: center; }
+    justify-content: center; }
   .section-aboutme__right-side {
-    display: flex;
-    flex-direction: column;
-    gap: 4rem; }
+    gap: 2rem;
+    padding-top: 4rem;
+    text-align: center;
+    width: 50%; }
 
 .section-creations {
-  padding: 5rem 10rem; }
-  .section-creations__gallery {
-    gap: 2rem; }
+  padding: 0 25rem;
+  text-align: center; }
+  .section-creations .section-creations__gallery {
+    display: grid;
+    gap: 2rem;
+    padding: 15rem 0; }
   .section-creations .gallery-link {
     text-decoration: none;
     color: inherit;
     transition: transform 0.3s;
     display: block;
-    overflow: hidden; }
+    overflow: hidden;
+    text-align: center; }
   .section-creations .gallery-item {
-    height: 400px;
-    width: 450px;
     overflow: hidden;
     position: relative;
     transition: all 0.3s; }
@@ -482,15 +497,18 @@ body {
     transform: scale(1.1); }
   .section-creations .gallery-box-description {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    font-size: 5rem;
+    padding: 0;
+    top: 40%;
+    left: 0;
+    font-size: 4.5rem;
     text-decoration: none;
-    color: #DBD4AF;
-    opacity: 0;
+    text-transform: uppercase;
+    color: #f0ebeb;
+    width: 100%;
+    height: 100%;
+    font-family: 'Montserrat', sans-serif;
     transition: opacity 0.1s;
-    font-family: 'Unica One', sans-serif;
-    font-weight: 900;
+    font-weight: 400;
     opacity: 0; }
   .section-creations .gallery-link:hover .gallery-box-description {
     opacity: 1;
@@ -500,34 +518,39 @@ body {
     position: absolute;
     top: 0;
     left: 0;
-    height: 400px;
-    width: 450px;
-    background-image: linear-gradient(to right bottom, rgba(255, 255, 255, 0.419), rgba(100, 96, 96, 0.699));
+    height: 100%;
+    width: 100%;
+    background-image: linear-gradient(to right bottom, rgba(86, 82, 82, 0.419), rgba(19, 18, 18, 0.699));
     opacity: 0; }
   .section-creations .gallery-item:hover::before {
+    margin: 0 auto;
     opacity: 1;
     transform: scale(1.1); }
   .section-creations .icon-creation {
     font-size: 3.5rem;
-    display: block;
-    text-align: center; }
+    position: absolute;
+    top: 10%;
+    left: 46%;
+    font-size: 4rem;
+    display: inline-block; }
 
 .section-cta {
   /* top / horizontal / left */
   color: #e4e3e3; }
 
 .ebook {
-  padding: 15rem 6rem; }
+  padding: 15rem 0; }
   .ebook .ebook-description {
     display: flex;
     flex-direction: row; }
   .ebook .ebook-photo {
-    width: 60rem;
     height: 100%; }
+  .ebook .ebook-right {
+    height: 100%;
+    width: 50vw; }
 
 .container .ebook-content {
-  width: 100%;
-  padding: 0; }
+  width: 100%; }
 
 .container .ebook-box {
   display: flex;
@@ -540,14 +563,6 @@ body {
   .container .ebook-box .ebook-price {
     top: 90%;
     position: absolute; }
-    .container .ebook-box .ebook-price .price {
-      display: block;
-      font-size: 24px;
-      font-weight: 700; }
-    .container .ebook-box .ebook-price .ebook-title {
-      font-size: 21px;
-      color: #333333;
-      text-transform: uppercase; }
     .container .ebook-box .ebook-price .ebook-title {
       display: inline-block;
       font-size: 24px;
@@ -608,8 +623,8 @@ body {
 .cta-ebook {
   padding: 1.2rem 2.4rem;
   border-radius: 9px;
-  background-color: #e65959;
-  color: #e4e3e3;
+  background-color: #DBD4AF;
+  color: #333;
   font-size: 26px;
   line-height: 22px;
   letter-spacing: 2px;
@@ -663,19 +678,20 @@ body {
 
 .recipe {
   padding: 20rem 5rem  10rem 5rem;
-  height: 100vh;
-  background-color: #333;
+  height: 80vh;
+  background-color: #333333e0;
   color: beige; }
   .recipe .recipe-primary-title {
+    color: #f7f5f5;
     text-align: center;
     font-size: 6rem;
     font-weight: 700;
-    color: #DBD4AF;
     text-transform: uppercase;
     letter-spacing: .75px;
     font-family: 'Unica One', sans-serif;
     display: block;
-    padding-bottom: 8rem; }
+    border-bottom: 2px solid white;
+    display: inline-block; }
   .recipe__container {
     position: relative;
     display: flex;
@@ -700,7 +716,8 @@ body {
     padding: 1rem 0;
     line-height: 2; }
   .recipe__card {
-    position: relative; }
+    position: relative;
+    justify-content: space-evenly; }
 
 .recipes {
   width: 100%;

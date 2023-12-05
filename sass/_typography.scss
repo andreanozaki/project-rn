@@ -1,12 +1,28 @@
 /* About the chef*/
 .paragraph{
-    font-size: 18px;
-    width: 30vw;
-    padding-top: 1rem;
+    font-size: 3rem;
+    width: 35vw;
+    padding-top: 2rem;
+    font-family:sans-serif; 
+    font-weight: 100;
+}
+.paragraph-chef{
+  font-size: 3.5rem;
+
+ 
+  text-transform: uppercase;
+  font-family:sans-serif; 
+  color: #333;
+  line-height: 1.5;
+
+
+ 
+  
+
 }
 
 .heading-secondary {
-    font-size: 3rem;
+    font-size: 4rem;
     text-transform: uppercase;
     font-weight: 300;
     font-family:  'Roboto', sans-serif; 
@@ -20,13 +36,22 @@
     text-align: center;
     font-size:6rem;
     font-weight: 700;
-    color:#333;
+    color: #333333;
     text-transform: uppercase;
     letter-spacing: .75px;
     font-family:'Unica One', sans-serif;
     display: block;
-    padding-bottom: 6rem;
+  
+    
+   
+  &--1{
+  
+    color:#dbd6bc94;
+  }
+  &--2{
+    color: #808080;
 
+  }
   }
   
 
