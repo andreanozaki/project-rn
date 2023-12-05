@@ -68,45 +68,57 @@
 
 //SECTION ABOUT-ME
 .section-aboutme{
-  padding: 10rem 15rem;
-  width: 100%;
+padding:15rem 5rem;
+  width: 100vw;
   height: 100vh;
  
 
 
   &__content{
-   display: flex;
-   padding: 15rem 5rem;
+   display: grid;
+   grid-template-columns: repeat(2,1fr);
+   
+text-align: center;
+
 
 
  
    
   }
   &__left-side{
+    height: 100vh;
+    width: 50vw;
  justify-content: center;
+ display: flex;
+ flex-direction:column;
+ position: relative;
 
   }
   &__right-side{
   
     gap: 2rem;
-    padding-top: 4rem;
-    text-align: center;
-width:50%;
-
+    
+width:40vw;
+height: 100vh;
+padding-top:25%;
+padding-right: 10rem;
   }
 }
 //SECTION CREATIONS
 .section-creations {
-  padding:0 25rem ;
+
   text-align: center;
 
   .section-creations__gallery{
     
     display: grid;
-    gap: 2rem;
+
     padding: 15rem 0;
    
     
+  }
+  .title-creations{
+    padding-top: 15rem;
   }
 
 
@@ -227,15 +239,19 @@ position: absolute;
 }
 //ebook-section
 .ebook{
-  padding:15rem 0;
- 
+  height: 100vh;
+ display: flex;
+ padding: 5rem 0 5rem 15rem;
+ align-items: center;
+
 
 
   .ebook-description{
     display: flex;
-    flex-direction: row;
+   
+   
     
-
+    
   }
  .ebook-photo{
 
@@ -243,8 +259,14 @@ position: absolute;
  }
 .ebook-right{
   height: 100%;
- width: 50vw;
+ max-width:60vw;
+
+
  
+}
+.ebook-left{
+width:30vw;
+height: 100%;
 }
 }
 //ebooks cta ebook.html

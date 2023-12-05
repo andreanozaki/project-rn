@@ -286,11 +286,10 @@ body {
   font-size: 3rem;
   width: 35vw;
   padding-top: 2rem;
-  font-family: sans-serif;
   font-weight: 100; }
 
 .paragraph-chef {
-  font-size: 3.5rem;
+  font-size: 3rem;
   text-transform: uppercase;
   font-family: sans-serif;
   color: #333;
@@ -456,27 +455,34 @@ body {
       color: #DBD4AF; }
 
 .section-aboutme {
-  padding: 10rem 15rem;
-  width: 100%;
+  padding: 15rem 5rem;
+  width: 100vw;
   height: 100vh; }
   .section-aboutme__content {
-    display: flex;
-    padding: 15rem 5rem; }
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    text-align: center; }
   .section-aboutme__left-side {
-    justify-content: center; }
+    height: 100vh;
+    width: 50vw;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    position: relative; }
   .section-aboutme__right-side {
     gap: 2rem;
-    padding-top: 4rem;
-    text-align: center;
-    width: 50%; }
+    width: 40vw;
+    height: 100vh;
+    padding-top: 25%;
+    padding-right: 10rem; }
 
 .section-creations {
-  padding: 0 25rem;
   text-align: center; }
   .section-creations .section-creations__gallery {
     display: grid;
-    gap: 2rem;
     padding: 15rem 0; }
+  .section-creations .title-creations {
+    padding-top: 15rem; }
   .section-creations .gallery-link {
     text-decoration: none;
     color: inherit;
@@ -539,15 +545,20 @@ body {
   color: #e4e3e3; }
 
 .ebook {
-  padding: 15rem 0; }
+  height: 100vh;
+  display: flex;
+  padding: 5rem 0 5rem 15rem;
+  align-items: center; }
   .ebook .ebook-description {
-    display: flex;
-    flex-direction: row; }
+    display: flex; }
   .ebook .ebook-photo {
     height: 100%; }
   .ebook .ebook-right {
     height: 100%;
-    width: 50vw; }
+    max-width: 60vw; }
+  .ebook .ebook-left {
+    width: 30vw;
+    height: 100%; }
 
 .container .ebook-content {
   width: 100%; }
@@ -648,11 +659,26 @@ body {
   text-align: center; }
 
 .aboutme-photo {
-  max-width: 35vw; }
+  max-width: 40rem;
+  height: 30%;
+  position: absolute;
+  top: 5%;
+  left: 12%; }
+
+.aboutme-photo-1 {
+  max-width: 40rem;
+  position: absolute;
+  top: 28%;
+  left: 35%; }
+
+.aboutme-photo-2 {
+  max-width: 40rem;
+  position: absolute;
+  top: 50%;
+  left: 20%; }
 
 .ebook-photo {
-  max-width: 750px;
-  height: 750px; }
+  max-width: 550px; }
 
 .cta-ebook {
   margin-left: 5rem;
@@ -678,11 +704,11 @@ body {
 
 .recipe {
   padding: 20rem 5rem  10rem 5rem;
-  height: 80vh;
+  height: 85vh;
   background-color: #333333e0;
   color: beige; }
   .recipe .recipe-primary-title {
-    color: #f7f5f5;
+    color: #DBD4AF;
     text-align: center;
     font-size: 6rem;
     font-weight: 700;
