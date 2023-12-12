@@ -68,17 +68,17 @@
 
 //SECTION ABOUT-ME
 .section-aboutme{
-padding:15rem 5rem;
+
   width: 100vw;
   height: 100vh;
- 
+ padding: 5rem 15rem;
 
 
   &__content{
-   display: grid;
-   grid-template-columns: repeat(2,1fr);
    
-text-align: center;
+   height: 100%;
+   display:flex;
+
 
 
 
@@ -86,22 +86,24 @@ text-align: center;
    
   }
   &__left-side{
-    height: 100vh;
-    width: 50vw;
- justify-content: center;
- display: flex;
- flex-direction:column;
- position: relative;
+  position: relative;
+    height: 100%;
+    width: 50%;
+
+
 
   }
   &__right-side{
+  position: relative;
+  width: 50vw;
+
   
-    gap: 2rem;
+
     
-width:40vw;
-height: 100vh;
-padding-top:25%;
-padding-right: 10rem;
+
+
+
+
   }
 }
 //SECTION CREATIONS
@@ -113,7 +115,7 @@ padding-right: 10rem;
     
     display: grid;
 
-    padding: 15rem 0;
+    padding: 15rem 0 0 0;
    
     
   }
@@ -376,6 +378,10 @@ height: 100%;
 }
 
 .cta-ebook{
+  position: absolute;
+  top: 65%;
+  left: 45%;
+  transform: translate(-50%, -50%);
   padding: 1.2rem 2.4rem;
   border-radius: 9px;
   background-color:#DBD4AF;

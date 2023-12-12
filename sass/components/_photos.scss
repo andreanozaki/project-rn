@@ -1,28 +1,11 @@
 
 .aboutme-photo{
-
-  max-width:40rem;
-  height: 30%;
+  width: 100%;
+  max-width: 83rem;
   position: absolute;
-  top: 5%;
-  left: 12%;
-
-}
-.aboutme-photo-1{
- max-width: 40rem;
- position: absolute;
- top: 28%;
- left: 35%;
-
-}
-.aboutme-photo-2{
-  max-width: 40rem;
-  position: absolute;
-  top:50%;
-  left: 20%;
- 
-
-  
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
   .ebook-photo {
     max-width:550px;
