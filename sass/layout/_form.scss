@@ -1,0 +1,71 @@
+.section-form{
+    
+    position: relative;
+     height: 100vh;
+     width: 100%;
+     padding: 0;
+     background-image: linear-gradient(
+        to right bottom,
+        rgba(255, 253, 253, 0.935),
+        rgba(50, 49, 49, 0.647)
+    );
+     .contact{
+        width:50vw;
+        height: 70vh;
+        padding: 10rem;
+        background-color:rgba(255, 228, 196, 0.894);
+        position:absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        border-radius: 12px;
+     }
+     .form{
+        display: flex;
+        flex-direction: column;
+        gap: 3rem;
+        
+     }
+     .form input,  textarea{
+        background-color:rgb(250, 250, 250);
+        border-radius: 8px;
+        font-size: 2rem;
+        border: none;  
+        width:100%;
+        padding: 1.5rem;
+    }
+     .form textarea {
+        resize: none;//PARA NAO REDIMENSIONAR 
+    }
+    .form input::placeholder,
+    .form textarea::placeholder {
+    color:#333; 
+
+}
+.btn-send{
+    padding: 1.5rem 4rem;
+    border-radius: 8px;
+   font-size: 21px;
+   text-transform: uppercase;
+   color: #333333;
+    background-color:bisque;
+    font-weight: 600;
+    cursor: pointer;
+    transition: .2s;
+    margin-top: 2rem;
+ 
+}
+.btn-send:hover {
+    transform: translateY(-1px);
+    
+  }
+  .form-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1; /* Place it behind other content */
+}
+}

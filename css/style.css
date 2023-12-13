@@ -170,6 +170,12 @@ body {
   .subheading--2 {
     color: #808080; }
 
+.heading-form {
+  font-size: 3rem;
+  text-transform: uppercase;
+  text-align: center;
+  color: #333333; }
+
 @keyframes moveInLeft {
   0% {
     opacity: 0;
@@ -306,6 +312,18 @@ body {
   max-width: 500px;
   height: 100%; }
 
+.grid-2col {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); }
+
+.grid-3cols {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); }
+
+.grid-5cols {
+  display: grid;
+  grid-template-columns: 1.5fr 1.5fr 1fr 1fr 1fr; }
+
 /***************************/
 /*FOOTER*/
 /***************************/
@@ -362,6 +380,61 @@ body {
   display: flex;
   gap: 2.4rem; }
 
+.section-form {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  padding: 0;
+  background-image: linear-gradient(to right bottom, rgba(255, 253, 253, 0.935), rgba(50, 49, 49, 0.647)); }
+  .section-form .contact {
+    width: 50vw;
+    height: 70vh;
+    padding: 10rem;
+    background-color: rgba(255, 228, 196, 0.894);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 12px; }
+  .section-form .form {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem; }
+  .section-form .form input, .section-form textarea {
+    background-color: #fafafa;
+    border-radius: 8px;
+    font-size: 2rem;
+    border: none;
+    width: 100%;
+    padding: 1.5rem; }
+  .section-form .form textarea {
+    resize: none; }
+  .section-form .form input::placeholder,
+  .section-form .form textarea::placeholder {
+    color: #333; }
+  .section-form .btn-send {
+    padding: 1.5rem 4rem;
+    border-radius: 8px;
+    font-size: 21px;
+    text-transform: uppercase;
+    color: #333333;
+    background-color: bisque;
+    font-weight: 600;
+    cursor: pointer;
+    transition: .2s;
+    margin-top: 2rem; }
+  .section-form .btn-send:hover {
+    transform: translateY(-1px); }
+  .section-form .form-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+    /* Place it behind other content */ }
+
 .header {
   position: relative;
   display: flex;
@@ -374,18 +447,6 @@ body {
   justify-content: space-between;
   height: 9.6rem;
   padding: 0 4.8rem; }
-
-.grid-2col {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr); }
-
-.grid-3cols {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr); }
-
-.grid-5cols {
-  display: grid;
-  grid-template-columns: 1.5fr 1.5fr 1fr 1fr 1fr; }
 
 .main-nav-list {
   list-style: none;
