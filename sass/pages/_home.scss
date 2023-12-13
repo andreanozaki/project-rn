@@ -205,11 +205,8 @@ position: absolute;
       rgba(19, 18, 18, 0.699)
   );
   opacity: 0;
-
- 
-
-  
 }
+
 
 .gallery-item:hover::before {
 
@@ -218,6 +215,24 @@ position: absolute;
   transform: scale(1.1);
 
 }
+
+.no-background .gallery-item::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-image: none; /* Remova o background image */
+  opacity: 0;
+}
+
+.no-background .gallery-item:hover::before {
+  margin: 0 auto;
+  opacity: 1;
+  transform: scale(1.1);
+}
+
 .icon-creation{
   font-size: 3.5rem;
   position: absolute;

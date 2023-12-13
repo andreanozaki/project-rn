@@ -564,6 +564,20 @@ body {
     margin: 0 auto;
     opacity: 1;
     transform: scale(1.1); }
+  .section-creations .no-background .gallery-item::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-image: none;
+    /* Remova o background image */
+    opacity: 0; }
+  .section-creations .no-background .gallery-item:hover::before {
+    margin: 0 auto;
+    opacity: 1;
+    transform: scale(1.1); }
   .section-creations .icon-creation {
     font-size: 3.5rem;
     position: absolute;
