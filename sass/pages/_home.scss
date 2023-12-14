@@ -15,8 +15,8 @@
       object-fit: cover;
       background-image: linear-gradient(
         to right bottom,
-        rgba(103, 98, 98, 0.7), /* Black with 70% opacity */
-        rgba(19, 15, 15, 0.5) /* Medium gray with 50% opacity */
+        rgba(103, 102, 98, 0.765), /* Black with 70% opacity */
+        rgba(19, 15, 15, 0.938) /* Medium gray with 50% opacity */
       );
 }
  
@@ -48,7 +48,7 @@
         animation-name: moveInLeft;
         animation-duration: 2s;
         animation-timing-function: ease-out;
-        color:#DBD4AF;
+        color:#dbd4af;
       }
   
       &--sub{
@@ -248,43 +248,35 @@ position: absolute;
 }
 }
 
-//SECTION-CTA
-.section-cta {
-  /* top / horizontal / left */
 
-  color: #e4e3e3;
-}
+
 //ebook-section
 .ebook{
   height: 100vh;
+  width: 100vw;
  display: flex;
- padding: 5rem 0 5rem 15rem;
+ flex-direction: row;
  align-items: center;
+ justify-content: space-evenly;
 
 
+.ebook-photo{
 
-  .ebook-description{
-    display: flex;
-   
-   
-    
-    
-  }
- .ebook-photo{
+  height: 65%;
+  width: 40vw;
+ 
 
-  height: 100%;
- }
-.ebook-right{
-  height: 100%;
- max-width:60vw;
+}
+
+.ebook-text{
+
+ font-family:  sans-serif;
+  text-align: center;
+  width: 100%;
 
 
  
-}
-.ebook-left{
-width:30vw;
-height: 100%;
-}
+ }
 }
 //ebooks cta ebook.html
 .container {
@@ -355,6 +347,7 @@ height: 100%;
    
     }
   }
+ 
 }
 
 
@@ -392,12 +385,10 @@ height: 100%;
   padding: 10rem 5rem;
 }
 
-.cta-ebook{
-  position: absolute;
-  top: 65%;
-  left: 45%;
-  transform: translate(-50%, -50%);
-  padding: 1.2rem 2.4rem;
+.btn-main{
+
+  margin-top: 3rem;
+  padding: 1.5rem 2.4rem;
   border-radius: 9px;
   background-color:#DBD4AF;
   color: #333;

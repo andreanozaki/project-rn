@@ -1,9 +1,11 @@
 /* About the chef*/
 .paragraph{
     font-size: 3rem;
-    width: 35vw;
+  max-width: 40vw;
     padding-top: 2rem;
     font-weight: 100;
+  
+   
   
 }
 .paragraph-chef{
@@ -32,7 +34,7 @@
     text-transform: uppercase;
     font-weight: 300;
     font-family:  'Roboto', sans-serif; 
-    background-color: #DBD4AF; 
+    background-color: #fae5d3; 
     display: inline-block;
     padding: 0.5rem;
     border-radius: 3px;
@@ -52,11 +54,14 @@
    
   &--1{
   
-    color:#dbd6bc94;
+    color:#eae1cb;
   }
   &--2{
     color: #808080;
 
+  }
+  &--3{
+    font-family: 'Times New Roman', Times, serif;
   }
   }
   .heading-form{

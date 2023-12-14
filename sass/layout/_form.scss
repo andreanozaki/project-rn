@@ -6,14 +6,14 @@
      padding: 0;
      background-image: linear-gradient(
         to right bottom,
-        rgba(255, 253, 253, 0.935),
-        rgba(50, 49, 49, 0.647)
+        rgba(108, 106, 106, 0.935),
+        rgba(29, 29, 29, 0.647)
     );
      .contact{
-        width:50vw;
-        height: 70vh;
+        width:40vw;
+        height: 65vh;
         padding: 10rem;
-        background-color:rgba(255, 228, 196, 0.894);
+        background-color:#eae1cb;
         position:absolute;
         top: 50%;
         left: 50%;
@@ -23,7 +23,8 @@
      .form{
         display: flex;
         flex-direction: column;
-        gap: 3rem;
+        justify-content: space-evenly;
+        gap: 2rem;
         
      }
      .form input,  textarea{
@@ -47,12 +48,13 @@
     border-radius: 8px;
    font-size: 21px;
    text-transform: uppercase;
-   color: #333333;
-    background-color:bisque;
+   color: #f7f7f7;
+    background-color:#333333dc;
     font-weight: 600;
     cursor: pointer;
     transition: .2s;
     margin-top: 2rem;
+    border: none;
  
 }
 .btn-send:hover {

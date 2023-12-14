@@ -7,7 +7,7 @@
 background-color: #333333e0;
 color:beige;
 .recipe-primary-title{
-    color:#DBD4AF;
+    color:#fae5d3;
     text-align: center;
     font-size:6rem;
     font-weight: 700;
@@ -62,41 +62,55 @@ color:beige;
     }
     
 }
+
+
+
 // 2 page chocolatquent.html
 
 .recipes{
+
+
+    height: 100%;
     width: 100%;
     display: flex;
     flex-direction: column;
     gap: 3rem;
-    padding: 15rem 25rem;
+   
+    padding: 15rem;
     text-align: center;  
-    align-items:center;
+    align-items: center;
+  
+  
    
    
   
 
  .left-side{
-  
+max-width: 50vw;
+
     .left-side__photo{
-        width:50vw;
-        height: 50vh;
-        border-radius: 3px;
-        object-fit:cover;
+        width: 80%;
+        border-radius: 8px;
+    
     }
     .left-side__title{
         font-size: 6rem;
         font-weight: 200;
-        text-align: start;
+        text-align: center;
        
 
        
     }
     .left-side__subheading{
+  
+        
         padding: 2rem 0;
-        text-align: start;
+     
         font-size: 18px;
         text-transform: uppercase;
+       text-align: left;
+       padding-left: 10rem;
+      
         
        
     
@@ -106,28 +120,36 @@ color:beige;
  }
 
    .right-side{
-
+    max-width: 50vw;
    
     .status-recipe{
-     
+       width: 100%;
         display: flex;
         flex-direction: row;
-        justify-content: center;
+       
         justify-content: space-between;
+      
        
         padding: 5rem 0;
        
         .time,.nivel,.rendimento{
             font-size:21px;
-            width: 260px;
+            width: 250px;
             padding: 4rem 0;
             background-color:#dbd4af86;
+            display: flex;
+            flex-direction: column;
+           
+           
+           
+       
             
             
     
         }
-
-      
+.icon-recipe{
+    color: rgb(182, 62, 62);
+}
      
 
     }
@@ -148,16 +170,25 @@ color:beige;
     display: block;
     text-align: start;
     font-weight: 600;
+    color:  rgb(146, 38, 38);
 }
 
 .ingredients{
-    padding-left: 2rem;
+    padding:1rem 0 5rem 2rem;
+   
 }
 .prepare{
+ 
     display: flex;
     flex-direction: column;
     gap: 3rem;
+  
 
 }
 }
+}
+//all recipes
+.container-all-recipes{
+    padding: 10rem;
+
 }
