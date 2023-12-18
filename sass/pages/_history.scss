@@ -1,17 +1,32 @@
 .container-history{
-  height: 100%;
+  
+  height: 100vh;
 padding: 5rem;
   display: flex;
-  gap: 5rem;
-  justify-content: center;
+  gap: 7rem;
+  justify-content: space-around;
   align-items: center;
+ 
 
   &--text{
      text-align: center;
+
+ 
+   
+   
    
   }
 
   &--photo{
+
     padding-top: 5rem;
+   
   }
+
+}
+.formation {
+  height: 68vh;
+  position: relative;
+  background-color:antiquewhite;
+  
 }

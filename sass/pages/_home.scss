@@ -69,13 +69,15 @@
 //SECTION ABOUT-ME
 .section-aboutme{
 
-  width: 100vw;
+ 
+  
   height: 100vh;
- padding: 5rem 15rem;
+ padding: 5rem 10rem;
+ 
 
 
   &__content{
-   
+
    height: 100%;
    display:flex;
 
@@ -225,12 +227,16 @@ position: absolute;
   width: 100%;
   background-image: none; /* Remova o background image */
   opacity: 0;
+  cursor: default;
+  
 }
 
 .no-background .gallery-item:hover::before {
   margin: 0 auto;
   opacity: 1;
   transform: scale(1.1);
+  cursor: default;
+  
 }
 
 .icon-creation{
@@ -268,6 +274,7 @@ position: absolute;
 
 }
 
+
 .ebook-text{
 
  font-family:  sans-serif;
@@ -279,12 +286,13 @@ position: absolute;
  }
 }
 //ebooks cta ebook.html
-.container {
+
   .ebook-content {
     width: 100%;
   
    
   }
+
 
   .ebook-box {
     display: flex;
@@ -348,7 +356,7 @@ position: absolute;
     }
   }
  
-}
+
 
 
 //ebook-1
@@ -391,6 +399,7 @@ position: absolute;
   padding: 1.5rem 2.4rem;
   border-radius: 9px;
   background-color:#DBD4AF;
+ 
   color: #333;
   font-size: 26px;
     line-height: 22px;

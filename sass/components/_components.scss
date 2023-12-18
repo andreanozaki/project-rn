@@ -47,7 +47,20 @@
   }
  }
 }
+.social-media-footer{
+  font-size:3rem;
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+  text-decoration: none;
 
+  position: absolute;
+  top: 34%;
+  .icon{
+    color: #ddc392;
+  }
+
+}
 /* Adicione o estilo de efeito de flash aqui */
 .flash-effect {
   animation-name: flash;

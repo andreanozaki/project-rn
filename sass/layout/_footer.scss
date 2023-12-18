@@ -3,16 +3,21 @@
 /***************************/
 
 .footer {
-    padding: 12.8rem 0;
+  position: relative;
+  
     border-top: 1px solid #eee;
+    padding-top: 5rem;
+ 
+  
   }
   
-  .grid--footer {
-    display: grid;
-    grid-template-columns: 1.5fr 1.5fr 1fr 1fr 1fr;
-  }
   
+.logo-col{
+  text-align: center;
+  align-items: center;
+  margin-bottom: 3rem;
 
+}
   
   
   
@@ -24,27 +29,27 @@
   }
   
   .copyright {
-    font-size: 1.4rem;
+    height: 100%;
+    padding: 2.5rem 0;
+    background-color: #333;
+    font-size: 1.6rem;
     line-height: 1.6;
-    color: #767676;
-    margin-top: auto;
-  }
+    color:whitesmoke;
+    text-align: center; 
+
+display:block;
+
+}
   
   .footer-heading {
     font-size: 1.8rem;
     font-weight: 500;
-    margin-bottom: 4rem;
+    margin-bottom: 3rem;
   }
   
-  .contacts {
-    font-style: normal;
-    font-size: 1.6rem;
-    line-height: 1.6;
-  }
+ 
   
-  .address {
-    margin-bottom: 2.4rem;
-  }
+ 
   
   .footer-nav {
     list-style: none;
