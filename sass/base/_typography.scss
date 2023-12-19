@@ -47,12 +47,16 @@
     text-transform: uppercase;
     font-weight: 300;
     font-family:  'Roboto', sans-serif; 
-    background-color: #fae5d3; 
+    background-color:  #DBD4AF; 
     display: inline-block;
-    padding: 0.5rem;
-    border-radius: 3px;
+    padding: 1.8rem;
+    border-radius:5px;
   }
-
+.heading-secondary-gray {
+  background-color: #333333c6;
+  color: #eae1cb;
+  border-radius: 5px;
+}
   .subheading {
     text-align: center;
     font-size:6rem;
@@ -66,15 +70,22 @@
     
    
   &--1{
-  
+   
+    padding-left: 25vw;
     color:#eae1cb;
   }
   &--2{
+   
+    padding-left: 25vw;
+    text-align: start;
     color: #808080;
 
   }
   &--3{
-    font-family: 'Times New Roman', Times, serif;
+ 
+    padding-left: 25vw;
+    text-align: start;
+   
   }
   }
   .heading-form{

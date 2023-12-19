@@ -158,10 +158,15 @@ body {
   text-transform: uppercase;
   font-weight: 300;
   font-family: 'Roboto', sans-serif;
-  background-color: #fae5d3;
+  background-color: #DBD4AF;
   display: inline-block;
-  padding: 0.5rem;
-  border-radius: 3px; }
+  padding: 1.8rem;
+  border-radius: 5px; }
+
+.heading-secondary-gray {
+  background-color: #333333c6;
+  color: #eae1cb;
+  border-radius: 5px; }
 
 .subheading {
   text-align: center;
@@ -173,11 +178,15 @@ body {
   font-family: 'Unica One', sans-serif;
   display: block; }
   .subheading--1 {
+    padding-left: 25vw;
     color: #eae1cb; }
   .subheading--2 {
+    padding-left: 25vw;
+    text-align: start;
     color: #808080; }
   .subheading--3 {
-    font-family: 'Times New Roman', Times, serif; }
+    padding-left: 25vw;
+    text-align: start; }
 
 .heading-form {
   font-size: 3rem;
@@ -358,7 +367,7 @@ body {
 /***************************/
 .footer {
   position: relative;
-  border-top: 1px solid #eee;
+  border-top: 2px solid #eee;
   padding-top: 5rem; }
 
 .logo-col {
@@ -414,8 +423,9 @@ body {
   padding: 0;
   background-image: linear-gradient(to right bottom, rgba(108, 106, 106, 0.935), rgba(29, 29, 29, 0.647)); }
   .section-form .contact {
+    position: relative;
     width: 40vw;
-    height: 65vh;
+    height: 85vh;
     padding: 10rem;
     background-color: #eae1cb;
     position: absolute;
@@ -428,6 +438,18 @@ body {
     flex-direction: column;
     justify-content: space-evenly;
     gap: 2rem; }
+  .section-form .pattern-form {
+    position: absolute;
+    top: 12%;
+    left: -25%; }
+    .section-form .pattern-form .designer {
+      width: 200px; }
+  .section-form .pattern2-form {
+    position: absolute;
+    top: 12%;
+    left: 100%; }
+    .section-form .pattern2-form .designer--2 {
+      width: 200px; }
   .section-form .form input, .section-form textarea {
     background-color: #fafafa;
     border-radius: 8px;
@@ -584,8 +606,9 @@ body {
       color: #DBD4AF; }
 
 .section-aboutme {
-  height: 100vh;
-  padding: 5rem 10rem; }
+  position: relative;
+  height: 80vh;
+  padding: 15rem 10rem 5rem 10rem; }
   .section-aboutme__content {
     height: 100%;
     display: flex; }
@@ -598,12 +621,30 @@ body {
     width: 50vw; }
 
 .section-creations {
-  text-align: center; }
+  height: 100%;
+  padding: 10rem 0 0 0; }
+  .section-creations .heading-creation {
+    padding: 15rem 0;
+    display: flex;
+    flex-direction: row;
+    position: relative; }
+  .section-creations .designer {
+    position: absolute;
+    left: 26%;
+    top: 60%;
+    max-width: 12%; }
+  .section-creations .designer2 {
+    position: absolute;
+    left: 59%;
+    top: 60%;
+    max-width: 12%; }
+  .section-creations .title-creations {
+    position: absolute;
+    top: 60%;
+    left: 15%; }
   .section-creations .section-creations__gallery {
     display: grid;
     padding: 15rem 0 0 0; }
-  .section-creations .title-creations {
-    padding-top: 15rem; }
   .section-creations .gallery-link {
     text-decoration: none;
     color: inherit;
@@ -662,13 +703,11 @@ body {
     width: 100%;
     background-image: none;
     /* Remova o background image */
-    opacity: 0;
-    cursor: default; }
+    opacity: 0; }
   .section-creations .no-background .gallery-item:hover::before {
     margin: 0 auto;
     opacity: 1;
-    transform: scale(1.1);
-    cursor: default; }
+    transform: scale(1.1); }
   .section-creations .icon-creation {
     font-size: 3.5rem;
     position: absolute;
@@ -791,10 +830,12 @@ body {
   align-items: center;
   text-align: center; }
 
+/* Adicione estilos para o modal e os botões de navegação */
 .container-history {
   height: 100vh;
-  padding: 5rem;
+  padding: 5rem 10rem;
   display: flex;
+  flex-direction: row;
   gap: 7rem;
   justify-content: space-around;
   align-items: center; }
@@ -806,13 +847,32 @@ body {
 .formation {
   height: 68vh;
   position: relative;
-  background-color: antiquewhite; }
+  background-color: #ddd7b749; }
 
 .recipe {
+  position: relative;
   padding: 20rem 5rem  10rem 5rem;
-  height: 85vh;
+  height: 90vh;
   background-color: #333333e0;
   color: beige; }
+  .recipe .patterns-recipe {
+    position: absolute;
+    top: 12%;
+    left: 12%;
+    z-index: 1; }
+    .recipe .patterns-recipe .designer {
+      width: 180px; }
+  .recipe .patterns-recipe-right {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    z-index: 1;
+    right: -8.8%;
+    top: 41%; }
+    .recipe .patterns-recipe-right .designer--1 {
+      height: 50vh; }
+    .recipe .patterns-recipe-right .designer--2 {
+      height: 50vh; }
   .recipe .recipe-primary-title {
     color: #fae5d3;
     text-align: center;

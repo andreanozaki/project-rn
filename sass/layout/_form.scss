@@ -9,9 +9,12 @@
         rgba(108, 106, 106, 0.935),
         rgba(29, 29, 29, 0.647)
     );
+
+
      .contact{
+        position: relative;
         width:40vw;
-        height: 65vh;
+        height: 85vh;
         padding: 10rem;
         background-color:#eae1cb;
         position:absolute;
@@ -21,12 +24,31 @@
         border-radius: 12px;
      }
      .form{
+      
         display: flex;
         flex-direction: column;
         justify-content: space-evenly;
         gap: 2rem;
         
      }
+     .pattern-form {
+        position: absolute;
+        top: 12%;
+        left: -25%;
+
+        .designer{
+          width: 200px;
+        }
+    }
+    .pattern2-form {
+        position: absolute;
+        top: 12%;
+        left: 100%;
+        .designer--2{
+            width: 200px;
+            
+        }
+    }
      .form input,  textarea{
         background-color:rgb(250, 250, 250);
         border-radius: 8px;

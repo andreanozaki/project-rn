@@ -137,3 +137,5 @@ const obs = new IntersectionObserver(
   }
 );
 obs.observe(sectionHeroEl);
+
+//crea choc full

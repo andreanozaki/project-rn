@@ -1,8 +1,10 @@
+
 .container-history{
   
   height: 100vh;
-padding: 5rem;
+padding: 5rem 10rem;
   display: flex;
+  flex-direction: row;
   gap: 7rem;
   justify-content: space-around;
   align-items: center;
@@ -27,6 +29,6 @@ padding: 5rem;
 .formation {
   height: 68vh;
   position: relative;
-  background-color:antiquewhite;
+  background-color:#ddd7b749;
   
 }
