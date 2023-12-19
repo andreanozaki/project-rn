@@ -178,15 +178,9 @@ body {
   font-family: 'Unica One', sans-serif;
   display: block; }
   .subheading--1 {
-    padding-left: 25vw;
     color: #eae1cb; }
   .subheading--2 {
-    padding-left: 25vw;
-    text-align: start;
     color: #808080; }
-  .subheading--3 {
-    padding-left: 25vw;
-    text-align: start; }
 
 .heading-form {
   font-size: 3rem;
@@ -229,6 +223,9 @@ body {
 
 .container {
   padding: 0 15rem; }
+
+.container-gallery {
+  padding: 0 10%; }
 
 .social-media {
   font-size: 4rem;
@@ -425,7 +422,7 @@ body {
   .section-form .contact {
     position: relative;
     width: 40vw;
-    height: 85vh;
+    height: 75vh;
     padding: 10rem;
     background-color: #eae1cb;
     position: absolute;
@@ -640,11 +637,13 @@ body {
     max-width: 12%; }
   .section-creations .title-creations {
     position: absolute;
-    top: 60%;
-    left: 15%; }
+    top: 95%;
+    left: 50%;
+    transform: translate(-50%, -50%); }
   .section-creations .section-creations__gallery {
     display: grid;
-    padding: 15rem 0 0 0; }
+    padding: 15rem 0 0 0;
+    gap: 3rem; }
   .section-creations .gallery-link {
     text-decoration: none;
     color: inherit;

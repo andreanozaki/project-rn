@@ -6,6 +6,8 @@
     <meta name="description" content="Course" />
 
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/css/lightbox.min.css">
+
 
     <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
@@ -48,58 +50,41 @@
             <ion-icon class="icon-mobile-nav" name="close-outline"></ion-icon>
         </button>
     </header>
-
-    <section class="section-creations" id="creations">
-       
-    
-    <div class="section-creations__gallery grid-3cols">
-
-   
-        
-    
-        <a href="img/creation-main/ creation-chocolat/1.png" class="gallery-link no-background"  onclick="openImage(event, 0)">
-          <figure class="gallery-item ">
-              <img src="img/creation-main/ creation-chocolat/1.png" alt="photo2" class="">
+    <div class="container-gallery">
+        <section class="section-creations" id="creations">
+     
+            <span class="subheading subheading--1 flash-effect" >Chocolate</span>
+            <span class="subheading subheading--2 flash-effect-2">Chocolate</span>
+            <span class="subheading subheading--3 flash-effect">Chocolate</span>
+      
+      <div class="section-creations__gallery grid-3cols">
+        <a href="img/creation-main/ creation-chocolat/1.png"  class="gallery-link no-background" data-lightbox="models" data-title="Caption1">
+          <figure class="gallery-item">
+              <img src="img/creation-main/ creation-chocolat/1.png"  alt="photo2" class="">
           </figure>
         </a>
-        <a href="img/creation-main/ creation-chocolat/2.png" class="gallery-link no-background"  onclick="openImage(event, 1)">
-            <figure class="gallery-item gallery-item--page2">
-                <img src="img/creation-main/ creation-chocolat/2.png"" alt="photo2" class="">
-            </figure>
-          </a>
-          <a href="img/creation-main/ creation-chocolat/3.png" class="gallery-link no-background"  onclick="openImage(event, 2)">
-            <figure class="gallery-item">
-                <img src="img/creation-main/ creation-chocolat/3.png" alt="photo2" class="">
-            </figure>
-          </a>
-          <a href="img/creation-main/ creation-chocolat/4.png" class="gallery-link no-background"  onclick="openImage(event, 0)">
-            <figure class="gallery-item">
-                <img src="img/creation-main/ creation-chocolat/4.png" alt="photo2" class="">
-            </figure>
-          </a>
-          <a href="img/creation-main/ creation-chocolat/5.png" class="gallery-link no-background"  onclick="openImage(event, 3)">
-            <figure class="gallery-item">
-                <img src="img/creation-main/ creation-chocolat/5.png" alt="photo2" class="">
-            </figure>
-          </a>
-          <a href="img/creation-main/ creation-chocolat/4.png" class="gallery-link no-background"  onclick="openImage(event, 4)">
+          <a href="img/creation-main/ creation-chocolat/4.png" class="gallery-link no-background" data-lightbox="models" data-title="Caption1">
             <figure class="gallery-item">
                 <img src="img/creation-main/ creation-chocolat/4.png" alt="photo2" class="">
             </figure>
           </a>
 
-    </div>
-    <div class="container">
-        <a href="index.html#creations" class="btn-main container ">VOLTAR</a>
+            <a href="img/creation-main/ creation-chocolat/3.png" class="gallery-link no-background" data-lightbox="models" data-title="Caption1">
+              <figure class="gallery-item">
+                  <img src="img/creation-main/ creation-chocolat/3.png"alt="photo2" class="">
+              </figure>
+            </a>
+            
+
+
+
+  
+      </div>
+     
+  </section>
 
     </div>
-    <div id="imageModal" class="modal">
-        <span class="close-btn" onclick="closeImageModal()">&times;</span>
-        <img id="modalImage" class="modal-content">
-        <a class="prev" onclick="changeImage(-1)">&#10094;</a>
-        <a class="next" onclick="changeImage(1)">&#10095;</a>
-    </div>
-    </section>
+
 
     <footer class="footer ">
         <div class=" grid-5cols">
@@ -150,13 +135,9 @@
 
     
     </footer>
-    
-
-
   
     <script src="js/script.js"></script>
-
-
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox.min.js" integrity="sha512-Ixzuzfxv1EqafeQlTCufWfaC6ful6WFqIz4G+dWvK0beHw0NVJwvCKSgafpy5gwNqKmgUfIBraVwkKI+Cz0SEQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  
 </body>
 </html>

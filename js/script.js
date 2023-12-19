@@ -50,35 +50,6 @@ document.addEventListener('DOMContentLoaded', function() {
     activateAnimations();
   });
 });
-//loading-text
-
-function countAndHide() {
-  let count = 20;
-  const loadingText = document.querySelector('.loading-text');
-
-  // Configura o intervalo para incrementar a contagem em 2 segundos
-  const interval = setInterval(function () {
-      loadingText.textContent = `${count}%`;
-      count+=20;
-
-      // Quando atingir 100%, limpa o intervalo e esconde a div
-      if (count > 120) {
-          clearInterval(interval);
-          loadingText.style.display = 'none';
-      }
-  }, 75); 
-}
-
-// Chama a função após a página ser totalmente
-window.onload = countAndHide;
-
-
-//rolagem pag
-
-
- 
-
-
 //miniaturas ebook abrir na foto principal
 
 function updateMainImage(imageSrc) {
@@ -136,6 +107,7 @@ const obs = new IntersectionObserver(
     rootMargin: "-80px",
   }
 );
-obs.observe(sectionHeroEl);
 
-//crea choc full
+
+//gallery lightbox Modal
+lightGallery(document.querySelector('.gallery2'));
