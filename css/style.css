@@ -422,7 +422,7 @@ body {
   .section-form .contact {
     position: relative;
     width: 40vw;
-    height: 75vh;
+    height: 65vh;
     padding: 10rem;
     background-color: #eae1cb;
     position: absolute;
@@ -600,7 +600,7 @@ body {
       letter-spacing: 1.5rem;
       animation: moveinRight 2s ease-out;
       position: relative;
-      color: #DBD4AF; }
+      color: #ebe6cce2; }
 
 .section-aboutme {
   padding: 10rem;
@@ -611,7 +611,7 @@ body {
     display: flex;
     flex-direction: row;
     align-items: center;
-    background-color: #dbd4af79;
+    background-color: #dedbc979;
     border-radius: 13px;
     margin: 5rem; }
   .section-aboutme__left-side {
@@ -778,10 +778,10 @@ body {
   gap: 7rem;
   justify-content: space-around;
   align-items: center; }
-  .container-history--text {
-    text-align: center; }
   .container-history--photo {
     padding-top: 5rem; }
+  .container-history--text {
+    text-align: center; }
 
 .formation {
   height: 68vh;
@@ -804,7 +804,7 @@ body {
   .recipe__title {
     position: absolute;
     top: 50%;
-    left: 16%;
+    left: 14%;
     border-radius: 6px;
     font-size: 21px;
     font-weight: 600;

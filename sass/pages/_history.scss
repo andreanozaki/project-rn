@@ -1,31 +1,25 @@
-
+//chef.html history
 .container-history{
   
   height: 100vh;
-padding: 5rem 10rem;
+  padding: 5rem 10rem;
   display: flex;
   flex-direction: row;
   gap: 7rem;
   justify-content: space-around;
   align-items: center;
+
+  &--photo{
+    padding-top: 5rem;
+  }
  
 
   &--text{
      text-align: center;
 
- 
-   
-   
-   
   }
-
-  &--photo{
-
-    padding-top: 5rem;
-   
-  }
-
 }
+
 .formation {
   height: 68vh;
   position: relative;
