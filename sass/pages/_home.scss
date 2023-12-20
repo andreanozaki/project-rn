@@ -68,23 +68,29 @@
 
 //SECTION ABOUT-ME
 .section-aboutme{
- position: relative;
+
+
  height: 80vh;
  padding: 15rem 10rem 5rem 10rem;
 
   &__content{
+   position: relative;
    height: 100%;
    display:flex;
+   flex-direction: row;
+   align-items: center;
   }
   &__left-side{
-  position: relative;
-  height: 100%;
+  position: absolute;
   width: 50%;
-  }
+    }
   &__right-side{
-  position: relative;
-  width: 50vw;
+  position: absolute;
+  left: 50%;
+  width: 50%;
+  background-color: #e2d8a8;
   }
+
 }
 
 //SECTION CREATIONS
@@ -276,4 +282,26 @@ position: absolute;
 /* Adicione estilos para o modal e os botões de navegação *///
 ///SECONDGALLERY MODAL
 
-
+.btn-main{
+  
+  padding: 1.6rem 3.2rem;
+  font-size: 2rem;
+  margin-top: 2rem;
+  background-color: #dbd4af;
+  color: #333;
+  display: inline-block;
+  font-weight: 500;
+  cursor: pointer;
+  text-decoration: none;
+  border-radius: 9px;
+  font-size: 22px;
+  
+}
+.btn-main:hover{
+  background-color: #e2d8a8;
+}
+.btn-about{
+ 
+ position: absolute;
+  
+}

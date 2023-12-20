@@ -603,19 +603,22 @@ body {
       color: #DBD4AF; }
 
 .section-aboutme {
-  position: relative;
   height: 80vh;
   padding: 15rem 10rem 5rem 10rem; }
   .section-aboutme__content {
-    height: 100%;
-    display: flex; }
-  .section-aboutme__left-side {
     position: relative;
     height: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center; }
+  .section-aboutme__left-side {
+    position: absolute;
     width: 50%; }
   .section-aboutme__right-side {
-    position: relative;
-    width: 50vw; }
+    position: absolute;
+    left: 50%;
+    width: 50%;
+    background-color: #e2d8a8; }
 
 .section-creations {
   height: 100%;
@@ -745,6 +748,25 @@ body {
   text-align: center; }
 
 /* Adicione estilos para o modal e os botões de navegação */
+.btn-main {
+  padding: 1.6rem 3.2rem;
+  font-size: 2rem;
+  margin-top: 2rem;
+  background-color: #dbd4af;
+  color: #333;
+  display: inline-block;
+  font-weight: 500;
+  cursor: pointer;
+  text-decoration: none;
+  border-radius: 9px;
+  font-size: 22px; }
+
+.btn-main:hover {
+  background-color: #e2d8a8; }
+
+.btn-about {
+  position: absolute; }
+
 .container-history {
   height: 100vh;
   padding: 5rem 10rem;
@@ -765,23 +787,24 @@ body {
 
 .recipe {
   position: relative;
-  padding: 20rem 5rem  10rem 5rem;
-  height: 90vh;
+  padding: 15rem 5rem 35rem 5rem;
+  height: 85vh;
   background-color: #333333e0;
   color: beige; }
   .recipe .patterns-recipe {
     position: absolute;
-    top: 12%;
+    top: 16%;
     left: 12%;
-    z-index: 1; }
+    z-index: 1;
+    padding-left: 15rem; }
     .recipe .patterns-recipe .designer {
-      width: 180px; }
+      width: 120px; }
   .recipe .patterns-recipe-right {
     position: absolute;
     display: flex;
     flex-direction: column;
     z-index: 1;
-    right: -8.8%;
+    right: -7.8%;
     top: 41%; }
     .recipe .patterns-recipe-right .designer--1 {
       height: 50vh; }
