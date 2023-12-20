@@ -68,43 +68,22 @@
 
 //SECTION ABOUT-ME
 .section-aboutme{
-position: relative;
- 
-  
-  height: 80vh;
+ position: relative;
+ height: 80vh;
  padding: 15rem 10rem 5rem 10rem;
 
-
   &__content{
-
    height: 100%;
    display:flex;
-
-
-
-
- 
-   
   }
   &__left-side{
   position: relative;
-    height: 100%;
-    width: 50%;
-
-
-
+  height: 100%;
+  width: 50%;
   }
   &__right-side{
   position: relative;
   width: 50vw;
-
-  
-
-    
-
-
-
-
   }
 }
 
@@ -200,21 +179,16 @@ position: absolute;
 
   .gallery-link:hover .gallery-box-description {
       opacity: 1;
-   position: absolute;
- 
-  
-     
+      position: absolute;
   }
-
 
 .gallery-item::before {
   content: "";
-position: absolute;
+  position: absolute;
   top: 0;
   left: 0;
   height: 100%;
   width: 100%;
- 
   background-image: linear-gradient(
       to right bottom,
       rgba(86, 82, 82, 0.419),
@@ -223,13 +197,10 @@ position: absolute;
   opacity: 0;
 }
 
-
 .gallery-item:hover::before {
-
   margin: 0 auto;
   opacity: 1;
   transform: scale(1.1);
-
 }
 
 .no-background .gallery-item::before {
@@ -241,36 +212,23 @@ position: absolute;
   width: 100%;
   background-image: none; /* Remova o background image */
   opacity: 0;
-
-  
 }
 
 .no-background .gallery-item:hover::before {
   margin: 0 auto;
   opacity: 1;
-  transform: scale(1.1);
-
-  
+  transform: scale(1.1);  
 }
 
 .icon-creation{
   font-size: 3.5rem;
   position: absolute;
- top: 10%;
- left: 46%;
+  top: 10%;
+  left: 46%;
   font-size: 4rem;
   display: inline-block;
-
- 
-  
-  
-
+ }
 }
-}
-
-//creations fullcsreen
- 
-
 
 //ebook-section
 .ebook{
@@ -281,157 +239,18 @@ position: absolute;
  align-items: center;
  justify-content: space-evenly;
 
-
 .ebook-photo{
-
   height: 65%;
   width: 40vw;
- 
-
 }
-
 
 .ebook-text{
-
- font-family:  sans-serif;
+  font-family:  sans-serif;
   text-align: center;
   width: 100%;
-
-
- 
  }
 }
-//ebooks cta ebook.html
 
-  .ebook-content {
-    width: 100%;
-  
-   
-  }
-
-
-  .ebook-box {
-    display: flex;
-    flex-direction: column;
-  
-    width:390px;
-    height:100%;
-    position: relative;
-    cursor: pointer;
-    gap: 14rem;
-  
-.ebook-price{
- top: 90%;
-  position: absolute;
-
-  .ebook-title{
-    display: inline-block;
-    font-size: 24px;
-    text-decoration: none;
-    padding: 5rem;
-  }
-}
-    .ebook-photo-small,
-    .ebook-photo-new {
-      
-      max-width: 400px;
-      height: 100%;
-      transition: transform 0.6s ease-in-out; /* Adicione uma transição suave na propriedade transform */
-    }
-
- 
-
-    .ebook-photo-small {
-      max-width: 400px;
-      height: 100%;
-    }
-
-  
-
-    .ebook-photo-new {
-      display: none; /* Inicialmente, a nova imagem está oculta */
-      position: absolute; /* Posicione a nova imagem absolutamente dentro da ebook-box */
-      top: 0;
-      left: 0;
-      max-width: 400px; /* Ajuste conforme necessário */
-      height: 100%;
-      
-    }
-
-    &:hover .ebook-photo-small {
-      display: none;
-    }
-
-    &:hover .ebook-photo-new {
-      display: block; /* Ao passar o mouse, exiba a nova imagem */
-      overflow: hidden;
-      animation-name: flash;
-      animation-duration: 0.5s;
-      animation-timing-function: ease-in-out;
-   
-    }
-  }
- 
-
-
-
-//ebook-1
-.ebook-1-content {
-  padding: 10rem 5rem 0 5rem;
- position: relative;
-  display: flex;
-  justify-content: space-evenly;
-  .ebook-1-right{
-    padding:10rem ;
-  
-  }
-
-}
-.ebook-inside{
-
-  position: absolute;
-  left: 10rem;
-  
-  display: flex;
-  flex-direction: row;
-  gap: 1.5rem;
-  
-  
-.ebook-mini{ 
-  width: 50px;
-  height: 70px;
-}
- 
-}
-.ebook-footer{
-  font-size: 18px;
-  max-width: 90vw;
-  padding: 10rem 5rem;
-}
-
-.btn-main{
-
-  margin-top: 3rem;
-  padding: 1.5rem 2.4rem;
-  border-radius: 9px;
-  background-color:#DBD4AF;
- 
-  color: #333;
-  font-size: 26px;
-    line-height: 22px;
-    letter-spacing: 2px;
-    font-weight: 800;
-    transition: all 0.3s;
-    text-decoration: none;
-    display: inline-block;
-   
-
-  
- 
- 
-   
-   
-}
 //menu.html
 .section-menu{
   padding: 15rem;
