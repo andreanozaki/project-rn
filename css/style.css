@@ -616,7 +616,8 @@ body {
     margin: 5rem; }
   .section-aboutme__left-side {
     position: absolute;
-    width: 50vw; }
+    left: 8rem;
+    width: 550px; }
   .section-aboutme__right-side {
     position: absolute;
     left: 50%;
@@ -823,9 +824,8 @@ body {
   .recipe__design {
     position: absolute;
     top: 12.4%;
-    left: 5.2%;
-    z-index: 1;
-    padding-left: 15rem; }
+    left: 12.2%;
+    z-index: 1; }
   .recipe__designer {
     width: 180px; }
   .recipe__design-right {
@@ -833,12 +833,13 @@ body {
     display: flex;
     flex-direction: column;
     z-index: 1;
-    right: -15.8%;
-    top: 9.5%; }
+    right: -15.3%;
+    top: 24%;
+    width: 35%; }
     .recipe__design-right__designer--1 {
-      height: 50vh; }
+      height: 30vh; }
     .recipe__design-right__designer--2 {
-      height: 50vh; }
+      height: 50px; }
   .recipe__primary-title {
     color: #fae5d3;
     text-align: center;
