@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function() {
   });
   
   $(document).ready(function() {
-    // Seleciona os elementos com a classe .social-media
+    // Seleciona os elementos com a classe .social media.
     var socialMediaIcons = $(".social-media li");
   
     // Define a animação para mover os ícones de baixo para cima
@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', function() {
       var icon = $(this);
       setTimeout(function() {
         icon.animate({ opacity: 1, top: 0 }, 1000);
-      }, index * 200); // Atrasa cada ícone por 200ms
+      }, index * 200); // Atrasa cada ícone por 200s.
     });
   });
   
