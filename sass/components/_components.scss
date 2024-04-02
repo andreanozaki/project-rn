@@ -1,7 +1,6 @@
 
 .logo {
-    height: 9rem;
-    margin: 4rem;
+    height: 12rem;
  
 
     
@@ -24,23 +23,24 @@
   font-size: 4rem;
   align-items: center;
   display: flex;
-  gap: 6rem;
+  gap:5rem;
+  margin-left: 1em;
   list-style: none;
   
   text-decoration: none;
 
   position: absolute;
-  color: #DBD4AF;
+  color:#545252c5;
 
   .icon {
-    color:var(--color-primary--light);
+    color:#545252c5;
     text-decoration: none;
     position: absolute;
     top: 2rem;
     margin-left: 26rem;
   &:hover {
     transform: translateY(-3px);
-    color:rgb(172, 105, 105);
+    color: #d5ba87;
   }
 
   &:active {

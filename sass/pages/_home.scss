@@ -1,6 +1,6 @@
 //SECTION MAIN
 .section-main {
-  height: 95vh;
+  height: 85vh;
   width: 100%;
   margin: 0;
 
@@ -34,12 +34,12 @@
       text-transform: uppercase;
   
       backface-visibility: hidden;
-      margin-bottom: 6rem;
+      margin-bottom: 14rem;
       font-family:  'Roboto', sans-serif; 
 
       &--main {
         display: block;
-        font-size:6rem;
+        font-size:7rem;
         font-weight:900;  
         letter-spacing: .85rem;
         padding-bottom: 1rem;
@@ -47,7 +47,7 @@
         animation-name: moveInLeft;
         animation-duration: 2s;
         animation-timing-function: ease-out;
-        color:#dbd4af;
+        color:#696565c5;
       }
   
       &--sub{
@@ -59,7 +59,7 @@
    
       animation:moveinRight 2s ease-out;
       position: relative;
-      color:#ebe6cce2;
+      color:#545252a4;
       }
     }
 }

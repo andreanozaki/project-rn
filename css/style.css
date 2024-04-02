@@ -246,8 +246,7 @@ body {
   transform: translate(-50%, -50%); }
 
 .logo {
-  height: 9rem;
-  margin: 4rem; }
+  height: 12rem; }
 
 .container {
   padding: 0 15rem; }
@@ -259,20 +258,21 @@ body {
   font-size: 4rem;
   align-items: center;
   display: flex;
-  gap: 6rem;
+  gap: 5rem;
+  margin-left: 1em;
   list-style: none;
   text-decoration: none;
   position: absolute;
-  color: #DBD4AF; }
+  color: #545252c5; }
   .social-media .icon {
-    color: var(--color-primary--light);
+    color: #545252c5;
     text-decoration: none;
     position: absolute;
     top: 2rem;
     margin-left: 26rem; }
     .social-media .icon:hover {
       transform: translateY(-3px);
-      color: #ac6969; }
+      color: #d5ba87; }
     .social-media .icon:active {
       transform: translateY(-1px);
       box-shadow: 0 0.5rem 2rem rgba(255, 255, 255, 0.2); }
@@ -493,7 +493,7 @@ body {
     font-size: 21px;
     text-transform: uppercase;
     color: #f7f7f7;
-    background-color: #333333dc;
+    background-color: #333333a0;
     font-weight: 600;
     cursor: pointer;
     transition: .2s;
@@ -521,7 +521,7 @@ body {
   /* 0 up and bottom,4.8rem right and left*/
   text-transform: uppercase;
   justify-content: space-between;
-  height: 9.6rem;
+  height: 12.6rem;
   padding: 0 4.8rem; }
 
 .main-nav-list {
@@ -587,7 +587,7 @@ body {
   box-shadow: 0 1.2rem 3.2rem rgba(0, 0, 0, 0.03); }
 
 .section-main {
-  height: 95vh;
+  height: 85vh;
   width: 100%;
   margin: 0; }
   .section-main .section-main__photo {
@@ -609,18 +609,18 @@ body {
     color: #333333;
     text-transform: uppercase;
     backface-visibility: hidden;
-    margin-bottom: 6rem;
+    margin-bottom: 14rem;
     font-family: 'Roboto', sans-serif; }
     .section-main .heading-primary--main {
       display: block;
-      font-size: 6rem;
+      font-size: 7rem;
       font-weight: 900;
       letter-spacing: .85rem;
       padding-bottom: 1rem;
       animation-name: moveInLeft;
       animation-duration: 2s;
       animation-timing-function: ease-out;
-      color: #dbd4af; }
+      color: #696565c5; }
     .section-main .heading-primary--sub {
       display: block;
       font-size: 3rem;
@@ -628,7 +628,7 @@ body {
       letter-spacing: 1.5rem;
       animation: moveinRight 2s ease-out;
       position: relative;
-      color: #ebe6cce2; }
+      color: #545252a4; }
 
 .section-aboutme {
   padding: 10rem;
