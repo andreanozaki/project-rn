@@ -1,9 +1,9 @@
 
 :root {
     --color-primary:#292929 ;
-    --color-primary-light:#E5E0BC ;
+    --color-primary-light:#e5c8bc ;
    
-    --color-primary-dark:#323232 ;/*h2 fundo
+    --color-primary-dark:#323232 ;/* h2 fundo
 
    
 
@@ -37,23 +37,29 @@
     box-sizing: border-box;
     font-size: 62.5%;
     font-family: sans-serif;
-     //1rem = 10px, 10px/16px padrao do nav = 62.5%
-   
-      //this defines what 1 rem is. 1rem=10px; 10px/16px = 62.5%.
+     /*1rem = 10px, 10px/16px padrao do nav = 62.5%
+   this defines what 1 rem is. 1rem=10px; 10px/16px = 62.5%.
+      */
       font-size: 62.5%;
-      @include respond(tab-land){//width <1200?
-        font-size:56.25%; //1rem=9px, 9/16 = 50%
+/*
+      @include respond(tab-land){
+        //width <1200?
+        font-size:56.25%;
+         //1rem=9px, 9/16 = 50%
       }
   
-      @include respond(tab-port){//width < 900?
-        font-size:50%; //1rem=8px, 8/16 = 50%
+      @include respond(tab-port){
+        //width < 900?
+        font-size:50%; 
+        //1rem=8px, 8/16 = 50%
       }
   
       @include respond(big-desktop){
-        font-size:75%;//1rem = 12, 12/16
+        font-size:75%;
+        //1rem = 12, 12/16
        
         
-      }
+      }*/
    }
 
  body{
@@ -65,11 +71,11 @@
    font-family:'Roboto', sans-serif; 
 
 
-   @include respond(tab-port){
+   /*@include respond(tab-port){
       font-size:56.25%; 
       padding: 0;
     
-    }
+    }*/
 
 
 

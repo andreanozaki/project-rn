@@ -90,9 +90,9 @@
 
 :root {
   --color-primary:#292929 ;
-  --color-primary-light:#E5E0BC ;
+  --color-primary-light:#e5c8bc ;
   --color-primary-dark:#323232 ;
-  /*h2 fundo
+  /* h2 fundo
 
    
 
@@ -120,11 +120,39 @@
 html {
   box-sizing: border-box;
   font-size: 62.5%;
-  font-family: sans-serif; }
+  font-family: sans-serif;
+  /*1rem = 10px, 10px/16px padrao do nav = 62.5%
+   this defines what 1 rem is. 1rem=10px; 10px/16px = 62.5%.
+      */
+  font-size: 62.5%;
+  /*
+      @include respond(tab-land){
+        //width <1200?
+        font-size:56.25%;
+         //1rem=9px, 9/16 = 50%
+      }
+  
+      @include respond(tab-port){
+        //width < 900?
+        font-size:50%; 
+        //1rem=8px, 8/16 = 50%
+      }
+  
+      @include respond(big-desktop){
+        font-size:75%;
+        //1rem = 12, 12/16
+       
+        
+      }*/ }
 
 body {
   overflow-x: hidden;
-  font-family: 'Roboto', sans-serif; }
+  font-family: 'Roboto', sans-serif;
+  /*@include respond(tab-port){
+      font-size:56.25%; 
+      padding: 0;
+    
+    }*/ }
 
 /* About the chef*/
 .paragraph {
@@ -611,16 +639,16 @@ body {
     display: flex;
     flex-direction: row;
     align-items: center;
-    background-color: #dedbc979;
+    background-color: #f7f4ea;
     border-radius: 13px;
     margin: 5rem; }
   .section-aboutme__left-side {
     position: absolute;
-    left: 8rem;
+    left: 50vw;
     width: 550px; }
   .section-aboutme__right-side {
     position: absolute;
-    left: 50%;
+    left: 50;
     width: 50vw;
     background-color: #e2d8a8; }
 
