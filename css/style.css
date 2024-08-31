@@ -1058,3 +1058,68 @@ body {
 
 .ebook-links {
   padding: 5rem 0 0 5rem; }
+
+  /* Estilizando o formulário de comentários */
+.comment-section {
+    margin: 2em 0;
+}
+
+.comment-section h2 {
+    font-size: 1.5em;
+    margin-bottom: 1em;
+}
+
+.comment-section form {
+    display: flex;
+    flex-direction: column;
+}
+
+.comment-section textarea {
+    width: 100%;
+    padding: 0.5em;
+    margin-bottom: 1em;
+}
+
+.comment-section button {
+    align-self: flex-end;
+    padding: 0.5em 1em;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.comment-section button:hover {
+    background-color: #0056b3;
+}
+
+/* Estilizando os botões de compartilhamento */
+.share-buttons {
+    margin-top: 2em;
+}
+
+.share-buttons .share-btn {
+    display: inline-block;
+    margin-right: 1em;
+    padding: 0.5em 1em;
+    background-color: #f0f0f0;
+    border-radius: 5px;
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+}
+
+.share-buttons .share-btn.instagram {
+    background-color: #f5437f;
+    color: white;
+}
+
+.share-buttons .share-btn.facebook {
+    background-color: #3b5998;
+    color: white;
+}
+
+.share-buttons ion-icon {
+    margin-right: 0.5em;
+}

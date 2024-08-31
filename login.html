@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Login Page" />
+    <title>Login - Ricardo Nozaki</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+    <header class="header flash-effect">
+        <a href="index.html">
+            <img class="logo" src="img/base/logo/lo2.png" alt="logo">
+        </a>
+        <nav class="main-nav">
+            <ul class="main-nav-list">
+                <li><a class="main-nav-link" href="index.html#aboutme">Chef</a></li>
+                <li><a class="main-nav-link" href="index.html#creations">Criações</a></li>
+                <li><a class="main-nav-link" href="index.html#recipe">Receitas</a></li>
+                <li><a class="main-nav-link nav-cta" href="index.html#ebooks">E-book</a></li>
+                <li><a class="main-nav-link" href="index.html#contact">Contato</a></li>
+                <li><a class="main-nav-link" href="login.html">Login</a></li>
+            </ul>
+        </nav>
+        <button class="btn-mobile-nav">
+            <ion-icon class="icon-mobile-nav" name="menu-outline"></ion-icon>
+            <ion-icon class="icon-mobile-nav" name="close-outline"></ion-icon>
+        </button>
+    </header>
+    
+    <main>
+        <section class="login-section">
+            <h1>Login</h1>
+            <form id="loginForm">
+                <label for="username">Usuário:</label>
+                <input type="text" id="username" name="username" required>
+                <label for="password">Senha:</label>
+                <input type="password" id="password" name="password" required>
+                <button type="submit">Entrar</button>
+            </form>
+            <p>Não tem uma conta? <a href="register.html">Crie uma conta</a></p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <!-- Footer Content Here -->
+    </footer>
+
+    <script src="js/script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.4.0/ionicons.esm.js" type="module"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.4.0/ionicons.js" nomodule></script>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        async function login(username, password) {
+            try {
+                const response = await fetch('/login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ username, password })
+                });
+
+                if (response.ok) {
+                    const data = await response.json();
+                    localStorage.setItem('token', data.token); // Armazena o token no localStorage
+                    window.location.href = 'index.html'; // Redireciona para a página principal
+                } else {
+                    const errorText = await response.text();
+                    alert(`Erro ao fazer login: ${errorText}`);
+                }
+            } catch (error) {
+                console.error('Erro ao fazer login:', error);
+            }
+        }
+
+        document.getElementById('loginForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            login(username, password);
+        });
+      });
+    </script>
+    
+</body>
+</html>

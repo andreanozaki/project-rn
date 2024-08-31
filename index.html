@@ -37,6 +37,9 @@
                 <li><a class="main-nav-link" href="#recipe">Receitas</a></li>
                 <li><a class="main-nav-link nav-cta" href="#ebooks">E-book</a></li>
                 <li><a class="main-nav-link" href="#contact">Contato</a></li>
+                <li><a class="main-nav-link" href="login.html">Login</a></li>
+                
+
             </ul>
         </nav>
         <button class="btn-mobile-nav">
@@ -61,10 +64,10 @@
                     <span class="heading-primary--sub">Pastry Chef</span>
 
                     <ul class="social-media ">
-                        <li><a href="https://www.linkedin.com/in/andreahcodes/" target="_blank" class="icon"><ion-icon
+                        <li><a href="https://www.linkedin.com/in/ricardo-nozaki-843634325/" target="_blank" class="icon"><ion-icon
                                     name="logo-linkedin"></ion-icon></a></li>
 
-                        <li><a href="https://www.instagram.com/andreahcodes/" target="_blank" class="icon"><ion-icon
+                        <li><a href="https://www.instagram.com/chefricardonozaki/" target="_blank" class="icon"><ion-icon
                                     name="logo-instagram"></ion-icon></a></li>
 
                        <!--<li><a href="https://www.instagram.com/andreahcodes/" target="_blank" class="icon"><ion-icon
@@ -235,27 +238,31 @@
         </section>
 
 
-       <section class="section-form container" id="contact">
-
-        <img src="img/base/Capa Facebook - Black Friday-3.png" alt="" class="form-bg">
-
+        <section class="section-form container" id="contact">
+            <img src="img/base/Capa Facebook - Black Friday-3.png" alt="" class="form-bg">
+        
             <div class="contact">
-
-                <form action="https://formsubmit.co/andreaflordoceu@gmail.com" method="POST" class="form flash-effect">
-                   
+                <form id="contactForm" method="POST"action="/contact" class="form flash-effect">
                     <h2 class="heading-form">Entre em contato:</h2>
                     <input type="text" name="name" required placeholder="Nome:">
                     <input type="email" name="email" required placeholder="E-mail:">
-                    <textarea name="message" id="" cols="30" rows="8" placeholder="Mensagem:"></textarea>
-
+                    <textarea name="message" cols="30" rows="8" placeholder="Mensagem:"></textarea>
                     <button type="submit" class="btn-send">Enviar</button>
-                    <input type="hidden" name="_subject" value="Novo Contato Form Portfolio">
-                    <input type="text" name="_honey" style="display: none;">
-               </form>
-            
-              </div>
+                </form>
+            </div>
+        </section>
 
-       </section>
+         <!-- Formulário de Criação de Receita (somente para o chef) -->
+  <section id="gerenciamento-receitas" style="display: none;">
+    <h2>Gerenciamento de Receitas</h2>
+    <form id="criar-receita-form">
+      <input type="text" id="titulo" placeholder="Título da Receita" required>
+      <textarea id="ingredientes" placeholder="Ingredientes" required></textarea>
+      <textarea id="preparo" placeholder="Modo de Preparo" required></textarea>
+      <button type="submit">Criar Receita</button>
+    </form>
+  </section>
+        
 
 
         <footer class="footer ">
