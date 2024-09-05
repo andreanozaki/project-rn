@@ -2,35 +2,34 @@
   "name": "project-rn",
   "version": "1.0.0",
   "description": "Projeto RN",
-  "main": "index.js",
+  "main": "js/server.js",
   "scripts": {
-    "watch:sass": "node-sass sass/main.scss css/style.css -w",
+    "watch:sass": "sass --watch sass/main.scss:css/style.css",
     "devserver": "live-server",
     "start": "npm-run-all --parallel devserver watch:sass",
-    "compile:sass": "node-sass sass/main.scss css/style.comp.css",
-    "concat:css": "concat -o css/style.concat.css css/style.comp.css",
-    "prefix:css": "postcss --use autoprefixer -b 'last 10 versions' css/style.concat.css -o css/style.prefix.css",
-    "compress:css": "node-sass css/style.prefix.css css/style.css --output-style compressed",
-    "build:css": "npm-run-all compile:sass concat:css prefix:css compress:css"
+    "compile:sass": "sass sass/main.scss css/style.css",
+    "build:css": "npm run compile:sass"
   },
   "author": "Andrea",
   "license": "ISC",
   "devDependencies": {
     "autoprefixer": "^10.4.16",
     "concat": "^1.0.3",
-    "node-sass": "^9.0.0",
     "npm-run-all": "^4.1.5",
     "postcss-cli": "^11.0.0"
   },
   "dependencies": {
     "bcrypt": "^5.1.1",
     "body-parser": "^1.20.2",
+    "dotenv": "^16.0.3",
     "express": "^4.19.2",
     "express-session": "^1.18.0",
+    "jsonwebtoken": "^9.0.2",
     "jwt-simple": "^0.5.6",
     "mysql": "^2.18.1",
     "mysql2": "^3.11.0",
     "nodemailer": "^6.9.14",
+    "react-router-dom": "^6.26.1",
     "sass": "^1.72.0"
   },
   "keywords": []

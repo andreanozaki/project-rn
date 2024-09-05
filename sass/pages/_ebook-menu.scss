@@ -18,7 +18,10 @@
      position: relative;
      cursor: pointer;
      gap: 14rem;
-  
+  @include respond (mobile){
+    display: flex;
+    flex-direction: column;
+  }
    .ebook-price{
     top: 90%;
     position: absolute;

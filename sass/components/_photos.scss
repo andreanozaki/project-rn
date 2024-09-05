@@ -9,6 +9,9 @@
 }
   .ebook-photo {
     max-width:550px;
+    @include respond (mobile){
+      padding-top: 2.5rem;
+    }
    
     
     

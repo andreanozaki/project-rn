@@ -11,7 +11,10 @@
     display: grid;
     grid-template-columns: 1.5fr 1.5fr 1fr 1fr 1fr;
     
+    @include respond(mobile) {
+       grid-template-columns: 0fr 2fr 1fr 1fr; /* Alterar para uma única coluna em telas menores */
    
+      }
     
 
 }

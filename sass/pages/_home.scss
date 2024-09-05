@@ -71,7 +71,6 @@
  height: 70vh;
 
 
-
   &__content{
    position: relative;
    height: 100%;
@@ -96,9 +95,31 @@
   width: 50vw;
   background-color: #e2d8a8;
   }
+  @include respond(mobile) {
+    &__content {
+   display: flex;
+   flex-direction: column;
+     
+   
+    
+      background-color: rgb(210, 17, 17);
+      background-color: transparent;
+margin-top: 8rem;    }
 
+   
+    &__right-side {
+      background-color: #d0a8e2;
+      position: static;
+      width: 100%;
+      margin: 0;
+    }
+    &__left-side {
+      display: none;
+    }
+
+  }
 }
-
+//SECTION-CREATIONS
 
 .section-creations {
   height: 100%;
@@ -129,6 +150,8 @@
           top: 95%;
           left: 50%;
           transform: translate(-50%, -50%);
+         
+    
       }
   }
 
@@ -136,7 +159,11 @@
       display: grid;
       padding: 15rem 0 0 0;
       gap: 3rem;
-
+      @include respond(mobile) {
+        gap: 0;
+        display: flex;
+        flex-direction: column;
+      }
       .gallery-link {
           text-decoration: none;
           color: inherit;
@@ -176,6 +203,9 @@
                   transition: opacity 0.1s;
                   font-weight: 400;
                   opacity: 0;
+                  @include respond (mobile){
+                    font-size: 2.5rem;
+                  }
               }
 
               &:hover .gallery-box-description {
@@ -232,6 +262,36 @@
           }
       }
   }
+  @include respond(mobile) {
+  
+
+    .gallery-link {
+     
+      .gallery-item {
+        transform: none;
+        transition: none;
+       
+
+        &:hover {
+          transform: none;
+        }
+
+        .gallery-box-description {
+          opacity: 0;
+          transition: none;
+          @include respond(mobile) {
+            opacity: 1; // Sempre visível em dispositivos móveis
+          }
+        }
+
+        &:hover::before {
+          opacity: 0;
+          transform: none;
+        }
+      }
+    }
+  }
+
 }
 
 //ebook-section
@@ -242,17 +302,49 @@
  flex-direction: row;
  align-items: center;
  justify-content: space-evenly;
-
+@include respond(mobile){
+ height: 100%;
+  display: flex;
+  flex-direction: column;
+  
+}
 .ebook-photo{
   height: 65%;
   width: 40vw;
+@include respond(mobile){
+  width: 70vw;
+}
 }
 
 .ebook-text{
   font-family:  sans-serif;
   text-align: center;
   width: 100%;
+  @include respond (mobile){
+    width:100%;
+    display: block;
+    top: 50%;
+    left: 50%;
+    transform: translate(-34%,10%);
+    width: 360px;
+
+  }
  }
+ .ebook-left{
+@include respond(mobile){
+  padding-right: 2rem;
+    display: inline-block;
+    padding-top: 3.5rem;
+
+  }
+
+ }
+ .icon-ebook{
+  display: flex;
+  flex-direction: row;
+  padding: 1rem;
+justify-content: center;
+}
 }
 
 //menu.html
@@ -293,7 +385,12 @@
   text-decoration: none;
   border-radius: 9px;
   font-size: 22px;
-  
+  @include respond (mobile){
+    margin-top: 1rem;
+    margin-bottom: 2.5rem;
+    padding: 1.3rem 2rem;
+    
+ }
 }
 
 .btn-main:hover{

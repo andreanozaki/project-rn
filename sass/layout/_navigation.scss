@@ -39,6 +39,12 @@
     background-color: var(--color-primary-light);
     color: rgb(26, 26, 26);
   }
+  .nav-open .main-nav-list {
+    display: flex;
+  }
+/* Alterna os ícones de abrir e fechar */
+
+
 
   //Mobile  nav
 

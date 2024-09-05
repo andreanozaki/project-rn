@@ -6,16 +6,38 @@
     height: 80vh;
     background-color: #333333e0;
     color: beige;
+    @include respond (mobile){
+        height: 60%;
+        display: flex;
+        flex-direction: column;
 
+    }
+ &__section-left{
+    order: 0;
+    @include respond(mobile){
+        order: -1;
+    }
+ }
     &__container {
         position: relative;
         display: flex;
         justify-content: space-evenly;
+
+        @include respond (mobile){
+            display: flex;
+            flex-direction: column;
+            padding: 0;
+            margin: 0;
+        }
+        
     }
 
     &__image {
         max-width: 400px;
         border-radius: 3px;
+        @include respond(mobile){
+            width: 100%;
+        }
     }
 
     &__title {
@@ -26,6 +48,10 @@
         font-size: 21px;
         font-weight: 600;
         color: #333;
+        @include respond (mobile){
+            top: 40%;
+            font-size: 16px;
+        }
     }
 
     &__description {
@@ -43,6 +69,7 @@
     &__card {
         position: relative;
         justify-content: space-evenly;
+        
     }
 
     &__design {
@@ -50,11 +77,21 @@
         top: 12.4%;
         left: 12.2%;
         z-index: 1;
+        @include respond(mobile){
+            top: 2%;
+            left: 4%;
+            }
         
     }
 
     &__designer {
         width: 180px;
+        @include respond(mobile){
+            width: 100px;
+           
+            
+            }
+       
     }
     &__design-right {
         position: absolute;
@@ -64,6 +101,9 @@
         right: -15.3%;
         top:24%;
         width:35%;
+        @include respond(mobile){
+            top: 42%;
+            right: -2%;        }
 
         &__designer--1 {
             height: 30vh;
@@ -72,6 +112,7 @@
         &__designer--2 {
             height: 50px;
         }
+      
     }
 
     &__primary-title {
@@ -85,7 +126,12 @@
         display: block;
         border-bottom: 2px solid rgb(255, 255, 255);
         display: inline-block;
+        @include respond(mobile){
+            font-size: 4rem;
+        }
+      
     }
+    
 }
 
 // 2 page chocolatquent.html

@@ -1,7 +1,8 @@
 
 .logo {
     height: 12rem;
- 
+    @include respond(mobile){
+display: none;    }
 
     
 

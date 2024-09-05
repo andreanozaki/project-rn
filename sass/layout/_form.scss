@@ -13,7 +13,7 @@
 
      .contact{
         position: relative;
-        width:40vw;
+        width:60vw;
         height: 65vh;
         padding: 10rem;
         background-color:#eae1cb;
@@ -22,6 +22,18 @@
         left: 50%;
         transform: translate(-50%, -50%);
         border-radius: 12px;
+         // Ajuste para dispositivos móveis
+    @include respond(mobile) {
+        width: 90vw;
+        height: auto;
+        padding: 2rem 4rem;
+      }
+    @include respond(tab-land) {
+        width: 60vw;
+    }
+    @include respond(big-desktop) {
+        width: 50vw;
+    }
      }
      .form{
       
@@ -29,7 +41,7 @@
         flex-direction: column;
         justify-content: space-evenly;
         gap: 2rem;
-        
+      
      }
      .pattern-form {
         position: absolute;
@@ -59,6 +71,7 @@
     }
      .form textarea {
         resize: none;//PARA NAO REDIMENSIONAR 
+      
     }
     .form input::placeholder,
     .form textarea::placeholder {

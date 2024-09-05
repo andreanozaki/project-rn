@@ -4,10 +4,33 @@
   max-width: 40vw;
     padding: 3rem;
     font-weight: 100;
-    
-  
+
    
   
+}
+//dispo moveis ebook descr
+.ebookdesc{
+max-width: 90vw;
+font-size: 2rem;
+text-align:left;
+align-items: center;
+justify-content: center;
+}
+
+.paragraph-receitas{
+  padding: 3rem;
+  
+font-size: 2rem;
+}
+.paragraph-ebook{
+  font-size: 2.5rem;
+  font-weight: 100;
+  height: 50vh;
+  width: 80vw;
+  background-color: #7f57e3;
+
+ 
+
 }
 .paragraph-chef{
   align-items: center;
@@ -66,20 +89,34 @@
     letter-spacing: .75px;
     font-family:'Unica One', sans-serif;
     display: block;
+   
   
-    
+    @include respond (mobile){
+      font-size:3.5rem ;
+    }
    
   &--1{
   
 
     color:#eae1cb;
+    @include respond (mobile){
+      font-size:3.5rem ;
+    }
   }
   &--2{
    
 
    
     color: #808080;
-
+    @include respond (mobile){
+      font-size:3.5rem ;
+    }
+  }
+  &--3{
+    color: #000;
+    @include respond (mobile){
+      font-size:3.5rem ;
+    }
   }
 
   }

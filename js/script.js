@@ -38,10 +38,19 @@ document.addEventListener('DOMContentLoaded', function() {
   // Mobile navigation
   const btnNavEl = document.querySelector(".btn-mobile-nav");
   const headerEl = document.querySelector(".header");
-
+  const menuIcon = document.querySelector('ion-icon[name="menu-outline"]');
+  const closeIcon = document.querySelector('ion-icon[name="close-outline"]');
+  
+  // Alterna entre 'nav-open' e 'nav-close' quando o botão é clicado
   btnNavEl.addEventListener("click", function () {
       headerEl.classList.toggle("nav-open");
+  
+      // Alterna ícones de abrir e fechar
+      menuIcon.style.display = headerEl.classList.contains("nav-open") ? "none" : "block";
+      closeIcon.style.display = headerEl.classList.contains("nav-open") ? "block" : "none";
   });
+  
+
 
   // Sticky navigation
   const sectionMainE = document.querySelector(".section-main");
@@ -67,138 +76,4 @@ document.addEventListener('DOMContentLoaded', function() {
  
     });
 
-    document.addEventListener('DOMContentLoaded', () => {
-      // Função de cadastro
-      const form = document.getElementById('registerForm');
-    
-      form.addEventListener('submit', async (event) => {
-        event.preventDefault();
-        
-        const name = document.getElementById('name').value;
-        const email = document.getElementById('email').value;
-        const password = document.getElementById('password').value;
-        const confirmPassword = document.getElementById('confirmPassword').value;
-    
-        // Verifica se as senhas coincidem
-        if (password !== confirmPassword) {
-          alert('As senhas não coincidem');
-          return;
-        }
-    
-        try {
-          const response = await fetch('/register', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ name, email, password })
-          });
-    
-          if (response.ok) {
-            alert('Cadastro realizado com sucesso');
-            window.location.href = 'login.html';
-          } else {
-            const errorText = await response.text();
-            alert(`Erro ao cadastrar: ${errorText}`);
-          }
-        } catch (error) {
-          console.error('Erro ao fazer cadastro:', error);
-          alert('Erro ao fazer cadastro');
-        }
-      });
-    
-      // Verifica se o usuário é o chef
-      fetch('/api/user')
-        .then(response => response.json())
-        .then(data => {
-          if (data.role === 'chef') {
-            document.getElementById('gerenciamento-receitas').style.display = 'block';
-          }
-        })
-        .catch(error => {
-          console.error('Erro ao verificar o usuário:', error);
-        });
-    
-      // Verifica o link de navegação para a página de login
-      document.addEventListener('click', function(event) {
-        if (event.target.matches('.main-nav-link[href="login.html"]')) {
-          window.location.href = 'login.html';
-        }
-      });
-    });
-    
-    // Função para login
-    const login = async (username, password) => {
-      try {
-        const response = await fetch('http://localhost:3001/login', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ username, password }),
-        });
-    
-        if (response.ok) {
-          const data = await response.json();
-          localStorage.setItem('token', data.token); // Armazena o token
-          window.location.href = '/main'; // Redireciona para a página principal
-        } else {
-          console.error('Erro ao fazer login:', await response.text());
-        }
-      } catch (error) {
-        console.error('Erro:', error);
-      }
-    };
-    
-    // Função para adicionar comentário
-    const addComment = async (recipeId, comment) => {
-      const token = localStorage.getItem('token'); // Obtém o token armazenado
-    
-      try {
-        const response = await fetch('http://localhost:3001/add-comment', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${token}`,
-          },
-          body: JSON.stringify({ recipeId, comment }),
-        });
-    
-        if (response.ok) {
-          console.log('Comentário adicionado com sucesso!');
-          // Atualizar a interface ou notificar o usuário
-        } else {
-          console.error('Erro ao adicionar comentário:', await response.text());
-        }
-      } catch (error) {
-        console.error('Erro:', error);
-      }
-    };
-    
-    // Submissão de comentário
-    document.getElementById('commentForm').addEventListener('submit', async (event) => {
-      event.preventDefault(); // Evita o envio padrão do formulário
-    
-      const comment = document.getElementById('comment').value;
-    
-      try {
-        const response = await fetch('http://localhost:3001/add-comment', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${localStorage.getItem('token')}`
-          },
-          body: JSON.stringify({ recipeId: 1, comment })
-        });
-    
-        if (response.ok) {
-          alert('Comentário adicionado com sucesso!');
-          document.getElementById('comment').value = ''; // Limpa o campo de comentário
-        } else {
-          alert('Erro ao adicionar comentário.');
-        }
-      } catch (error) {
-        console.error('Erro:', error);
-      }
-    });
-    
+   

@@ -6,12 +6,15 @@
   position: relative;
   border-top: 2px solid #eee;
   padding-top: 5rem;
+  background-color: #333;
+  padding:1rem 2rem;
   }
   
 .logo-col{
   text-align: center;
   align-items: center;
   margin-bottom: 3rem;
+
 }
   
   .social-icon {
@@ -25,15 +28,19 @@
     background-color: #333;
     font-size: 1.6rem;
     line-height: 1.6;
-    color:whitesmoke;
     text-align: center; 
     display:block;
+    color: antiquewhite;
 }
   
   .footer-heading {
     font-size: 1.8rem;
     font-weight: 500;
     margin-bottom: 3rem;
+    color:antiquewhite;
+    @include respond(mobile){
+      justify-content: center;
+    }
   }
   
   .footer-nav {
@@ -59,6 +66,7 @@
   .social-links {
     list-style: none;
     display: flex;
-    gap: 2.4rem;
+    gap: 2.8rem;
+    padding-bottom:6rem;
   }
   

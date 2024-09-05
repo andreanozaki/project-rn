@@ -26,11 +26,11 @@
 </head>
 
 <body>
-    <header class="header flash-effect nav-open">
+    <header class="header flash-effect nav-close ">
         <!--<a href="#">
             <img class="logo" src="img/base/logo/lo2.png" alt="logo" id="logo">
         </a>-->
-        <nav class="main-nav">
+        <nav class="main-nav ">
             <ul class="main-nav-list">
                 <li><a class="main-nav-link" href="#aboutme"> Chef</a></li>
                 <li><a class="main-nav-link" href="#creations">Creacoes</a></li>
@@ -81,7 +81,6 @@
         <section class="section-aboutme " id="aboutme">
             <span id="first" class="subheading ">The Chef</span>
      
-
             <div class="section-aboutme__content ">
                
                     <div class="section-aboutme__left-side flash-effect-2 ">
@@ -94,7 +93,6 @@
                             <a href="chef.html" class=" btn-main btn-main-grey">Saiba mais!</a>
                         </p>
                     </div>
-  
             </div>
         </section>
 
@@ -185,10 +183,10 @@
         
                 <div class="recipe__section-left">
                     <h2 class="recipe__primary-title ">Receitas do Chef</h2>
-                    <p class="paragraph">Navegue por nossa coleção de receitas postadas pelo Chef Ricardo Nozaki.
+                    <p class="paragraph-receitas ">Navegue por nossa coleção de receitas postadas pelo Chef Ricardo Nozaki.
                         Venha conferir e mão na massa!
                     </p>
-                    <a href="all-recipes.html" class="btn-main">Todas as receitas!</a>
+                    <a href="all-recipes.html" class="btn-main">Acesse</a>
         
                 </div>
             </div>
@@ -223,8 +221,8 @@
                 </div>
           
                 <div class="ebook-text">
-                    <p class="paragraph">Desvende segredos culinários com receitas testadas e aprovadas que garantem o sucesso
-                        em cada criação. Desde bolos simples até os mais sofisticados! <br> Conheça nossos E-books!.
+                    <p class="paragraph ebookdesc">Desvende segredos culinários com receitas testadas e aprovadas que garantem o sucesso
+                        em cada criação. Desde bolos simples até os mais sofisticados! Conheça nossos E-books!.
                     </p>
                     <a href="ebook-menu.html" class="btn-main ">Navegue pelos E-books!</a>
                 </div>
@@ -310,6 +308,28 @@
     </main>
 
     <script src="js/script.js"></script>
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Evita o envio padrão do formulário
+    
+            const formData = new FormData(this);
+            const data = new URLSearchParams(formData);
+    
+            fetch('/contact', {
+                method: 'POST',
+                body: data
+            })
+            .then(response => response.text())
+            .then(result => {
+                alert(result); // Exibe a mensagem do servidor em um alerta
+            })
+            .catch(error => {
+                console.error('Erro:', error);
+                alert('Ocorreu um erro ao enviar o formulário.');
+            });
+        });
+        </script>
+    
 
 
 
