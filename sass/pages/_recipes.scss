@@ -8,12 +8,23 @@
     color: beige;
     @include respond (mobile){
         height: 60%;
-        display: flex;
-        flex-direction: column;
-
+    
+        
+background-color: #dd87dc;
     }
+    @include respond(tab-land){
+        height:65%;
+    }
+    @include respond(tab-port){
+     display: inline-block;
+        padding: 3rem 0;
+    }
+   @include respond(big-desktop){
+    background-color: #c32525;
+   }
  &__section-left{
     order: 0;
+    padding: 3rem;
     @include respond(mobile){
         order: -1;
     }
@@ -26,7 +37,7 @@
         @include respond (mobile){
             display: flex;
             flex-direction: column;
-            padding: 0;
+            padding: 5rem;
             margin: 0;
         }
         
@@ -37,6 +48,13 @@
         border-radius: 3px;
         @include respond(mobile){
             width: 100%;
+        }
+        @include respond(tab-port){
+ width: 250px;
+            
+            
+        }
+        @include respond (tab-land){
         }
     }
 
@@ -81,6 +99,9 @@
             top: 2%;
             left: 4%;
             }
+            @include respond(tab-port){
+top: 2%;  
+left: 1%;          }
         
     }
 

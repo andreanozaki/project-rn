@@ -39,6 +39,13 @@ display: none;    }
     position: absolute;
     top: 2rem;
     margin-left: 26rem;
+    @include respond(mobile){
+      
+      font-size: 2.5rem;
+      margin:0rem;
+      text-align: center;
+      align-items: center;
+    }
   &:hover {
     transform: translateY(-3px);
     color: #d5ba87;
@@ -93,8 +100,8 @@ display: none;    }
 /* Adicione estas regras CSS para animar os ícones */
 .social-media li {
   opacity: 0;
-  transform: translateY(20px); /* Inicialmente, mova os ícones para baixo 20px */
-  transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+  transform: translateY(10px); /* Inicialmente, mova os ícones para baixo 20px */
+  transition: opacity 1.5s ease-in-out, transform 1s ease-in-out;
 }
 
 .social-media li.active {

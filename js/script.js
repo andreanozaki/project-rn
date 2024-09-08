@@ -42,13 +42,7 @@ document.addEventListener('DOMContentLoaded', function() {
   const closeIcon = document.querySelector('ion-icon[name="close-outline"]');
   
   // Alterna entre 'nav-open' e 'nav-close' quando o botão é clicado
-  btnNavEl.addEventListener("click", function () {
-      headerEl.classList.toggle("nav-open");
-  
-      // Alterna ícones de abrir e fechar
-      menuIcon.style.display = headerEl.classList.contains("nav-open") ? "none" : "block";
-      closeIcon.style.display = headerEl.classList.contains("nav-open") ? "block" : "none";
-  });
+
   
 
 
@@ -76,4 +70,15 @@ document.addEventListener('DOMContentLoaded', function() {
  
     });
 
-   
+   //icons 
+   window.addEventListener('DOMContentLoaded', (event) => {
+    const socialIcons = document.querySelectorAll('.social-media li');
+    
+    // Adicione a classe 'active' para ativar a animação
+    socialIcons.forEach((icon, index) => {
+      setTimeout(() => {
+        icon.classList.add('active');
+      }, index * 200); // Atraso para cada ícone
+    });
+  });
+  

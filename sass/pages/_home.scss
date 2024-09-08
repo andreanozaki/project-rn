@@ -48,6 +48,9 @@
         animation-duration: 2s;
         animation-timing-function: ease-out;
         color:#696565c5;
+        @include respond(mobile){
+          font-size: 3.5rem;
+        }
       }
   
       &--sub{
@@ -60,6 +63,11 @@
       animation:moveinRight 2s ease-out;
       position: relative;
       color:#545252a4;
+      @include respond(mobile){
+        font-size: 1em;
+        letter-spacing: 0.5rem;
+        color: #333333bb;
+      }
       }
     }
 }
@@ -82,6 +90,7 @@
    border-radius: 13px;
    margin: 5rem;
  
+ 
   }
   &__left-side{
   position: absolute;
@@ -96,14 +105,12 @@
   background-color: #e2d8a8;
   }
   @include respond(mobile) {
+
+    
     &__content {
    display: flex;
    flex-direction: column;
      
-   
-    
-      background-color: rgb(210, 17, 17);
-      background-color: transparent;
 margin-top: 8rem;    }
 
    
@@ -114,7 +121,8 @@ margin-top: 8rem;    }
       margin: 0;
     }
     &__left-side {
-      display: none;
+      height: 100%;
+      display: inline;
     }
 
   }

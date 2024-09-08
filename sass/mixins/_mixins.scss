@@ -1,6 +1,6 @@
 @mixin respond($breakpoint) {
   @if $breakpoint == mobile {
-      @media (max-width: 599px) {
+      @media (max-width: 655px) {
           @content;
       }
   } @else if $breakpoint == tab-land {

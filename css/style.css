@@ -253,7 +253,7 @@ body {
   font-family: "Unica One", sans-serif;
   display: block;
 }
-@media (max-width: 599px) {
+@media (max-width: 655px) {
   .subheading {
     font-size: 3.5rem;
   }
@@ -261,7 +261,7 @@ body {
 .subheading--1 {
   color: #eae1cb;
 }
-@media (max-width: 599px) {
+@media (max-width: 655px) {
   .subheading--1 {
     font-size: 3.5rem;
   }
@@ -269,7 +269,7 @@ body {
 .subheading--2 {
   color: #808080;
 }
-@media (max-width: 599px) {
+@media (max-width: 655px) {
   .subheading--2 {
     font-size: 3.5rem;
   }
@@ -277,7 +277,7 @@ body {
 .subheading--3 {
   color: #000;
 }
-@media (max-width: 599px) {
+@media (max-width: 655px) {
   .subheading--3 {
     font-size: 3.5rem;
   }
@@ -329,7 +329,7 @@ body {
 .logo {
   height: 12rem;
 }
-@media (max-width: 599px) {
+@media (max-width: 655px) {
   .logo {
     display: none;
   }
@@ -360,6 +360,14 @@ body {
   position: absolute;
   top: 2rem;
   margin-left: 26rem;
+}
+@media (max-width: 655px) {
+  .social-media .icon {
+    font-size: 2.5rem;
+    margin: 0rem;
+    text-align: center;
+    align-items: center;
+  }
 }
 .social-media .icon:hover {
   transform: translateY(-3px);
@@ -411,8 +419,8 @@ body {
 /* Adicione estas regras CSS para animar os ícones */
 .social-media li {
   opacity: 0;
-  transform: translateY(20px); /* Inicialmente, mova os ícones para baixo 20px */
-  transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+  transform: translateY(10px); /* Inicialmente, mova os ícones para baixo 20px */
+  transition: opacity 1.5s ease-in-out, transform 1s ease-in-out;
 }
 
 .social-media li.active {
@@ -444,11 +452,20 @@ body {
   left: 50%;
   transform: translate(-50%, -50%);
 }
+@media (max-width: 655px) {
+  .aboutme-photo {
+    top: 140%;
+    left: -30%;
+    width: 330px;
+    height: 230px;
+    padding-bottom: 2rem;
+  }
+}
 
 .ebook-photo {
   max-width: 550px;
 }
-@media (max-width: 599px) {
+@media (max-width: 655px) {
   .ebook-photo {
     padding-top: 2.5rem;
   }
@@ -507,7 +524,7 @@ body {
   display: grid;
   grid-template-columns: 1.5fr 1.5fr 1fr 1fr 1fr;
 }
-@media (max-width: 599px) {
+@media (max-width: 655px) {
   .grid-5cols {
     grid-template-columns: 0fr 2fr 1fr 1fr; /* Alterar para uma única coluna em telas menores */
   }
@@ -552,7 +569,7 @@ body {
   margin-bottom: 3rem;
   color: antiquewhite;
 }
-@media (max-width: 599px) {
+@media (max-width: 655px) {
   .footer-heading {
     justify-content: center;
   }
@@ -604,7 +621,7 @@ body {
   transform: translate(-50%, -50%);
   border-radius: 12px;
 }
-@media (max-width: 599px) {
+@media (max-width: 655px) {
   .section-form .contact {
     width: 90vw;
     height: auto;
@@ -814,6 +831,11 @@ body {
   animation-timing-function: ease-out;
   color: rgba(105, 101, 101, 0.7725490196);
 }
+@media (max-width: 655px) {
+  .section-main .heading-primary--main {
+    font-size: 3.5rem;
+  }
+}
 .section-main .heading-primary--sub {
   display: block;
   font-size: 3rem;
@@ -822,6 +844,13 @@ body {
   animation: moveinRight 2s ease-out;
   position: relative;
   color: rgba(84, 82, 82, 0.6431372549);
+}
+@media (max-width: 655px) {
+  .section-main .heading-primary--sub {
+    font-size: 1em;
+    letter-spacing: 0.5rem;
+    color: rgba(51, 51, 51, 0.7333333333);
+  }
 }
 
 .section-aboutme {
@@ -849,12 +878,10 @@ body {
   width: 50vw;
   background-color: #e2d8a8;
 }
-@media (max-width: 599px) {
+@media (max-width: 655px) {
   .section-aboutme__content {
     display: flex;
     flex-direction: column;
-    background-color: rgb(210, 17, 17);
-    background-color: transparent;
     margin-top: 8rem;
   }
   .section-aboutme__right-side {
@@ -864,7 +891,8 @@ body {
     margin: 0;
   }
   .section-aboutme__left-side {
-    display: none;
+    height: 100%;
+    display: inline;
   }
 }
 
@@ -901,7 +929,7 @@ body {
   padding: 15rem 0 0 0;
   gap: 3rem;
 }
-@media (max-width: 599px) {
+@media (max-width: 655px) {
   .section-creations__gallery {
     gap: 0;
     display: flex;
@@ -946,7 +974,7 @@ body {
   font-weight: 400;
   opacity: 0;
 }
-@media (max-width: 599px) {
+@media (max-width: 655px) {
   .section-creations__gallery .gallery-link .gallery-item .gallery-box-description {
     font-size: 2.5rem;
   }
@@ -993,7 +1021,7 @@ body {
   font-size: 4rem;
   display: inline-block;
 }
-@media (max-width: 599px) {
+@media (max-width: 655px) {
   .section-creations .gallery-link .gallery-item {
     transform: none;
     transition: none;
@@ -1006,12 +1034,12 @@ body {
     transition: none;
   }
 }
-@media (max-width: 599px) and (max-width: 599px) {
+@media (max-width: 655px) and (max-width: 655px) {
   .section-creations .gallery-link .gallery-item .gallery-box-description {
     opacity: 1;
   }
 }
-@media (max-width: 599px) {
+@media (max-width: 655px) {
   .section-creations .gallery-link .gallery-item:hover::before {
     opacity: 0;
     transform: none;
@@ -1026,7 +1054,7 @@ body {
   align-items: center;
   justify-content: space-evenly;
 }
-@media (max-width: 599px) {
+@media (max-width: 655px) {
   .ebook {
     height: 100%;
     display: flex;
@@ -1037,7 +1065,7 @@ body {
   height: 65%;
   width: 40vw;
 }
-@media (max-width: 599px) {
+@media (max-width: 655px) {
   .ebook .ebook-photo {
     width: 70vw;
   }
@@ -1047,7 +1075,7 @@ body {
   text-align: center;
   width: 100%;
 }
-@media (max-width: 599px) {
+@media (max-width: 655px) {
   .ebook .ebook-text {
     width: 100%;
     display: block;
@@ -1057,7 +1085,7 @@ body {
     width: 360px;
   }
 }
-@media (max-width: 599px) {
+@media (max-width: 655px) {
   .ebook .ebook-left {
     padding-right: 2rem;
     display: inline-block;
@@ -1103,7 +1131,7 @@ body {
   border-radius: 9px;
   font-size: 22px;
 }
-@media (max-width: 599px) {
+@media (max-width: 655px) {
   .btn-main {
     margin-top: 1rem;
     margin-bottom: 2.5rem;
@@ -1125,7 +1153,7 @@ body {
   display: flex;
   flex-direction: row;
   gap: 7rem;
-  justify-content: space-around;
+  justify-content: space-evenly;
   align-items: center;
 }
 .container-history--photo {
@@ -1141,6 +1169,50 @@ body {
   background-color: rgba(221, 215, 183, 0.2862745098);
 }
 
+@media (max-width: 768px) {
+  .container-history {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem; /* Ajusta o espaçamento entre os elementos */
+    padding: 2rem;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+  }
+  .container-history--text {
+    order: 1; /* Coloca o texto primeiro */
+    width: 90%;
+  }
+  .container-history--photo {
+    order: 2; /* Coloca a primeira foto logo abaixo do texto */
+  }
+  .container-history--photo-formation {
+    padding-top: 55rem;
+  }
+  .chef-formation {
+    width: 430px;
+    align-items: center;
+  }
+  .chef-experience-photo {
+    order: 3; /* Coloca a segunda foto abaixo do container de texto e da primeira foto */
+  }
+  .formation {
+    height: 60vh;
+    display: inline;
+    /* Ajusta a altura conforme o conteúdo */
+  }
+}
+.historia-mobile {
+  font-size: 2.5rem;
+  display: inline-block;
+  text-align: left;
+  max-width: 450px;
+}
+
+.montagem {
+  width: 90vw;
+}
+
 .recipe {
   position: relative;
   padding: 15rem 5rem 35rem 5rem;
@@ -1148,17 +1220,33 @@ body {
   background-color: rgba(51, 51, 51, 0.8784313725);
   color: beige;
 }
-@media (max-width: 599px) {
+@media (max-width: 655px) {
   .recipe {
     height: 60%;
-    display: flex;
-    flex-direction: column;
+    background-color: #dd87dc;
+  }
+}
+@media (max-width: 75em) {
+  .recipe {
+    height: 65%;
+  }
+}
+@media (max-width: 59em) {
+  .recipe {
+    display: inline-block;
+    padding: 3rem 0;
+  }
+}
+@media (min-width: 75em) {
+  .recipe {
+    background-color: #c32525;
   }
 }
 .recipe__section-left {
   order: 0;
+  padding: 3rem;
 }
-@media (max-width: 599px) {
+@media (max-width: 655px) {
   .recipe__section-left {
     order: -1;
   }
@@ -1168,11 +1256,11 @@ body {
   display: flex;
   justify-content: space-evenly;
 }
-@media (max-width: 599px) {
+@media (max-width: 655px) {
   .recipe__container {
     display: flex;
     flex-direction: column;
-    padding: 0;
+    padding: 5rem;
     margin: 0;
   }
 }
@@ -1180,9 +1268,14 @@ body {
   max-width: 400px;
   border-radius: 3px;
 }
-@media (max-width: 599px) {
+@media (max-width: 655px) {
   .recipe__image {
     width: 100%;
+  }
+}
+@media (max-width: 59em) {
+  .recipe__image {
+    width: 250px;
   }
 }
 .recipe__title {
@@ -1194,7 +1287,7 @@ body {
   font-weight: 600;
   color: #333;
 }
-@media (max-width: 599px) {
+@media (max-width: 655px) {
   .recipe__title {
     top: 40%;
     font-size: 16px;
@@ -1220,16 +1313,22 @@ body {
   left: 12.2%;
   z-index: 1;
 }
-@media (max-width: 599px) {
+@media (max-width: 655px) {
   .recipe__design {
     top: 2%;
     left: 4%;
   }
 }
+@media (max-width: 59em) {
+  .recipe__design {
+    top: 2%;
+    left: 1%;
+  }
+}
 .recipe__designer {
   width: 180px;
 }
-@media (max-width: 599px) {
+@media (max-width: 655px) {
   .recipe__designer {
     width: 100px;
   }
@@ -1243,7 +1342,7 @@ body {
   top: 24%;
   width: 35%;
 }
-@media (max-width: 599px) {
+@media (max-width: 655px) {
   .recipe__design-right {
     top: 42%;
     right: -2%;
@@ -1267,7 +1366,7 @@ body {
   border-bottom: 2px solid rgb(255, 255, 255);
   display: inline-block;
 }
-@media (max-width: 599px) {
+@media (max-width: 655px) {
   .recipe__primary-title {
     font-size: 4rem;
   }
@@ -1370,7 +1469,7 @@ body {
   cursor: pointer;
   gap: 14rem;
 }
-@media (max-width: 599px) {
+@media (max-width: 655px) {
   .container-my-ebooks .ebook-content .ebook-box {
     display: flex;
     flex-direction: column;
