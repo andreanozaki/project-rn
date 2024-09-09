@@ -1,39 +1,47 @@
 //chef.html history
 .container-history{
   
-  height: 100vh;
+  height: 80vh;
   padding: 5rem 10rem;
   display: flex;
   flex-direction: row;
-  gap: 7rem;
-justify-content: space-evenly; 
- align-items: center;
-
-  
+  gap: 3rem;
+  justify-content:space-evenly; 
+   align-items: center;
 
   &--photo{
     padding-top: 5rem;
-   
-    
+
+    .montagem{
+      width:700px;
+    }
   
   }
- 
 
   &--text{
      text-align: center;
-    
+     padding: 0;
 
   }
 }
 
 .formation {
   
-  height: 68vh;
+  height: 90vh;
   position: relative;
   background-color:#ddd7b749;
  
 }
-
+.experience{
+  display: flex;
+  flex-direction: column;
+  .historia-mobile{
+    font-size: 2.5rem;
+    display: inline-block;
+    text-align:left;
+ 
+  }
+}
 @media (max-width: 768px) {
   .container-history {
     display: flex;
@@ -83,12 +91,7 @@ justify-content: space-evenly;
   }
 
 }
-.historia-mobile{
-  font-size: 2.5rem;
-  display: inline-block;
-  text-align:left;
-  max-width: 450px;
-}
+
 .montagem {
   width: 90vw;
 }
