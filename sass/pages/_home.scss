@@ -75,59 +75,27 @@
 
 //SECTION ABOUT-ME
 .section-aboutme{
- padding: 10rem;
- height: 70vh;
-
+ padding: 5rem;
+ height: 100vh;
 
   &__content{
-   position: relative;
+    align-items: center;
+    position: relative;
    height: 100%;
-   display:flex;
-   flex-direction: row;
-   align-items: center;
- background-color:rgb(247, 244, 234);
-
-   border-radius: 13px;
-   margin: 5rem;
- 
- 
-  }
-  &__left-side{
-  position: absolute;
-  left: 50vw;
-  width: 550px;
-
-    }
-  &__right-side{
-  position: absolute;
-  left: 50;
-  width: 50vw;
-  background-color: #e2d8a8;
-  }
-  @include respond(mobile) {
-
-    
-    &__content {
    display: flex;
    flex-direction: column;
-     
-margin-top: 8rem;    }
-
-   
-    &__right-side {
-      background-color: #d0a8e2;
-      position: static;
-      width: 100%;
-      margin: 0;
-    }
-    &__left-side {
-      height: 100%;
-      display: inline;
-    }
+   justify-content: space-around;
 
   }
+
+.aboutme-photo{
+
+height: 50vh;
+width: 60vw;
+}
 }
 //SECTION-CREATIONS
+
 
 .section-creations {
   height: 100%;

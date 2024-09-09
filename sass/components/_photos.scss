@@ -1,22 +1,4 @@
 
-.aboutme-photo{
-  width: 100%;
-  max-width: 83rem;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  @include respond(mobile){
-    top:140%;
-    left:-30%;
-
-    width: 330px;
-    height: 230px;
-    padding-bottom: 2rem;
- 
-    
-  }
-}
   .ebook-photo {
     max-width:550px;
     @include respond (mobile){

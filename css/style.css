@@ -205,12 +205,8 @@ body {
 }
 
 .paragraph-chef {
-  align-items: center;
+  padding: 5rem;
   text-align: center;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   font-size: 3rem;
   text-transform: uppercase;
   font-family: sans-serif;
@@ -444,24 +440,6 @@ body {
     transform: rotate(360deg);
   }
 }
-.aboutme-photo {
-  width: 100%;
-  max-width: 83rem;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-@media (max-width: 655px) {
-  .aboutme-photo {
-    top: 140%;
-    left: -30%;
-    width: 330px;
-    height: 230px;
-    padding-bottom: 2rem;
-  }
-}
-
 .ebook-photo {
   max-width: 550px;
 }
@@ -854,46 +832,20 @@ body {
 }
 
 .section-aboutme {
-  padding: 10rem;
-  height: 70vh;
+  padding: 5rem;
+  height: 100vh;
 }
 .section-aboutme__content {
+  align-items: center;
   position: relative;
   height: 100%;
   display: flex;
-  flex-direction: row;
-  align-items: center;
-  background-color: rgb(247, 244, 234);
-  border-radius: 13px;
-  margin: 5rem;
+  flex-direction: column;
+  justify-content: space-around;
 }
-.section-aboutme__left-side {
-  position: absolute;
-  left: 50vw;
-  width: 550px;
-}
-.section-aboutme__right-side {
-  position: absolute;
-  left: 50;
-  width: 50vw;
-  background-color: #e2d8a8;
-}
-@media (max-width: 655px) {
-  .section-aboutme__content {
-    display: flex;
-    flex-direction: column;
-    margin-top: 8rem;
-  }
-  .section-aboutme__right-side {
-    background-color: #d0a8e2;
-    position: static;
-    width: 100%;
-    margin: 0;
-  }
-  .section-aboutme__left-side {
-    height: 100%;
-    display: inline;
-  }
+.section-aboutme .aboutme-photo {
+  height: 50vh;
+  width: 60vw;
 }
 
 .section-creations {
