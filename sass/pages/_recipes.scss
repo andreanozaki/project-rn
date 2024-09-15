@@ -2,29 +2,33 @@
 //SECTION MAIN RECIPE-index.html
 .recipe {
     position: relative;
-    padding: 15rem 5rem 35rem 5rem;
     height: 80vh;
+    padding: 5rem 10rem;
     background-color: #333333e0;
     color: beige;
+    text-align: center;
     @include respond (mobile){
         height: 60%;
     
-        
-background-color: #dd87dc;
-    }
-    @include respond(tab-land){
-        height:65%;
+    
     }
     @include respond(tab-port){
-     display: inline-block;
-        padding: 3rem 0;
+           padding: 5rem 0;
+   
+       }
+    @include respond(tab-land){
+        height:65%;
+    
+
     }
-   @include respond(big-desktop){
-    background-color: #c32525;
-   }
+
+  
  &__section-left{
     order: 0;
-    padding: 3rem;
+    text-align: center;
+    padding: 3.5rem;
+  
+
     @include respond(mobile){
         order: -1;
     }
@@ -50,12 +54,11 @@ background-color: #dd87dc;
             width: 100%;
         }
         @include respond(tab-port){
- width: 250px;
+ width: 200px;
             
             
         }
-        @include respond (tab-land){
-        }
+       
     }
 
     &__title {
@@ -70,11 +73,21 @@ background-color: #dd87dc;
             top: 40%;
             font-size: 16px;
         }
+        @include respond(tab-port){
+            position: absolute;
+            top: 30%;
+            left: 24%;
+            padding:0.3rem 1.6rem ;  
+
+      }
     }
 
     &__description {
         max-width: 400px;
         font-size: 21px;
+        @include respond(tab-port){
+            width: 90%;
+        }
     }
 
     &__creator {
@@ -87,32 +100,34 @@ background-color: #dd87dc;
     &__card {
         position: relative;
         justify-content: space-evenly;
-        
+        @include respond(mobile){
+            padding: 3rem;
+        }
+        .paragraph{
+            @include respond(mobile){
+                padding: 2rem 2rem 2rem 0;
+                font-weight: 600;
+            }
+        }
     }
 
     &__design {
         position: absolute;
-        top: 12.4%;
-        left: 12.2%;
+        top:3%;
+        left: 8%;
         z-index: 1;
-        @include respond(mobile){
-            top: 2%;
-            left: 4%;
-            }
-            @include respond(tab-port){
-top: 2%;  
-left: 1%;          }
+        
         
     }
 
     &__designer {
-        width: 180px;
-        @include respond(mobile){
-            width: 100px;
-           
-            
-            }
-       
+        width: 140px;
+      
+            @include respond(tab-port){
+                width: 100px;
+               
+                
+                }
     }
     &__design-right {
         position: absolute;
@@ -128,12 +143,18 @@ left: 1%;          }
 
         &__designer--1 {
             height: 30vh;
-        }
+            @include respond (tab-port)
+{
+    display: none;
+}        }
 
         &__designer--2 {
-            height: 50px;
-        }
-      
+width: 680px;        }
+        @include respond(tab-port){
+            display: none;
+           
+            
+            }
     }
 
     &__primary-title {
@@ -169,7 +190,6 @@ left: 1%;          }
     padding: 15rem;
     text-align: center;  
     align-items: center;
-  
   
    
    
@@ -280,5 +300,8 @@ max-width: 50vw;
 //all recipes
 .container-all-recipes{
     padding: 10rem;
+@include respond(mobile){
+    padding: 0;
+}
 
 }

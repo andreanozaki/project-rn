@@ -1,6 +1,6 @@
 //SECTION MAIN
 .section-main {
-  height: 85vh;
+  height: 86vh;
   width: 100%;
   margin: 0;
 
@@ -77,6 +77,8 @@
 .section-aboutme{
  padding: 5rem;
  height: 100vh;
+ background-color:#ddd7b71d;
+
 
   &__content{
     align-items: center;
@@ -85,27 +87,45 @@
    display: flex;
    flex-direction: column;
    justify-content: space-around;
+   
+
 
   }
+ 
 
 .aboutme-photo{
 
 height: 50vh;
-width: 60vw;
+width: 60vw; 
+
+
+  
+@include respond(mobile){
+  padding: 3rem 2rem;
+  height: 350px;
+  width:400px;
 }
+}
+
 }
 //SECTION-CREATIONS
 
 
 .section-creations {
   height: 100%;
-  padding: 10rem 0 0 0;
+  padding: 3rem 0 0 0;
 
   &__heading {
       padding: 15rem 0;
       display: flex;
       flex-direction: row;
       position: relative;
+      
+        @include respond(mobile){
+          padding: 6rem;
+        }
+    
+      
 
       .designer {
           position: absolute;
@@ -139,6 +159,9 @@ width: 60vw;
         gap: 0;
         display: flex;
         flex-direction: column;
+      }
+      @include respond(tab-port){
+        gap: 0;
       }
       .gallery-link {
           text-decoration: none;
@@ -282,6 +305,7 @@ width: 60vw;
  height: 100%;
   display: flex;
   flex-direction: column;
+  padding: 6rem;
   
 }
 .ebook-photo{
@@ -318,7 +342,6 @@ width: 60vw;
  .icon-ebook{
   display: flex;
   flex-direction: row;
-  padding: 1rem;
 justify-content: center;
 }
 }

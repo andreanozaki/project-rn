@@ -1,19 +1,19 @@
 @mixin respond($breakpoint) {
-  @if $breakpoint == mobile {
-      @media (max-width: 655px) {
-          @content;
-      }
-  } @else if $breakpoint == tab-land {
-      @media (max-width: 75em) {
-          @content;
-      }
-  } @else if $breakpoint == tab-port {
-      @media (max-width: 59em) {
-          @content;
-      }
-  } @else if $breakpoint == big-desktop {
-      @media (min-width: 75em) {
-          @content;
-      }
+    @if $breakpoint == mobile {
+        @media (max-width: 655px) {
+            @content;
+        }
+    } @else if $breakpoint == tab-port {
+        @media (max-width: 59em) { // ≈944px
+            @content;
+        }
+    } @else if $breakpoint == tab-land {
+        @media (max-width: 75em) { // ≈1200px
+            @content;
+        }
+    } @else if $breakpoint == big-desktop {
+        @media (min-width: 75em) { // ≈1200px e acima
+            @content;
+        }
+    }
   }
-}

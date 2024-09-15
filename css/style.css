@@ -182,6 +182,19 @@ body {
   padding: 3rem;
   font-weight: 100;
 }
+@media (max-width: 655px) {
+  .paragraph {
+    max-width: 100vw;
+    padding: 4rem 4.5rem 3rem 4rem;
+    font-size: 2rem;
+    text-align: left;
+    justify-content: space-evenly;
+  }
+}
+
+.historia-mobile {
+  width: 100%;
+}
 
 .ebookdesc {
   max-width: 90vw;
@@ -212,6 +225,12 @@ body {
   font-family: sans-serif;
   color: #333;
   line-height: 1.5;
+}
+@media (max-width: 655px) {
+  .paragraph-chef {
+    padding: 1rem;
+    font-size: 2rem;
+  }
 }
 
 .experience-chef {
@@ -251,7 +270,7 @@ body {
 }
 @media (max-width: 655px) {
   .subheading {
-    font-size: 3.5rem;
+    font-size: 3.2rem;
   }
 }
 .subheading--1 {
@@ -259,7 +278,7 @@ body {
 }
 @media (max-width: 655px) {
   .subheading--1 {
-    font-size: 3.5rem;
+    font-size: 3.2rem;
   }
 }
 .subheading--2 {
@@ -267,7 +286,7 @@ body {
 }
 @media (max-width: 655px) {
   .subheading--2 {
-    font-size: 3.5rem;
+    font-size: 3.2rem;
   }
 }
 .subheading--3 {
@@ -275,7 +294,7 @@ body {
 }
 @media (max-width: 655px) {
   .subheading--3 {
-    font-size: 3.5rem;
+    font-size: 3.2rem;
   }
 }
 
@@ -340,29 +359,32 @@ body {
 }
 
 .social-media {
-  font-size: 4rem;
-  align-items: center;
+  position: absolute;
+  top: 50%;
+  left: 45%;
+  transform: translate(-50%, -50%);
+  font-size: 4.5rem;
+  gap: 7.6rem;
   display: flex;
-  gap: 5rem;
-  margin-left: 1em;
   list-style: none;
   text-decoration: none;
-  position: absolute;
   color: rgba(84, 82, 82, 0.7725490196);
 }
+@media (max-width: 655px) {
+  .social-media {
+    font-size: 3rem;
+    gap: 4rem;
+  }
+}
 .social-media .icon {
-  color: rgba(84, 82, 82, 0.7725490196);
+  color: rgb(135, 131, 131);
   text-decoration: none;
   position: absolute;
-  top: 2rem;
-  margin-left: 26rem;
+  padding-top: 6rem;
 }
 @media (max-width: 655px) {
   .social-media .icon {
-    font-size: 2.5rem;
-    margin: 0rem;
-    text-align: center;
-    align-items: center;
+    padding: 0;
   }
 }
 .social-media .icon:hover {
@@ -680,7 +702,6 @@ body {
 }
 
 .header {
-  position: relative;
   display: flex;
   align-items: center;
   color: #ffffff;
@@ -770,7 +791,7 @@ body {
 }
 
 .section-main {
-  height: 85vh;
+  height: 86vh;
   width: 100%;
   margin: 0;
 }
@@ -834,6 +855,7 @@ body {
 .section-aboutme {
   padding: 5rem;
   height: 100vh;
+  background-color: rgba(221, 215, 183, 0.1137254902);
 }
 .section-aboutme__content {
   align-items: center;
@@ -847,16 +869,28 @@ body {
   height: 50vh;
   width: 60vw;
 }
+@media (max-width: 655px) {
+  .section-aboutme .aboutme-photo {
+    padding: 3rem 2rem;
+    height: 350px;
+    width: 400px;
+  }
+}
 
 .section-creations {
   height: 100%;
-  padding: 10rem 0 0 0;
+  padding: 3rem 0 0 0;
 }
 .section-creations__heading {
   padding: 15rem 0;
   display: flex;
   flex-direction: row;
   position: relative;
+}
+@media (max-width: 655px) {
+  .section-creations__heading {
+    padding: 6rem;
+  }
 }
 .section-creations__heading .designer {
   position: absolute;
@@ -886,6 +920,11 @@ body {
     gap: 0;
     display: flex;
     flex-direction: column;
+  }
+}
+@media (max-width: 59em) {
+  .section-creations__gallery {
+    gap: 0;
   }
 }
 .section-creations__gallery .gallery-link {
@@ -1011,6 +1050,7 @@ body {
     height: 100%;
     display: flex;
     flex-direction: column;
+    padding: 6rem;
   }
 }
 .ebook .ebook-photo {
@@ -1047,7 +1087,6 @@ body {
 .ebook .icon-ebook {
   display: flex;
   flex-direction: row;
-  padding: 1rem;
   justify-content: center;
 }
 
@@ -1174,15 +1213,20 @@ body {
 
 .recipe {
   position: relative;
-  padding: 15rem 5rem 35rem 5rem;
   height: 80vh;
+  padding: 5rem 10rem;
   background-color: rgba(51, 51, 51, 0.8784313725);
   color: beige;
+  text-align: center;
 }
 @media (max-width: 655px) {
   .recipe {
     height: 60%;
-    background-color: #dd87dc;
+  }
+}
+@media (max-width: 59em) {
+  .recipe {
+    padding: 5rem 0;
   }
 }
 @media (max-width: 75em) {
@@ -1190,20 +1234,10 @@ body {
     height: 65%;
   }
 }
-@media (max-width: 59em) {
-  .recipe {
-    display: inline-block;
-    padding: 3rem 0;
-  }
-}
-@media (min-width: 75em) {
-  .recipe {
-    background-color: #c32525;
-  }
-}
 .recipe__section-left {
   order: 0;
-  padding: 3rem;
+  text-align: center;
+  padding: 3.5rem;
 }
 @media (max-width: 655px) {
   .recipe__section-left {
@@ -1234,7 +1268,7 @@ body {
 }
 @media (max-width: 59em) {
   .recipe__image {
-    width: 250px;
+    width: 200px;
   }
 }
 .recipe__title {
@@ -1252,9 +1286,22 @@ body {
     font-size: 16px;
   }
 }
+@media (max-width: 59em) {
+  .recipe__title {
+    position: absolute;
+    top: 30%;
+    left: 24%;
+    padding: 0.3rem 1.6rem;
+  }
+}
 .recipe__description {
   max-width: 400px;
   font-size: 21px;
+}
+@media (max-width: 59em) {
+  .recipe__description {
+    width: 90%;
+  }
 }
 .recipe__creator {
   font-size: 14px;
@@ -1266,28 +1313,27 @@ body {
   position: relative;
   justify-content: space-evenly;
 }
+@media (max-width: 655px) {
+  .recipe__card {
+    padding: 3rem;
+  }
+}
+@media (max-width: 655px) {
+  .recipe__card .paragraph {
+    padding: 2rem 2rem 2rem 0;
+    font-weight: 600;
+  }
+}
 .recipe__design {
   position: absolute;
-  top: 12.4%;
-  left: 12.2%;
+  top: 3%;
+  left: 8%;
   z-index: 1;
 }
-@media (max-width: 655px) {
-  .recipe__design {
-    top: 2%;
-    left: 4%;
-  }
+.recipe__designer {
+  width: 140px;
 }
 @media (max-width: 59em) {
-  .recipe__design {
-    top: 2%;
-    left: 1%;
-  }
-}
-.recipe__designer {
-  width: 180px;
-}
-@media (max-width: 655px) {
   .recipe__designer {
     width: 100px;
   }
@@ -1310,8 +1356,18 @@ body {
 .recipe__design-right__designer--1 {
   height: 30vh;
 }
+@media (max-width: 59em) {
+  .recipe__design-right__designer--1 {
+    display: none;
+  }
+}
 .recipe__design-right__designer--2 {
-  height: 50px;
+  width: 680px;
+}
+@media (max-width: 59em) {
+  .recipe__design-right {
+    display: none;
+  }
 }
 .recipe__primary-title {
   color: #fae5d3;
@@ -1407,6 +1463,11 @@ body {
 
 .container-all-recipes {
   padding: 10rem;
+}
+@media (max-width: 655px) {
+  .container-all-recipes {
+    padding: 0;
+  }
 }
 
 .container-my-ebooks {
