@@ -970,6 +970,11 @@ body {
     font-size: 2.5rem;
   }
 }
+@media (max-width: 59em) {
+  .section-creations__gallery .gallery-link .gallery-item .gallery-box-description {
+    font-size: 3rem;
+  }
+}
 .section-creations__gallery .gallery-link .gallery-item:hover .gallery-box-description {
   opacity: 1;
   position: absolute;
@@ -1397,8 +1402,20 @@ body {
   text-align: center;
   align-items: center;
 }
+@media (max-width: 655px) {
+  .recipes {
+    padding: 3.5rem;
+    text-align: justify;
+    gap: 0;
+  }
+}
 .recipes .left-side {
   max-width: 50vw;
+}
+@media (max-width: 655px) {
+  .recipes .left-side {
+    max-width: 80vw;
+  }
 }
 .recipes .left-side .left-side__photo {
   width: 80%;
@@ -1409,6 +1426,13 @@ body {
   font-weight: 200;
   text-align: center;
 }
+@media (max-width: 655px) {
+  .recipes .left-side .left-side__title {
+    font-size: 3.5em;
+    width: 100%;
+    display: inline;
+  }
+}
 .recipes .left-side .left-side__subheading {
   padding: 2rem 0;
   font-size: 18px;
@@ -1416,8 +1440,20 @@ body {
   text-align: left;
   padding-left: 10rem;
 }
+@media (max-width: 655px) {
+  .recipes .left-side .left-side__subheading {
+    padding: 2rem;
+    width: 80vw;
+  }
+}
 .recipes .right-side {
   max-width: 50vw;
+}
+@media (max-width: 655px) {
+  .recipes .right-side {
+    max-width: 90vw;
+    padding: 0;
+  }
 }
 .recipes .right-side .status-recipe {
   width: 100%;
@@ -1441,6 +1477,11 @@ body {
   font-size: 2rem;
   width: 50vw;
   text-align: start;
+}
+@media (max-width: 655px) {
+  .recipes .right-side .paragraph {
+    width: 100vw;
+  }
 }
 .recipes .right-side .topic {
   padding: 0.5rem;

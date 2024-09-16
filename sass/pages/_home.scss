@@ -205,6 +205,10 @@ width: 60vw;
                   @include respond (mobile){
                     font-size: 2.5rem;
                   }
+                  @include respond(tab-port){
+                    font-size: 3rem;
+
+                  }
               }
 
               &:hover .gallery-box-description {

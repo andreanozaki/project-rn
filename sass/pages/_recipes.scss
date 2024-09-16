@@ -190,14 +190,21 @@ width: 680px;        }
     padding: 15rem;
     text-align: center;  
     align-items: center;
-  
+
+    
    
    
-  
+  @include respond(mobile){
+    padding:3.5rem;
+    text-align: justify;
+    gap: 0;
+  }
 
  .left-side{
 max-width: 50vw;
-
+@include respond(mobile){
+    max-width: 80vw;
+}
     .left-side__photo{
         width: 80%;
         border-radius: 8px;
@@ -207,7 +214,13 @@ max-width: 50vw;
         font-size: 6rem;
         font-weight: 200;
         text-align: center;
-       
+       @include respond(mobile){
+        font-size: 3.5em;
+        width: 100%;
+        display: inline;
+
+        
+       }
 
        
     }
@@ -221,17 +234,23 @@ max-width: 50vw;
        text-align: left;
        padding-left: 10rem;
       
-        
+       @include respond(mobile){
+        padding: 2rem;
+        width: 80vw;
+    }
        
     
     
     }
-    
+  
  }
 
    .right-side{
     max-width: 50vw;
-   
+   @include respond(mobile){
+    max-width: 90vw;
+    padding: 0;
+   }
     .status-recipe{
        width: 100%;
         display: flex;
@@ -270,7 +289,9 @@ max-width: 50vw;
     font-size: 2rem;
     width: 50vw;
     text-align: start;
-
+@include respond(mobile){
+    width:100vw;
+}
 }
 .topic{
     padding:0.5rem ;
