@@ -1,100 +1,82 @@
-//chef.html history
-.container-history{
-  height: 70vh;
+
+.container-history {
+  height: 90vh;
   padding: 5rem 15rem;
   display: flex;
   flex-direction: row;
   gap: 3rem;
-  justify-content:space-evenly; 
+  justify-content: space-evenly;
   align-items: center;
 
-  &--photo{
-  
-    .montagem{
-      width:500px;
+  &--photo {
+    .montagem, .history-photo, .chef-experience-photo {
+      width: 550px;
+
+      @include respond(tab-port) {
+        width: 50vw;
+      }
+
+      @include respond(tab-land) {
+        width: 40vw;
+
+      }
+
+      &.chef-experience-photo {
+        @include respond(tab-land) {
+          width: 35vw;
+          padding: 2rem;
+        }
+       
+      }
     }
-   .history-photo{
-     width:500px;
-     @include respond(tab-port){
-      width: 50vw;
-      
-     }
-   }
-   .chef-experience-photo{
-     width: 500px;
-     @include respond(tab-land){
-      width: 35vw;
-      padding: 2rem;
-     }
-   }
   }
 
-  &--text{
-     text-align: center;
-     padding: 0;
-
+  &--text {
+    text-align: center;
+    padding: 0;
   }
-  .experience{
+
+  .experience {
     display: flex;
     flex-direction: column;
-}
+  }
 
-  @include respond(tab-land){
-    
-    padding: 0;
-    display: flex;
+  @include respond(tab-land) {
+    padding: 0rem;
     flex-direction: row;
-padding: 3rem;
-    height: 100%;
-    &--photo{
-      padding-top: 5rem;
-  
-      .montagem{
-        width:450px;
-      }
-    
+    height: 100vh;
+    gap: 0;
+
+    &--photo .montagem {
+      width: 450px;
     }
-  
-    &--text{
-       text-align: center;
-       padding: 0;
-       padding: 3rem;
-  
+
+    &--text {
+      padding: 0;
     }
   }
 }
 
 .formation {
-  
   height: 90vh;
   position: relative;
-  background-color:#ddd7b749;
- 
+  background-color: rgba(221, 215, 183, 0.29); /* Transparência ajustada */
 }
 
-  
-
-.historia-mobile{
+.historia-mobile {
   font-size: 2.5rem;
-  text-align:left;
-  text-decoration: none;
+  text-align: justify;
 
-
-  @include respond(tab-land){
+  @include respond(tab-land) {
     max-width: 70vw;
     justify-content: space-evenly;
-    padding:4rem 2rem;
-
-
+    padding: 3rem 4rem 0;
   }
-
 }
+
 @media (max-width: 930px) {
   .container-history {
-    display: flex;
     flex-direction: column;
-    gap: 2rem; /* Ajusta o espaçamento entre os elementos */
-    padding: 2rem;
     align-items: center;
     height: 100%;
     width: 100%;
@@ -102,14 +84,14 @@ padding: 3rem;
     &--text {
       order: 1; /* Coloca o texto primeiro */
       width: 90%;
-      gap: 2rem;
     }
 
     &--photo {
-      order: 2; /* Coloca a primeira foto logo abaixo do texto */   
- }
- &--photo-formation{
-  padding-top: 55rem;
-}
+      order: 2; /* Coloca a foto logo abaixo do texto */
+    }
   }
+}
+.cor{
+  background-color:var(--color-primary-light);
+  padding: 0;
 }

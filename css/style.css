@@ -107,7 +107,7 @@
 }
 :root {
   --color-primary:#292929 ;
-  --color-primary-light:#e5c8bc ;
+  --color-primary-light:#dbd4afb6;
   --color-primary-dark:#323232 ; /* h2 fundo
 
 
@@ -1144,7 +1144,7 @@ body {
 }
 
 .container-history {
-  height: 70vh;
+  height: 90vh;
   padding: 5rem 15rem;
   display: flex;
   flex-direction: row;
@@ -1152,22 +1152,21 @@ body {
   justify-content: space-evenly;
   align-items: center;
 }
-.container-history--photo .montagem {
-  width: 500px;
-}
-.container-history--photo .history-photo {
-  width: 500px;
+.container-history--photo .montagem, .container-history--photo .history-photo, .container-history--photo .chef-experience-photo {
+  width: 550px;
 }
 @media (max-width: 59em) {
-  .container-history--photo .history-photo {
+  .container-history--photo .montagem, .container-history--photo .history-photo, .container-history--photo .chef-experience-photo {
     width: 50vw;
   }
 }
-.container-history--photo .chef-experience-photo {
-  width: 500px;
+@media (max-width: 75em) {
+  .container-history--photo .montagem, .container-history--photo .history-photo, .container-history--photo .chef-experience-photo {
+    width: 40vw;
+  }
 }
 @media (max-width: 75em) {
-  .container-history--photo .chef-experience-photo {
+  .container-history--photo .montagem.chef-experience-photo, .container-history--photo .history-photo.chef-experience-photo, .container-history--photo .chef-experience-photo.chef-experience-photo {
     width: 35vw;
     padding: 2rem;
   }
@@ -1182,50 +1181,40 @@ body {
 }
 @media (max-width: 75em) {
   .container-history {
-    padding: 0;
-    display: flex;
+    padding: 0rem;
     flex-direction: row;
-    padding: 3rem;
-    height: 100%;
-  }
-  .container-history--photo {
-    padding-top: 5rem;
+    height: 100vh;
+    gap: 0;
   }
   .container-history--photo .montagem {
     width: 450px;
   }
   .container-history--text {
-    text-align: center;
     padding: 0;
-    padding: 3rem;
   }
 }
 
 .formation {
   height: 90vh;
   position: relative;
-  background-color: rgba(221, 215, 183, 0.2862745098);
+  background-color: rgba(221, 215, 183, 0.29); /* Transparência ajustada */
 }
 
 .historia-mobile {
   font-size: 2.5rem;
-  text-align: left;
-  text-decoration: none;
+  text-align: justify;
 }
 @media (max-width: 75em) {
   .historia-mobile {
     max-width: 70vw;
     justify-content: space-evenly;
-    padding: 4rem 2rem;
+    padding: 3rem 4rem 0;
   }
 }
 
 @media (max-width: 930px) {
   .container-history {
-    display: flex;
     flex-direction: column;
-    gap: 2rem; /* Ajusta o espaçamento entre os elementos */
-    padding: 2rem;
     align-items: center;
     height: 100%;
     width: 100%;
@@ -1233,15 +1222,16 @@ body {
   .container-history--text {
     order: 1; /* Coloca o texto primeiro */
     width: 90%;
-    gap: 2rem;
   }
   .container-history--photo {
-    order: 2; /* Coloca a primeira foto logo abaixo do texto */
-  }
-  .container-history--photo-formation {
-    padding-top: 55rem;
+    order: 2; /* Coloca a foto logo abaixo do texto */
   }
 }
+.cor {
+  background-color: var(--color-primary-light);
+  padding: 0;
+}
+
 .recipe {
   position: relative;
   height: 80vh;
