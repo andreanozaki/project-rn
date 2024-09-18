@@ -1144,23 +1144,61 @@ body {
 }
 
 .container-history {
-  height: 80vh;
-  padding: 5rem 10rem;
+  height: 70vh;
+  padding: 5rem 15rem;
   display: flex;
   flex-direction: row;
   gap: 3rem;
   justify-content: space-evenly;
   align-items: center;
 }
-.container-history--photo {
-  padding-top: 5rem;
-}
 .container-history--photo .montagem {
-  width: 700px;
+  width: 500px;
+}
+.container-history--photo .history-photo {
+  width: 500px;
+}
+@media (max-width: 59em) {
+  .container-history--photo .history-photo {
+    width: 50vw;
+  }
+}
+.container-history--photo .chef-experience-photo {
+  width: 500px;
+}
+@media (max-width: 75em) {
+  .container-history--photo .chef-experience-photo {
+    width: 35vw;
+    padding: 2rem;
+  }
 }
 .container-history--text {
   text-align: center;
   padding: 0;
+}
+.container-history .experience {
+  display: flex;
+  flex-direction: column;
+}
+@media (max-width: 75em) {
+  .container-history {
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    padding: 3rem;
+    height: 100%;
+  }
+  .container-history--photo {
+    padding-top: 5rem;
+  }
+  .container-history--photo .montagem {
+    width: 450px;
+  }
+  .container-history--text {
+    text-align: center;
+    padding: 0;
+    padding: 3rem;
+  }
 }
 
 .formation {
@@ -1169,17 +1207,20 @@ body {
   background-color: rgba(221, 215, 183, 0.2862745098);
 }
 
-.experience {
-  display: flex;
-  flex-direction: column;
-}
-.experience .historia-mobile {
+.historia-mobile {
   font-size: 2.5rem;
-  display: inline-block;
   text-align: left;
+  text-decoration: none;
+}
+@media (max-width: 75em) {
+  .historia-mobile {
+    max-width: 70vw;
+    justify-content: space-evenly;
+    padding: 4rem 2rem;
+  }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 930px) {
   .container-history {
     display: flex;
     flex-direction: column;
@@ -1192,6 +1233,7 @@ body {
   .container-history--text {
     order: 1; /* Coloca o texto primeiro */
     width: 90%;
+    gap: 2rem;
   }
   .container-history--photo {
     order: 2; /* Coloca a primeira foto logo abaixo do texto */
@@ -1199,23 +1241,7 @@ body {
   .container-history--photo-formation {
     padding-top: 55rem;
   }
-  .chef-formation {
-    width: 430px;
-    align-items: center;
-  }
-  .chef-experience-photo {
-    order: 3; /* Coloca a segunda foto abaixo do container de texto e da primeira foto */
-  }
-  .formation {
-    height: 60vh;
-    display: inline;
-    /* Ajusta a altura conforme o conteúdo */
-  }
 }
-.montagem {
-  width: 90vw;
-}
-
 .recipe {
   position: relative;
   height: 80vh;

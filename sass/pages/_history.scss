@@ -1,21 +1,32 @@
 //chef.html history
 .container-history{
-  
-  height: 80vh;
-  padding: 5rem 10rem;
+  height: 70vh;
+  padding: 5rem 15rem;
   display: flex;
   flex-direction: row;
   gap: 3rem;
   justify-content:space-evenly; 
-   align-items: center;
+  align-items: center;
 
   &--photo{
-    padding-top: 5rem;
-
-    .montagem{
-      width:700px;
-    }
   
+    .montagem{
+      width:500px;
+    }
+   .history-photo{
+     width:500px;
+     @include respond(tab-port){
+      width: 50vw;
+      
+     }
+   }
+   .chef-experience-photo{
+     width: 500px;
+     @include respond(tab-land){
+      width: 35vw;
+      padding: 2rem;
+     }
+   }
   }
 
   &--text{
@@ -23,8 +34,34 @@
      padding: 0;
 
   }
+  .experience{
+    display: flex;
+    flex-direction: column;
+}
 
+  @include respond(tab-land){
+    
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+padding: 3rem;
+    height: 100%;
+    &--photo{
+      padding-top: 5rem;
   
+      .montagem{
+        width:450px;
+      }
+    
+    }
+  
+    &--text{
+       text-align: center;
+       padding: 0;
+       padding: 3rem;
+  
+    }
+  }
 }
 
 .formation {
@@ -34,17 +71,25 @@
   background-color:#ddd7b749;
  
 }
-.experience{
-  display: flex;
-  flex-direction: column;
-  .historia-mobile{
-    font-size: 2.5rem;
-    display: inline-block;
-    text-align:left;
- 
+
+  
+
+.historia-mobile{
+  font-size: 2.5rem;
+  text-align:left;
+  text-decoration: none;
+
+
+  @include respond(tab-land){
+    max-width: 70vw;
+    justify-content: space-evenly;
+    padding:4rem 2rem;
+
+
   }
+
 }
-@media (max-width: 768px) {
+@media (max-width: 930px) {
   .container-history {
     display: flex;
     flex-direction: column;
@@ -57,43 +102,14 @@
     &--text {
       order: 1; /* Coloca o texto primeiro */
       width: 90%;
+      gap: 2rem;
     }
 
     &--photo {
-      order: 2; /* Coloca a primeira foto logo abaixo do texto */
-      
-      
-    
-        
-      
-      
+      order: 2; /* Coloca a primeira foto logo abaixo do texto */   
  }
  &--photo-formation{
   padding-top: 55rem;
 }
   }
-.chef-formation{
-  width: 430px;
-  align-items: center;
- 
-
-  
-}
-  .chef-experience-photo {
-    order: 3; /* Coloca a segunda foto abaixo do container de texto e da primeira foto */
-  }
-
-  .formation {
-    height:60vh;
-    display:inline;
-  
-  
-    /* Ajusta a altura conforme o conteúdo */
-
-  }
-
-}
-
-.montagem {
-  width: 90vw;
 }
