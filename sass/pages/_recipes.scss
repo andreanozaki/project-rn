@@ -2,15 +2,14 @@
 //SECTION MAIN RECIPE-index.html
 .recipe {
     position: relative;
-    height: 80vh;
+    height: 65vh;
     padding: 5rem 10rem;
     background-color: #333333e0;
     color: beige;
     text-align: center;
     @include respond (mobile){
         height: 60%;
-    
-    
+
     }
     @include respond(tab-port){
            padding: 5rem 0;
@@ -18,8 +17,6 @@
        }
     @include respond(tab-land){
         height:65%;
-    
-
     }
 
   
@@ -109,52 +106,6 @@
                 font-weight: 600;
             }
         }
-    }
-
-    &__design {
-        position: absolute;
-        top:3%;
-        left: 8%;
-        z-index: 1;
-        
-        
-    }
-
-    &__designer {
-        width: 140px;
-      
-            @include respond(tab-port){
-                width: 100px;
-               
-                
-                }
-    }
-    &__design-right {
-        position: absolute;
-        display: flex;
-        flex-direction: column;
-        z-index: 1;
-        right: -15.3%;
-        top:24%;
-        width:35%;
-        @include respond(mobile){
-            top: 42%;
-            right: -2%;        }
-
-        &__designer--1 {
-            height: 30vh;
-            @include respond (tab-port)
-{
-    display: none;
-}        }
-
-        &__designer--2 {
-width: 680px;        }
-        @include respond(tab-port){
-            display: none;
-           
-            
-            }
     }
 
     &__primary-title {
@@ -267,24 +218,12 @@ max-width: 50vw;
             padding: 4rem 0;
             background-color:#dbd4af86;
             display: flex;
-            flex-direction: column;
-           
-           
-           
-       
-            
-            
-    
+            flex-direction: column;   
         }
 .icon-recipe{
     color: rgb(182, 62, 62);
 }
-     
-
     }
-   
-
-
 .paragraph{
     font-size: 2rem;
     width: 50vw;
