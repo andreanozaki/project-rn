@@ -1,7 +1,7 @@
 
 .container-history {
-  height: 90vh;
-  padding: 5rem 15rem;
+  height: 80vh;
+  padding: 5rem 15rem 0 15rem;
   display: flex;
   flex-direction: row;
   gap: 3rem;
@@ -10,7 +10,7 @@
 
   &--photo {
     .montagem, .history-photo, .chef-experience-photo {
-      width: 550px;
+      width: 560px;
 
       @include respond(tab-port) {
         width: 50vw;
@@ -27,6 +27,7 @@
           padding: 2rem;
         }
        
+        
       }
     }
   }
@@ -74,7 +75,7 @@
   }
 }
 
-@media (max-width: 930px) {
+@media (max-width: 945px) {
   .container-history {
     flex-direction: column;
     align-items: center;
@@ -94,4 +95,11 @@
 .cor{
   background-color:var(--color-primary-light);
   padding: 0;
+  height: 60vh;
+  @include respond(tab-port){
+    height: 89vh;
+  }
+
+
+  
 }

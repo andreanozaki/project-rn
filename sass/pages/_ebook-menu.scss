@@ -1,87 +1,145 @@
 
 //EBOOK MENU.HTML (MY-EBOOKS)
 .container-my-ebooks{
-    position: relative;
-    height: 100vh;
-    padding: 10rem;
-    background-color:rgba(255, 235, 205, 0.794);
-
-    
+  height: 100%;
+  width: 100vw;
+  background-color:rgba(255, 235, 205, 0.794);
+  padding: 2rem 20rem;
+@include respond(tab-land){
+  padding: 2rem;
+}
+  
 .ebook-content {
-    width: 100%;
-
-    .ebook-box {
-     display: flex;
-     flex-direction: column;
-     align-items: center;
-     width:390px;
-     height:100%;
-     position: relative;
-     cursor: pointer;
-     gap: 14rem;
-  @include respond (mobile){
+  width: 100%;
+  height: 100%;
+  padding: 3rem 0;
+  @media (max-width: 841px) {
     display: flex;
     flex-direction: column;
-  }
-   .ebook-price{
-    top: 90%;
-    position: absolute;
-    display: flex;
-    flex-direction: column;
-    
-  .price{
-    font-size: 32px;
-    }
-
-  .ebook-title{
     text-align: center;
-    display: inline-block;
+    align-items: center;
+    height: 100%;
+
+   }
+
+
+   
+
+  .ebook-box {
+   align-items: center;
+   width:100%;
+   position: relative;
+   cursor: pointer;
+   padding:9rem 0;
+
+   @media (max-width: 841px) {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    padding: 5rem 0;
+
+
+   }
+    
+   .ebook-capa{
+    width: 40vw;
+
+
+   }
+   
+   .ebook-title{
+    padding: 0 5rem;
+    text-align: center;
+    display: inline;
     font-size: 29px;
     text-decoration: none;
-    padding: 3rem 0;
+   
     color: #333;
+    height: 100%;
+
+    
+    }
+    .price{
+    font-size: 32px;
+
+  }
+
+
+
+
+ .ebook-price{
+  top: 90%;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  height: 100;
+
+
+
+
+ }
+ .ebook-photo-small,
+ .ebook-photo-new {
+   
+   max-width: 400px;
+   transition: transform 0.6s ease-in-out; /* Adicione uma transição suave na propriedade transform */
+
+ 
+
+
+ }
+
+ .ebook-photo-small {
+   max-width: 400px;
+
+   
+
+ }
+ .ebook-photo-new {
+   display: none; /* Inicialmente, a nova imagem está oculta */
+   position: absolute; /* Posicione a nova imagem absolutamente dentro da ebook-box */
+   align-items: center;
+
+   
+   max-width: 400px; /* Ajuste conforme necessário */
+ }
+
+ &:hover .ebook-photo-small {
+   display: none;
+   align-items: center;
+   text-align: center;
+
+ }
+
+ &:hover .ebook-photo-new {
+  align-items: center;
+text-align: center;
+  
+   display: block; /* Ao passar o mouse, exiba a nova imagem */
+   animation-name: flash;
+   animation-duration: 0.5s;
+   animation-timing-function: ease-in-out;
+   max-width: 400px; /* Ajuste conforme necessário */
+ }
+  /* Remover efeito de hover em telas menores que tab-port */
+  @include respond(tab-land) {
+    &:hover .ebook-photo-small {
+      display: block; /* Mostra a imagem pequena, ignorando o efeito hover */
     }
 
-   }
-   .ebook-photo-small,
-   .ebook-photo-new {
-     
-     max-width: 400px;
-     height: 100%;
-     transition: transform 0.6s ease-in-out; /* Adicione uma transição suave na propriedade transform */
-   }
+    &:hover .ebook-photo-new {
+      display: none; /* Esconde a nova imagem, ignorando o efeito hover */
 
-   .ebook-photo-small {
-     max-width: 400px;
-     height: 100%;
-   }
-   .ebook-photo-new {
-     display: none; /* Inicialmente, a nova imagem está oculta */
-     position: absolute; /* Posicione a nova imagem absolutamente dentro da ebook-box */
-     top: 0;
-     left: 0;
-     max-width: 400px; /* Ajuste conforme necessário */
-     height: 100%;   
-   }
-
-   &:hover .ebook-photo-small {
-     display: none;
-   }
-
-   &:hover .ebook-photo-new {
-     display: block; /* Ao passar o mouse, exiba a nova imagem */
-     overflow: hidden;
-     animation-name: flash;
-     animation-duration: 0.5s;
-     animation-timing-function: ease-in-out;
-   }
-  
-   .ebook-content{
-       height: 100vh;
-   }
+      
+    }
   }
- }
+
+
+
+}
+}
 }
 .ebook-link{
-    border: 1px solid rgba(0, 0, 0, 0.873);
+  border: 1px solid rgba(0, 0, 0, 0.873);
 }
