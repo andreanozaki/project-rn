@@ -3,17 +3,53 @@
   padding: 10rem 5rem 0 5rem;
   display: flex;
   justify-content:space-evenly;
+  @media (max-width: 930px) {
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+  }
+  @include respond(mobile){
+    padding: 3rem;
+  }
+  .ebook-1-right{
 
+    @media (max-width: 930px) {
+      .paragraph{
+        max-width: 80%;
+        padding: 3rem;
+
+      }
+   .heading-secondary{
+    @include respond(mobile){
+      font-size: 2rem;
+      font-weight: 500;
+      max-width: 70vw;
+    }
+   }
+      
+    } 
+  }
     .ebook-1-left{
       position: relative;
-      
-      
+      margin:0 0 15rem 0;
+      .ebook-inside{
+        padding: 5rem;
+      }
+    .ebook-photo{
+      @include respond(mobile){
+        max-width: 70vw;
+      }
+    }
     .ebook-inside{
       position: absolute;
       display: flex;
       flex-direction: row;
       gap: 1.5rem;
-      padding-left: 5rem;
+      text-align: center;
+      @include respond(mobile){
+        padding: 0;
+      }
 
     .ebook-mini{ 
       width: 60px;
@@ -51,7 +87,6 @@
        font-size: 26px;
        padding: 2rem;
        border-radius: 13px;
-       background-color: rgb(254, 113, 113);
        color: #181818;
        text-transform: uppercase;
        text-decoration: none;
@@ -62,6 +97,7 @@
 
     }
  }
- .ebook-links{
-  padding: 5rem 0 0 5rem;
+
+.links-ebook{
+  padding: 3rem 0 0 3rem;
 }
