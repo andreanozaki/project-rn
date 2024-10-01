@@ -170,12 +170,6 @@ body {
   font-weight: 100;
 }
 
-.paragraph--chef {
-  text-align: center;
-  font-weight: 300;
-  line-height: 1.5;
-}
-
 .experience-chef {
   font-size: 3rem;
   max-width: 50vw;
@@ -555,8 +549,7 @@ body {
 .section-form .contact {
   font-family: "Unica One", sans-serif;
   position: relative;
-  width: 60vw;
-  height: 65vh;
+  width: 50vw;
   padding: 10rem;
   background-color: #eae1cb;
   position: absolute;
@@ -568,18 +561,17 @@ body {
 @media (max-width: 655px) {
   .section-form .contact {
     width: 90vw;
-    height: auto;
-    padding: 2rem 4rem;
+    padding: 2rem 5rem;
   }
 }
 @media (max-width: 75em) {
   .section-form .contact {
-    width: 60vw;
+    width: 50vw;
   }
 }
 @media (min-width: 75em) {
   .section-form .contact {
-    width: 50vw;
+    width: 30vw;
   }
 }
 .section-form .form {
@@ -587,29 +579,13 @@ body {
   flex-direction: column;
   justify-content: space-evenly;
   gap: 2rem;
-}
-.section-form .pattern-form {
-  position: absolute;
-  top: 12%;
-  left: -25%;
-}
-.section-form .pattern-form .designer {
-  width: 200px;
-}
-.section-form .pattern2-form {
-  position: absolute;
-  top: 12%;
-  left: 100%;
-}
-.section-form .pattern2-form .designer--2 {
-  width: 200px;
+  padding-bottom: 2em;
 }
 .section-form .form input, .section-form textarea {
   background-color: rgb(250, 250, 250);
   border-radius: 8px;
   font-size: 2rem;
   border: none;
-  width: 100%;
   padding: 1.5rem;
 }
 .section-form .form textarea {
@@ -782,27 +758,31 @@ body {
 }
 
 .section-aboutme {
-  padding: 5rem;
-  height: 100vh;
-  background-color: rgba(221, 215, 183, 0.1137254902);
+  padding: 5rem 25rem 0 25rem;
+  background-color: beige;
 }
 .section-aboutme__content {
-  align-items: center;
-  position: relative;
-  height: 100%;
   display: flex;
-  flex-direction: column;
-  justify-content: space-around;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
 }
-.section-aboutme .aboutme-photo {
-  height: 50vh;
-  width: 60vw;
+@media (max-width: 59em) {
+  .section-aboutme__content {
+    display: flex;
+    flex-direction: column;
+  }
 }
-@media (max-width: 655px) {
-  .section-aboutme .aboutme-photo {
-    padding: 3rem 2rem;
-    height: 350px;
-    width: 400px;
+.section-aboutme .chefmain {
+  max-width: 420px;
+}
+.section-aboutme .paragraph--chef {
+  min-width: 40vw;
+}
+@media (max-width: 59em) {
+  .section-aboutme .paragraph--chef {
+    width: 80vw;
+    text-align: center;
   }
 }
 
@@ -973,49 +953,42 @@ body {
 
 .ebook {
   height: 75vh;
-  width: 100vw;
   display: flex;
   flex-direction: row;
   align-items: center;
+  text-align: center;
   justify-content: space-evenly;
+}
+@media (max-width: 59em) {
+  .ebook {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    text-align: center;
+  }
 }
 @media (max-width: 655px) {
   .ebook {
     height: 100%;
-    display: flex;
-    flex-direction: column;
-    padding: 6rem;
   }
 }
 .ebook .ebook-photo {
   height: 65%;
-  width: 40vw;
-}
-@media (max-width: 655px) {
-  .ebook .ebook-photo {
-    width: 70vw;
-  }
+  width: 100%;
 }
 .ebook .ebook-text {
   font-family: sans-serif;
   text-align: center;
   width: 100%;
 }
-@media (max-width: 655px) {
-  .ebook .ebook-text {
-    width: 100%;
-    display: block;
-    top: 50%;
-    left: 50%;
-    transform: translate(-34%, 10%);
-    width: 360px;
-  }
+.ebook .ebook-description {
+  max-width: 50%;
+  padding: 2rem;
 }
-@media (max-width: 655px) {
-  .ebook .ebook-left {
-    padding-right: 2rem;
-    display: inline-block;
-    padding-top: 3.5rem;
+@media (max-width: 59em) {
+  .ebook .ebook-description {
+    max-width: 80%;
   }
 }
 .ebook .icon-ebook {
@@ -1075,8 +1048,16 @@ body {
   justify-content: space-evenly;
   align-items: center;
 }
+@media (max-width: 59em) {
+  .container-history {
+    height: 100%;
+    padding: 5rem 15rem 0 15rem;
+  }
+}
 .container-history--photo .montagem, .container-history--photo .history-photo, .container-history--photo .chef-experience-photo {
-  width: 560px;
+  width: 460px;
+  bottom: 0;
+  height: 100%;
 }
 @media (max-width: 59em) {
   .container-history--photo .montagem, .container-history--photo .history-photo, .container-history--photo .chef-experience-photo {
@@ -1096,7 +1077,6 @@ body {
 }
 .container-history--text {
   text-align: center;
-  padding: 0;
 }
 .container-history .experience {
   display: flex;
@@ -1157,139 +1137,41 @@ body {
 }
 @media (max-width: 59em) {
   .cor {
-    height: 89vh;
+    height: 100vh;
   }
 }
 
-.recipe {
-  position: relative;
-  height: 65vh;
-  padding: 5rem 10rem;
-  background-color: rgba(51, 51, 51, 0.8784313725);
-  color: beige;
+.section-recipe {
+  height: 75vh;
+  background-color: rgba(51, 51, 51, 0.8392156863);
+  color: #DBD4AF;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
   text-align: center;
-}
-@media (max-width: 655px) {
-  .recipe {
-    height: 60%;
-  }
+  justify-content: space-evenly;
+  padding: 0 25rem;
 }
 @media (max-width: 59em) {
-  .recipe {
-    padding: 5rem 0;
-  }
-}
-@media (max-width: 75em) {
-  .recipe {
-    height: 65%;
-  }
-}
-.recipe__section-left {
-  order: 0;
-  text-align: center;
-  padding: 3.5rem;
-}
-@media (max-width: 655px) {
-  .recipe__section-left {
-    order: -1;
-  }
-}
-.recipe__container {
-  position: relative;
-  display: flex;
-  justify-content: space-evenly;
-}
-@media (max-width: 655px) {
-  .recipe__container {
+  .section-recipe {
     display: flex;
     flex-direction: column;
-    padding: 5rem;
-    margin: 0;
+    height: 100%;
   }
 }
-.recipe__image {
-  max-width: 400px;
-  border-radius: 3px;
+.section-recipe .recipe-card .recipe-creator {
+  font-size: 2em;
+  font-weight: 400;
 }
-@media (max-width: 655px) {
-  .recipe__image {
-    width: 100%;
-  }
+.section-recipe .recipe-card .recipe-image {
+  width: 400px;
 }
-@media (max-width: 59em) {
-  .recipe__image {
-    width: 200px;
-  }
-}
-.recipe__title {
-  position: absolute;
-  top: 50%;
-  left: 14%;
-  border-radius: 6px;
-  font-size: 21px;
-  font-weight: 600;
-  color: #333;
-}
-@media (max-width: 655px) {
-  .recipe__title {
-    top: 40%;
-    font-size: 16px;
-  }
-}
-@media (max-width: 59em) {
-  .recipe__title {
-    position: absolute;
-    top: 30%;
-    left: 24%;
-    padding: 0.3rem 1.6rem;
-  }
-}
-.recipe__description {
-  max-width: 400px;
-  font-size: 21px;
-}
-@media (max-width: 59em) {
-  .recipe__description {
-    width: 90%;
-  }
-}
-.recipe__creator {
-  font-size: 14px;
-  text-transform: uppercase;
-  padding: 1rem 0;
-  line-height: 2;
-}
-.recipe__card {
-  position: relative;
-  justify-content: space-evenly;
-}
-@media (max-width: 655px) {
-  .recipe__card {
-    padding: 3rem;
-  }
-}
-@media (max-width: 655px) {
-  .recipe__card .paragraph {
-    padding: 2rem 2rem 2rem 0;
-    font-weight: 600;
-  }
-}
-.recipe__primary-title {
-  color: #fae5d3;
+.section-recipe .recipe-cta {
+  max-width: 50%;
   text-align: center;
-  font-size: 6rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.75px;
-  font-family: "Unica One", sans-serif;
-  display: block;
-  border-bottom: 2px solid rgb(255, 255, 255);
-  display: inline-block;
 }
-@media (max-width: 655px) {
-  .recipe__primary-title {
-    font-size: 4rem;
-  }
+.section-recipe .recipe-cta .paragraph {
+  text-align: justify;
 }
 
 .recipes {

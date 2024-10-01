@@ -77,38 +77,31 @@
 
 //SECTION ABOUT-ME
 .section-aboutme{
- padding: 5rem;
- height: 100vh;
- background-color:#ddd7b71d;
-
-
+  padding: 5rem 25rem 0 25rem;
+  background-color: beige;
   &__content{
+    display: flex;
+    flex-direction: row;
     align-items: center;
-    position: relative;
-   height: 100%;
-   display: flex;
-   flex-direction: column;
-   justify-content: space-around;
-   
-
-
+    justify-content: center;
+    
+@include respond(tab-port){
+  display: flex;
+  flex-direction: column;
+}
   }
- 
 
-.aboutme-photo{
-
-height: 50vh;
-width: 60vw; 
-
-
-  
-@include respond(mobile){
-  padding: 3rem 2rem;
-  height: 350px;
-  width:400px;
+  .chefmain{
+    max-width: 420px;
+   
+  }
+.paragraph--chef{
+  min-width: 40vw;
+  @include respond(tab-port){
+    width:80vw;
+    text-align: center;
+  }
 }
-}
-
 }
 //SECTION-CREATIONS
 
@@ -301,50 +294,43 @@ width: 60vw;
 
 //ebook-section
 .ebook{
-  height: 75vh;
-  width: 100vw;
+ height: 75vh;
  display: flex;
  flex-direction: row;
  align-items: center;
+ text-align: center;
  justify-content: space-evenly;
-@include respond(mobile){
- height: 100%;
+
+@include respond(tab-port){
+  height: 100vh;
   display: flex;
   flex-direction: column;
-  padding: 6rem;
-  
+  padding: 2rem;
+  text-align: center;
 }
+@include respond(mobile){
+  height: 100%;
+}
+
 .ebook-photo{
   height: 65%;
-  width: 40vw;
-@include respond(mobile){
-  width: 70vw;
-}
+  width: 100%;
 }
 
 .ebook-text{
   font-family:  sans-serif;
   text-align: center;
   width: 100%;
-  @include respond (mobile){
-    width:100%;
-    display: block;
-    top: 50%;
-    left: 50%;
-    transform: translate(-34%,10%);
-    width: 360px;
-
-  }
  }
- .ebook-left{
-@include respond(mobile){
-  padding-right: 2rem;
-    display: inline-block;
-    padding-top: 3.5rem;
 
-  }
-
- }
+ .ebook-description{
+  max-width: 50%;
+  padding: 2rem;
+  
+@include respond (tab-port){
+  max-width: 80%;
+}
+}
  .icon-ebook{
   display: flex;
   flex-direction: row;

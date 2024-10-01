@@ -13,10 +13,8 @@
 
      .contact{
         font-family:'Unica One', sans-serif;
-
         position: relative;
-        width:60vw;
-        height: 65vh;
+        width:50vw;
         padding: 10rem;
         background-color:#eae1cb;
         position:absolute;
@@ -27,14 +25,13 @@
          // Ajuste para dispositivos móveis
     @include respond(mobile) {
         width: 90vw;
-        height: auto;
-        padding: 2rem 4rem;
+        padding: 2rem 5rem;
       }
     @include respond(tab-land) {
-        width: 60vw;
+        width: 50vw;
     }
     @include respond(big-desktop) {
-        width: 50vw;
+        width: 30vw;
     }
      }
      .form{
@@ -43,32 +40,15 @@
         flex-direction: column;
         justify-content: space-evenly;
         gap: 2rem;
+        padding-bottom: 2em;
       
      }
-     .pattern-form {
-        position: absolute;
-        top: 12%;
-        left: -25%;
-
-        .designer{
-          width: 200px;
-        }
-    }
-    .pattern2-form {
-        position: absolute;
-        top: 12%;
-        left: 100%;
-        .designer--2{
-            width: 200px;
-            
-        }
-    }
+    
      .form input,  textarea{
         background-color:rgb(250, 250, 250);
         border-radius: 8px;
         font-size: 2rem;
         border: none;  
-        width:100%;
         padding: 1.5rem;
     }
      .form textarea {

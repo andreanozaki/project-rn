@@ -7,10 +7,16 @@
   gap: 3rem;
   justify-content: space-evenly;
   align-items: center;
+  @include respond (tab-port){
+    height: 100%;
+      padding: 5rem 15rem 0 15rem;
 
+  }
   &--photo {
     .montagem, .history-photo, .chef-experience-photo {
-      width: 560px;
+      width: 460px;
+      bottom: 0;
+      height: 100%;
 
       @include respond(tab-port) {
         width: 50vw;
@@ -34,7 +40,8 @@
 
   &--text {
     text-align: center;
-    padding: 0;
+    
+
   }
 
   .experience {
@@ -82,6 +89,7 @@
     height: 100%;
     width: 100%;
 
+
     &--text {
       order: 1; /* Coloca o texto primeiro */
       width: 90%;
@@ -89,6 +97,7 @@
 
     &--photo {
       order: 2; /* Coloca a foto logo abaixo do texto */
+      
     }
   }
 }
@@ -97,7 +106,7 @@
   padding: 0;
   height: 60vh;
   @include respond(tab-port){
-    height: 89vh;
+    height: 100vh;
   }
 
 

@@ -1,132 +1,40 @@
 
-//SECTION MAIN RECIPE-index.html
-.recipe {
-    position: relative;
-    height: 65vh;
-    padding: 5rem 10rem;
-    background-color: #333333e0;
-    color: beige;
-    text-align: center;
-    @include respond (mobile){
-        height: 60%;
 
-    }
+.section-recipe{
+    height: 75vh;
+    background-color:#333333d6;
+    color: #DBD4AF;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    text-align: center;
+    justify-content: space-evenly;
+    padding:0 25rem;
     @include respond(tab-port){
-           padding: 5rem 0;
-   
-       }
-    @include respond(tab-land){
-        height:65%;
-    }
-
-  
- &__section-left{
-    order: 0;
-    text-align: center;
-    padding: 3.5rem;
-  
-
-    @include respond(mobile){
-        order: -1;
-    }
- }
-    &__container {
-        position: relative;
         display: flex;
-        justify-content: space-evenly;
-
-        @include respond (mobile){
-            display: flex;
-            flex-direction: column;
-            padding: 5rem;
-            margin: 0;
-        }
-        
+        flex-direction: column;
+        height: 100%;
     }
+    .recipe-card{
+        .recipe-creator{
+            font-size: 2em;
+            font-weight: 400;
+        }
 
-    &__image {
-        max-width: 400px;
-        border-radius: 3px;
-        @include respond(mobile){
-            width: 100%;
-        }
-        @include respond(tab-port){
- width: 200px;
-            
-            
-        }
-       
+     .recipe-image{
+width: 400px;
+     }
     }
-
-    &__title {
-        position: absolute;
-        top: 50%;
-        left: 14%;
-        border-radius: 6px;
-        font-size: 21px;
-        font-weight: 600;
-        color: #333;
-        @include respond (mobile){
-            top: 40%;
-            font-size: 16px;
-        }
-        @include respond(tab-port){
-            position: absolute;
-            top: 30%;
-            left: 24%;
-            padding:0.3rem 1.6rem ;  
-
-      }
-    }
-
-    &__description {
-        max-width: 400px;
-        font-size: 21px;
-        @include respond(tab-port){
-            width: 90%;
-        }
-    }
-
-    &__creator {
-        font-size: 14px;
-        text-transform: uppercase;
-        padding: 1rem 0;
-        line-height: 2;
-    }
-
-    &__card {
-        position: relative;
-        justify-content: space-evenly;
-        @include respond(mobile){
-            padding: 3rem;
-        }
-        .paragraph{
-            @include respond(mobile){
-                padding: 2rem 2rem 2rem 0;
-                font-weight: 600;
-            }
-        }
-    }
-
-    &__primary-title {
-        color: #fae5d3;
-        text-align: center;
-        font-size: 6rem;
-        font-weight: 700;
-        text-transform: uppercase;
-        letter-spacing: .75px;
-        font-family: 'Unica One', sans-serif;
-        display: block;
-        border-bottom: 2px solid rgb(255, 255, 255);
-        display: inline-block;
-        @include respond(mobile){
-            font-size: 4rem;
-        }
-      
-    }
-    
+.recipe-cta{
+  max-width: 50%;
+  text-align: center;
+.paragraph{
+    text-align: justify;
 }
 
+ 
+}
+}
 // 2 page chocolatquent.html
 
 .recipes{
