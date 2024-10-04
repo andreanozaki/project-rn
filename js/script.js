@@ -81,4 +81,43 @@ document.addEventListener('DOMContentLoaded', function() {
       }, index * 200); // Atraso para cada ícone
     });
   });
+
+
+  function revealElements() {
+    const reveals = document.querySelectorAll('.reveal');
   
+    reveals.forEach((element) => {
+      const windowHeight = window.innerHeight;
+      const elementTop = element.getBoundingClientRect().top;
+      const revealPoint = 150;
+  
+      if (elementTop < windowHeight - revealPoint) {
+        element.classList.add('active');
+      } else {
+        element.classList.remove('active');
+      }
+    });
+  }
+  
+  window.addEventListener('scroll', revealElements);
+  
+
+  const reveals = document.querySelectorAll('.reveal, .reveal-from-right'); // Selecione ambas as classes
+
+function checkScroll() {
+  for (const reveal of reveals) {
+    const windowHeight = window.innerHeight;
+    const elementTop = reveal.getBoundingClientRect().top;
+    const revealPoint = 150; // Ajuste conforme necessário
+
+    if (elementTop < windowHeight - revealPoint) {
+      reveal.classList.add('active');
+    } else {
+      reveal.classList.remove('active'); // Opcional: remove a classe se não estiver visível
+    }
+  }
+}
+
+window.addEventListener('scroll', checkScroll);
+window.addEventListener('resize', checkScroll); // Para garantir que a lógica funcione em redimensionamentos
+checkScroll(); // Chama a função na inicialização

@@ -1,9 +1,8 @@
 //SECTION MAIN
 .section-main {
-  height: 86vh;
+  height: 90vh;
   width: 100%;
   margin: 0;
-
 
   .section-main__photo{
       
@@ -21,7 +20,7 @@
  
   .header__text-box{
     position: absolute;
-    top: 60%;
+    top: 70%;
     left: 48%;
     transform: translate(-50%,-50%);
  
@@ -34,42 +33,58 @@
       text-transform: uppercase;
   
       backface-visibility: hidden;
-      margin-bottom: 14rem;
       font-family:  'Roboto', sans-serif; 
 
       &--main {
         display: block;
-        font-size:7rem;
+        font-size:5.6rem;
         font-weight:900;  
-        letter-spacing: .85rem;
+        letter-spacing: .25rem;
         padding-bottom: 1rem;
     
         animation-name: moveInLeft;
         animation-duration: 2s;
         animation-timing-function: ease-out;
         color:#696565c5;
+     
+       
+        @include respond(tab-land){
+          width: 90vw;
+          font-size: 5rem;
+        }
+        @include respond(tab-port){
+          font-size:3rem;
+       width: 80vw;
+        }
         @include respond(mobile){
-          font-size: 3.5rem;
+          width: 100vw;
+          letter-spacing: 0.20rem;
+          font-weight: bolder;
+          padding-bottom: 3rem;
+    
         }
       }
   
       &--sub{
       display: block;
-      font-size: 3.6rem;
-     
+      font-size: 4rem;
+      color:#696565c5;
+
       font-weight:bolder;
-      letter-spacing: 1.5rem;
+      letter-spacing: 1rem;
           font-family:'Unica One', sans-serif;
 
    
       animation:moveinRight 2s ease-out;
       position: relative;
-      color:#0e0d0dcb;
+      padding-bottom: 6rem;
+    
       @include respond(mobile){
-        font-size: 1em;
+        font-size: 2em;
         letter-spacing: 0.5rem;
-        color: #333333bb;
+        font-weight: 800;
       }
+    
       }
     }
 }
@@ -77,29 +92,69 @@
 
 //SECTION ABOUT-ME
 .section-aboutme{
-  padding: 5rem 25rem 0 25rem;
-  background-color: beige;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  padding-top: 10rem;
+position: relative;
+  .recipe-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1; /* Coloca a imagem atrás do conteúdo */
+}
+
+// Sobreposição de cor
+background-image: linear-gradient(
+    to right bottom,
+    rgba(51, 51, 51, 0.8), /* Cor de sobreposição */
+    rgba(29, 29, 29, 0.6)
+);
+  
+  @include respond(tab-port){
+    padding-top: 10rem 15rem 0 15rem;
+    text-align: center;
+  }
+
   &__content{
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    
 @include respond(tab-port){
   display: flex;
   flex-direction: column;
+  width: 100vw;
+  text-align: center;
 }
   }
 
   .chefmain{
     max-width: 420px;
-   
+   @include respond(mobile){
+    max-width: 300px;
+   }
   }
 .paragraph--chef{
-  min-width: 40vw;
-  @include respond(tab-port){
-    width:80vw;
+  color: #f0ebeb;
+  max-width:40vw ;
+  display: block;
+  padding-bottom: 20rem;
+  text-align: start;
+  .subheading{
+   color:#e4d99e;
+   text-align: left;
+   @include respond(tab-port){
     text-align: center;
+   }
+  }
+  @include respond(tab-port){
+    max-width:80vw;
+    text-align: center;
+    padding: 0;
   }
 }
 }
@@ -110,6 +165,7 @@
   height: 100%;
   padding: 3rem 0 0 0;
 
+
   &__heading {
       padding: 15rem 0;
       display: flex;
@@ -119,63 +175,56 @@
         @include respond(mobile){
           padding: 6rem;
         }
-    
-      
 
-      .designer {
-          position: absolute;
-          left: 26%;
-          top: 60%;
-          max-width: 12%;
-      }
-
-      .designer2 {
-          position: absolute;
-          left: 59%;
-          top: 60%;
-          max-width: 12%;
-      }
 
       .title-creations {
           position: absolute;
           top: 95%;
           left: 50%;
           transform: translate(-50%, -50%);
-         
-    
+       
+  
+          
       }
   }
 
   &__gallery {
       display: grid;
       padding: 15rem 0 0 0;
-      gap: 3rem;
+      gap: 6rem;
       @include respond(mobile) {
-        gap: 0;
         display: flex;
         flex-direction: column;
       }
-      @include respond(tab-port){
-        gap: 0;
-      }
+    @include respond(tab-port){
+      gap: 0;
+    }
       .gallery-link {
+        height: 100%;
+        background-color: aliceblue;
+   
           text-decoration: none;
           color: inherit;
           transition: transform 0.3s;
           display: block;
           overflow: hidden;
           text-align: center;
-
+      
           .gallery-item {
               overflow: hidden;
               position: relative;
               transition: all 0.3s;
+              width: 100%;
+              margin:0;
+            
+
 
               img {
                   display: block;
                   width: 100%;
                   height: 100%;
                   transition: all 0.4s;
+                  object-fit: cover;
               }
 
               &:hover {
@@ -261,7 +310,6 @@
       }
   }
   @include respond(mobile) {
-  
 
     .gallery-link {
      
@@ -289,6 +337,7 @@
       }
     }
   }
+ 
 
 }
 
