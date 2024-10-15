@@ -1315,14 +1315,15 @@ body {
   display: flex;
   flex-direction: column;
   gap: 3rem;
-  padding: 15rem;
+  padding-top: 5rem;
   text-align: center;
   align-items: center;
+  justify-content: space-evenly;
 }
 @media (max-width: 710px) {
   .recipes {
     padding: 3.5rem;
-    text-align: justify;
+    text-align: center;
     gap: 0;
   }
 }
@@ -1379,6 +1380,12 @@ body {
   justify-content: space-between;
   padding: 5rem 0;
 }
+@media (max-width: 710px) {
+  .recipes .right-side .status-recipe {
+    width: 80vw;
+    text-align: center;
+  }
+}
 .recipes .right-side .status-recipe .time, .recipes .right-side .status-recipe .nivel, .recipes .right-side .status-recipe .rendimento {
   font-size: 21px;
   width: 250px;
@@ -1386,6 +1393,11 @@ body {
   background-color: rgba(219, 212, 175, 0.5254901961);
   display: flex;
   flex-direction: column;
+}
+@media (max-width: 710px) {
+  .recipes .right-side .status-recipe .time, .recipes .right-side .status-recipe .nivel, .recipes .right-side .status-recipe .rendimento {
+    padding: rem;
+  }
 }
 .recipes .right-side .status-recipe .icon-recipe {
   color: rgb(182, 62, 62);
@@ -1397,7 +1409,7 @@ body {
 }
 @media (max-width: 710px) {
   .recipes .right-side .paragraph {
-    width: 100vw;
+    width: 80vw;
   }
 }
 .recipes .right-side .topic {
@@ -1420,12 +1432,32 @@ body {
 }
 
 .container-all-recipes {
-  padding: 10rem;
+  height: 70vh;
+  padding: 5rem;
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  gap: 0;
 }
-@media (max-width: 710px) {
-  .container-all-recipes {
-    padding: 0;
-  }
+.container-all-recipes .recipe__card {
+  min-width: 30vw;
+}
+.container-all-recipes .recipe__card .paragraph {
+  padding: 0;
+  max-width: 300px;
+  text-align: start;
+  font-size: 2rem;
+}
+.container-all-recipes .recipe__card .title-recipe {
+  font-weight: 600;
+  color: #333;
+  padding-bottom: 2rem;
+}
+.container-all-recipes .recipe__card .recipe__image {
+  max-width: 350px;
+}
+.container-all-recipes .recipe__card .recipe__link {
+  font-size: 1.5rem;
 }
 
 .container-my-ebooks {

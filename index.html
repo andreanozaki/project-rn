@@ -162,7 +162,8 @@
             <img src="img/base/Capa Facebook - Black Friday-3.png" alt="" class="recipe-bg flash-effect">
 
                 <div class="recipe-card">
-        
+                    <p class="paragraph">Receita de um delicioso chocolate quente ao rum!</p>
+
                     <img src="img//receitas/Design sem nome-24.png" class="recipe-image flash-effect-2 reveal">
                     <a href="/pages/recipe-1.html"class="btn-main  recipe-open"> Abrir</a>
                     <h2 class="recipe-creator"><ion-icon name="person"></ion-icon> Ricardo Nozaki: Ultima postagem</h2>
@@ -223,21 +224,22 @@
 
         </section>
 
-
         <section class="section-form container" id="contact">
             <img src="img/base/Capa Facebook - Black Friday-3.png" alt="" class="form-bg">
-        
-            <div class="contact ">
-
-                <form id="contactForm" method="POST"action="/contact" class="form flash-effect ">
-                    <h2 class="heading-form ">Entre em contato:</h2>
-                    <input type="text" name="name" required placeholder="Nome:">
+            <div class="contact">
+                <form id="contactForm" method="POST" action="http://localhost:3001/contact" class="form flash-effect">
+                    <h2 class="heading-form">Entre em contato:</h2>
+                    <input type="text" name="nome" required placeholder="Nome:">
                     <input type="email" name="email" required placeholder="E-mail:">
-                    <textarea name="message" cols="30" rows="8" placeholder="Mensagem:"></textarea>
+                    <textarea name="mensagem" cols="30" rows="8" required placeholder="Mensagem:"></textarea>
                     <button type="submit" class="btn-main">Enviar</button>
                 </form>
             </div>
         </section>
+        
+        
+        
+        
 
          <!-- Formulário de Criação de Receita (somente para o chef) -->
   <section id="gerenciamento-receitas" style="display: none;">
@@ -297,28 +299,7 @@
     </main>
 
     <script src="js/script.js"></script>
-    <script>
-        document.getElementById('contactForm').addEventListener('submit', function(event) {
-            event.preventDefault(); // Evita o envio padrão do formulário
-    
-            const formData = new FormData(this);
-            const data = new URLSearchParams(formData);
-    
-            fetch('/contact', {
-                method: 'POST',
-                body: data
-            })
-            .then(response => response.text())
-            .then(result => {
-                alert(result); // Exibe a mensagem do servidor em um alerta
-            })
-            .catch(error => {
-                console.error('Erro:', error);
-                alert('Ocorreu um erro ao enviar o formulário.');
-            });
-        });
-        </script>
-        
+  
     
 </body>
 

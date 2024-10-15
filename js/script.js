@@ -121,3 +121,46 @@ function checkScroll() {
 window.addEventListener('scroll', checkScroll);
 window.addEventListener('resize', checkScroll); // Para garantir que a lógica funcione em redimensionamentos
 checkScroll(); // Chama a função na inicialização
+
+app.post('/contact', (req, res) => {
+    console.log(req.body); // Verifique o que está sendo recebido
+    const { name, email, message } = req.body;
+
+    if (!name || !email || !message) {
+        return res.status(400).send('Todos os campos são obrigatórios!');
+    }
+
+    // Insira os dados no banco de dados (lógica não mostrada aqui)
+    // ...
+
+    res.send('Dados inseridos com sucesso!');
+});
+
+
+    document.getElementById('contactForm').addEventListener('submit', function(event) {
+        event.preventDefault(); // Impede o envio padrão do formulário
+
+        // Obtendo os dados do formulário
+        const formData = new FormData(this);
+
+        // Enviando os dados via fetch
+        fetch('http://localhost:3001/contact', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => {
+            if (response.ok) {
+                // Se a resposta for bem-sucedida, exibir a mensagem
+                document.getElementById('responseMessage').innerText = 'Mensagem enviada!';
+                document.getElementById('responseMessage').style.display = 'block';
+                this.reset(); // Opcional: Limpa o formulário após o envio
+            } else {
+                throw new Error('Erro ao enviar a mensagem.');
+            }
+        })
+        .catch(error => {
+            // Tratar erros
+            document.getElementById('responseMessage').innerText = 'Erro ao enviar a mensagem. Tente novamente.';
+            document.getElementById('responseMessage').style.display = 'block';
+        });
+    });

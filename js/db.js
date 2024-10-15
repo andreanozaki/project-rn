@@ -4,7 +4,7 @@ const mysql = require('mysql2');
 const connection = mysql.createConnection({
   host: 'localhost',
   user: 'root',
-  password: '080808',  // Substitua por sua senha
+  password: '080808',  
   database: 'clientes'
 });
 
@@ -17,4 +17,4 @@ connection.connect((err) => {
   console.log('Conectado ao banco de dados como ID ' + connection.threadId);
 });
 
-module.exports = connection;
+module.exports = connection; // exporta a conexão para uso em outros arquivos

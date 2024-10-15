@@ -87,27 +87,26 @@ text-align: center;
     display: inline-block;
 }
 }
+
+
 // 2 page chocolatquent.html
 
 .recipes{
-
-
     height: 100%;
     width: 100%;
     display: flex;
     flex-direction: column;
     gap: 3rem;
-   
-    padding: 15rem;
+   padding-top: 5rem;
     text-align: center;  
     align-items: center;
+    justify-content: space-evenly;
 
-    
    
    
   @include respond(mobile){
     padding:3.5rem;
-    text-align: justify;
+    text-align: center;
     gap: 0;
   }
 
@@ -166,19 +165,23 @@ max-width: 50vw;
        width: 100%;
         display: flex;
         flex-direction: row;
-       
         justify-content: space-between;
-      
-       
         padding: 5rem 0;
-       
+       @include respond(mobile){
+        width: 80vw;
+        text-align: center;
+     
+       }
         .time,.nivel,.rendimento{
             font-size:21px;
             width: 250px;
             padding: 4rem 0;
             background-color:#dbd4af86;
             display: flex;
-            flex-direction: column;   
+            flex-direction: column; 
+            @include respond(mobile){
+                padding:rem;
+            } 
         }
 .icon-recipe{
     color: rgb(182, 62, 62);
@@ -189,7 +192,7 @@ max-width: 50vw;
     width: 50vw;
     text-align: start;
 @include respond(mobile){
-    width:100vw;
+    width:80vw;
 }
 }
 .topic{
@@ -219,9 +222,42 @@ max-width: 50vw;
 }
 //all recipes
 .container-all-recipes{
-    padding: 10rem;
-@include respond(mobile){
-    padding: 0;
+
+
+    height: 70vh;
+    padding: 5rem;
+    align-items:center;
+
+    display: flex;
+    flex-direction: row;
+    gap: 0;
+
+    
+.recipe__card{
+    min-width: 30vw;
+    .paragraph{
+        padding: 0;
+        max-width: 300px;
+        text-align:start;
+        font-size: 2rem;
+    }
+    .title-recipe{
+        font-weight:600;
+        color: #333;
+        padding-bottom: 2rem;
+    }
+   .recipe__image{
+        max-width: 350px;
+        }  
+        .recipe__link{
+            font-size: 1.5rem;
+            
+       
+        }
+       
+        
 }
+
+
 
 }
