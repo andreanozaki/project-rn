@@ -151,28 +151,33 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-
-// Seleciona apenas a seção do formulário de login para desfocar
+// Seleciona o overlay e o modal
 const formSection = document.querySelector('.section-form');
 const modal = document.getElementById('forgotPasswordModal');
+const modalOverlay = document.getElementById('modalOverlay');
 
 // Abre o modal e aplica o desfoque ao formulário
 document.getElementById('forgotPasswordLink').addEventListener('click', function(event) {
     event.preventDefault();
     modal.style.display = 'block'; 
+    modalOverlay.style.display = 'block'; // Exibe o overlay
     formSection.classList.add('blur'); // Aplica o desfoque apenas na seção do formulário
 });
 
 // Fecha o modal e remove o desfoque
 document.querySelector('.close').addEventListener('click', function() {
     modal.style.display = 'none';
+    modalOverlay.style.display = 'none'; // Esconde o overlay
     formSection.classList.remove('blur'); // Remove o desfoque
 });
 
-// Fecha o modal se clicar fora dele e remove o desfoque
-window.addEventListener('click', function(event) {
-    if (event.target == modal) {
-        modal.style.display = 'none';
-        formSection.classList.remove('blur'); // Remove o desfoque
-    }
+// Fecha o modal se clicar no overlay e remove o desfoque
+modalOverlay.addEventListener('click', function() {
+    modal.style.display = 'none';
+    modalOverlay.style.display = 'none'; // Esconde o overlay
+    formSection.classList.remove('blur'); // Remove o desfoque
 });
+       // Redirecionar para register.html ao clicar em "Criar conta"
+       document.getElementById("createAccountButton").addEventListener("click", function() {
+        window.location.href = "register.html";
+    });

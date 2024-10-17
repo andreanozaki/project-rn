@@ -55,52 +55,98 @@
     text-decoration: underline;
 }
 
-/* Efeito de desfoque */
-.blur {
-    filter: blur(5px); /* Intensidade do desfoque */
-    pointer-events: none; /* Impede a interação com o conteúdo desfocado */
+/* Estilos do overlay */
+.modal-overlay {
+    display: none; /* Inicialmente oculto */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4); /* Fundo semi-transparente */
+    z-index: 1; /* Abaixo do modal */
 }
 
 /* Estilos do modal */
-.modal {
-    display: none; 
-    display: flex;
-    flex-direction: column;
+/* Overlay para cobrir o fundo quando o modal estiver aberto */
+.modal-overlay {
+    display: none;
     position: fixed;
-    z-index: 2; /* Modal acima do conteúdo */
-    left: 0;
     top: 0;
-    width: 100%; 
-    height: 100%; 
-    background-color: rgba(0,0,0,0.4); /* Fundo semi-transparente */
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Fundo semi-transparente */
+    z-index: 1; /* Abaixo do modal */
 }
-
-.modal-content {
-    display: flex;
-    flex-direction: column;
+.modal {
+    display: none;
+  
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     background-color: #f8efef;
     padding: 20px;
-    border: 1px solid #888;
-    width:70em;
-    height:50em; 
+    z-index: 2; /* Modal acima do overlay */
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
     border-radius: 10px;
-    z-index: 3; /* Mantém o conteúdo acima do modal */
-    position: absolute;
-    top: 60%;
-    left: 50%;
-    transform: translate(-50%,-50%);
+    max-width: 900px;
+    width: 100%;
+    height:50%;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .close {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-}
-
-.close:hover,
-.close:focus {
-    color: black;
-    text-decoration: none;
+    font-size: 1.5rem;
     cursor: pointer;
 }
+
+.modal-content {
+    padding: 15px 0;
+}
+
+.btn-main {
+    padding: 10px 20px;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn-main:hover {
+    background-color: #555;
+}
+
+/* Exibir o modal e o overlay quando ativados */
+.modal.show {
+    display: block;
+}
+
+.modal-overlay.show {
+    display: block;
+}
+
+/* Efeito de desfoque */
+.blur {
+    filter: blur(5px); /* Ajuste a intensidade do desfoque conforme necessário */
+    pointer-events: none; /* Impede a interação com o conteúdo desfocado */
+}
+
+.register-section {
+    display: flex;
+    display: block;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f9f9f9;
+   
+}
+
