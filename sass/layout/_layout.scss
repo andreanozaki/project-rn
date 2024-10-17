@@ -54,3 +54,53 @@
 .register-section a:hover {
     text-decoration: underline;
 }
+
+/* Efeito de desfoque */
+.blur {
+    filter: blur(5px); /* Intensidade do desfoque */
+    pointer-events: none; /* Impede a interação com o conteúdo desfocado */
+}
+
+/* Estilos do modal */
+.modal {
+    display: none; 
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    z-index: 2; /* Modal acima do conteúdo */
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    background-color: rgba(0,0,0,0.4); /* Fundo semi-transparente */
+}
+
+.modal-content {
+    display: flex;
+    flex-direction: column;
+    background-color: #f8efef;
+    padding: 20px;
+    border: 1px solid #888;
+    width:70em;
+    height:50em; 
+    border-radius: 10px;
+    z-index: 3; /* Mantém o conteúdo acima do modal */
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}

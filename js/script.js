@@ -150,3 +150,29 @@ document.addEventListener('DOMContentLoaded', () => {
         login(username, password);
     });
 });
+
+
+// Seleciona apenas a seção do formulário de login para desfocar
+const formSection = document.querySelector('.section-form');
+const modal = document.getElementById('forgotPasswordModal');
+
+// Abre o modal e aplica o desfoque ao formulário
+document.getElementById('forgotPasswordLink').addEventListener('click', function(event) {
+    event.preventDefault();
+    modal.style.display = 'block'; 
+    formSection.classList.add('blur'); // Aplica o desfoque apenas na seção do formulário
+});
+
+// Fecha o modal e remove o desfoque
+document.querySelector('.close').addEventListener('click', function() {
+    modal.style.display = 'none';
+    formSection.classList.remove('blur'); // Remove o desfoque
+});
+
+// Fecha o modal se clicar fora dele e remove o desfoque
+window.addEventListener('click', function(event) {
+    if (event.target == modal) {
+        modal.style.display = 'none';
+        formSection.classList.remove('blur'); // Remove o desfoque
+    }
+});
