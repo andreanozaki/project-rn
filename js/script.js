@@ -16,10 +16,7 @@ document.addEventListener('DOMContentLoaded', function() {
       });
   }
 
-  logoElement.addEventListener('click', function(event) {
-      event.preventDefault();
-      activateAnimations();
-  });
+
 
   // Atualiza a imagem principal ao clicar nas miniaturas dos e-books
   function updateMainImage(imageSrc) {
@@ -61,7 +58,6 @@ document.addEventListener('DOMContentLoaded', function() {
       rootMargin: "-80px",
   });
 
-  obs.observe(sectionMainE);
 
   // Gallery lightbox
   if (document.querySelector('.gallery2')) {
@@ -122,45 +118,35 @@ window.addEventListener('scroll', checkScroll);
 window.addEventListener('resize', checkScroll); // Para garantir que a lógica funcione em redimensionamentos
 checkScroll(); // Chama a função na inicialização
 
-app.post('/contact', (req, res) => {
-    console.log(req.body); // Verifique o que está sendo recebido
-    const { name, email, message } = req.body;
+//login
+document.addEventListener('DOMContentLoaded', () => {
+    async function login(username, password) {
+        try {
+            const response = await fetch('http://localhost:3001/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ username, password })
+            });
 
-    if (!name || !email || !message) {
-        return res.status(400).send('Todos os campos são obrigatórios!');
+            if (response.ok) {
+                const data = await response.json();
+                alert(data.message);
+                window.location.href = 'index.html'; // Redireciona para a página principal
+            } else {
+                const errorText = await response.text();
+                alert(`Erro ao fazer login: ${errorText}`);
+            }
+        } catch (error) {
+            console.error('Erro ao fazer login:', error);
+        }
     }
 
-    // Insira os dados no banco de dados (lógica não mostrada aqui)
-    // ...
-
-    res.send('Dados inseridos com sucesso!');
-});
-
-
-    document.getElementById('contactForm').addEventListener('submit', function(event) {
-        event.preventDefault(); // Impede o envio padrão do formulário
-
-        // Obtendo os dados do formulário
-        const formData = new FormData(this);
-
-        // Enviando os dados via fetch
-        fetch('http://localhost:3001/contact', {
-            method: 'POST',
-            body: formData
-        })
-        .then(response => {
-            if (response.ok) {
-                // Se a resposta for bem-sucedida, exibir a mensagem
-                document.getElementById('responseMessage').innerText = 'Mensagem enviada!';
-                document.getElementById('responseMessage').style.display = 'block';
-                this.reset(); // Opcional: Limpa o formulário após o envio
-            } else {
-                throw new Error('Erro ao enviar a mensagem.');
-            }
-        })
-        .catch(error => {
-            // Tratar erros
-            document.getElementById('responseMessage').innerText = 'Erro ao enviar a mensagem. Tente novamente.';
-            document.getElementById('responseMessage').style.display = 'block';
-        });
+    document.getElementById('loginForm').addEventListener('submit', (e) => {
+        e.preventDefault();
+        const username = document.getElementById('username').value;
+        const password = document.getElementById('password').value;
+        login(username, password);
     });
+});

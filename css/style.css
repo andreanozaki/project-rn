@@ -492,6 +492,38 @@ body {
   }
 }
 
+/* Estilos para a seção de registro */
+/* Estilos da Seção de Registro */
+.register-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  padding: 2rem;
+}
+
+.register-section h1 {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  color: #333;
+}
+
+.register-section p {
+  margin-top: 1rem;
+  color: #333;
+}
+
+.register-section a {
+  color: #615110;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.register-section a:hover {
+  text-decoration: underline;
+}
+
 /***************************/
 /*FOOTER*/
 /***************************/

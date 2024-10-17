@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Login Page" />
+    <title>Login - Ricardo Nozaki</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+    <header class="header flash-effect">
+        <a href="index.html">
+            <img class="logo" src="img/base/logo/lo2.png" alt="logo">
+        </a>
+     
+        <button class="btn-mobile-nav">
+            <ion-icon class="icon-mobile-nav" name="menu-outline"></ion-icon>
+            <ion-icon class="icon-mobile-nav" name="close-outline"></ion-icon>
+        </button>
+    </header>
+    <main>
+        <section class="section-form">
+            <img src="img/base/Capa Facebook - Black Friday-3.png" alt="" class="form-bg">
+            <div class="contact">
+                <form id="registerForm" method="POST" action="http://localhost:3001/register" class="form">
+                    <h2 class="heading-form">Crie sua conta:</h2>
+                    
+                    <input type="text" name="username" required placeholder="Usuário:">
+                    <input type="email" name="email" required placeholder="E-mail:">
+                    <input type="password" name="password" required placeholder="Senha:">
+                    
+                    <button type="submit" class="btn-main">Registrar</button>
+                </form>
+            </div>
+        </section>
+    </main>
+    
+</body>
+</html>

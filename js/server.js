@@ -1,52 +1,56 @@
 
 const express = require('express');
-const mysql = require('mysql2');
 const bodyParser = require('body-parser');
+const connection = require('./db'); // Importa a conexão do db.js
+const cors = require('cors'); // Importar o pacote CORS
+
 const app = express();
 const port = 3001;
 
-// Middleware para processar dados do formulário
+// Middleware para habilitar CORS
+app.use(cors({
+    origin: 'http://127.0.0.1:52817' // Substitua pela porta e origem correta do frontend
+  }));
+  
+
+// Middleware para processar dados enviados no formato application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
+app.use(bodyParser.json()); // Para processar JSON enviado no corpo da requisição
 
-// Configuração da conexão com o banco de dados
-const connection = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: '080808',
-    database: 'clientes'
-});
+// Rota de login
+app.post('/login', (req, res) => {
+    const { username, password } = req.body;
+  
+    // Verificar se os dados foram recebidos corretamente
+    console.log(`Tentativa de login com: Username: ${username}, Password: ${password}`);
 
-// Testar a conexão com o banco de dados
-connection.connect((err) => {
+  // Verificar se o usuário existe no banco de dados
+  const query = 'SELECT * FROM users WHERE username = ?';
+  connection.query(query, [username], (err, results) => {
     if (err) {
-        console.error('Erro ao conectar ao MySQL:', err);
-        return;
-    }
-    console.log('Conectado ao MySQL!');
-});
-
-// Rota para lidar com o envio do formulário
-app.post('/contact', (req, res) => {
-    const { nome, email, mensagem } = req.body;  // 'mensagem' deve ser usado, não 'message'
-
-    // Validação simples
-    if (!nome || !email || !mensagem) {
-        return res.status(400).send('Todos os campos são obrigatórios!');
+      console.error('Erro ao buscar o usuário:', err);
+      return res.status(500).send('Erro no servidor');
     }
 
-    // Inserir dados no banco de dados
-    const query = 'INSERT INTO contacts (nome, email, mensagem) VALUES (?, ?, ?)';
-    connection.query(query, [nome, email, mensagem], (err, result) => {  // Certifique-se de usar 'mensagem'
-        if (err) {
-            console.error('Erro ao salvar os dados:', err);
-            return res.status(500).send('Erro no servidor');
-        }
-        res.status(200).send('Dados enviados com sucesso!');
-    });
+    if (results.length === 0) {
+      console.log('Usuário não encontrado');
+      return res.status(401).send('Usuário não encontrado');
+    }
+
+    const user = results[0];
+
+    // Comparar a senha fornecida com a senha armazenada
+    if (password === user.password) {
+      console.log('Login bem-sucedido');
+      res.status(200).send('Login realizado com sucesso!');
+    } else {
+      console.log('Senha incorreta');
+      res.status(401).send('Senha incorreta');
+    }
+  });
 });
 
 // Iniciar o servidor
 app.listen(port, () => {
-    console.log(`Servidor rodando na porta ${port}`);
+  console.log(`Servidor rodando na porta ${port}`);
 });

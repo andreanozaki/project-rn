@@ -33,13 +33,19 @@
     <main>
         <section class="login-section">
             <h1>Login</h1>
-            <form id="loginForm">
+         
+            <form id="loginForm" method="POST" action="http://localhost:3001/login">
                 <label for="username">Usuário:</label>
                 <input type="text" id="username" name="username" required>
+                
                 <label for="password">Senha:</label>
                 <input type="password" id="password" name="password" required>
+                
                 <button type="submit">Entrar</button>
             </form>
+            
+            
+                
             <p>Não tem uma conta? <a href="register.html">Crie uma conta</a></p>
         </section>
     </main>
@@ -49,8 +55,9 @@
     </footer>
 
     <script src="js/script.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.4.0/ionicons.esm.js" type="module"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.4.0/ionicons.js" nomodule></script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    
 
     <script>
       document.addEventListener('DOMContentLoaded', () => {
