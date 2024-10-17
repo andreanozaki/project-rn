@@ -36,9 +36,10 @@
             <div class="contact">
                 <form id="loginForm" method="POST" action="http://localhost:3001/login" class="form">
                     <h2 class="heading-form">Login</h2>
-                    <input type="text" name="username" required placeholder="Usuário">
-                    <input type="password" name="password" required placeholder="Senha">
+                    <input type="text" id="username" name="username" required placeholder="Usuário">
+                    <input type="password" id="password" name="password" required placeholder="Senha">
                     <button type="submit" class="btn-main">Entrar</button>
+                
                     <p class="forgot-create-links">
                         <a href="#" id="forgotPasswordLink">Esqueceu a senha?</a> | 
                     </p>
@@ -82,68 +83,8 @@
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
     
 
-    <script>
 
-   
 
-    //
-      document.addEventListener('DOMContentLoaded', () => {
-        async function login(username, password) {
-            try {
-                const response = await fetch('/login', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({ username, password })
-                });
-
-                if (response.ok) {
-                    const data = await response.json();
-                    localStorage.setItem('token', data.token); // Armazena o token no localStorage
-                    window.location.href = 'index.html'; // Redireciona para a página principal
-                } else {
-                    const errorText = await response.text();
-                    alert(`Erro ao fazer login: ${errorText}`);
-                }
-            } catch (error) {
-                console.error('Erro ao fazer login:', error);
-            }
-        }
-
-        document.getElementById('loginForm').addEventListener('submit', (e) => {
-            e.preventDefault();
-            const username = document.getElementById('username').value;
-            const password = document.getElementById('password').value;
-            login(username, password);
-        });
-      });
-
-       // Ação ao enviar o formulário de redefinição de senha
-document.getElementById('resetPasswordForm').addEventListener('submit', async function(event) {
-    event.preventDefault();
-    const email = document.getElementById('email').value;
-
-    try {
-        const response = await fetch('/reset-password', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ email: email })
-        });
-
-        if (response.ok) {
-            document.getElementById('feedback').style.display = 'block';
-        } else {
-            alert('Erro ao enviar o email. Tente novamente.');
-        }
-    } catch (error) {
-        console.error('Erro:', error);
-        alert('Erro ao enviar o email.');
-    }
-});
-    </script>
     
 </body>
 </html>

@@ -1,3 +1,4 @@
+
 document.addEventListener('DOMContentLoaded', function() {
   // Adiciona a animação ao clicar no logo
   var logoElement = document.getElementById('logo');
@@ -15,8 +16,6 @@ document.addEventListener('DOMContentLoaded', function() {
           icon.classList.add('activated');
       });
   }
-
-
 
   // Atualiza a imagem principal ao clicar nas miniaturas dos e-books
   function updateMainImage(imageSrc) {
@@ -40,9 +39,6 @@ document.addEventListener('DOMContentLoaded', function() {
   
   // Alterna entre 'nav-open' e 'nav-close' quando o botão é clicado
 
-  
-
-
   // Sticky navigation
   const sectionMainE = document.querySelector(".section-main");
   const obs = new IntersectionObserver(function (entries) {
@@ -63,25 +59,10 @@ document.addEventListener('DOMContentLoaded', function() {
   if (document.querySelector('.gallery2')) {
       lightGallery(document.querySelector('.gallery2'));
   }
- 
-    });
 
-   //icons 
-   window.addEventListener('DOMContentLoaded', (event) => {
-    const socialIcons = document.querySelectorAll('.social-media li');
-    
-    // Adicione a classe 'active' para ativar a animação
-    socialIcons.forEach((icon, index) => {
-      setTimeout(() => {
-        icon.classList.add('active');
-      }, index * 200); // Atraso para cada ícone
-    });
-  });
-
-
+  // Função para revelar elementos
   function revealElements() {
     const reveals = document.querySelectorAll('.reveal');
-  
     reveals.forEach((element) => {
       const windowHeight = window.innerHeight;
       const elementTop = element.getBoundingClientRect().top;
@@ -97,87 +78,92 @@ document.addEventListener('DOMContentLoaded', function() {
   
   window.addEventListener('scroll', revealElements);
   
-
   const reveals = document.querySelectorAll('.reveal, .reveal-from-right'); // Selecione ambas as classes
 
-function checkScroll() {
-  for (const reveal of reveals) {
-    const windowHeight = window.innerHeight;
-    const elementTop = reveal.getBoundingClientRect().top;
-    const revealPoint = 150; // Ajuste conforme necessário
+  function checkScroll() {
+    for (const reveal of reveals) {
+      const windowHeight = window.innerHeight;
+      const elementTop = reveal.getBoundingClientRect().top;
+      const revealPoint = 150;
 
-    if (elementTop < windowHeight - revealPoint) {
-      reveal.classList.add('active');
-    } else {
-      reveal.classList.remove('active'); // Opcional: remove a classe se não estiver visível
+      if (elementTop < windowHeight - revealPoint) {
+        reveal.classList.add('active');
+      } else {
+        reveal.classList.remove('active');
+      }
     }
   }
-}
 
-window.addEventListener('scroll', checkScroll);
-window.addEventListener('resize', checkScroll); // Para garantir que a lógica funcione em redimensionamentos
-checkScroll(); // Chama a função na inicialização
+  window.addEventListener('scroll', checkScroll);
+  window.addEventListener('resize', checkScroll);
+  checkScroll();
+//LOGIN
+document.addEventListener('DOMContentLoaded', function() {
+  // Verifique se a página é a página de login
+  if (window.location.pathname.includes('login.html')) {
+    const loginForm = document.getElementById('loginForm');
 
-//login
-document.addEventListener('DOMContentLoaded', () => {
-    async function login(username, password) {
-        try {
-            const response = await fetch('http://localhost:3001/login', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ username, password })
-            });
-
-            if (response.ok) {
-                const data = await response.json();
-                alert(data.message);
-                window.location.href = 'index.html'; // Redireciona para a página principal
-            } else {
-                const errorText = await response.text();
-                alert(`Erro ao fazer login: ${errorText}`);
-            }
-        } catch (error) {
-            console.error('Erro ao fazer login:', error);
-        }
+    if (loginForm) {
+        loginForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            login(username, password);
+        });
+    } else {
+        console.error('Elemento loginForm não encontrado');
     }
+  }
 
-    document.getElementById('loginForm').addEventListener('submit', (e) => {
-        e.preventDefault();
-        const username = document.getElementById('username').value;
-        const password = document.getElementById('password').value;
-        login(username, password);
+  // Seu restante do código (para animações, navegação, etc.) continua normalmente aqui.
+  // Exemplo do código de animação, navegação mobile, etc.
+
+  // login
+  
+  const loginForm = document.getElementById('loginForm');
+
+  if (loginForm) {
+      loginForm.addEventListener('submit', (e) => {
+          e.preventDefault();
+          const username = document.getElementById('username').value;
+          const password = document.getElementById('password').value;
+          login(username, password);
+      });
+  } else {
+      console.error('Elemento loginForm não encontrado');
+  }
+
+  // Modal
+  const formSection = document.querySelector('.section-form');
+  const modal = document.getElementById('forgotPasswordModal');
+  const modalOverlay = document.getElementById('modalOverlay');
+
+  if (formSection && modal && modalOverlay) {
+    document.getElementById('forgotPasswordLink').addEventListener('click', function(event) {
+        event.preventDefault();
+        modal.style.display = 'block'; 
+        modalOverlay.style.display = 'block';
+        formSection.classList.add('blur');
     });
-});
 
-// Seleciona o overlay e o modal
-const formSection = document.querySelector('.section-form');
-const modal = document.getElementById('forgotPasswordModal');
-const modalOverlay = document.getElementById('modalOverlay');
+    document.querySelector('.close').addEventListener('click', function() {
+        modal.style.display = 'none';
+        modalOverlay.style.display = 'none';
+        formSection.classList.remove('blur');
+    });
 
-// Abre o modal e aplica o desfoque ao formulário
-document.getElementById('forgotPasswordLink').addEventListener('click', function(event) {
-    event.preventDefault();
-    modal.style.display = 'block'; 
-    modalOverlay.style.display = 'block'; // Exibe o overlay
-    formSection.classList.add('blur'); // Aplica o desfoque apenas na seção do formulário
-});
+    modalOverlay.addEventListener('click', function() {
+        modal.style.display = 'none';
+        modalOverlay.style.display = 'none';
+        formSection.classList.remove('blur');
+    });
+  }
 
-// Fecha o modal e remove o desfoque
-document.querySelector('.close').addEventListener('click', function() {
-    modal.style.display = 'none';
-    modalOverlay.style.display = 'none'; // Esconde o overlay
-    formSection.classList.remove('blur'); // Remove o desfoque
-});
-
-// Fecha o modal se clicar no overlay e remove o desfoque
-modalOverlay.addEventListener('click', function() {
-    modal.style.display = 'none';
-    modalOverlay.style.display = 'none'; // Esconde o overlay
-    formSection.classList.remove('blur'); // Remove o desfoque
-});
-       // Redirecionar para register.html ao clicar em "Criar conta"
-       document.getElementById("createAccountButton").addEventListener("click", function() {
+  const createAccountButton = document.getElementById("createAccountButton");
+  if (createAccountButton) {
+    createAccountButton.addEventListener("click", function() {
         window.location.href = "register.html";
     });
+  }
+});
+});

@@ -248,15 +248,23 @@
         
 
          <!-- Formulário de Criação de Receita (somente para o chef) -->
-  <section id="gerenciamento-receitas" style="display: none;">
-    <h2>Gerenciamento de Receitas</h2>
-    <form id="criar-receita-form">
-      <input type="text" id="titulo" placeholder="Título da Receita" required>
-      <textarea id="ingredientes" placeholder="Ingredientes" required></textarea>
-      <textarea id="preparo" placeholder="Modo de Preparo" required></textarea>
-      <button type="submit">Criar Receita</button>
-    </form>
-  </section>
+         <section id="gerenciamento-receitas" class="form-section">
+            <h2>Gerenciamento de Receitas</h2>
+            <form id="criar-receita-form" method="POST" action="/create-recipe" enctype="multipart/form-data">
+                <input type="text" name="title" placeholder="Título da Receita" required>
+                <input type="text" name="description" placeholder="Descrição da Receita" required>
+                <input type="text" name="time" placeholder="Tempo de Preparo (ex: 20 min)" required>
+                <input type="text" name="level" placeholder="Nível de Dificuldade (ex: Fácil)" required>
+                <input type="text" name="yield" placeholder="Rendimento (ex: 200 ml)" required>
+                <input type="file" name="image" accept="image/*" required>
+                
+                <textarea name="ingredients" placeholder="Ingredientes (um por linha)" required></textarea>
+                <textarea name="preparation" placeholder="Modo de Preparo" required></textarea>
+                
+                <button type="submit">Criar Receita</button>
+            </form>
+        </section>
+        
         
 
 
