@@ -1,38 +1,25 @@
-
 document.addEventListener('DOMContentLoaded', function() {
-  // Adiciona a animação ao clicar no logo
-  var logoElement = document.getElementById('logo');
-  var sectionMainElement = document.querySelector('.section-main');
-  var headingMainElement = document.querySelector('.heading-primary--main');
-  var headingSubElement = document.querySelector('.heading-primary--sub');
-  var socialMediaIcons = document.querySelectorAll('.social-media li');
-
-  function activateAnimations() {
-      sectionMainElement.classList.add('flash-effect');
-      headingMainElement.classList.add('moveInLeft');
-    
-      
-
-      socialMediaIcons.forEach(function(icon) {
-          icon.classList.add('activated');
-      });
-  }
-
   
-
-
-
-  //mobile nav work
-
-
-  // Gallery lightbox
-  if (document.querySelector('.gallery2')) {
-      lightGallery(document.querySelector('.gallery2'));
+  // Função para animações na página principal
+  function activateAnimations() {
+    const sectionMainElement = document.querySelector('.section-main');
+    const headingMainElement = document.querySelector('.heading-primary--main');
+    const socialMediaIcons = document.querySelectorAll('.social-media li');
+  
+    if (sectionMainElement) {
+      sectionMainElement.classList.add('flash-effect');
+    }
+    if (headingMainElement) {
+      headingMainElement.classList.add('moveInLeft');
+    }
+    socialMediaIcons.forEach(function(icon) {
+      icon.classList.add('activated');
+    });
   }
-
-  // Função para revelar elementos
+  
+  // Função para revelar elementos com scroll
   function revealElements() {
-    const reveals = document.querySelectorAll('.reveal');
+    const reveals = document.querySelectorAll('.reveal, .reveal-from-right');
     reveals.forEach((element) => {
       const windowHeight = window.innerHeight;
       const elementTop = element.getBoundingClientRect().top;
@@ -46,69 +33,60 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
   
+  // Eventos de scroll e resize para revelar elementos
   window.addEventListener('scroll', revealElements);
+  window.addEventListener('resize', revealElements);
+  revealElements(); // Chama imediatamente ao carregar a página
+
+  // Ativar animações quando a página é carregada
+  activateAnimations();
   
-  const reveals = document.querySelectorAll('.reveal, .reveal-from-right'); // Selecione ambas as classes
-
-  function checkScroll() {
-    for (const reveal of reveals) {
-      const windowHeight = window.innerHeight;
-      const elementTop = reveal.getBoundingClientRect().top;
-      const revealPoint = 150;
-
-      if (elementTop < windowHeight - revealPoint) {
-        reveal.classList.add('active');
-      } else {
-        reveal.classList.remove('active');
-      }
-    }
+  // Gallery lightbox
+  if (document.querySelector('.gallery2')) {
+    lightGallery(document.querySelector('.gallery2'));
   }
 
-  window.addEventListener('scroll', checkScroll);
-  window.addEventListener('resize', checkScroll);
-  checkScroll();
+  // Função para registro de usuário e envio de dados para o servidor
+  const registerForm = document.getElementById('registerForm');
+  if (registerForm) {
+    registerForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+  
+      // Captura os valores do formulário
+      const email = document.querySelector('input[name="email"]').value;
+      const password = document.querySelector('input[name="password"]').value;
+  
+      // Envia os dados para o servidor via POST
+      fetch('http://localhost:3001/register', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ email, password })
+      })
+      .then(response => response.json())
+      .then(data => {
+        // Exibir mensagem de sucesso
+        const message = document.createElement('p');
+        message.textContent = data.message;
+        message.style.color = 'green';
+        document.querySelector('.contact').appendChild(message);
+  
+        // Limpar os campos do formulário
+        document.querySelector('input[name="email"]').value = '';
+        document.querySelector('input[name="password"]').value = '';
+      })
+      .catch(error => {
+        console.error('Erro ao registrar usuário:', error);
+        const message = document.createElement('p');
+        message.textContent = 'Erro ao criar conta. Tente novamente.';
+        message.style.color = 'red';
+        document.querySelector('.contact').appendChild(message);
+      });
+    });
+  }
 
-
-//LOGIN
-  document.addEventListener('DOMContentLoaded', function() {
-    // Verifique se a página é a página de login
-    if (window.location.pathname.includes('login.html')) {
-      const loginForm = document.getElementById('loginForm');
-
-      if (loginForm) {
-          loginForm.addEventListener('submit', (e) => {
-              e.preventDefault();
-              const username = document.getElementById('username').value;
-              const password = document.getElementById('password').value;
-              login(username, password);
-          });
-      } else {
-          console.error('Elemento loginForm não encontrado');
-      }
-    }
-
- 
-    
-
-    const loginForm = document.getElementById('loginForm');
-
-    if (loginForm) {
-        loginForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const username = document.getElementById('username').value;
-            const password = document.getElementById('password').value;
-            login(username, password);
-        });
-    } else {
-        console.error('Elemento loginForm não encontrado');
-    }
-  });
-});
-
-
-
-document.addEventListener('DOMContentLoaded', function () {
-  // Verifica se estamos na página forgotpass.html
+  // Função para manipular os links na página forgotpass.html
   if (window.location.pathname.includes('forgotpass.html')) {
     const navItems = document.querySelectorAll('.main-nav-list li');
     
@@ -119,72 +97,121 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     });
   }
-});
 
-/// Função para enviar um comentário
-document.getElementById('commentForm').addEventListener('submit', function(e) {
-  e.preventDefault();
-
-  // Captura os valores do formulário
-  const email = document.getElementById('email').value;
-  const comment = document.getElementById('comment').value;
-  const recipe_id = 1;  // Defina o ID da receita correspondente
-
-  // Envia os dados para o servidor via POST
-  fetch('http://localhost:3001/add-comment', {
-      method: 'POST',
-      headers: {
-          'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ email, comment, recipe_id })
-  })
-  .then(response => response.json())
-  .then(data => {
-      // Após enviar o comentário, recarregar os comentários
-      loadComments();
-
-      // Limpar os campos do formulário
-      document.getElementById('email').value = '';
-      document.getElementById('comment').value = '';
-
-      // Exibir mensagem de sucesso
-      const message = document.getElementById('message');
-      message.textContent = data.message;
-      message.style.color = "green";
-  })
-  .catch(error => {
-      console.error('Erro ao adicionar comentário:', error);
-      const message = document.getElementById('message');
-      message.textContent = "Erro ao adicionar comentário. Tente novamente.";
-      message.style.color = "red";
-  });
-});
-
-
-/// Função para carregar os comentários e exibi-los
-function loadComments() {
-  const recipe_id = 1;  // Substitua com o ID correto da receita
+  // Função para enviar um comentário
+  const commentForm = document.getElementById('commentForm');
+  if (commentForm) {
+    commentForm.addEventListener('submit', function(e) {
+      e.preventDefault();
   
-  fetch(`http://localhost:3001/comments/${recipe_id}`)
-    .then(response => response.json())
-    .then(data => {
-      const commentsList = document.getElementById('comments');
-      commentsList.innerHTML = ''; // Limpa a lista antes de adicionar novos comentários
-      data.forEach(comment => {
-        const commentItem = document.createElement('li');
-        commentItem.innerHTML = `<strong>${comment.email}:</strong> ${comment.comment}`;
-        commentsList.appendChild(commentItem);
+      // Captura os valores do formulário
+      const email = document.getElementById('email').value;
+      const comment = document.getElementById('comment').value;
+      const recipe_id = 1;  // Defina o ID da receita correspondente
+  
+      // Envia os dados para o servidor via POST
+      fetch('http://localhost:3001/add-comment', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ email, comment, recipe_id })
+      })
+      .then(response => response.json())
+      .then(data => {
+        // Após enviar o comentário, recarregar os comentários
+        loadComments();
+  
+        // Limpar os campos do formulário
+        document.getElementById('email').value = '';
+        document.getElementById('comment').value = '';
+  
+        // Exibir mensagem de sucesso
+        const message = document.getElementById('message');
+        message.textContent = data.message;
+        message.style.color = "green";
+      })
+      .catch(error => {
+        console.error('Erro ao adicionar comentário:', error);
+        const message = document.getElementById('message');
+        message.textContent = "Erro ao adicionar comentário. Tente novamente.";
+        message.style.color = "red";
       });
-    })
-    .catch(error => {
-      console.error('Erro ao carregar comentários:', error);
-      const message = document.getElementById('message');
-      message.textContent = 'Erro ao carregar comentários.';
-      message.style.color = "red";
     });
-}
+  }
 
-// Chama a função para carregar os comentários ao carregar a página
-document.addEventListener('DOMContentLoaded', function() {
-  loadComments();
+  // Função para carregar os comentários e exibi-los
+  function loadComments() {
+    const recipe_id = 1;  // Substitua com o ID correto da receita
+    
+    fetch(`http://localhost:3001/comments/${recipe_id}`)
+      .then(response => response.json())
+      .then(data => {
+        const commentsList = document.getElementById('comments');
+        commentsList.innerHTML = ''; // Limpa a lista antes de adicionar novos comentários
+        data.forEach(comment => {
+          const commentItem = document.createElement('li');
+          commentItem.innerHTML = `<strong>${comment.email}:</strong> ${comment.comment}`;
+          commentsList.appendChild(commentItem);
+        });
+      })
+      .catch(error => {
+        console.error('Erro ao carregar comentários:', error);
+        const message = document.getElementById('message');
+        if (message) {
+          message.textContent = 'Erro ao carregar comentários.';
+          message.style.color = "red";
+        }
+      });
+  }
+
+  // Carregar comentários ao carregar a página, garantindo que o elemento exista
+  if (document.getElementById('comments')) {
+    loadComments();
+  }
+});
+
+document.addEventListener('DOMContentLoaded', function () {
+  const loginForm = document.getElementById('loginForm');
+
+  if (loginForm) {
+    loginForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      // Captura os valores do formulário
+      const email = document.querySelector('input[name="email"]').value;
+      const password = document.querySelector('input[name="password"]').value;
+
+      // Verifica se os campos foram preenchidos
+      if (!email || !password) {
+        alert('Por favor, preencha todos os campos.');
+        return;
+      }
+
+      // Envia os dados para o servidor via POST
+      fetch('http://localhost:3001/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ email, password })
+      })
+      .then(response => {
+        if (response.status === 200) {
+          return response.json();
+        } else if (response.status === 401) {
+          alert('Usuário não encontrado ou senha incorreta.');
+          throw new Error('Usuário não encontrado ou senha incorreta.');
+        } else {
+          throw new Error('Erro no servidor.');
+        }
+      })
+      .then(data => {
+        alert(data.message);  // Exibe mensagem de sucesso
+      })
+      .catch(error => {
+        console.error('Erro ao fazer login:', error);
+      });
+    });
+  }
 });

@@ -1599,6 +1599,7 @@ body {
   list-style-type: none; /* Remove as bolinhas de lista */
   padding: 0;
   margin: 0;
+  font-size: 14px;
 }
 
 #comments div {

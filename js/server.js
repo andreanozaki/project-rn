@@ -85,6 +85,40 @@ app.get('/comments/:recipe_id', (req, res) => {
   });
 });
 
+//login
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+
+app.post('/login', (req, res) => {
+  const { email, password } = req.body;
+
+  // Verifica se os dados foram recebidos corretamente
+  if (!email || !password) {
+    return res.status(400).send('Por favor, preencha todos os campos.');
+  }
+
+  // Verifica se o usuário existe no banco de dados
+  const query = 'SELECT * FROM users WHERE email = ?';
+  connection.query(query, [email], (err, results) => {
+    if (err) {
+      console.error('Erro ao buscar usuário no BD:', err);
+      return res.status(500).send('Erro no servidor');
+    }
+    if (results.length === 0) {
+      return res.status(401).send('Usuário não encontrado');
+    }
+
+    const user = results[0];
+
+    // Comparar a senha fornecida com a senha armazenada
+    if (password === user.password) {
+      return res.status(200).json({ message: 'Login realizado com sucesso!' });
+    } else {
+      return res.status(401).json({ message: 'Senha incorreta' });
+    }
+  });
+});
+
 
 // Unificado - Iniciar o servidor
 app.listen(port, () => {
