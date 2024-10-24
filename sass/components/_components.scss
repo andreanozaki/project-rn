@@ -2,12 +2,9 @@
 .logo {
     height: 12rem;
     @include respond(mobile){
-display: none;    }
+      height: 10rem;
 
-    
-
-  
-
+  }
   }
 
 .container {
@@ -150,4 +147,15 @@ gap: 4rem;
 .reveal-from-right.active {
   opacity: 1;
   transform: translateX(0);
+}
+
+/* Esconde todos os links da navegação, exceto o de Login, na página forgotpass */
+.forgotpass-page .main-nav-list li:not(:last-child) {
+  display: none; /* Esconde os links anteriores ao link de Login */
+}
+
+/* Garante que a navegação mantenha o estilo */
+.forgotpass-page .main-nav-list {
+  display: flex;
+  justify-content: flex-end; /* Mantém o estilo flex e alinha o login à direita */
 }

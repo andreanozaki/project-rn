@@ -109,17 +109,28 @@
                 dae hic dolor, excepturi ducimus perspiciatis. <br>
             </p>
 
-        </div>
-      <!-- Formulário de Comentário -->
+<!-- Formulário de Comentário -->
 <div class="comment-section">
     <h2>Deixe um Comentário</h2>
     <form id="commentForm">
+        <input type="email" id="email" name="email" placeholder="Digite seu email..." required>
         <textarea id="comment" name="comment" rows="4" placeholder="Digite seu comentário..." required></textarea>
         <button type="submit">Enviar Comentário</button>
     </form>
-    <p id="message">É necessário estar logado para comentar.</p>
 
+    <!-- Mensagem de sucesso ou erro -->
+    <p id="message" class="message"></p>
 </div>
+
+<!-- Exibir comentários -->
+<div class="comment-list">
+    <h3>Comentários:</h3>
+    <ul id="comments">
+        <!-- Os comentários aparecerão aqui -->
+    </ul>
+</div>
+
+
 <!-- Botões de Compartilhamento -->
 <div class="share-buttons">
     <a href="https://www.instagram.com/share?url=https://yourwebsite.com/receita-1.html" target="_blank" class="share-btn instagram">
@@ -129,6 +140,7 @@
         <ion-icon name="logo-facebook"></ion-icon> Compartilhar no Facebook
     </a>
 </div>
+
 
    
         <div class="container">
@@ -178,7 +190,7 @@
         <p class="copyright"> &copy; 2023 Ricardo Nozaki.Todos os direitos reservados. Site por <a href="https://andreanozaki.com/">AN Sites</a></p>
 
     </footer>
-    <script src="js/script.js"></script>
+    <script src="../js/script.js"></script>
 
     
 

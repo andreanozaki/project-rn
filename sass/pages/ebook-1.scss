@@ -101,3 +101,32 @@
 .links-ebook{
   padding: 3rem 0 0 3rem;
 }
+//section comments
+
+#comments {
+  list-style-type: none;  /* Remove as bolinhas de lista */
+  padding: 0;
+  margin: 0;
+}
+
+#comments div {
+  margin-bottom: 15px;  /* Espaçamento entre comentários */
+  padding: 10px;
+  background-color: #f9f9f9;  /* Fundo claro */
+  border-radius: 8px;  /* Cantos arredondados */
+  font-family: 'Rubik', sans-serif;  /* Alterar a fonte */
+  color: #333;  /* Cor do texto */
+}
+
+#comments div strong {
+  display: block;
+  font-weight: bold;
+  color: #2c3e50;  /* Cor personalizada para o email do usuário */
+  margin-bottom: 5px;
+}
+
+.message {
+  font-size: 14px;
+  color: green;
+  margin-top: 10px;
+}

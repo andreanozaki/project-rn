@@ -4,10 +4,10 @@
     gap: 4.8rem;
     align-items: center;
     font-family:'Unica One', sans-serif;
-  
-   
 
-  }
+    @include respond(tab-land){
+      display: none;
+    }
 
   .main-nav-link:link,
   .main-nav-link:visited {
@@ -39,51 +39,31 @@
     background-color: var(--color-primary-light);
     color: rgb(26, 26, 26);
   }
-  .nav-open .main-nav-list {
-    display: flex;
+ 
+
+
+}
+
+
+ /*     font-family:'Unica One', sans-serif;Mantém o estilo da navegação e alinha o link de Login à direita */
+.forgotpass-page .main-nav-list {
+
+    width: 80vw; /* Garante que a lista ocupe toda a largura disponível */
+@include respond (tab-land){
+  width: 70vw;
+}
   }
-/* Alterna os ícones de abrir e fechar */
 
+  
 
-
-  //Mobile  nav
-
-/* MOBILE */
-.btn-mobile-nav {
-  border: none;
-  background: none;
- 
-
-  color:#333;
+.forgotpass-page .main-nav-link {
+  color: #242121; /* Ajuste para a cor original do link */
+  background-color: beige;
+  text-decoration: none;
+  padding: 15px 20px; /* Padding para manter o estilo */
+  border-radius: 4px;
 }
 
-.icon-mobile-nav {
-  height: 4.8rem;
-  width: 4.8rem;
-  display:block;
-
+.forgotpass-page .main-nav-link:hover {
+  color: #eba350; 
 }
-
-.icon-mobile-nav[name="close-outline"] {
-  display: none;
-}
-/* STICKY NAVIGATION */
-/* STICKY NAVIGATION */
-.sticky .header {
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  width: 100%;
-  height: 8rem;
-  padding-top: 0;
-  padding-bottom: 0;
-  background-color:#333;
-  z-index: 999;
-  box-shadow: 0 1.2rem 3.2rem rgba(0, 0, 0, 0.03);
-}
-
-
-//mobile nav queries
-
-
- 

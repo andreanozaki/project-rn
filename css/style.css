@@ -22,57 +22,6 @@
   .header {
     z-index: 99;
   }
-  .icon-mobile-nav {
-    color: bisque;
-    cursor: pointer;
-    display: block;
-  }
-  .main-nav {
-    background-color: rgba(51, 51, 51, 0.8196078431);
-    color: bisque;
-    -webkit-backdrop-filter: blur(5px);
-    backdrop-filter: blur(10px);
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    transform: translateX(100%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.4s ease-in;
-    /* Hide navigation */
-    /* Allows NO transitions at all */
-    /* display: none; */
-    /* 1) Hide it visually */
-    opacity: 0;
-    /* 2) Make it unaccessible to mouse and keyboard */
-    pointer-events: none;
-    /* 3) Hide it from screen readers */
-    visibility: hidden;
-  }
-  .nav-open .main-nav {
-    opacity: 1;
-    pointer-events: auto;
-    visibility: visible;
-    transform: translateX(0);
-  }
-  .nav-open .icon-mobile-nav[name=close-outline] {
-    display: block;
-    z-index: 99;
-  }
-  .nav-open .icon-mobile-nav[name=menu-outline] {
-    display: none;
-  }
-  .main-nav-list {
-    flex-direction: column;
-    gap: 4.8rem;
-  }
-  .main-nav-link:link,
-  .main-nav-link:visited {
-    font-size: 3rem;
-  }
 }
 /* BELOW 704px (Smaller tablets) */
 /**************************/
@@ -283,7 +232,7 @@ body {
 }
 @media (max-width: 710px) {
   .logo {
-    display: none;
+    height: 10rem;
   }
 }
 
@@ -424,6 +373,17 @@ body {
   transform: translateX(0);
 }
 
+/* Esconde todos os links da navegação, exceto o de Login, na página forgotpass */
+.forgotpass-page .main-nav-list li:not(:last-child) {
+  display: none; /* Esconde os links anteriores ao link de Login */
+}
+
+/* Garante que a navegação mantenha o estilo */
+.forgotpass-page .main-nav-list {
+  display: flex;
+  justify-content: flex-end; /* Mantém o estilo flex e alinha o login à direita */
+}
+
 .ebook-photo {
   max-width: 550px;
 }
@@ -490,122 +450,6 @@ body {
   .grid-5cols {
     grid-template-columns: 0fr 2fr 1fr 1fr; /* Alterar para uma única coluna em telas menores */
   }
-}
-
-/* Estilos para a seção de registro */
-/* Estilos da Seção de Registro */
-.register-section {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  flex: 1;
-  padding: 2rem;
-}
-
-.register-section h1 {
-  font-size: 2rem;
-  margin-bottom: 1.5rem;
-  color: #333;
-}
-
-.register-section p {
-  margin-top: 1rem;
-  color: #333;
-}
-
-.register-section a {
-  color: #615110;
-  text-decoration: none;
-  font-weight: 500;
-}
-
-.register-section a:hover {
-  text-decoration: underline;
-}
-
-/* Estilos do overlay */
-.modal-overlay {
-  display: none; /* Inicialmente oculto */
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.4); /* Fundo semi-transparente */
-  z-index: 1; /* Abaixo do modal */
-}
-
-/* Estilos do modal */
-/* Overlay para cobrir o fundo quando o modal estiver aberto */
-.modal-overlay {
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5); /* Fundo semi-transparente */
-  z-index: 1; /* Abaixo do modal */
-}
-
-.modal {
-  display: none;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: #f8efef;
-  padding: 20px;
-  z-index: 2; /* Modal acima do overlay */
-  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
-  border-radius: 10px;
-  max-width: 900px;
-  width: 100%;
-  height: 50%;
-}
-
-.modal-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.close {
-  font-size: 1.5rem;
-  cursor: pointer;
-}
-
-.modal-content {
-  padding: 15px 0;
-}
-
-.btn-main {
-  padding: 10px 20px;
-  background-color: #333;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.btn-main:hover {
-  background-color: #555;
-}
-
-/* Exibir o modal e o overlay quando ativados */
-.modal.show {
-  display: block;
-}
-
-.modal-overlay.show {
-  display: block;
-}
-
-/* Efeito de desfoque */
-.blur {
-  filter: blur(5px); /* Ajuste a intensidade do desfoque conforme necessário */
-  pointer-events: none; /* Impede a interação com o conteúdo desfocado */
 }
 
 /***************************/
@@ -769,9 +613,13 @@ body {
   align-items: center;
   font-family: "Unica One", sans-serif;
 }
-
-.main-nav-link:link,
-.main-nav-link:visited {
+@media (max-width: 75em) {
+  .main-nav-list {
+    display: none;
+  }
+}
+.main-nav-list .main-nav-link:link,
+.main-nav-list .main-nav-link:visited {
   display: inline-block;
   text-decoration: none;
   color: var(--color-primary--light);
@@ -781,61 +629,43 @@ body {
   font-weight: 800;
   transition: all 0.3s;
 }
-
-.main-nav-link:hover,
-.main-nav-link:active {
+.main-nav-list .main-nav-link:hover,
+.main-nav-list .main-nav-link:active {
   color: #dbd4af;
 }
-
-.main-nav-link.nav-cta:link,
-.main-nav-link.nav-cta:visited {
+.main-nav-list .main-nav-link.nav-cta:link,
+.main-nav-list .main-nav-link.nav-cta:visited {
   padding: 1.2rem 2.4rem;
   border-radius: 9px;
   color: var(--color-primary);
   background-color: #dbd4af;
 }
-
-.main-nav-link.nav-cta:hover,
-.main-nav-link.nav-cta:active {
+.main-nav-list .main-nav-link.nav-cta:hover,
+.main-nav-list .main-nav-link.nav-cta:active {
   background-color: var(--color-primary-light);
   color: rgb(26, 26, 26);
 }
 
-.nav-open .main-nav-list {
-  display: flex;
+/*     font-family:'Unica One', sans-serif;Mantém o estilo da navegação e alinha o link de Login à direita */
+.forgotpass-page .main-nav-list {
+  width: 80vw; /* Garante que a lista ocupe toda a largura disponível */
+}
+@media (max-width: 75em) {
+  .forgotpass-page .main-nav-list {
+    width: 70vw;
+  }
 }
 
-/* Alterna os ícones de abrir e fechar */
-/* MOBILE */
-.btn-mobile-nav {
-  border: none;
-  background: none;
-  color: #333;
+.forgotpass-page .main-nav-link {
+  color: #242121; /* Ajuste para a cor original do link */
+  background-color: beige;
+  text-decoration: none;
+  padding: 15px 20px; /* Padding para manter o estilo */
+  border-radius: 4px;
 }
 
-.icon-mobile-nav {
-  height: 4.8rem;
-  width: 4.8rem;
-  display: block;
-}
-
-.icon-mobile-nav[name=close-outline] {
-  display: none;
-}
-
-/* STICKY NAVIGATION */
-/* STICKY NAVIGATION */
-.sticky .header {
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  width: 100%;
-  height: 8rem;
-  padding-top: 0;
-  padding-bottom: 0;
-  background-color: #333;
-  z-index: 999;
-  box-shadow: 0 1.2rem 3.2rem rgba(0, 0, 0, 0.03);
+.forgotpass-page .main-nav-link:hover {
+  color: #eba350;
 }
 
 .section-main {
@@ -1763,6 +1593,34 @@ body {
 
 .links-ebook {
   padding: 3rem 0 0 3rem;
+}
+
+#comments {
+  list-style-type: none; /* Remove as bolinhas de lista */
+  padding: 0;
+  margin: 0;
+}
+
+#comments div {
+  margin-bottom: 15px; /* Espaçamento entre comentários */
+  padding: 10px;
+  background-color: #f9f9f9; /* Fundo claro */
+  border-radius: 8px; /* Cantos arredondados */
+  font-family: "Rubik", sans-serif; /* Alterar a fonte */
+  color: #333; /* Cor do texto */
+}
+
+#comments div strong {
+  display: block;
+  font-weight: bold;
+  color: #2c3e50; /* Cor personalizada para o email do usuário */
+  margin-bottom: 5px;
+}
+
+.message {
+  font-size: 14px;
+  color: green;
+  margin-top: 10px;
 }
 
 /*# sourceMappingURL=style.css.map */

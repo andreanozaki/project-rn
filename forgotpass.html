@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700&display=swap" rel="stylesheet" />
 </head>
-<body>
+<body class="forgotpass-page">
     <header class="header flash-effect">
         <a href="index.html">
             <img class="logo" src="img/base/logo/lo2.png" alt="logo">
@@ -21,7 +21,7 @@
                 <li><a class="main-nav-link" href="index.html#recipe">Receitas</a></li>
                 <li><a class="main-nav-link nav-cta" href="index.html#ebooks">E-book</a></li>
                 <li><a class="main-nav-link" href="index.html#contact">Contato</a></li>
-                <li><a class="main-nav-link" href="login.html">Login</a></li>
+                <li><a class="main-nav-link nav-cta" href="login.html">Login</a></li>
             </ul>
         </nav>
         <button class="btn-mobile-nav">
@@ -35,16 +35,11 @@
             <img src="img/base/Capa Facebook - Black Friday-3.png" alt="" class="form-bg">
             <div class="contact">
                 <form id="loginForm" method="POST" action="http://localhost:3001/login" class="form">
-                    <h2 class="heading-form">Login</h2>
-                    <input type="text" id="username" name="username" required placeholder="Usuário">
-                    <input type="password" id="password" name="password" required placeholder="Senha">
-                    <button type="submit" class="btn-main">Entrar</button>
-                    <p class="forgot-password-link">
-                        <a href="forgotpass.html" style="text-decoration: none; color: #f96408fe;">Esqueci a senha</a>
-                    </p>
-        
+                    <h2 class="heading-form">Redefina sua senha</h2>
+                    <input type="text" id="username" name="username" required placeholder="Email">
+                    <button type="submit" class="btn-main">Enviar</button>
+                
                    
-                    <a href="register.html" class="btn-create-account" style="text-decoration: none; padding: 10px 20px; background-color: #007BFF; color: white; border-radius: 5px; display: inline-block; text-align: center;">Criar conta</a>
 
                 </form>
                
@@ -61,10 +56,7 @@
     </footer>
 
     <script src="js/script.js"></script>
-    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
     
-
 
 
     
