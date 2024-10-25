@@ -384,6 +384,10 @@ body {
   justify-content: flex-end; /* Mantém o estilo flex e alinha o login à direita */
 }
 
+#gerenciamento-receitas {
+  display: none;
+}
+
 .ebook-photo {
   max-width: 550px;
 }

@@ -7,16 +7,17 @@ const multer = require('multer');
 const fs = require('fs');
 const path = require('path');
 const mysql = require('mysql2'); // Para a conexão do MySQL com os comentários
+const nodemailer = require('nodemailer'); // Para enviar e-mails
+const PDFDocument = require('pdfkit'); // Para gerar PDF (npm install pdfkit)
+const csvWriter = require('csv-writer').createObjectCsvStringifier; // Para gerar CSV (npm install csv-writer)
 
 const app = express();
 const port = 3001;
 
 // Middleware para habilitar CORS
-// Middleware para habilitar CORS
 app.use(cors({
   origin: '*'  // Permite qualquer origem
 }));
-
 
 // Middleware para processar dados enviados no formato application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -53,9 +54,6 @@ db.connect((err) => {
 app.post('/add-comment', (req, res) => {
   const { email, comment, recipe_id } = req.body;
 
-  // Verificar se os dados estão sendo recebidos corretamente
-  console.log(`Comentário recebido: Email: ${email}, Comentário: ${comment}, Receita ID: ${recipe_id}`);
-
   const sql = 'INSERT INTO comments (email, comment, recipe_id) VALUES (?, ?, ?)';
   db.query(sql, [email, comment, recipe_id], (err, result) => {
       if (err) {
@@ -71,9 +69,6 @@ app.post('/add-comment', (req, res) => {
 app.get('/comments/:recipe_id', (req, res) => {
   const recipe_id = req.params.recipe_id;
   
-  // Verifique se o recipe_id foi recebido corretamente
-  console.log(`Recebendo comentários para receita ID: ${recipe_id}`);
-  
   const sql = 'SELECT * FROM comments WHERE recipe_id = ?';
   db.query(sql, [recipe_id], (err, results) => {
     if (err) {
@@ -85,19 +80,17 @@ app.get('/comments/:recipe_id', (req, res) => {
   });
 });
 
-//login
+// Rota de login
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.post('/login', (req, res) => {
   const { email, password } = req.body;
 
-  // Verifica se os dados foram recebidos corretamente
   if (!email || !password) {
     return res.status(400).send('Por favor, preencha todos os campos.');
   }
 
-  // Verifica se o usuário existe no banco de dados
   const query = 'SELECT * FROM users WHERE email = ?';
   connection.query(query, [email], (err, results) => {
     if (err) {
@@ -110,7 +103,6 @@ app.post('/login', (req, res) => {
 
     const user = results[0];
 
-    // Comparar a senha fornecida com a senha armazenada
     if (password === user.password) {
       return res.status(200).json({ message: 'Login realizado com sucesso!' });
     } else {
@@ -118,9 +110,70 @@ app.post('/login', (req, res) => {
     }
   });
 });
+// Função para gerar relatório em CSV
+function generateCSVReport(results) {
+  const writer = csvWriter({
+    header: [
+      { id: 'id', title: 'ID' },
+      { id: 'amount', title: 'Valor' },
+      { id: 'date', title: 'Data' }
+    ]
+  });
 
+  const csvData = writer.stringifyRecords(results);
+  return csvData;
+}
 
-// Unificado - Iniciar o servidor
+// Função para gerar relatório em PDF
+function generatePDFReport(results, res) {
+  const doc = new PDFDocument();
+  
+  res.setHeader('Content-Type', 'application/pdf');
+  res.setHeader('Content-Disposition', 'attachment; filename="report.pdf"');
+
+  doc.text('Relatório de Vendas', { align: 'center', underline: true });
+  doc.moveDown();
+
+  results.forEach(sale => {
+    doc.text(`Venda ID: ${sale.id}, Valor: ${sale.amount}, Data: ${sale.date}`);
+    doc.moveDown();
+  });
+
+  doc.pipe(res);
+  doc.end();
+}
+
+// Rota para gerar relatório de vendas
+app.get('/report', (req, res) => {
+  const { month, year, format } = req.query;
+
+  if (!month || !year) {
+    return res.status(400).json({ message: 'Por favor, forneça o mês e o ano.' });
+  }
+
+  // Consulta para buscar vendas com base no mês e ano
+  const query = 'SELECT * FROM sales WHERE MONTH(date) = ? AND YEAR(date) = ?';
+  connection.query(query, [month, year], (err, results) => {
+    if (err) {
+      console.error('Erro ao gerar relatório:', err);
+      return res.status(500).json({ message: 'Erro ao gerar relatório' });
+    }
+
+    if (format === 'pdf') {
+      // Gera relatório em PDF
+      generatePDFReport(results, res);
+    } else if (format === 'csv') {
+      // Gera relatório em CSV
+      const csvData = generateCSVReport(results);
+      res.setHeader('Content-Type', 'text/csv');
+      res.setHeader('Content-Disposition', 'attachment; filename="report.csv"');
+      res.send(csvData);
+    } else {
+      return res.status(400).json({ message: 'Formato inválido. Escolha entre "pdf" ou "csv".' });
+    }
+  });
+});
+// Iniciar o servidor
 app.listen(port, () => {
   console.log(`Servidor rodando na porta ${port}`);
 });
