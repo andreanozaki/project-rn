@@ -1,5 +1,5 @@
-document.addEventListener('DOMContentLoaded', function() {
-  
+document.addEventListener('DOMContentLoaded', function () {
+
   // Função para animações na página principal
   function activateAnimations() {
     const sectionMainElement = document.querySelector('.section-main');
@@ -12,11 +12,11 @@ document.addEventListener('DOMContentLoaded', function() {
     if (headingMainElement) {
       headingMainElement.classList.add('moveInLeft');
     }
-    socialMediaIcons.forEach(function(icon) {
+    socialMediaIcons.forEach(function (icon) {
       icon.classList.add('activated');
     });
   }
-  
+
   // Função para revelar elementos com scroll
   function revealElements() {
     const reveals = document.querySelectorAll('.reveal, .reveal-from-right');
@@ -32,12 +32,12 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     });
   }
-  
+
   // Eventos de scroll e resize para revelar elementos
   window.addEventListener('scroll', revealElements);
   window.addEventListener('resize', revealElements);
   revealElements();
-  
+
   // Ativar animações quando a página é carregada
   activateAnimations();
 
@@ -54,12 +54,12 @@ document.addEventListener('DOMContentLoaded', function() {
   // Função para registro de usuário
   const registerForm = document.getElementById('registerForm');
   if (registerForm) {
-    registerForm.addEventListener('submit', function(e) {
+    registerForm.addEventListener('submit', function (e) {
       e.preventDefault();
-  
+
       const email = document.querySelector('input[name="email"]').value;
       const password = document.querySelector('input[name="password"]').value;
-  
+
       fetch('http://localhost:3001/register', {
         method: 'POST',
         headers: {
@@ -88,13 +88,13 @@ document.addEventListener('DOMContentLoaded', function() {
   // Função para envio de comentário
   const commentForm = document.getElementById('commentForm');
   if (commentForm) {
-    commentForm.addEventListener('submit', function(e) {
+    commentForm.addEventListener('submit', function (e) {
       e.preventDefault();
-  
+
       const email = document.getElementById('email').value;
       const comment = document.getElementById('comment').value;
       const recipe_id = 1; // ID da receita
-  
+
       fetch('http://localhost:3001/add-comment', {
         method: 'POST',
         headers: {
@@ -140,38 +140,15 @@ document.addEventListener('DOMContentLoaded', function() {
     loadComments();
   }
 
-  // Função para gerar relatório
-  const reportForm = document.getElementById('reportForm');
-  if (reportForm) {
-    reportForm.addEventListener('submit', function(e) {
-      e.preventDefault();
-
-      const month = document.getElementById('month').value;
-      const year = document.getElementById('year').value;
-
-      fetch(`http://localhost:3001/report?month=${month}&year=${year}`)
-        .then(response => response.blob())
-        .then(blob => {
-          const link = document.createElement('a');
-          link.href = window.URL.createObjectURL(blob);
-          link.download = `relatorio-vendas-${month}-${year}.pdf`;
-          link.click();
-        })
-        .catch(error => {
-          console.error('Erro ao gerar relatório:', error);
-        });
-    });
-  }
-
   // Função para login de usuário
   const loginForm = document.getElementById('loginForm');
   if (loginForm) {
-    loginForm.addEventListener('submit', function(e) {
+    loginForm.addEventListener('submit', function (e) {
       e.preventDefault();
-  
+
       const email = document.querySelector('input[name="email"]').value;
       const password = document.querySelector('input[name="password"]').value;
-  
+
       fetch('http://localhost:3001/login', {
         method: 'POST',
         headers: {
@@ -198,29 +175,44 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
-  // Função para envio de e-mail de redefinição de senha
-  const forgotPassForm = document.getElementById('forgotPassForm');
-  if (forgotPassForm) {
-    forgotPassForm.addEventListener('submit', function(e) {
-      e.preventDefault();
 
-      const email = document.querySelector('input[name="email"]').value;
+  // Função para registrar venda de produtos
+  // Função para registro de venda de produtos
+const salesForm = document.getElementById('salesForm');
+let isSubmitting = false; // Controla a duplicação
 
-      fetch('http://localhost:3001/forgot-password', {
+if (salesForm) {
+  salesForm.addEventListener('submit', async function (e) {
+    e.preventDefault(); // Impede o envio padrão do formulário
+
+    if (isSubmitting) return; // Evita novo envio se já estiver processando
+    isSubmitting = true; // Define a flag como ativa para evitar novos envios
+
+    const product = document.getElementById('product').value;
+    const price = parseFloat(document.getElementById('price').value);
+    const quantity = parseInt(document.getElementById('quantity').value);
+    const sale_date = document.getElementById('sale_date').value;
+
+    try {
+      const response = await fetch('http://localhost:3001/register-sale', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ email })
-      })
-      .then(response => response.json())
-      .then(data => {
-        alert(data.message); // Exibe a mensagem de sucesso
-        document.querySelector('input[name="email"]').value = '';  // Limpa o campo de e-mail
-      })
-      .catch(error => {
-        console.error('Erro ao enviar e-mail de redefinição de senha:', error);
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ product, price, quantity, sale_date })
       });
-    });
-  }
-});
+
+      if (!response.ok) throw new Error('Erro ao registrar venda');
+      const data = await response.json();
+      alert(data.message); // Exibe mensagem de sucesso
+      salesForm.reset(); // Limpa o formulário
+    } catch (error) {
+      console.error('Erro ao registrar venda:', error);
+      alert('Erro ao registrar venda. Tente novamente.');
+    } finally {
+      isSubmitting = false; // Libera a flag para permitir novos envios
+    }
+  });
+}
+
+
+
+}); // Este é o fechamento final do `DOMContentLoaded`

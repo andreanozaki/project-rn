@@ -1,7 +1,8 @@
-
 const express = require('express');
 const bodyParser = require('body-parser');
+
 const connection = require('./db'); // Importa a conexão do db.js
+
 const cors = require('cors'); // Importar o pacote CORS
 const multer = require('multer');
 const fs = require('fs');
@@ -34,145 +35,97 @@ const storage = multer.diskStorage({
 });
 const upload = multer({ storage });
 
-// Conexão com o banco de dados MySQL para os comentários
-const db = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: '080808',  // Substitua pela sua senha do MySQL
-    database: 'comments_db'  // O banco de dados que você criou no MySQL
-});
-
-db.connect((err) => {
+// Rota para registrar usuário
+app.post('/register', (req, res) => {
+  const { email, password } = req.body;
+  const query = 'INSERT INTO users (email, password) VALUES (?, ?)';
+  db.query(query, [email, password], (err) => {
     if (err) {
-        console.error('Erro ao conectar ao MySQL:', err);
-        return;
+      console.error('Erro ao registrar usuário:', err);
+      return res.status(500).json({ message: 'Erro ao registrar usuário' });
     }
-    console.log('Conectado ao MySQL!');
+    res.json({ message: 'Usuário registrado com sucesso' });
+  });
 });
 
-// Rota para adicionar um novo comentário
+// Rota para adicionar comentário
 app.post('/add-comment', (req, res) => {
   const { email, comment, recipe_id } = req.body;
-
-  const sql = 'INSERT INTO comments (email, comment, recipe_id) VALUES (?, ?, ?)';
-  db.query(sql, [email, comment, recipe_id], (err, result) => {
-      if (err) {
-          console.error('Erro ao adicionar comentário:', err);
-          res.status(500).send({ message: 'Erro ao adicionar comentário' });
-          return;
-      }
-      res.send({ message: 'Comentário adicionado com sucesso!' });
-  });
-});
-
-// Rota para obter todos os comentários de uma receita
-app.get('/comments/:recipe_id', (req, res) => {
-  const recipe_id = req.params.recipe_id;
-  
-  const sql = 'SELECT * FROM comments WHERE recipe_id = ?';
-  db.query(sql, [recipe_id], (err, results) => {
+  const query = 'INSERT INTO comments (email, comment, recipe_id) VALUES (?, ?, ?)';
+  db.query(query, [email, comment, recipe_id], (err) => {
     if (err) {
-      console.error('Erro ao recuperar comentários:', err);
-      res.status(500).send({ message: 'Erro ao recuperar comentários' });
-      return;
+      console.error('Erro ao adicionar comentário:', err);
+      return res.status(500).json({ message: 'Erro ao adicionar comentário' });
     }
-    res.send(results);  // Retorna os comentários para o frontend
+    res.json({ message: 'Comentário adicionado com sucesso' });
   });
 });
 
-// Rota de login
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
+// Rota para carregar comentários
+app.get('/comments/:recipe_id', (req, res) => {
+  const { recipe_id } = req.params;
+  const query = 'SELECT * FROM comments WHERE recipe_id = ?';
+  connection.query(query, [recipe_id], (err, results) => {
+    if (err) {
+      console.error('Erro ao carregar comentários:', err);
+      return res.status(500).json({ message: 'Erro ao carregar comentários' });
+    }
+    res.json(results);
+  });
+});
 
+// Rota para login
 app.post('/login', (req, res) => {
   const { email, password } = req.body;
-
-  if (!email || !password) {
-    return res.status(400).send('Por favor, preencha todos os campos.');
-  }
-
-  const query = 'SELECT * FROM users WHERE email = ?';
-  connection.query(query, [email], (err, results) => {
+  const query = 'SELECT * FROM users WHERE email = ? AND password = ?';
+  connection.query(query, [email, password], (err, results) => {
     if (err) {
-      console.error('Erro ao buscar usuário no BD:', err);
-      return res.status(500).send('Erro no servidor');
+      console.error('Erro ao fazer login:', err);
+      return res.status(500).json({ message: 'Erro ao fazer login' });
     }
-    if (results.length === 0) {
-      return res.status(401).send('Usuário não encontrado');
-    }
-
-    const user = results[0];
-
-    if (password === user.password) {
-      return res.status(200).json({ message: 'Login realizado com sucesso!' });
+    if (results.length > 0) {
+      res.json({ message: 'Login bem-sucedido' });
     } else {
-      return res.status(401).json({ message: 'Senha incorreta' });
+      res.status(401).json({ message: 'Usuário não encontrado ou senha incorreta' });
     }
   });
 });
-// Função para gerar relatório em CSV
-function generateCSVReport(results) {
-  const writer = csvWriter({
-    header: [
-      { id: 'id', title: 'ID' },
-      { id: 'amount', title: 'Valor' },
-      { id: 'date', title: 'Data' }
-    ]
-  });
 
-  const csvData = writer.stringifyRecords(results);
-  return csvData;
-}
+//Rota para registrar venda de produtos
 
-// Função para gerar relatório em PDF
-function generatePDFReport(results, res) {
-  const doc = new PDFDocument();
+// Rota para registrar venda de produtos
+app.post('/register-sale', (req, res) => {
+  const { product, price, quantity, sale_date } = req.body;
   
-  res.setHeader('Content-Type', 'application/pdf');
-  res.setHeader('Content-Disposition', 'attachment; filename="report.pdf"');
-
-  doc.text('Relatório de Vendas', { align: 'center', underline: true });
-  doc.moveDown();
-
-  results.forEach(sale => {
-    doc.text(`Venda ID: ${sale.id}, Valor: ${sale.amount}, Data: ${sale.date}`);
-    doc.moveDown();
-  });
-
-  doc.pipe(res);
-  doc.end();
-}
-
-// Rota para gerar relatório de vendas
-app.get('/report', (req, res) => {
-  const { month, year, format } = req.query;
-
-  if (!month || !year) {
-    return res.status(400).json({ message: 'Por favor, forneça o mês e o ano.' });
-  }
-
-  // Consulta para buscar vendas com base no mês e ano
-  const query = 'SELECT * FROM sales WHERE MONTH(date) = ? AND YEAR(date) = ?';
-  connection.query(query, [month, year], (err, results) => {
+  const query = 'INSERT INTO sales (product, price, quantity, sale_date) VALUES (?, ?, ?, ?)';
+  connection.query(query, [product, price, quantity, sale_date], (err) => {
     if (err) {
-      console.error('Erro ao gerar relatório:', err);
-      return res.status(500).json({ message: 'Erro ao gerar relatório' });
+      console.error('Erro ao registrar venda:', err);
+      return res.status(500).json({ message: 'Erro ao registrar venda' });
     }
-
-    if (format === 'pdf') {
-      // Gera relatório em PDF
-      generatePDFReport(results, res);
-    } else if (format === 'csv') {
-      // Gera relatório em CSV
-      const csvData = generateCSVReport(results);
-      res.setHeader('Content-Type', 'text/csv');
-      res.setHeader('Content-Disposition', 'attachment; filename="report.csv"');
-      res.send(csvData);
-    } else {
-      return res.status(400).json({ message: 'Formato inválido. Escolha entre "pdf" ou "csv".' });
-    }
+    res.json({ message: 'Venda registrada com sucesso!' });
   });
 });
+// Rota para visualizar todas as vendas
+app.get('/sales', (req, res) => {
+  const query = 'SELECT * FROM sales';
+  
+  connection.query(query, (err, results) => {
+    if (err) {
+      console.error('Erro ao buscar vendas:', err);
+      return res.status(500).json({ message: 'Erro ao buscar vendas' });
+    }
+    
+    console.log('Vendas registradas:');
+    results.forEach((sale) => {
+      console.log(`ID: ${sale.id}, Produto: ${sale.product}, Quantidade: ${sale.quantity}, Preço: R$${sale.price}, Data da Venda: ${sale.sale_date}`);
+    });
+
+    res.json(results);
+  });
+});
+
+
 // Iniciar o servidor
 app.listen(port, () => {
   console.log(`Servidor rodando na porta ${port}`);
