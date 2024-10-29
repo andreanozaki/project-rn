@@ -213,6 +213,43 @@ if (salesForm) {
   });
 }
 
+//envio de form e geracao de PDF
+ // Seleciona o formulário de relatório
+ const reportForm = document.getElementById('reportForm');
+
+ if (reportForm) {
+     reportForm.addEventListener('submit', function (e) {
+         e.preventDefault(); // Evita o envio padrão do formulário
+
+         // Captura o mês e o ano selecionados
+         const month = document.getElementById('month').value;
+         const year = document.getElementById('year').value;
+
+         // Envia uma solicitação GET para gerar o relatório
+         fetch(`http://localhost:3001/generate-report?month=${month}&year=${year}`, {
+             method: 'GET',
+         })
+         .then(response => {
+             if (response.ok) {
+                 return response.blob(); // Obtém o PDF como blob
+             }
+             throw new Error('Erro ao gerar o relatório');
+         })
+         .then(blob => {
+             // Cria um link para o arquivo PDF e faz o download
+             const url = window.URL.createObjectURL(blob);
+             const a = document.createElement('a');
+             a.href = url;
+             a.download = `Relatorio_Vendas_${month}_${year}.pdf`;
+             a.click();
+             window.URL.revokeObjectURL(url);
+         })
+         .catch(error => {
+             console.error('Erro:', error);
+             alert('Erro ao gerar o relatório. Tente novamente.');
+         });
+     });
+ }
 
 
 }); // Este é o fechamento final do `DOMContentLoaded`

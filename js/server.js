@@ -125,7 +125,51 @@ app.get('/sales', (req, res) => {
   });
 });
 
+/// Rota para gerar o relatório em PDF
+app.get('/generate-report', (req, res) => {
+  const { month, year } = req.query;
+  const query = 'SELECT * FROM sales WHERE MONTH(sale_date) = ? AND YEAR(sale_date) = ?';
 
+  connection.query(query, [month, year], (err, results) => {
+    if (err) {
+      console.error('Erro ao buscar vendas:', err);
+      return res.status(500).json({ message: 'Erro ao buscar vendas' });
+    }
+
+    // Configura o PDF
+    const doc = new PDFDocument();
+    doc.pipe(res);
+    
+    // Título do relatório
+    doc.fontSize(18).text(`Relatório de Vendas - ${month}/${year}`, { align: 'center' });
+    doc.moveDown();
+
+    // Cabeçalho da tabela
+    doc.fontSize(12).text('ID', { width: 40, align: 'left' });
+    doc.text('Produto', { width: 150, align: 'left', continued: true });
+    doc.text('Quantidade', { width: 100, align: 'left', continued: true });
+    doc.text('Preço', { width: 100, align: 'left', continued: true });
+    doc.text('Data da Venda', { align: 'left' });
+    doc.moveDown();
+
+    // Linha separadora
+    doc.moveTo(50, doc.y).lineTo(550, doc.y).stroke();
+
+    // Preenche as linhas com os dados
+    results.forEach((sale) => {
+      const formattedDate = new Date(sale.sale_date).toLocaleDateString('pt-BR');
+      doc.text(sale.id.toString(), { width: 40, align: 'left' });
+      doc.text(sale.product, { width: 150, align: 'left', continued: true });
+      doc.text(sale.quantity.toString(), { width: 100, align: 'left', continued: true });
+      doc.text(`R$ ${sale.price.toFixed(2)}`, { width: 100, align: 'left', continued: true });
+      doc.text(formattedDate, { align: 'left' });
+      doc.moveDown();
+    });
+
+    // Finaliza o documento PDF
+    doc.end();
+  });
+});
 // Iniciar o servidor
 app.listen(port, () => {
   console.log(`Servidor rodando na porta ${port}`);
