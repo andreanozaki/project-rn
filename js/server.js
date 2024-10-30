@@ -91,7 +91,7 @@ app.post('/login', (req, res) => {
   });
 });
 
-//Rota para registrar venda de produtos
+
 
 // Rota para registrar venda de produtos
 app.post('/register-sale', (req, res) => {
@@ -125,51 +125,90 @@ app.get('/sales', (req, res) => {
   });
 });
 
-/// Rota para gerar o relatório em PDF
+
+//rota relatorio pdf
 app.get('/generate-report', (req, res) => {
   const { month, year } = req.query;
-  const query = 'SELECT * FROM sales WHERE MONTH(sale_date) = ? AND YEAR(sale_date) = ?';
+  const query = month === 'all' 
+    ? 'SELECT * FROM sales WHERE YEAR(sale_date) = ? ORDER BY MONTH(sale_date), DAY(sale_date)'
+    : 'SELECT * FROM sales WHERE MONTH(sale_date) = ? AND YEAR(sale_date) = ?';
 
-  connection.query(query, [month, year], (err, results) => {
+  const params = month === 'all' ? [year] : [month, year];
+
+  connection.query(query, params, (err, results) => {
     if (err) {
       console.error('Erro ao buscar vendas:', err);
       return res.status(500).json({ message: 'Erro ao buscar vendas' });
     }
 
-    // Configura o PDF
-    const doc = new PDFDocument();
+    const doc = new PDFDocument({ margin: 50 });
     doc.pipe(res);
-    
-    // Título do relatório
-    doc.fontSize(18).text(`Relatório de Vendas - ${month}/${year}`, { align: 'center' });
+
+    doc.fontSize(18).text(`Relatório de Vendas - ${month === 'all' ? 'Todos os Meses' : `${month}/${year}`}`, { align: 'center' });
     doc.moveDown();
+
+    const tableTop = doc.y + 20;
+    const columnWidths = { id: 50, product: 150, quantity: 80, price: 100, saleDate: 100 };
+    const startX = 50;
+    const tableWidth = Object.values(columnWidths).reduce((a, b) => a + b);
+
+    let yPosition = tableTop + 30;
+    let currentMonth = '';
 
     // Cabeçalho da tabela
-    doc.fontSize(12).text('ID', { width: 40, align: 'left' });
-    doc.text('Produto', { width: 150, align: 'left', continued: true });
-    doc.text('Quantidade', { width: 100, align: 'left', continued: true });
-    doc.text('Preço', { width: 100, align: 'left', continued: true });
-    doc.text('Data da Venda', { align: 'left' });
-    doc.moveDown();
+    const drawHeader = () => {
+      doc.fontSize(12).text('ID', startX, tableTop, { width: columnWidths.id, align: 'center' });
+      doc.text('Produto', startX + columnWidths.id, tableTop, { width: columnWidths.product, align: 'center' });
+      doc.text('Quantidade', startX + columnWidths.id + columnWidths.product, tableTop, { width: columnWidths.quantity, align: 'center' });
+      doc.text('Preço', startX + columnWidths.id + columnWidths.product + columnWidths.quantity, tableTop, { width: columnWidths.price, align: 'center' });
+      doc.text('Data da Venda', startX + columnWidths.id + columnWidths.product + columnWidths.quantity + columnWidths.price, tableTop, { width: columnWidths.saleDate, align: 'center' });
+      doc.moveTo(startX, tableTop + 15).lineTo(startX + tableWidth, tableTop + 15).stroke();
+      yPosition = tableTop + 30;
+    };
 
-    // Linha separadora
-    doc.moveTo(50, doc.y).lineTo(550, doc.y).stroke();
+    drawHeader();
 
-    // Preenche as linhas com os dados
     results.forEach((sale) => {
+      const saleMonth = new Date(sale.sale_date).getMonth() + 1;
       const formattedDate = new Date(sale.sale_date).toLocaleDateString('pt-BR');
-      doc.text(sale.id.toString(), { width: 40, align: 'left' });
-      doc.text(sale.product, { width: 150, align: 'left', continued: true });
-      doc.text(sale.quantity.toString(), { width: 100, align: 'left', continued: true });
-      doc.text(`R$ ${sale.price.toFixed(2)}`, { width: 100, align: 'left', continued: true });
-      doc.text(formattedDate, { align: 'left' });
-      doc.moveDown();
+
+      if (month === 'all' && saleMonth !== currentMonth) {
+        if (yPosition > doc.page.height - 100) { 
+          doc.addPage(); 
+          yPosition = 50;
+        }
+        doc.fontSize(14).text(`Mês ${saleMonth}/${year}`, startX, yPosition);
+        currentMonth = saleMonth;
+        yPosition += 30;
+      }
+
+      const saleData = [
+        { text: sale.id.toString(), width: columnWidths.id, align: 'center' },
+        { text: sale.product, width: columnWidths.product, align: 'center' },
+        { text: sale.quantity.toString(), width: columnWidths.quantity, align: 'center' },
+        { text: `R$ ${parseFloat(sale.price).toFixed(2)}`, width: columnWidths.price, align: 'center' },
+        { text: formattedDate, width: columnWidths.saleDate, align: 'center' },
+      ];
+    
+      saleData.reduce((xPos, cell) => {
+        doc.text(cell.text, xPos, yPosition, { width: cell.width, align: cell.align });
+        return xPos + cell.width;
+      }, startX);
+
+      yPosition += 20;
+
+      if (yPosition > doc.page.height - 100) {
+        doc.addPage();
+        yPosition = 50;
+        drawHeader(); // Redesenha o cabeçalho na nova página
+      }
     });
 
-    // Finaliza o documento PDF
     doc.end();
   });
 });
+
+
 // Iniciar o servidor
 app.listen(port, () => {
   console.log(`Servidor rodando na porta ${port}`);
