@@ -154,6 +154,7 @@ app.get('/generate-report', (req, res) => {
 
     let yPosition = tableTop + 30;
     let currentMonth = '';
+    let totalPrice = 0; // variável para armazenar a soma dos preços
 
     // Cabeçalho da tabela
     const drawHeader = () => {
@@ -168,7 +169,7 @@ app.get('/generate-report', (req, res) => {
 
     drawHeader();
 
-    results.forEach((sale) => {
+    results.forEach((sale, index) => {
       const saleMonth = new Date(sale.sale_date).getMonth() + 1;
       const formattedDate = new Date(sale.sale_date).toLocaleDateString('pt-BR');
 
@@ -177,7 +178,10 @@ app.get('/generate-report', (req, res) => {
           doc.addPage(); 
           yPosition = 50;
         }
-        doc.fontSize(14).text(`Mês ${saleMonth}/${year}`, startX, yPosition);
+        // Adiciona espaço entre os meses
+        yPosition += 10;
+        doc.fontSize(14).font('Helvetica-Bold').text(`Mês ${saleMonth}/${year}`, startX, yPosition);
+        doc.font('Helvetica'); // Volta para a fonte normal
         currentMonth = saleMonth;
         yPosition += 30;
       }
@@ -189,11 +193,13 @@ app.get('/generate-report', (req, res) => {
         { text: `R$ ${parseFloat(sale.price).toFixed(2)}`, width: columnWidths.price, align: 'center' },
         { text: formattedDate, width: columnWidths.saleDate, align: 'center' },
       ];
-    
+
       saleData.reduce((xPos, cell) => {
         doc.text(cell.text, xPos, yPosition, { width: cell.width, align: cell.align });
         return xPos + cell.width;
       }, startX);
+
+      totalPrice += parseFloat(sale.price); // acumula o valor do preço atual
 
       yPosition += 20;
 
@@ -203,6 +209,10 @@ app.get('/generate-report', (req, res) => {
         drawHeader(); // Redesenha o cabeçalho na nova página
       }
     });
+
+    // Exibe o total ao final do relatório
+    yPosition += 20;
+    doc.fontSize(12).font('Helvetica-Bold').text(`Total Preço: R$ ${totalPrice.toFixed(2)}`, startX, yPosition, { align: 'right' });
 
     doc.end();
   });
