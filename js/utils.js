@@ -1,5 +1,5 @@
 // utils.js
-//receber parâmetros em vez de buscar diretamente no DOM:
+
 // Função para animações na página principal
 function activateAnimations(sectionMainElement, headingMainElement, socialMediaIcons) {
     if (sectionMainElement) {
@@ -27,5 +27,24 @@ function activateAnimations(sectionMainElement, headingMainElement, socialMediaI
     });
   }
   
-  module.exports = { activateAnimations, revealElements };
+  // Função para calcular o valor total das vendas e formatar para um relatório
+  function formatSalesData(sales) {
+    const total = sales.reduce((acc, sale) => acc + sale.price * sale.quantity, 0);
+    
+    const formattedSales = sales.map(sale => ({
+      id: sale.id,
+      product: sale.product,
+      quantity: sale.quantity,
+      totalPrice: sale.price * sale.quantity,
+      saleDate: sale.sale_date
+    }));
+  
+    return {
+      formattedSales,
+      total
+    };
+  }
+  
+  // Exporta as funções
+  module.exports = { activateAnimations, revealElements, formatSalesData };
   

@@ -250,6 +250,44 @@ if (salesForm) {
          });
      });
  }
+//gerenciar a exibição do banner e armazenar a escolha do usuário no localStorage:
 
+document.addEventListener('DOMContentLoaded', function() {
+  const cookieBanner = document.getElementById('cookieBanner');
+  const acceptCookiesButton = document.getElementById('acceptCookies');
+  const declineCookiesButton = document.getElementById('declineCookies');
+
+  // Verifica se o usuário já aceitou ou recusou cookies
+  const userConsent = localStorage.getItem('cookieConsent');
+
+  if (!userConsent) {
+      cookieBanner.style.display = 'flex'; // Exibe o banner se não há consentimento armazenado
+  }
+
+  // Se o usuário aceita os cookies
+  acceptCookiesButton.addEventListener('click', function() {
+      localStorage.setItem('cookieConsent', 'accepted');
+      cookieBanner.style.display = 'none';
+      // Ativar ferramentas de rastreamento, como Google Analytics
+      activateTracking();
+  });
+
+  // Se o usuário recusa os cookies
+  declineCookiesButton.addEventListener('click', function() {
+      localStorage.setItem('cookieConsent', 'declined');
+      cookieBanner.style.display = 'none';
+  });
+
+  // Função para ativar Google Analytics (caso aceito)
+  function activateTracking() {
+      // Código do Google Analytics ou outras ferramentas de rastreamento podem ser incluídas aqui
+      console.log('Cookies de rastreamento ativados.');
+  }
+
+  // Se o usuário já aceitou, ativa o rastreamento automaticamente
+  if (userConsent === 'accepted') {
+      activateTracking();
+  }
+});
 
 }); // Este é o fechamento final do `DOMContentLoaded`

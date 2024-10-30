@@ -1,6 +1,6 @@
 // utils.test.js
 
-const { activateAnimations, revealElements } = require('./utils');
+const { activateAnimations, revealElements, formatSalesData } = require('./utils');
 
 describe('Funções de Animação', () => {
   
@@ -39,4 +39,28 @@ describe('Funções de Animação', () => {
     expect(reveals[0].classList.add).toHaveBeenCalledWith('active'); // Deve adicionar a classe "active"
     expect(reveals[1].classList.remove).toHaveBeenCalledWith('active'); // Deve remover a classe "active"
   });
+});
+
+describe('Função formatSalesData', () => {
+  
+    test('Deve calcular o valor total e formatar os dados corretamente', () => {
+        // Dados simulados de vendas
+        const sales = [
+          { id: 1, product: 'Produto A', price: 10, quantity: 2, sale_date: '2024-10-30' },
+          { id: 2, product: 'Produto B', price: 5, quantity: 3, sale_date: '2024-10-31' },
+        ];
+      
+        // Executa a função
+        const result = formatSalesData(sales);
+      
+        // Verifica o valor total calculado (considerando quantidade * preço)
+        expect(result.total).toBe(35); // (10*2) + (5*3) = 35
+      
+        // Verifica o formato dos dados de vendas
+        expect(result.formattedSales).toEqual([
+          { id: 1, product: 'Produto A', quantity: 2, totalPrice: 20, saleDate: '2024-10-30' },
+          { id: 2, product: 'Produto B', quantity: 3, totalPrice: 15, saleDate: '2024-10-31' }
+        ]);
+      });
+      
 });
