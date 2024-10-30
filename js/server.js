@@ -40,7 +40,7 @@ const upload = multer({ storage });
 app.post('/register', (req, res) => {
   const { email, password } = req.body;
   const query = 'INSERT INTO users (email, password) VALUES (?, ?)';
-  db.query(query, [email, password], (err) => {
+  connection.query(query, [email, password], (err) => {
     if (err) {
       console.error('Erro ao registrar usuário:', err);
       return res.status(500).json({ message: 'Erro ao registrar usuário' });
@@ -53,7 +53,7 @@ app.post('/register', (req, res) => {
 app.post('/add-comment', (req, res) => {
   const { email, comment, recipe_id } = req.body;
   const query = 'INSERT INTO comments (email, comment, recipe_id) VALUES (?, ?, ?)';
-  db.query(query, [email, comment, recipe_id], (err) => {
+  connection.query(query, [email, comment, recipe_id], (err) => {
     if (err) {
       console.error('Erro ao adicionar comentário:', err);
       return res.status(500).json({ message: 'Erro ao adicionar comentário' });
