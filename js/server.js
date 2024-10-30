@@ -35,6 +35,7 @@ const storage = multer.diskStorage({
 });
 const upload = multer({ storage });
 
+
 // Rota para registrar usuário
 app.post('/register', (req, res) => {
   const { email, password } = req.body;
@@ -91,6 +92,21 @@ app.post('/login', (req, res) => {
   });
 });
 
+//contact
+app.post('/contact', (req, res) => {
+  console.log('Dados recebidos:', req.body); // Verifica se os dados estão sendo recebidos
+  const { name, email, message } = req.body;
+
+  const query = 'INSERT INTO contacts (name, email, message) VALUES (?, ?, ?)';
+  connection.query(query, [name, email, message], (error, results) => {
+      if (error) {
+          console.error('Erro ao salvar no banco de dados:', error);
+          return res.status(500).send('Erro no servidor');
+      }
+      console.log('Mensagem salva no banco de dados com sucesso!');
+      res.status(200).send('Mensagem enviada com sucesso!');
+  });
+});
 
 
 // Rota para registrar venda de produtos

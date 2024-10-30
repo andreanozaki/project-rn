@@ -227,13 +227,16 @@
         <section class="section-form container" id="contact">
             <img src="img/base/Capa Facebook - Black Friday-3.png" alt="" class="form-bg">
             <div class="contact">
-              <form id="contactForm" method="POST" action="http://localhost:3001/contact" class="form flash-effect">
-                <h2 class="heading-form">Entre em contato:</h2>
-                <input type="text" name="nome" required placeholder="Nome:">
-                <input type="email" name="email" required placeholder="E-mail:">
-                <textarea name="mensagem" cols="30" rows="8" required placeholder="Mensagem:"></textarea>
-                <button type="submit" class="btn-main">Enviar</button>
-              </form>
+                <form id="contactForm" method="POST" action="http://localhost:3001/contact" class="form flash-effect">
+                    <h2 class="heading-form">Entre em contato:</h2>
+
+                    <input type="text" name="name" required placeholder="Nome:">
+                    <input type="email" name="email" required placeholder="E-mail:">
+                    <textarea name="message" cols="30" rows="8" required placeholder="Mensagem:"></textarea>
+                    <button type="submit" class="btn-main">Enviar</button>
+                </form>
+                
+        
             </div>
           </section>
           
@@ -266,7 +269,7 @@
 
 
 <div class="vendas-container">
-    <!-- Formulário para Inserir Venda -->
+    <!-- Formulário para Inserir Venda-->
     <h2>Registrar Venda de Produtos</h2>
     <form id="salesForm">
         <label for="product">Produto:</label>

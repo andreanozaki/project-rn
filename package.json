@@ -19,9 +19,11 @@
     "postcss-cli": "^11.0.0"
   },
   "dependencies": {
+    "@sendgrid/mail": "^8.1.4",
     "bcrypt": "^5.1.1",
     "body-parser": "^1.20.2",
     "cors": "^2.8.5",
+    "csv-writer": "^1.6.0",
     "dotenv": "^16.0.3",
     "express": "^4.21.1",
     "fs": "^0.0.1-security",
@@ -31,6 +33,7 @@
     "mysql2": "^3.11.3",
     "nodemailer": "^6.9.15",
     "path": "^0.12.7",
+    "pdfkit": "^0.15.0",
     "react-router-dom": "^6.26.1",
     "sass": "^1.72.0",
     "scrollreveal": "^4.0.9"
