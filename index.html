@@ -268,8 +268,8 @@
        
 
 
-<div class="vendas-container">
-    <!-- Formulário para Inserir Venda-->
+        <div class="vendas-container" style="display: none;">
+            <!-- Formulário para Inserir Venda-->
     <h2>Registrar Venda de Produtos</h2>
     <form id="salesForm">
         <label for="product">Produto:</label>
@@ -281,20 +281,20 @@
             <option value="Buffet Fechado">Buffet Fechado</option>
         </select>
 
-        <label for="price">Preço (R$):</label>
-        <input type="number" id="price" name="price" min="0.01" step="0.01" placeholder="150.00" required>
-
-        <label for="quantity">Quantidade:</label>
-        <input type="number" id="quantity" name="quantity" min="1" placeholder="2" required>
 
         <label for="sale_date">Data da Venda:</label>
         <input type="date" id="sale_date" name="sale_date" required>
 
+        <label for="price">Preço (R$):</label>
+        <input type="number" id="price" name="price" min="0.01" step="0.01" placeholder="150.00" required>
+
+        
+    
         <button type="submit">Registrar Venda</button>
     </form>
 </div>
 
-<div class="relatorio-container">
+<div class="relatorio-container" style="display: none;">
     <h2>Gerar Relatório de Vendas</h2>
     <form id="reportForm">
         <label for="month">Mês:</label>

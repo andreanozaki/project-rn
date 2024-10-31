@@ -1,3 +1,4 @@
+
 document.addEventListener('DOMContentLoaded', function () {
 
   // Função para animações na página principal
@@ -85,6 +86,31 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
+  // Função de redefinição de senha
+  const forgotPasswordForm = document.getElementById('forgotPasswordForm');
+  if (forgotPasswordForm) {
+    forgotPasswordForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const email = document.querySelector('input[name="email"]').value;
+
+      fetch('http://localhost:3001/forgot-password', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email })
+      })
+      .then(response => response.json())
+      .then(data => {
+        alert(data.message);
+        forgotPasswordForm.reset();
+      })
+      .catch(error => {
+        console.error('Erro ao redefinir senha:', error);
+        alert('Erro ao tentar redefinir senha. Tente novamente.');
+      });
+    });
+  }
+
   // Função para envio de comentário
   const commentForm = document.getElementById('commentForm');
   if (commentForm) {
@@ -93,7 +119,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
       const email = document.getElementById('email').value;
       const comment = document.getElementById('comment').value;
-      const recipe_id = 1; // ID da receita
+      const recipe_id = 1;
 
       fetch('http://localhost:3001/add-comment', {
         method: 'POST',
@@ -140,149 +166,154 @@ document.addEventListener('DOMContentLoaded', function () {
     loadComments();
   }
 
-  // Função para login de usuário
-  const loginForm = document.getElementById('loginForm');
-  if (loginForm) {
-    loginForm.addEventListener('submit', function (e) {
+  // Controle de exibição dos formulários de vendas e relatórios apenas para o chef
+   // Controle de exibição dos formulários de vendas e relatórios apenas para o chef
+   const loginForm = document.getElementById('loginForm');
+    const salesFormContainer = document.querySelector('.vendas-container');
+    const reportFormContainer = document.querySelector('.relatorio-container');
+
+    // Verifica se o chef está logado ao carregar a página
+    if (localStorage.getItem('isChefLoggedIn') === 'true') {
+        salesFormContainer.style.display = 'block';
+        reportFormContainer.style.display = 'block';
+    }
+
+    if (loginForm) {
+        loginForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const email = document.querySelector('input[name="email"]').value;
+            const password = document.querySelector('input[name="password"]').value;
+
+            fetch('http://localhost:3001/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ email, password })
+            })
+            .then(response => {
+                if (response.status === 200) {
+                    return response.json();
+                } else if (response.status === 401) {
+                    alert('Usuário não encontrado ou senha incorreta.');
+                    throw new Error('Usuário não encontrado ou senha incorreta.');
+                } else {
+                    throw new Error('Erro no servidor.');
+                }
+            })
+            .then(data => {
+                alert(data.message);
+                if (email === 'andreaflordoceu@gmail.com' && password === 'deia0101') {
+                    localStorage.setItem('isChefLoggedIn', 'true');
+                    salesFormContainer.style.display = 'block';
+                    reportFormContainer.style.display = 'block';
+                    window.location.href = 'index.html';
+                } else {
+                    localStorage.removeItem('isChefLoggedIn');
+                }
+            })
+            .catch(error => {
+                console.error('Erro ao fazer login:', error);
+            });
+        });
+      }
+
+  // Função para registro de venda de produtos
+  const salesForm = document.getElementById('salesForm');
+  let isSubmitting = false;
+
+  if (salesForm) {
+    salesForm.addEventListener('submit', async function (e) {
       e.preventDefault();
+      if (isSubmitting) return;
 
-      const email = document.querySelector('input[name="email"]').value;
-      const password = document.querySelector('input[name="password"]').value;
+      isSubmitting = true;
+      const product = document.getElementById('product').value;
+      const price = parseFloat(document.getElementById('price').value);
+      const sale_date = document.getElementById('sale_date').value;
 
-      fetch('http://localhost:3001/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ email, password })
+      try {
+        const response = await fetch('http://localhost:3001/register-sale', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ product, price, quantity, sale_date })
+        });
+
+        if (!response.ok) throw new Error('Erro ao registrar venda');
+        const data = await response.json();
+        alert(data.message);
+        salesForm.reset();
+      } catch (error) {
+        console.error('Erro ao registrar venda:', error);
+        alert('Erro ao registrar venda. Tente novamente.');
+      } finally {
+        isSubmitting = false;
+      }
+    });
+  }
+
+  // Envio de formulário e geração de PDF
+  const reportForm = document.getElementById('reportForm');
+
+  if (reportForm) {
+    reportForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      const month = document.getElementById('month').value;
+      const year = document.getElementById('year').value;
+
+      fetch(`http://localhost:3001/generate-report?month=${month}&year=${year}`, {
+        method: 'GET',
       })
       .then(response => {
-        if (response.status === 200) {
-          return response.json();
-        } else if (response.status === 401) {
-          alert('Usuário não encontrado ou senha incorreta.');
-          throw new Error('Usuário não encontrado ou senha incorreta.');
-        } else {
-          throw new Error('Erro no servidor.');
+        if (response.ok) {
+          return response.blob();
         }
+        throw new Error('Erro ao gerar o relatório');
       })
-      .then(data => {
-        alert(data.message);  // Exibe mensagem de sucesso
+      .then(blob => {
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `Relatorio_Vendas_${month}_${year}.pdf`;
+        a.click();
+        window.URL.revokeObjectURL(url);
       })
       .catch(error => {
-        console.error('Erro ao fazer login:', error);
+        console.error('Erro:', error);
+        alert('Erro ao gerar o relatório. Tente novamente.');
       });
     });
   }
 
-
-  // Função para registrar venda de produtos
-  // Função para registro de venda de produtos
-const salesForm = document.getElementById('salesForm');
-let isSubmitting = false; // Controla a duplicação
-
-if (salesForm) {
-  salesForm.addEventListener('submit', async function (e) {
-    e.preventDefault(); // Impede o envio padrão do formulário
-
-    if (isSubmitting) return; // Evita novo envio se já estiver processando
-    isSubmitting = true; // Define a flag como ativa para evitar novos envios
-
-    const product = document.getElementById('product').value;
-    const price = parseFloat(document.getElementById('price').value);
-    const quantity = parseInt(document.getElementById('quantity').value);
-    const sale_date = document.getElementById('sale_date').value;
-
-    try {
-      const response = await fetch('http://localhost:3001/register-sale', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ product, price, quantity, sale_date })
-      });
-
-      if (!response.ok) throw new Error('Erro ao registrar venda');
-      const data = await response.json();
-      alert(data.message); // Exibe mensagem de sucesso
-      salesForm.reset(); // Limpa o formulário
-    } catch (error) {
-      console.error('Erro ao registrar venda:', error);
-      alert('Erro ao registrar venda. Tente novamente.');
-    } finally {
-      isSubmitting = false; // Libera a flag para permitir novos envios
-    }
-  });
-}
-
-//envio de form e geracao de PDF
- // Seleciona o formulário de relatório
- const reportForm = document.getElementById('reportForm');
-
- if (reportForm) {
-     reportForm.addEventListener('submit', function (e) {
-         e.preventDefault(); // Evita o envio padrão do formulário
-
-         // Captura o mês e o ano selecionados
-         const month = document.getElementById('month').value;
-         const year = document.getElementById('year').value;
-
-         // Envia uma solicitação GET para gerar o relatório
-         fetch(`http://localhost:3001/generate-report?month=${month}&year=${year}`, {
-             method: 'GET',
-         })
-         .then(response => {
-             if (response.ok) {
-                 return response.blob(); // Obtém o PDF como blob
-             }
-             throw new Error('Erro ao gerar o relatório');
-         })
-         .then(blob => {
-             // Cria um link para o arquivo PDF e faz o download
-             const url = window.URL.createObjectURL(blob);
-             const a = document.createElement('a');
-             a.href = url;
-             a.download = `Relatorio_Vendas_${month}_${year}.pdf`;
-             a.click();
-             window.URL.revokeObjectURL(url);
-         })
-         .catch(error => {
-             console.error('Erro:', error);
-             alert('Erro ao gerar o relatório. Tente novamente.');
-         });
-     });
- }
-//gerenciar a exibição do banner e armazenar a escolha do usuário no localStorage:
-const cookieBanner = document.getElementById('cookieBanner');
+  // Gerenciamento do banner de cookies
+  const cookieBanner = document.getElementById('cookieBanner');
+  if (cookieBanner) {
     const acceptCookiesButton = document.getElementById('acceptCookies');
     const declineCookiesButton = document.getElementById('declineCookies');
 
-    // Verifica se já há consentimento armazenado e só exibe o banner se não houver
     const userConsent = localStorage.getItem('cookieConsent');
     if (!userConsent) {
-        cookieBanner.style.display = 'flex'; // Exibe o banner se o consentimento ainda não foi dado
-    } else {
-        cookieBanner.style.display = 'none'; // Oculta o banner se o consentimento já estiver armazenado
+      cookieBanner.style.display = 'flex';
     }
 
     acceptCookiesButton.addEventListener('click', function() {
-        localStorage.setItem('cookieConsent', 'accepted');
-        cookieBanner.style.display = 'none';
-        activateTracking(); // Ativa rastreamento, se necessário
+      localStorage.setItem('cookieConsent', 'accepted');
+      cookieBanner.style.display = 'none';
+      activateTracking();
     });
 
     declineCookiesButton.addEventListener('click', function() {
-        localStorage.setItem('cookieConsent', 'declined');
-        cookieBanner.style.display = 'none';
+      localStorage.setItem('cookieConsent', 'declined');
+      cookieBanner.style.display = 'none';
     });
 
-    // Função para ativar Google Analytics ou outras ferramentas de rastreamento
     function activateTracking() {
-        console.log('Cookies de rastreamento ativados.');
+      console.log('Cookies de rastreamento ativados.');
     }
 
-    // Ativa o rastreamento automaticamente se o consentimento for 'accepted'
     if (userConsent === 'accepted') {
-        activateTracking();
+      activateTracking();
     }
-
-    
-}); // Este é o fechamento final do `DOMContentLoaded`
+  }
+});

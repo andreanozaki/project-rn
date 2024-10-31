@@ -108,13 +108,34 @@ app.post('/contact', (req, res) => {
   });
 });
 
+//forgot password
+app.post('/forgot-password', (req, res) => {
+  const { email } = req.body;
+
+  // Verifica se o email existe no banco de dados
+  const query = 'SELECT * FROM users WHERE email = ?';
+  connection.query(query, [email], (err, results) => {
+      if (err) {
+          console.error('Erro ao buscar usuário:', err);
+          return res.status(500).json({ message: 'Erro ao buscar usuário' });
+      }
+      
+      if (results.length > 0) {
+          // Enviar email para redefinir senha (configurar serviço de e-mail)
+          return res.json({ message: 'Instruções para redefinição de senha enviadas para seu email.' });
+      } else {
+          return res.status(404).json({ message: 'Email não encontrado.' });
+      }
+  });
+});
+
 
 // Rota para registrar venda de produtos
 app.post('/register-sale', (req, res) => {
-  const { product, price, quantity, sale_date } = req.body;
+  const { product, price, sale_date } = req.body;
   
-  const query = 'INSERT INTO sales (product, price, quantity, sale_date) VALUES (?, ?, ?, ?)';
-  connection.query(query, [product, price, quantity, sale_date], (err) => {
+  const query = 'INSERT INTO sales (product, price, sale_date) VALUES (?, ?, ?)';
+  connection.query(query, [product, price, sale_date], (err) => {
     if (err) {
       console.error('Erro ao registrar venda:', err);
       return res.status(500).json({ message: 'Erro ao registrar venda' });
@@ -134,7 +155,7 @@ app.get('/sales', (req, res) => {
     
     console.log('Vendas registradas:');
     results.forEach((sale) => {
-      console.log(`ID: ${sale.id}, Produto: ${sale.product}, Quantidade: ${sale.quantity}, Preço: R$${sale.price}, Data da Venda: ${sale.sale_date}`);
+      console.log(`ID: ${sale.id}, Produto: ${sale.product}, Preço: R$${sale.price}, Data da Venda: ${sale.sale_date}`);
     });
 
     res.json(results);
@@ -164,7 +185,7 @@ app.get('/generate-report', (req, res) => {
     doc.moveDown();
 
     const tableTop = doc.y + 20;
-    const columnWidths = { id: 50, product: 150, quantity: 80, price: 100, saleDate: 100 };
+    const columnWidths = { id: 50, product: 150, price: 100, saleDate: 100 };
     const startX = 50;
     const tableWidth = Object.values(columnWidths).reduce((a, b) => a + b);
 
@@ -176,16 +197,15 @@ app.get('/generate-report', (req, res) => {
     const drawHeader = () => {
       doc.fontSize(12).text('ID', startX, tableTop, { width: columnWidths.id, align: 'center' });
       doc.text('Produto', startX + columnWidths.id, tableTop, { width: columnWidths.product, align: 'center' });
-      doc.text('Quantidade', startX + columnWidths.id + columnWidths.product, tableTop, { width: columnWidths.quantity, align: 'center' });
-      doc.text('Preço', startX + columnWidths.id + columnWidths.product + columnWidths.quantity, tableTop, { width: columnWidths.price, align: 'center' });
-      doc.text('Data da Venda', startX + columnWidths.id + columnWidths.product + columnWidths.quantity + columnWidths.price, tableTop, { width: columnWidths.saleDate, align: 'center' });
+      doc.text('Preço', startX + columnWidths.id + columnWidths.product, tableTop, { width: columnWidths.price, align: 'center' });
+      doc.text('Data da Venda', startX + columnWidths.id + columnWidths.product + columnWidths.price, tableTop, { width: columnWidths.saleDate, align: 'center' });
       doc.moveTo(startX, tableTop + 15).lineTo(startX + tableWidth, tableTop + 15).stroke();
       yPosition = tableTop + 30;
     };
 
     drawHeader();
 
-    results.forEach((sale, index) => {
+    results.forEach((sale) => {
       const saleMonth = new Date(sale.sale_date).getMonth() + 1;
       const formattedDate = new Date(sale.sale_date).toLocaleDateString('pt-BR');
 
@@ -194,10 +214,9 @@ app.get('/generate-report', (req, res) => {
           doc.addPage(); 
           yPosition = 50;
         }
-        // Adiciona espaço entre os meses
         yPosition += 10;
         doc.fontSize(14).font('Helvetica-Bold').text(`Mês ${saleMonth}/${year}`, startX, yPosition);
-        doc.font('Helvetica'); // Volta para a fonte normal
+        doc.font('Helvetica');
         currentMonth = saleMonth;
         yPosition += 30;
       }
@@ -205,7 +224,6 @@ app.get('/generate-report', (req, res) => {
       const saleData = [
         { text: sale.id.toString(), width: columnWidths.id, align: 'center' },
         { text: sale.product, width: columnWidths.product, align: 'center' },
-        { text: sale.quantity.toString(), width: columnWidths.quantity, align: 'center' },
         { text: `R$ ${parseFloat(sale.price).toFixed(2)}`, width: columnWidths.price, align: 'center' },
         { text: formattedDate, width: columnWidths.saleDate, align: 'center' },
       ];
@@ -215,14 +233,14 @@ app.get('/generate-report', (req, res) => {
         return xPos + cell.width;
       }, startX);
 
-      totalPrice += parseFloat(sale.price); // acumula o valor do preço atual
+      totalPrice += parseFloat(sale.price);
 
       yPosition += 20;
 
       if (yPosition > doc.page.height - 100) {
         doc.addPage();
         yPosition = 50;
-        drawHeader(); // Redesenha o cabeçalho na nova página
+        drawHeader();
       }
     });
 
