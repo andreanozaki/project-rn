@@ -5,9 +5,8 @@
     align-items: center;
     font-family:'Unica One', sans-serif;
 
-    @include respond(tab-land){
-      display: none;
-    }
+   
+    
 
   .main-nav-link:link,
   .main-nav-link:visited {
@@ -66,4 +65,74 @@
 
 .forgotpass-page .main-nav-link:hover {
   color: #eba350; 
+}
+
+//hamb
+/* Oculta a navegação padrão em telas menores e define o estilo do menu */
+/* Oculta o menu de navegação padrão para telas menores que `tab-land` */
+
+
+.hamburger {
+  display: none; /* Oculta o hambúrguer em telas maiores */
+  font-size: 3rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #dbd4af;
+}
+/* Ocultar o ícone de fechar por padrão */
+.icon-close {
+  display: none;
+}
+
+/* Exibir o ícone de fechar e ocultar o de hambúrguer quando o menu está ativo */
+.hamburger.active .icon-menu {
+  display: none;
+}
+
+.hamburger.active .icon-close {
+  display: block;
+  color: #0e0d0a; /* Cor do ícone de "X" */
+}
+
+/* Exibe o menu de hambúrguer e oculta o menu principal em telas menores que `tab-land` */
+@media (max-width: 1200px) { /* Ajuste para o breakpoint `tab-land` */
+  .hamburger {
+    display: block; /* Exibe o botão de hambúrguer em telas menores */
+}
+
+/* Ocultar o menu de navegação por padrão em telas menores */
+
+.main-nav{
+  display: none;
+}
+/* Exibir o menu de navegação de forma vertical quando a classe .active é adicionada */
+.main-nav.active {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 5px; /* Ajuste a posição conforme necessário */
+    left: 0;
+    width: 100%;
+    height:70vh;
+    background-color: #fffffff8;
+    color: #eba350;
+    z-index: 10;
+}
+
+/* Ajustar os links de navegação para ficarem alinhados no centro */
+.main-nav-list {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+   margin: auto;
+}
+
+/* Estilo dos links no menu */
+.main-nav-link {
+    font-size: 18px;
+    color: var(--color-primary--light);
+}
+
+
 }
