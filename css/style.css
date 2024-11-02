@@ -654,6 +654,7 @@ body {
   gap: 4.8rem;
   align-items: center;
   font-family: "Unica One", sans-serif;
+  /* Estilo específico para o item de sair */
 }
 .main-nav-list .main-nav-link:link,
 .main-nav-list .main-nav-link:visited {

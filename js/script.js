@@ -220,6 +220,29 @@ document.addEventListener('DOMContentLoaded', function () {
             });
         });
       }
+
+//alternar login e Sair
+     // Alternar entre login e sair
+function toggleLoginLogout() {
+  const isChefLoggedIn = localStorage.getItem('isChefLoggedIn') === 'true';
+  const loginLink = document.querySelector('.main-nav-link[href="login.html"]');
+  const logoutLink = document.getElementById('logout-link');
+
+  if (isChefLoggedIn) {
+      loginLink.style.visibility = 'hidden'; // Esconde visualmente o botão Login, mas mantém o espaço
+      logoutLink.style.display = 'block'; // Mostra o botão Sair
+  } else {
+      loginLink.style.visibility = 'visible'; // Mostra o botão Login novamente
+      logoutLink.style.display = 'none'; // Esconde o botão Sair
+  }
+}
+
+// Chame a função no carregamento da página para verificar o estado inicial
+document.addEventListener('DOMContentLoaded', toggleLoginLogout);
+
+    
+
+
 // Função para registro de venda de produtos
 const salesForm = document.getElementById('salesForm');
 let isSubmitting = false;
