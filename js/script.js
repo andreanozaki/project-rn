@@ -220,40 +220,39 @@ document.addEventListener('DOMContentLoaded', function () {
             });
         });
       }
+// Função para registro de venda de produtos
+const salesForm = document.getElementById('salesForm');
+let isSubmitting = false;
 
-  // Função para registro de venda de produtos
-  const salesForm = document.getElementById('salesForm');
-  let isSubmitting = false;
-
-  if (salesForm) {
+if (salesForm) {
     salesForm.addEventListener('submit', async function (e) {
-      e.preventDefault();
-      if (isSubmitting) return;
+        e.preventDefault();
+        if (isSubmitting) return;
 
-      isSubmitting = true;
-      const product = document.getElementById('product').value;
-      const price = parseFloat(document.getElementById('price').value);
-      const sale_date = document.getElementById('sale_date').value;
+        isSubmitting = true;
+        const product = document.getElementById('product').value;
+        const price = parseFloat(document.getElementById('price').value);
+        const sale_date = document.getElementById('sale_date').value;
 
-      try {
-        const response = await fetch('http://localhost:3001/register-sale', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ product, price, quantity, sale_date })
-        });
+        try {
+            const response = await fetch('http://localhost:3001/register-sale', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ product, price, sale_date })
+            });
 
-        if (!response.ok) throw new Error('Erro ao registrar venda');
-        const data = await response.json();
-        alert(data.message);
-        salesForm.reset();
-      } catch (error) {
-        console.error('Erro ao registrar venda:', error);
-        alert('Erro ao registrar venda. Tente novamente.');
-      } finally {
-        isSubmitting = false;
-      }
+            if (!response.ok) throw new Error('Erro ao registrar venda');
+            const data = await response.json();
+            alert(data.message);
+            salesForm.reset();
+        } catch (error) {
+            console.error('Erro ao registrar venda:', error);
+            alert('Erro ao registrar venda. Tente novamente.');
+        } finally {
+            isSubmitting = false;
+        }
     });
-  }
+}
 
   // Envio de formulário e geração de PDF
   const reportForm = document.getElementById('reportForm');
@@ -289,19 +288,51 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   //hambr
-  const hamburger = document.querySelector('.hamburger');
-  const mainNav = document.querySelector('.main-nav');
-  
-  if (hamburger && mainNav) {
-      hamburger.addEventListener('click', function () {
-          mainNav.classList.toggle('active');
-          hamburger.classList.toggle('active');
-          const isExpanded = hamburger.getAttribute('aria-expanded') === 'true';
-          hamburger.setAttribute('aria-expanded', !isExpanded);
-      });
-  }
-  
-  
+// hambr
+const hamburger = document.querySelector('.hamburger');
+const mainNav = document.querySelector('.main-nav');
+const loginLink = document.querySelector('.main-nav-link[href="login.html"]');
+const logoutLink = document.getElementById('logout-link');
+
+// Função para alternar entre Login e Sair com base no estado de login
+function toggleLoginLogout() {
+    const isChefLoggedIn = localStorage.getItem('isChefLoggedIn') === 'true';
+
+    if (isChefLoggedIn) {
+        loginLink.style.display = 'none'; // Esconde o botão Login
+        logoutLink.style.display = 'block'; // Mostra o botão Sair
+    } else {
+        loginLink.style.display = 'block'; // Mostra o botão Login
+        logoutLink.style.display = 'none'; // Esconde o botão Sair
+    }
+}
+
+// Chama a função ao carregar a página para definir o estado inicial
+toggleLoginLogout();
+
+// Evento para abrir/fechar o menu hambúrguer e atualizar os botões
+if (hamburger && mainNav) {
+    hamburger.addEventListener('click', function () {
+        mainNav.classList.toggle('active');
+        hamburger.classList.toggle('active');
+        const isExpanded = hamburger.getAttribute('aria-expanded') === 'true';
+        hamburger.setAttribute('aria-expanded', !isExpanded);
+
+        // Atualiza o botão de Login/Sair ao abrir o menu
+        toggleLoginLogout();
+    });
+}
+
+// Evento para deslogar o usuário ao clicar no botão Sair
+logoutLink.addEventListener('click', function (e) {
+    e.preventDefault();
+    localStorage.removeItem('isChefLoggedIn'); // Remove o estado de login
+    window.location.reload(); // Recarrega a página para atualizar o estado
+});
+
+
+
+
   // Gerenciamento do banner de cookies
   const cookieBanner = document.getElementById('cookieBanner');
   if (cookieBanner) {
