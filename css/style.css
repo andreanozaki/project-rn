@@ -683,7 +683,7 @@ body {
   color: rgb(26, 26, 26);
 }
 
-/*     font-family:'Unica One', sans-serif;Mantém o estilo da navegação e alinha o link de Login à direita */
+/*font-family:'Unica One', sans-serif;Mantém o estilo da navegação e alinha o link de Login à direita */
 .forgotpass-page .main-nav-list {
   width: 80vw; /* Garante que a lista ocupe toda a largura disponível */
 }
@@ -714,11 +714,26 @@ body {
   border: none;
   cursor: pointer;
   color: #dbd4af;
+  position: relative;
 }
 
-/* Ocultar o ícone de fechar por padrão */
+/* Ícone de hambúrguer */
+.icon-menu {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Ícone de fechar, oculto por padrão */
 .icon-close {
   display: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-60%, -50%); /* Desloca um pouco para a esquerda */
+  color: #0e0d0a; /* Cor do ícone "X" */
+  z-index: 15;
 }
 
 /* Exibir o ícone de fechar e ocultar o de hambúrguer quando o menu está ativo */
@@ -727,11 +742,10 @@ body {
 }
 
 .hamburger.active .icon-close {
-  display: block;
-  color: #0e0d0a; /* Cor do ícone de "X" */
+  display: inline;
 }
 
-/* Exibe o menu de hambúrguer e oculta o menu principal em telas menores que `tab-land` */
+/* Exibe o menu de hambúrguer e oculta o menu principal em telas menores */
 @media (max-width: 1200px) { /* Ajuste para o breakpoint `tab-land` */
   .hamburger {
     display: block; /* Exibe o botão de hambúrguer em telas menores */
@@ -745,15 +759,17 @@ body {
     display: flex;
     flex-direction: column;
     position: absolute;
-    top: 5px; /* Ajuste a posição conforme necessário */
+    top: 5px;
     left: 0;
     width: 100%;
-    height: 70vh;
-    background-color: rgba(255, 255, 255, 0.9725490196);
+    height: 100vh;
+    background-color: rgba(238, 247, 217, 0.9725490196);
     color: #eba350;
     z-index: 10;
   }
-  /* Ajustar os links de navegação para ficarem alinhados no centro */
+}
+/* Ajustar os links de navegação para ficarem alinhados no centro */
+@media (max-width: 75em) {
   .main-nav-list {
     flex-direction: column;
     align-items: center;

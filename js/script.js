@@ -291,15 +291,17 @@ document.addEventListener('DOMContentLoaded', function () {
   //hambr
   const hamburger = document.querySelector('.hamburger');
   const mainNav = document.querySelector('.main-nav');
-
+  
   if (hamburger && mainNav) {
       hamburger.addEventListener('click', function () {
           mainNav.classList.toggle('active');
-          hamburger.classList.toggle('active'); // Adiciona a classe para alternar os ícones
+          hamburger.classList.toggle('active');
           const isExpanded = hamburger.getAttribute('aria-expanded') === 'true';
           hamburger.setAttribute('aria-expanded', !isExpanded);
       });
   }
+  
+  
   // Gerenciamento do banner de cookies
   const cookieBanner = document.getElementById('cookieBanner');
   if (cookieBanner) {

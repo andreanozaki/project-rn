@@ -44,7 +44,7 @@
 }
 
 
- /*     font-family:'Unica One', sans-serif;Mantém o estilo da navegação e alinha o link de Login à direita */
+ /*font-family:'Unica One', sans-serif;Mantém o estilo da navegação e alinha o link de Login à direita */
 .forgotpass-page .main-nav-list {
 
     width: 80vw; /* Garante que a lista ocupe toda a largura disponível */
@@ -52,8 +52,6 @@
   width: 70vw;
 }
   }
-
-  
 
 .forgotpass-page .main-nav-link {
   color: #242121; /* Ajuste para a cor original do link */
@@ -70,8 +68,6 @@
 //hamb
 /* Oculta a navegação padrão em telas menores e define o estilo do menu */
 /* Oculta o menu de navegação padrão para telas menores que `tab-land` */
-
-
 .hamburger {
   display: none; /* Oculta o hambúrguer em telas maiores */
   font-size: 3rem;
@@ -79,10 +75,26 @@
   border: none;
   cursor: pointer;
   color: #dbd4af;
+  position: relative;
 }
-/* Ocultar o ícone de fechar por padrão */
+
+/* Ícone de hambúrguer */
+.icon-menu {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Ícone de fechar, oculto por padrão */
 .icon-close {
   display: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-60%, -50%); /* Desloca um pouco para a esquerda */
+  color: #0e0d0a; /* Cor do ícone "X" */
+  z-index: 15;
 }
 
 /* Exibir o ícone de fechar e ocultar o de hambúrguer quando o menu está ativo */
@@ -91,48 +103,48 @@
 }
 
 .hamburger.active .icon-close {
-  display: block;
-  color: #0e0d0a; /* Cor do ícone de "X" */
+  display: inline;
 }
 
-/* Exibe o menu de hambúrguer e oculta o menu principal em telas menores que `tab-land` */
+/* Exibe o menu de hambúrguer e oculta o menu principal em telas menores */
 @media (max-width: 1200px) { /* Ajuste para o breakpoint `tab-land` */
   .hamburger {
-    display: block; /* Exibe o botão de hambúrguer em telas menores */
-}
+      display: block; /* Exibe o botão de hambúrguer em telas menores */
+  }
 
-/* Ocultar o menu de navegação por padrão em telas menores */
+  /* Ocultar o menu de navegação por padrão em telas menores */
+  .main-nav {
+      display: none;
+  }
 
-.main-nav{
-  display: none;
-}
-/* Exibir o menu de navegação de forma vertical quando a classe .active é adicionada */
-.main-nav.active {
-    display: flex;
-    flex-direction: column;
-    position: absolute;
-    top: 5px; /* Ajuste a posição conforme necessário */
-    left: 0;
-    width: 100%;
-    height:70vh;
-    background-color: #fffffff8;
-    color: #eba350;
-    z-index: 10;
+  /* Exibir o menu de navegação de forma vertical quando a classe .active é adicionada */
+  .main-nav.active {
+      display: flex;
+      flex-direction: column;
+      position: absolute;
+      top: 5px;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      background-color: #eef7d9f8;
+      color: #eba350;
+      z-index: 10;
+  }
 }
 
 /* Ajustar os links de navegação para ficarem alinhados no centro */
-.main-nav-list {
+@include respond (tab-land){
+  .main-nav-list {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-   margin: auto;
-}
-
-/* Estilo dos links no menu */
-.main-nav-link {
+    margin: auto;
+  }
+  
+  /* Estilo dos links no menu */
+  .main-nav-link {
     font-size: 18px;
     color: var(--color-primary--light);
-}
-
-
+  }
+  
 }
