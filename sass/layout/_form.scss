@@ -1,37 +1,34 @@
 .section-form{
     
-    position: relative;
      height: 100vh;
      width: 100%;
-     padding: 0;
-     background-image: linear-gradient(
-        to right bottom,
-        rgba(108, 106, 106, 0.935),
-        rgba(29, 29, 29, 0.647)
-    );
+
 
 
      .contact{
+        
+        
+     padding: 5rem 15rem;
+        display: flex;
+        flex-direction: row;
+      justify-content: space-evenly;
         font-family:'Unica One', sans-serif;
-        position:absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
+
+        
+ 
+     
+        
         border-radius: 12px;
-         // Ajuste para dispositivos móveis
-    @include respond(mobile) {
-        width: 90vw;
-        padding: 2rem 5rem;
-      }
-    @include respond(tab-land) {
-        width: 50vw;
-    }
-    @include respond(big-desktop) {
-        width: 30vw;
-    }
+@include respond(tab-land){
+    flex-direction: column;
+    width: 90%;padding: 2rem;
+    justify-content: center;
+}
+        
      }
      .form{
-      
+   
+        
         display: flex;
         flex-direction: column;
         justify-content: space-evenly;
@@ -42,8 +39,11 @@
         border-radius: 8px;
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 
-     }
-    
+     
+
+       
+    }
+   
      .form input,  textarea{
         background-color:rgb(250, 250, 250);
         border-radius: 8px;
@@ -57,21 +57,32 @@
     }
     .form input::placeholder,
     .form textarea::placeholder {
-    color:#333; 
+    color:#858282; 
 
 }
-  .form-bg {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    z-index: -1; /* Place it behind other content */
-}
+
+
 .btn-main{
     border: none;
 }
+
+#contact {
+    display: none;
 }
 
-//form resposta
+.contact-info p {
+  display: flex;
+
+  gap: 0.5rem;
+  margin: 0.5rem 0;
+  padding: 0.5rem;
+}
+
+.contact-info ion-icon {
+  font-size: 2.5rem;
+  color: rgb(184, 189, 91); /* Cor verde para o ícone */
+}
+
+
+}
+

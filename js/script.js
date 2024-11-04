@@ -386,4 +386,47 @@ logoutLink.addEventListener('click', function (e) {
       activateTracking();
     }
   }
+
+// Função para enviar feedback
+    const contactForm = document.getElementById('contactForm');
+    const feedbackMessage = document.getElementById('feedbackMessage');
+
+    if (contactForm) {
+        contactForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const formData = new FormData(contactForm);
+            const name = formData.get('name');
+            const email = formData.get('email');
+            const message = formData.get('message');
+
+            fetch('http://localhost:3001/contact', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ name, email, message })
+            })
+            .then(response => response.json())
+            .then(data => {
+                // Exibir a mensagem de feedback
+                feedbackMessage.textContent = data.message;
+                feedbackMessage.classList.add('success');
+
+                // Limpar o formulário após o envio
+                contactForm.reset();
+            })
+            .catch(error => {
+                console.error('Erro ao enviar feedback:', error);
+                feedbackMessage.textContent = 'Erro ao enviar mensagem. Tente novamente.';
+                feedbackMessage.classList.add('error');
+            });
+        });
+    }
+    
+    //contato ao clicar
+    
+
+
+
+
+
 });
