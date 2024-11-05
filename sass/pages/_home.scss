@@ -12,6 +12,8 @@
   background: url("/img/base/wd.png")center/cover no-repeat;
   background-size: cover;
   z-index: 1;
+  filter: brightness(0.9) contrast(0.9) saturate(0.9); /* Filtro para tons suaves */
+
 @include respond(tab-land){
     background: url("/img/base/\ nome-16.png")center/cover no-repeat;
     background-size: cover;
@@ -19,8 +21,7 @@
 
   }
  
-  
-  /* Adiciona o gradiente como uma camada separada */
+  /* Filtro pastel na imagem de fundo */
   &::before {
     content: '';
     position: absolute;
@@ -28,12 +29,15 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(
-      rgba(29, 28, 28, 0.464),
-      rgba(27, 27, 26, 0.879)
-    )
+    background-color: rgba(82, 82, 78, 0.142); /* Suaviza com um tom pastel */
+    mix-blend-mode: overlay; /* Mistura as cores */
+    z-index: 2;
   }
+
  
+  
+
+  
 
 }
 
@@ -57,16 +61,17 @@
 
   &--main {
     display: block;
-    font-size: 3.6rem;
+    font-size: 4rem;
     font-weight: 900;
     letter-spacing: .25rem;
-    color:rgba(245, 245, 220, 0.771);
+    color:rgb(237, 244, 206);
+    z-index: 9999;
   }
 
   &--sub {
     display: block;
     font-size: 3rem;
-    color:rgba(245, 245, 220, 0.433);
+    color:rgba(246, 247, 223, 0.996);
     font-weight: bolder;
     letter-spacing: 1rem;
     font-family: 'Unica One', sans-serif;
@@ -258,7 +263,7 @@ position: relative;
                   width: 100%;
                   background-image: linear-gradient(
                       to right bottom,
-                      rgba(86, 82, 82, 0.419),
+                      rgba(249, 236, 236, 0.419),
                       rgba(19, 18, 18, 0.699)
                   );
                   opacity: 0;

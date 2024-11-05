@@ -16,48 +16,33 @@
 .container-gallery{
   padding: 0 10%;
 }
-
 .social-media {
-  position: absolute;
-  top: 30%;
-  left: 45%;
-  transform: translate(-50%,-50%);
-  font-size:2.8rem;
-  gap: 4.6rem;
 
   display: flex;
+  align-items: center;
+  gap: 2rem; /* Ajuste o espaço entre os ícones */
   list-style: none;
-  text-decoration: none;
-  color:#5452525d;
-
-  @include respond(mobile){
-    
-font-size: 3rem;
-gap: 4rem;
-
-
-  }
-  .icon {
-    color:rgb(135, 131, 131);
-    text-decoration: none;
-    position: absolute;
-    padding-top:6rem;
- 
-  @include respond(mobile){
-    padding: 0;
-    padding-top: 8rem;
-  }
-  &:hover {
-    transform: translateY(-3px);
-    color: #d5ba87;
-  }
-
-  &:active {
-  transform: translateY(-1px);
-  box-shadow: 0 .5rem 2rem rgba(white,.2);
-  }
- }
 }
+
+
+
+.icon {
+  color: rgb(135, 131, 131);
+  font-size: 2.8rem;
+  text-decoration: none;
+  transition: color 0.3s, transform 0.3s;
+}
+
+.icon:hover {
+  color: #d5ba87; /* Cor ao passar o mouse */
+  transform: translateY(-3px);
+}
+
+.icon:active {
+  transform: translateY(-1px);
+  box-shadow: 0 0.5rem 2rem rgba(255, 255, 255, 0.2);
+}
+
 .social-media-footer{
   font-size:3rem;
   display: flex;
@@ -98,34 +83,7 @@ gap: 4rem;
     opacity: 1;
   }
 }
-/* Adicione estas regras CSS para animar os ícones */
-.social-media li {
-  opacity: 0;
-  transform: translateY(10px); /* Inicialmente, mova os ícones para baixo 20px */
-  transition: opacity 1.5s ease-in-out, transform 1s ease-in-out;
-}
 
-.social-media li.active {
-  opacity: 1;
-  transform: translateY(0); /* Quando ativos, mova os ícones para a posição normal */
-}
-
-@keyframes fadeOut {
-  0% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-  }
-}
-@keyframes rotate {
-  0% {
-      transform: rotate(0deg);
-  }
-  100% {
-      transform: rotate(360deg);
-  }
-}
 /* Estilos da classe reveal */
 .reveal {
   opacity: 0;
@@ -201,8 +159,7 @@ gap: 4rem;
 .cookie-banner button:hover {
   background-color: #a08e45;
 }
-
-//about 3col
+//stats
 .section-stats {
   padding: 3rem 0;
   text-align: center;
@@ -212,66 +169,65 @@ gap: 4rem;
   align-items: center;
   overflow: hidden;
 
+  .stats-container {
+    background-image: linear-gradient(
+          to right,
+          rgba(231, 235, 245, 0.858),
+          rgba(242, 246, 250, 0.8)
+      ),
+    url('../img/base/White Minimalist Profile LinkedIn Banner-3.png');
+    background-size: cover;
+    background-position: center;
+    background-color: #d4e5f0;
+    padding: 2rem;
+    border-radius: 8px;
+    width: 70%;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
 
-}
+    @include respond(mobile) {
+        flex-direction: column;
+    }
 
-.stats-container {
-  background-image: linear-gradient(
-        to right,
-        rgba(231, 235, 245, 0.858), /* Azul mais escuro à esquerda */
-        rgba(242, 246, 250, 0.8) /* Azul mais claro à direita */
-    ),
- url('../img/base/White Minimalist Profile LinkedIn Banner-3.png');
-  background-size: cover;
-  background-position: center;
-  background-color: #d4e5f0;
-  padding: 2rem;
-  border-radius: 8px;
-  width: 70%;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-  position: relative;
-  z-index: 2;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-
-  @include respond(mobile) {
-      flex-direction: column;
+    @include respond(tab-land) {
+        border-radius: 0px;
+        width: 100%;
+    }
   }
 
-  @include respond(tab-land) {
-      border-radius: 0px;
-      width: 100%;
+  .stat-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
   }
-}
 
-.stat-box {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 1rem;
-}
+  .stat-icon {
+    font-size: 4rem;
+    color: #31ce5ee2;
+    text-shadow: 0 0 4px rgba(60, 255, 116, 0.3);
+    margin-bottom: 0.5rem;
+  }
 
-.stat-icon {
-  font-size: 4rem;
-  color: #31ce5ee2;
-  text-shadow: 0 0 4px rgba(60, 255, 116, 0.3);
-  margin-bottom: 0.5rem;
-}
+  .stat-number {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #333;
+  }
 
-.stat-number {
-  font-size: 3rem;
-  font-weight: bold;
-  color: #333;
-}
-
-.stat-text {
-  font-size: 1.5rem;
-  color: #666;
-}
-.contact-info {
-  text-align: center;
-  font-size: 1.2rem;
-  margin-bottom: 2rem;
-  color: #333;
+  .stat-text {
+    font-size: 1.5rem;
+    color: #666;
+  }
+  
+  .contact-info {
+    text-align: center;
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    color: #333;
+  }
 }
