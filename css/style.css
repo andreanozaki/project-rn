@@ -701,7 +701,7 @@ body {
   display: flex;
   align-items: center;
   color: #ffffff;
-  background-color: #333;
+  background-color: #2b2b2b;
   /* Porque quero o header um pouco mais pegajoso*/
   /* 0 up and bottom,4.8rem right and left*/
   text-transform: uppercase;
@@ -846,81 +846,68 @@ body {
   }
 }
 .section-main {
-  height: 90vh;
+  position: relative;
+  height: 75vh;
   width: 100%;
   margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: url("/img/base/wd.png") center/cover no-repeat;
+  background-size: cover;
+  z-index: 1;
+  /* Adiciona o gradiente como uma camada separada */
 }
-.section-main .section-main__photo {
+@media (max-width: 75em) {
+  .section-main {
+    background: url("/img/base/ nome-16.png") center/cover no-repeat;
+    background-size: cover;
+    height: 60vh;
+  }
+}
+.section-main::before {
+  content: "";
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  background-image: linear-gradient(to right bottom, rgba(103, 102, 98, 0.765), rgba(19, 15, 15, 0.938));
+  background: linear-gradient(rgba(29, 28, 28, 0.464), rgba(27, 27, 26, 0.879));
 }
-.section-main .header__text-box {
-  position: absolute;
-  top: 70%;
-  left: 48%;
-  transform: translate(-50%, -50%);
+
+.section-main__photo {
+  display: none; /* Oculta o elemento de imagem separado */
 }
-.section-main .heading-primary {
-  align-items: center;
+
+.header__text-box {
+  position: relative;
   text-align: center;
-  display: block;
+  z-index: 2; /* Mantém o texto acima do gradiente */
+  padding-top: 10rem;
+}
+
+/* Estilização adicional para o texto */
+.heading-primary {
   color: #333333;
   text-transform: uppercase;
   backface-visibility: hidden;
   font-family: "Roboto", sans-serif;
 }
-.section-main .heading-primary--main {
+.heading-primary--main {
   display: block;
-  font-size: 5.6rem;
+  font-size: 3.6rem;
   font-weight: 900;
   letter-spacing: 0.25rem;
-  padding-bottom: 1rem;
-  animation-name: moveInLeft;
-  animation-duration: 2s;
-  animation-timing-function: ease-out;
-  color: rgba(105, 101, 101, 0.7725490196);
+  color: rgba(245, 245, 220, 0.771);
 }
-@media (max-width: 75em) {
-  .section-main .heading-primary--main {
-    width: 90vw;
-    font-size: 5rem;
-  }
-}
-@media (max-width: 59em) {
-  .section-main .heading-primary--main {
-    font-size: 3rem;
-    width: 80vw;
-  }
-}
-@media (max-width: 710px) {
-  .section-main .heading-primary--main {
-    width: 100vw;
-    letter-spacing: 0.2rem;
-    font-weight: bolder;
-    padding-bottom: 3rem;
-  }
-}
-.section-main .heading-primary--sub {
+.heading-primary--sub {
   display: block;
-  font-size: 4rem;
-  color: rgba(105, 101, 101, 0.7725490196);
+  font-size: 3rem;
+  color: rgba(245, 245, 220, 0.433);
   font-weight: bolder;
   letter-spacing: 1rem;
   font-family: "Unica One", sans-serif;
-  animation: moveinRight 2s ease-out;
-  position: relative;
-  padding-bottom: 6rem;
-}
-@media (max-width: 710px) {
-  .section-main .heading-primary--sub {
-    font-size: 2em;
-    letter-spacing: 0.5rem;
-    font-weight: 800;
-  }
 }
 
 .section-aboutme {
@@ -1166,19 +1153,26 @@ body {
   align-items: center;
   text-align: center;
   justify-content: space-evenly;
+  padding: 2rem 25rem;
+}
+@media (max-width: 75em) {
+  .ebook {
+    padding: 2rem 5rem;
+  }
 }
 @media (max-width: 59em) {
   .ebook {
     height: 100vh;
     display: flex;
     flex-direction: column;
-    padding: 2rem;
+    padding: 2rem 5rem;
     text-align: center;
   }
 }
 @media (max-width: 710px) {
   .ebook {
     height: 100%;
+    padding: 3rem 0;
   }
 }
 .ebook .ebook-photo {
@@ -1374,7 +1368,6 @@ body {
   text-align: center;
   padding: 2rem 15rem;
   justify-content: center;
-  background-image: linear-gradient(to right bottom, rgba(51, 51, 51, 0.8), rgba(29, 29, 29, 0.6));
 }
 .section-recipe .recipe-bg {
   position: absolute;
@@ -1384,6 +1377,7 @@ body {
   height: 100%;
   object-fit: cover;
   z-index: -1; /* Coloca a imagem atrás do conteúdo */
+  background-image: linear-gradient(to right bottom, rgba(51, 51, 51, 0.8), rgba(29, 29, 29, 0.6));
 }
 @media (max-width: 75em) {
   .section-recipe {

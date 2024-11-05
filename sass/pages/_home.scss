@@ -1,96 +1,81 @@
 //SECTION MAIN
 .section-main {
-  height: 90vh;
+  position: relative;
+
+  height: 75vh;
   width: 100%;
   margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: url("/img/base/wd.png")center/cover no-repeat;
+  background-size: cover;
+  z-index: 1;
+@include respond(tab-land){
+    background: url("/img/base/\ nome-16.png")center/cover no-repeat;
+    background-size: cover;
+    height: 60vh;
 
-  .section-main__photo{
-      
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      background-image: linear-gradient(
-        to right bottom,
-        rgba(103, 102, 98, 0.765), /* Black with 70% opacity */
-        rgba(19, 15, 15, 0.938) /* Medium gray with 50% opacity */
-      );
-}
+  }
  
-  .header__text-box{
+  
+  /* Adiciona o gradiente como uma camada separada */
+  &::before {
+    content: '';
     position: absolute;
-    top: 70%;
-    left: 48%;
-    transform: translate(-50%,-50%);
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      rgba(29, 28, 28, 0.464),
+      rgba(27, 27, 26, 0.879)
+    )
+  }
  
-    }
-    .heading-primary {
-      align-items: center;
-      text-align: center;
-      display: block;
-      color:#333333;
-      text-transform: uppercase;
-  
-      backface-visibility: hidden;
-      font-family:  'Roboto', sans-serif; 
 
-      &--main {
-        display: block;
-        font-size:5.6rem;
-        font-weight:900;  
-        letter-spacing: .25rem;
-        padding-bottom: 1rem;
-    
-        animation-name: moveInLeft;
-        animation-duration: 2s;
-        animation-timing-function: ease-out;
-        color:#696565c5;
-     
-       
-        @include respond(tab-land){
-          width: 90vw;
-          font-size: 5rem;
-        }
-        @include respond(tab-port){
-          font-size:3rem;
-       width: 80vw;
-        }
-        @include respond(mobile){
-          width: 100vw;
-          letter-spacing: 0.20rem;
-          font-weight: bolder;
-          padding-bottom: 3rem;
-    
-        }
-      }
-  
-      &--sub{
-      display: block;
-      font-size: 4rem;
-      color:#696565c5;
+}
 
-      font-weight:bolder;
-      letter-spacing: 1rem;
-          font-family:'Unica One', sans-serif;
+.section-main__photo {
+  display: none; /* Oculta o elemento de imagem separado */
+}
 
-   
-      animation:moveinRight 2s ease-out;
-      position: relative;
-      padding-bottom: 6rem;
-    
-      @include respond(mobile){
-        font-size: 2em;
-        letter-spacing: 0.5rem;
-        font-weight: 800;
-      }
-    
-      }
-    }
+.header__text-box {
+  position: relative;
+  text-align: center;
+  z-index: 2; /* Mantém o texto acima do gradiente */
+  padding-top: 10rem;
+}
+
+/* Estilização adicional para o texto */
+.heading-primary {
+  color: #333333;
+  text-transform: uppercase;
+  backface-visibility: hidden;
+  font-family: 'Roboto', sans-serif;
+
+  &--main {
+    display: block;
+    font-size: 3.6rem;
+    font-weight: 900;
+    letter-spacing: .25rem;
+    color:rgba(245, 245, 220, 0.771);
+  }
+
+  &--sub {
+    display: block;
+    font-size: 3rem;
+    color:rgba(245, 245, 220, 0.433);
+    font-weight: bolder;
+    letter-spacing: 1rem;
+    font-family: 'Unica One', sans-serif;
+  }
 }
 
 
-//SECTION ABOUT-ME
+
+//SECTION ABOUT-ME chef
 .section-aboutme{
   width: 100%;
   height: 100%;
@@ -353,16 +338,20 @@ position: relative;
  align-items: center;
  text-align: center;
  justify-content: space-evenly;
-
+ padding: 2rem 25rem;
+@include respond(tab-land){
+  padding: 2rem 5rem;
+}
 @include respond(tab-port){
   height: 100vh;
   display: flex;
   flex-direction: column;
-  padding: 2rem;
+  padding: 2rem 5rem;
   text-align: center;
 }
 @include respond(mobile){
   height: 100%;
+  padding: 3rem  0;
 }
 
 .ebook-photo{
