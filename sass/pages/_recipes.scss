@@ -1,263 +1,288 @@
-
-
-.section-recipe{
+.section-recipe {
     position: relative;
-    height: 75vh;
-    color:beige;
+    height: 70vh;
+    color: beige;
     display: flex;
     flex-direction: row;
     gap: 5rem;
     align-items: center;
     text-align: center;
-    padding:2rem 15rem;
-justify-content: center;
+    padding: 2rem 15rem;
+    justify-content: center;
 
- // Imagem de fundo
- .recipe-bg {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    z-index: -1; /* Coloca a imagem atrás do conteúdo */
-  
-    background-image: linear-gradient(
-      to right bottom,
-      rgba(51, 51, 51, 0.8), /* Cor de sobreposição */
-      rgba(29, 29, 29, 0.6)
-    );
-  }
-
-
-    @include respond(tab-land){
-        padding: 5rem;
-        height: 55vh;
-    }
-    @include respond(tab-port){
-        padding:5rem 0;
-        display: flex;
-        flex-direction: column;
-        height: 100%;
+    .recipe-bg {
+        position: absolute;
+        top: 0;
+        left: 0;
         width: 100%;
-        flex-direction: column-reverse;
-    
-        
+        height: 100%;
+        object-fit: cover;
+        z-index: -1; /* Coloca a imagem atrás do conteúdo */
     }
-    .recipe-card{
-text-align: center;
-        .recipe-creator{
+
+    // Adiciona uma camada de sobreposição suave sobre a imagem
+    &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(22, 22, 21, 0.841); /* Marrom com opacidade */
+        z-index: 0; /* Coloca a camada atrás do conteúdo mas sobre a imagem */
+    }
+
+    .recipe-card {
+        position: relative;
+        z-index: 1; /* Coloca o conteúdo acima da sobreposição */
+        text-align: center;
+
+        .recipe-creator {
             font-size: 2em;
             font-weight: 400;
+            color: #e8dbc0; /* Marrom para o texto */
         }
 
-     .recipe-image{
-        display: block;
-     
-max-width: 380px;
-@include respond(tab-land){
-    max-width: 300px;
+        .recipe-image {
+            position: relative;
+            display: block;
+            max-width: 300px;
+            border-radius: 12px;
 
+            @include respond(tab-land) {
+                max-width: 300px;
+            }
+            @include respond(tab-port) {
+                max-width: 250px;
+                margin: 0 auto;
+            }
+        }
+        .paragraph{
+            color: white;
+        }
+        .recipe-open{
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%,-50%);  
+padding: 12px 34px;
 
- }
- @include respond(tab-port){
-    max-width: 250px;
-    margin: 0 auto;
-
- }
-     } 
-
+}
+            
     }
-.recipe-cta{
-    padding: 2rem;
-  max-width: 60vw;
-  text-align: center;
-  max-width: 40vw;
-  @include respond(tab-port) {
-    order: 1; // Move o .recipe-cta para ficar acima do .recipe-card
-    max-width: 80vw;
-}
-.paragraph{
-text-align: center;    
-}
 
- 
-}
-.recipe-open{
-    display: inline-block;
-}
+    .recipe-cta {
+        position: relative;
+        z-index: 1; /* Coloca o conteúdo acima da sobreposição */
+        padding: 2rem;
+        max-width: 40vw;
+        text-align: center;
+
+        @include respond(tab-port) {
+            order: 1; /* Move o .recipe-cta para ficar acima do .recipe-card */
+            max-width: 80vw;
+        }
+
+        .paragraph {
+            text-align: center;
+            color: #ddd;
+        }
+      
+    }
+      // Ajustes para telas menores que 966px
+      @media (max-width: 966px) {
+        flex-direction: column-reverse; /* Coloca .recipe-cta em cima e .recipe-card embaixo */
+        padding: 2rem 1rem;
+
+        .recipe-card {
+            margin-top: 2rem; /* Adiciona espaço entre .recipe-cta e .recipe-card */
+        }
+    }
 }
 
 
 // 2 page chocolatquent.html
-
-.recipes{
+.recipes {
     height: 100%;
     width: 100%;
     display: flex;
     flex-direction: column;
-    gap: 3rem;
-   padding-top: 5rem;
+    gap: 2rem;
+    padding-top: 3rem;
     text-align: center;  
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: center;
+    background-color: #f8f8f8;
 
-   
-   
-  @include respond(mobile){
-    padding:3.5rem;
-    text-align: center;
-    gap: 0;
-  }
-
- .left-side{
-max-width: 50vw;
-@include respond(mobile){
-    max-width: 80vw;
-}
-    .left-side__photo{
-        width: 80%;
-        border-radius: 8px;
-    
-    }
-    .left-side__title{
-        font-size: 6rem;
-        font-weight: 200;
+    @include respond(mobile) {
+        padding: 3rem 1rem;
         text-align: center;
-       @include respond(mobile){
-        font-size: 3.5em;
-        width: 100%;
-        display: inline;
-
-        
-       }
-
-       
+        gap: 1rem;
     }
-    .left-side__subheading{
-  
-        
-        padding: 2rem 0;
-     
-        font-size: 18px;
-        text-transform: uppercase;
-       text-align: left;
-       padding-left: 10rem;
-      
-       @include respond(mobile){
-        padding: 2rem;
-        width: 80vw;
-    }
-       
-    
-    
-    }
-  
- }
 
-   .right-side{
-    max-width: 50vw;
-   @include respond(mobile){
-    max-width: 90vw;
-    padding: 0;
-   }
-    .status-recipe{
-       width: 100%;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        padding: 5rem 0;
-       @include respond(mobile){
-        width: 80vw;
-        text-align: center;
-     
-       }
-        .time,.nivel,.rendimento{
-            font-size:21px;
-            width: 250px;
-            padding: 4rem 0;
-            background-color:#dbd4af86;
-            display: flex;
-            flex-direction: column; 
-            @include respond(mobile){
-                padding:rem;
-            } 
+    .left-side {
+        max-width: 45vw;
+        margin-bottom: 2rem;
+
+        @include respond(mobile) {
+            max-width: 90vw;
         }
-.icon-recipe{
-    color: rgb(182, 62, 62);
-}
+
+        .left-side__photo {
+            width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .left-side__title {
+            font-size: 5rem;
+            font-weight: 300;
+            margin: 1rem 0;
+            color: #333;
+
+            @include respond(mobile) {
+                font-size: 3rem;
+                width: 100%;
+            }
+        }
+
+        .left-side__subheading {
+            padding: 1rem 0;
+            font-size: 1.8rem;
+            text-transform: uppercase;
+            color: #666;
+            text-align: center;
+
+            @include respond(mobile) {
+                padding: 1rem;
+                width: 90vw;
+            }
+        }
     }
-.paragraph{
-    font-size: 2rem;
-    width: 50vw;
-    text-align: start;
-@include respond(mobile){
-    width:80vw;
-}
-}
-.topic{
-    padding:0.5rem ;
-    background-color: #DBD4AF;
-    text-transform: uppercase;
-    font-size: 21px;
-    display: block;
-    text-align: start;
-    font-weight: 600;
-    color:  rgb(146, 38, 38);
+
+    .right-side {
+        max-width: 45vw;
+        padding: 2rem;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+
+        @include respond(mobile) {
+            max-width: 90vw;
+            padding: 1rem;
+        }
+
+        .status-recipe {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            padding: 2rem 0;
+            background-color: #f4f4f4;
+            border-radius: 8px;
+
+            @include respond(mobile) {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .time, .nivel, .rendimento {
+                font-size: 1.8rem;
+                padding: 2rem;
+                background-color: #e0e0e0;
+                margin: 0.5rem;
+                border-radius: 8px;
+
+                @include respond(mobile) {
+                    padding: 1rem;
+                    font-size: 1.6rem;
+                }
+            }
+
+            .icon-recipe {
+                color: #b83e3e;
+                font-size: 2rem;
+            }
+        }
+
+        .paragraph {
+            font-size: 1.8rem;
+            width: 90%;
+            margin-bottom: 2rem;
+            text-align: justify;
+
+            @include respond(mobile) {
+                width: 100%;
+                font-size: 1.6rem;
+            }
+        }
+
+        .topic {
+            padding: 0.5rem;
+            background-color: #DBD4AF;
+            text-transform: uppercase;
+            font-size: 2rem;
+            font-weight: 600;
+            color: #922626;
+            text-align: left;
+            border-radius: 4px;
+        }
+
+        .ingredients {
+            padding: 1rem;
+            list-style-type: disc;
+            text-align: left;
+            font-size: 1.8rem;
+
+            @include respond(mobile) {
+                font-size: 1.6rem;
+                padding: 0.5rem;
+            }
+        }
+
+        .prepare {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            font-size: 1.8rem;
+
+            @include respond(mobile) {
+                font-size: 1.6rem;
+            }
+        }
+    }
 }
 
-.ingredients{
-    padding:1rem 0 5rem 2rem;
-   
+//all recipes
+.container-all-recipes {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    padding: 5rem;
+    align-items: center;
+    justify-content: center;
 }
-.prepare{
- 
+
+.recipe__card {
     display: flex;
     flex-direction: column;
-    gap: 3rem;
-  
-
+    align-items: center;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 2rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
+
+.recipe__image {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 1rem;
 }
-}
-//all recipes
-.container-all-recipes{
 
-
-    height: 70vh;
-    padding: 5rem;
-    align-items:center;
-
-    display: flex;
-    flex-direction: row;
-    gap: 0;
-
-    
-.recipe__card{
-    min-width: 30vw;
-    .paragraph{
-        padding: 0;
-        max-width: 300px;
-        text-align:start;
-        font-size: 2rem;
-    }
-    .title-recipe{
-        font-weight:600;
-        color: #333;
-        padding-bottom: 2rem;
-    }
-   .recipe__image{
-        max-width: 350px;
-        }  
-        .recipe__link{
-            font-size: 1.5rem;
-            
-       
-        }
-       
-        
+.title-recipe {
+    font-weight: 600;
+    color: #333;
+    padding-bottom: 1rem;
+    text-align: center;
 }
 
 
-
-}

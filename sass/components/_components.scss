@@ -26,6 +26,62 @@
 
 
 
+
+//BTN
+
+.btn-main {
+  margin-top: 1rem;
+  font-size: 2rem;
+  padding: 14px 28px;
+  background-color: #644812;
+  color: #ffffff;
+  border: none;
+  border-radius: 25px;
+  text-decoration: none;
+  cursor: pointer; /* Adiciona um cursor de pointer para indicar clicável */
+  display: inline-block; /* Garante que o botão se comporte corretamente */
+  transition: background-color 0.3s, transform 0.2s; /* Adiciona transição de hover e clique */
+}
+
+.btn-main:hover {
+  background-color: #50390f; /* Muda a cor no hover */
+}
+
+.btn-main:active {
+  transform: scale(0.98); /* Pequeno efeito de clique */
+}
+
+.btn-main:focus {
+  outline: none; /* Remove o outline padrão */
+  box-shadow: 0 0 0 3px rgba(100, 72, 18, 0.5); /* Adiciona um contorno visível ao focar */
+}
+
+//PARAGRAPH
+
+
+.paragraph {
+  font-weight: 300;
+  font-family: 'Open Sans', sans-serif; /* Fonte moderna e legível */
+  font-size: 20px; /* Tamanho de fonte padrão para legibilidade */
+  line-height: 1.5; /* Espaçamento entre linhas adequado */
+  color: #333; /* Cor do texto para bom contraste */
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  text-align: justify; /* Justifica o texto para alinhamento uniforme */
+}
+
+.paragraph strong {
+  font-weight: bold; /* Destaca o texto em negrito */
+  color: #644812; /* Cor diferenciada para ênfase */
+}
+
+.paragraph em {
+  font-style: italic; /* Aplica itálico para ênfase */
+}
+.paragraph a:hover {
+  color: #50390f; /* Cor dos links ao passar o mouse */
+}
+
 .icon {
   color: rgb(135, 131, 131);
   font-size: 2.8rem;
@@ -57,6 +113,8 @@
   }
 
 }
+
+
 /* Adicione o estilo de efeito de flash aqui */
 .flash-effect {
   animation-name: flash;
@@ -230,4 +288,7 @@
     margin-bottom: 2rem;
     color: #333;
   }
+  
 }
+
+

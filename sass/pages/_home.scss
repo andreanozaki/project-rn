@@ -110,16 +110,23 @@ position: relative;
     flex-direction: row;
     align-items: center;
     justify-content: center;
+    
 @include respond(tab-port){
   display: flex;
   flex-direction: column;
   width: 100vw;
   text-align: center;
 }
+.paragraph strong {
+  font-weight: bold; /* Destaca o texto em negrito */
+  color: #644812; /* Cor diferenciada para ênfase */
+  font-size: 1.5em; /* Aumenta o tamanho da fonte especificamente para o strong */
+}
   }
 
   .chefmain{
-    max-width:600px;
+    max-width:500px;
+    padding:0rem 3rem 3rem  3rem;
     height: auto;
     border-radius: 8px;
     @include respond(tab-land){
@@ -410,26 +417,7 @@ justify-content: center;
 /* Adicione estilos para o modal e os botões de navegação *///
 ///SECONDGALLERY MODAL
 
-.btn-main{
-  
-  padding: 1.6rem 3.2rem;
-  font-size: 2.3rem;
-  text-transform: uppercase;
-  margin-top: 2rem;
-  background-color: #e4d99e;
-  color: #0e0d0d;
-  display: inline-block;
-  font-weight: 800;
-  cursor: pointer;
-  text-decoration: none;
-  border-radius: 9px;
-  font-family:'Unica One', sans-serif;
 
-}
-
-.btn-main:hover{
-  background-color: #e9d281;
-}
 .btn-about{
  
  position: absolute;

@@ -1,102 +1,88 @@
 .container-my-ebooks {
-  height: 100%;
-  width: 100vw;
-  background-color: rgba(255, 235, 205, 0.794);
-  padding: 2rem 20rem;
+  padding: 2rem 15rem; /* Ajustado para melhorar o espaçamento em telas grandes */
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
 
-  @include respond(tab-land) {
+  @media (max-width: 1200px) {
+    padding: 2rem 10rem;
+  }
+
+  @media (max-width: 900px) {
     padding: 2rem;
   }
 }
 
 .ebook-content {
-  width: 100%;
-  height: 100%;
-  padding: 3rem 0;
-  @media (max-width: 841px) {
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    align-items: center;
-    height: 100%;
-  }
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+@include respond(tab-port){
+  grid-template-columns: 1fr;
+
+}
+  
 }
 
 .ebook-box {
-  width: 100%;
-  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: transform 0.3s;
   cursor: pointer;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 
-
-  @media (max-width: 841px) {
-    padding: 5rem 0;
+  @include respond (tab-land){
+    max-width: 350px;
+  margin: auto;
+    
   }
-
-  .ebook-capa {
-    width: 30vw;
-    justify-content: center;
   
-  }
+}
 
-  .ebook-title {
-    padding: 0 5rem;
-    text-align: center;
-    font-size: 29px;
-    color: #333;
-  }
-
-  .price {
-    font-size: 32px;
-  }
-
-  .ebook-price {
-    position: absolute;
-    top: 90%;
-    display: flex;
-    flex-direction: column;
-  }
-
-  .ebook-photo-small,
-  .ebook-photo-new {
-    padding: 3.5rem;
-    max-width: 280px;
-    transition: transform 0.6s ease-in-out;
-
-  }
-
-  .ebook-photo-new {
-    display: none;
-    position: absolute;
-  }
-
-  &:hover {
-    .ebook-photo-small {
-      display: none;
-    }
-
-    .ebook-photo-new {
-      display: block;
-      animation: flash 0.5s ease-in-out;
-    }
-  }
-
-  /* Remover efeito de hover em telas menores */
-  @include respond(tab-land) {
-    &:hover {
-      .ebook-photo-small {
-        display: block;
-      }
-
-      .ebook-photo-new {
-        display: none;
-      }
-    }
+.ebook-capa {
+  position: relative;
+  @include respond (tab-land){
+    max-width: 350px;
+  
+    
   }
 }
 
-.ebook-link {
-  border: 1px solid rgba(0, 0, 0, 0.873);
+.ebook-photo-small,
+.ebook-photo-new {
+  width: 100%;
+  transition: opacity 0.3s;
+  @include respond (tab-land){
+    max-width: 350px;
+  }
 }
+
+.ebook-photo-new {
+  display: none;
+  position: absolute;
+  top: 0;
+}
+
+.ebook-box:hover .ebook-photo-small {
+  opacity: 0;
+}
+
+.ebook-box:hover .ebook-photo-new {
+  display: block;
+  opacity: 1;
+}
+
+.ebook-title {
+  display: block;
+  font-size: 1.5rem;
+  color: #333;
+  margin: 1rem 0 0.5rem;
+  text-decoration: none;
+}
+
+.price {
+  font-size: 1.25rem;
+  color: #888;
+}
+

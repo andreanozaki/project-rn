@@ -1,7 +1,7 @@
 
 :root {
     --color-primary:#292929 ;
-    --color-primary-light:#dbd4afb6;
+    --color-primary-light:#61CE70;
     --color-primary-dark:#323232 ;/* h2 fundo
 
 
@@ -51,9 +51,8 @@
    
    overflow-x: hidden;
    
-   //font-family: 'Unica One', sans-serif;
+   font-family: 'Open Sans', sans-serif;
 
-   font-family:'Roboto', sans-serif; 
 
 
    /*@include respond(tab-port){
