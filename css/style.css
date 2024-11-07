@@ -812,10 +812,11 @@ body {
   /* Ocultar o menu de navegação por padrão em telas menores */
   .main-nav {
     display: none;
+    transition: all 0.3s ease-in-out;
   }
   /* Exibir o menu de navegação de forma vertical quando a classe .active é adicionada */
   .main-nav.active {
-    display: flex;
+    display: flex !important;
     flex-direction: column;
     position: absolute;
     top: 5px;

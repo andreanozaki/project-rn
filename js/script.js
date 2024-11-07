@@ -321,12 +321,12 @@ const logoutLink = document.getElementById('logout-link');
 function toggleLoginLogout() {
     const isChefLoggedIn = localStorage.getItem('isChefLoggedIn') === 'true';
 
-    if (isChefLoggedIn) {
-        loginLink.style.display = 'none'; // Esconde o botão Login
-        logoutLink.style.display = 'block'; // Mostra o botão Sair
+     if (isChefLoggedIn) {
+        if (loginLink) loginLink.style.display = 'none'; // Esconde o botão Login
+        if (logoutLink) logoutLink.style.display = 'block'; // Mostra o botão Sair
     } else {
-        loginLink.style.display = 'block'; // Mostra o botão Login
-        logoutLink.style.display = 'none'; // Esconde o botão Sair
+        if (loginLink) loginLink.style.display = 'block'; // Mostra o botão Login
+        if (logoutLink) logoutLink.style.display = 'none'; // Esconde o botão Sair
     }
 }
 
