@@ -54,6 +54,8 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
+
+  
   // Função para registro de usuário
   const registerForm = document.getElementById('registerForm');
   if (registerForm) {
@@ -332,19 +334,7 @@ if (salesForm) {
   
   // Chama a função ao carregar a página para definir o estado inicial
   toggleLoginLogout();
-  
-  // Evento para abrir/fechar o menu hambúrguer e atualizar os botões
-  if (hamburger && mainNav) {
-      hamburger.addEventListener('click', function () {
-          mainNav.classList.toggle('active');
-          hamburger.classList.toggle('active');
-          const isExpanded = hamburger.getAttribute('aria-expanded') === 'true';
-          hamburger.setAttribute('aria-expanded', !isExpanded);
-  
-          // Atualiza o botão de Login/Sair ao abrir o menu
-          toggleLoginLogout();
-      });
-  }
+
   
   // Evento para deslogar o usuário ao clicar no botão Sair
   if (logoutLink) {
@@ -412,4 +402,10 @@ logoutLink.addEventListener('click', function (e) {
     }
   }
 
-});
+
+
+
+
+
+
+});//fim Dom

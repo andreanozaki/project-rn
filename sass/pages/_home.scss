@@ -369,6 +369,9 @@ position: relative;
 .ebook-photo{
   height: 65%;
   width: 100%;
+  @include respond (mobile){
+    width: 85%;
+  }
 }
 
 .ebook-text{

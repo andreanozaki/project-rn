@@ -491,15 +491,6 @@ body {
   color: #333;
 }
 
-.ebook-photo {
-  max-width: 550px;
-}
-@media (max-width: 710px) {
-  .ebook-photo {
-    padding-top: 2.5rem;
-  }
-}
-
 .chef-formation {
   position: absolute;
   bottom: 0;
@@ -1186,6 +1177,11 @@ body {
   height: 65%;
   width: 100%;
 }
+@media (max-width: 710px) {
+  .ebook .ebook-photo {
+    width: 85%;
+  }
+}
 .ebook .ebook-text {
   font-family: sans-serif;
   text-align: center;
@@ -1658,166 +1654,130 @@ body {
 }
 
 .ebook-1-content {
-  padding: 10rem 5rem 0 5rem;
+  max-width: 1200px; /* Limita a largura máxima do container */
+  margin: 0 auto; /* Centraliza o container na tela */
+  padding: 5rem 3rem; /* Ajusta o espaçamento interno */
   display: flex;
-  justify-content: space-evenly;
-  align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 6rem; /* Espaçamento entre as divs internas */
+  align-items: flex-start; /* Alinha ao topo */
+}
+@media (max-width: 710px) {
+  .ebook-1-content {
+    gap: 0;
+  }
 }
 @media (max-width: 930px) {
   .ebook-1-content {
-    display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    align-items: center; /* Centraliza as divs em telas menores */
     width: 100%;
   }
 }
 @media (max-width: 710px) {
   .ebook-1-content {
-    padding: 3rem;
+    padding: 2rem; /* Reduz o padding em dispositivos móveis */
   }
 }
-@media (max-width: 930px) {
-  .ebook-1-content .ebook-1-right .paragraph {
-    max-width: 80%;
-    padding: 3rem;
+.ebook-1-content .paragraph {
+  width: 40vw; /* Ajusta a largura */
+  margin-bottom: 1rem; /* Espaçamento inferior */
+}
+@media (max-width: 75em) {
+  .ebook-1-content .paragraph {
+    width: 90%;
   }
 }
-@media (max-width: 930px) and (max-width: 710px) {
-  .ebook-1-content .ebook-1-right .heading-secondary {
-    font-size: 2rem;
-    font-weight: 500;
-    max-width: 70vw;
-  }
+.ebook-1-content .ebook-1-right {
+  width: 100%; /* Garante a ocupação de largura total */
+  text-align: center; /* Centraliza o texto */
+}
+.ebook-1-content .ebook-1-right .paragraph {
+  max-width: 100%; /* Expande a largura */
+  padding: 1rem 0; /* Ajusta o padding */
+}
+.ebook-1-content .ebook-1-right .heading-cta {
+  margin-bottom: 1rem; /* Espaçamento reduzido */
+  font-size: 3rem;
 }
 .ebook-1-content .ebook-1-left {
-  position: relative;
-  margin: 0 0 15rem 0;
+  max-width: 450px; /* Define o tamanho máximo */
+  display: flex;
+  justify-content: center; /* Centraliza a imagem */
+  align-items: center; /* Centraliza verticalmente */
+  margin: auto; /* Remove margens extras */
 }
-.ebook-1-content .ebook-1-left .ebook-inside {
-  padding: 5rem;
+.ebook-1-content .ebook-1-left .ebook-photo {
+  max-width: 450px; /* Define o tamanho máximo */
+  width: 100%; /* Responsivo */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transição suave */
+  border-radius: 10px; /* Bordas arredondadas */
 }
 @media (max-width: 710px) {
   .ebook-1-content .ebook-1-left .ebook-photo {
-    max-width: 70vw;
+    max-width: 300px;
   }
 }
-.ebook-1-content .ebook-1-left .ebook-inside {
-  position: absolute;
-  display: flex;
-  flex-direction: row;
-  gap: 1.5rem;
-  text-align: center;
-}
-@media (max-width: 710px) {
-  .ebook-1-content .ebook-1-left .ebook-inside {
-    padding: 0;
-  }
-}
-.ebook-1-content .ebook-1-left .ebook-inside .ebook-mini {
-  width: 60px;
-  height: 80px;
+.ebook-1-content .ebook-1-left .ebook-photo:hover {
+  transform: scale(1.05); /* Efeito de zoom */
 }
 
 .ebook-footer {
-  font-size: 28px;
-  max-width: 80vw;
-  padding: 5rem 5rem 5rem 20rem;
-}
-
-.ebook-cta {
-  display: flex; /* Define o layout flexível */
-  justify-content: center; /* Centraliza o botão horizontalmente */
-}
-
-.ebook-cta .ebook-cta-title {
-  display: inline-block;
-  text-align: center;
-  font-size: 1.5rem;
-  padding: 12px 24px;
-  background-color: #644812;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  text-transform: uppercase;
-  text-decoration: none;
-  cursor: pointer;
-  transition: background-color 0.3s, transform 0.2s;
-}
-
-.ebook-cta .ebook-cta-title:hover {
-  background-color: #50390f;
-}
-
-.ebook-cta .ebook-cta-title:active {
-  transform: scale(0.98);
-}
-
-.ebook-cta .ebook-cta-title:focus {
-  outline: none;
-  box-shadow: 0 0 0 3px rgba(100, 72, 18, 0.5);
-}
-
-.heading-cta {
-  display: inline-block; /* Permite ajuste de largura */
-  font-size: 2rem; /* Ajustado para destaque como título */
-  padding: 12px 24px; /* Mesmo padding do botão para consistência */
-  background-color: #644812; /* Cor de fundo semelhante ao botão */
-  color: white; /* Cor do texto */
-  border-radius: 5px; /* Bordas arredondadas */
-  text-transform: uppercase; /* Transforma o texto em maiúsculas */
+  padding: 2rem; /* Padding menor */
+  font-size: 1.5rem; /* Tamanho da fonte menor */
   text-align: center; /* Centraliza o texto */
-  margin: 1rem 0; /* Espaçamento em torno do título */
-  transition: background-color 0.3s, transform 0.2s; /* Transições para hover */
-}
-
-.heading-cta:hover {
-  background-color: #50390f; /* Cor de fundo ao passar o mouse */
-}
-
-.heading-cta:focus {
-  outline: none; /* Remove o outline padrão */
-  box-shadow: 0 0 0 3px rgba(100, 72, 18, 0.5); /* Adiciona um contorno visível ao focar */
 }
 
 .price-cta {
   display: inline-block;
-  font-size: 1.5rem; /* Tamanho de fonte ajustado */
-  font-weight: bold; /* Texto em negrito */
-  color: #644812; /* Cor que combina com os botões */
-  background-color: #fee4e4; /* Cor de fundo suave */
-  padding: 8px 16px; /* Espaçamento interno */
-  border-radius: 8px; /* Bordas arredondadas */
-  margin-top: 0.5rem; /* Espaçamento superior */
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra suave para destaque */
+  font-size: 1.8rem; /* Tamanho elegante */
+  font-weight: bold;
+  color: #4a2c18; /* Cor marrom clássica */
+  background-color: #f5f5f5; /* Fundo suave */
+  padding: 10px 20px; /* Padding generoso */
+  border-radius: 5px; /* Bordas arredondadas */
+  margin-top: 1rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra suave */
   text-align: center;
-  transition: transform 0.2s, box-shadow 0.3s; /* Transições para efeito de interação */
+  transition: transform 0.2s, box-shadow 0.3s; /* Transições */
 }
 
 .price-cta:hover {
-  transform: translateY(-3px); /* Elevação ao passar o mouse */
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* Sombra mais pronunciada */
+  transform: translateY(-2px); /* Efeito de elevação */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Sombra mais pronunciada */
 }
 
-#comments div {
-  margin-bottom: 15px; /* Espaçamento entre comentários */
-  padding: 10px;
-  background-color: #f9f9f9; /* Fundo claro */
-  border-radius: 8px; /* Cantos arredondados */
-  font-family: "Rubik", sans-serif; /* Alterar a fonte */
-  color: #333; /* Cor do texto */
+.ebook-cta {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center; /* Centraliza o botão */
 }
 
-#comments div strong {
-  display: block;
-  font-weight: bold;
-  color: #2c3e50; /* Cor personalizada para o email do usuário */
-  margin-bottom: 5px;
+.ebook-cta .ebook-cta-title {
+  font-size: 1.5rem; /* Tamanho de fonte */
+  font-weight: 500; /* Peso médio */
+  padding: 12px 30px; /* Padding para destaque */
+  background-color: #4a2c18; /* Cor clássica */
+  color: #fff; /* Cor do texto */
+  border-radius: 8px; /* Bordas arredondadas */
+  border: 1px solid #d2b48c; /* Borda */
+  text-decoration: none; /* Remove o sublinhado */
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s; /* Transições */
 }
 
-.message {
-  font-size: 14px;
-  color: green;
-  margin-top: 10px;
+.ebook-cta .ebook-cta-title:hover {
+  background-color: #3b2314; /* Cor mais escura */
+}
+
+.ebook-cta .ebook-cta-title:active {
+  transform: scale(0.98); /* Efeito de clique */
+}
+
+.ebook-cta .ebook-cta-title:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(74, 44, 24, 0.5); /* Destaque ao focar */
 }
 
 /*# sourceMappingURL=style.css.map */
