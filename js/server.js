@@ -36,6 +36,8 @@ const storage = multer.diskStorage({
 const upload = multer({ storage });
 
 
+
+
 // Rota para registrar usuário
 app.post('/register', (req, res) => {
   const { email, password } = req.body;

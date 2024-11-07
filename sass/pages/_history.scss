@@ -12,7 +12,7 @@
     
   }
 
-  
+ 
   &--photo {
     .montagem, .history-photo, .chef-experience-photo {
       width: 460px;
@@ -25,7 +25,7 @@
       @include respond(tab-port) {
         width: 30vw;
       }
-@include respond(mobile){
+      @include respond(mobile){
   width: 50vw;
 
 }
@@ -81,23 +81,10 @@
   position: relative;
   background-color: rgba(221, 215, 183, 0.29); /* Transparência ajustada */
 }
-
-.historia-mobile {
-  font-size: 2.5rem;
-  text-align:left;
-  max-width: 50vw;
-  height: 100%;
-  width: 100%;
-  margin: 0 auto;
-
-  @include respond(tab-land) {
-    max-width: 60vw;
-    justify-content: space-evenly;
-    padding: 3rem 4rem 0;
-  }
-
-  
+.cor{
+  background-color: rgba(42, 41, 40, 0.41);
 }
+
 
 @media (max-width: 945px) {
   .container-history {
@@ -118,14 +105,6 @@
     }
   }
 }
-.cor{
-  background-color:rgba(245, 245, 220, 0.786);
-  padding: 0;
-  height: 100%;
-  @include respond(tab-port){
-    height: 100%;
-  }
 
 
   
-}

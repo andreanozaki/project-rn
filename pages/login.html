@@ -39,16 +39,14 @@
         
         <nav class="main-nav">
             <ul class="main-nav-list">
-                <ul class="main-nav-list">
-                    <li><a class="main-nav-link" href="/index.html#aboutme"> Chef</a></li>
-                    <li><a class="main-nav-link" href="/index.html#creations">Creacoes</a></li>
-                    <li><a class="main-nav-link" href="/index.html#recipe">Receitas</a></li>
-                    <li><a class="main-nav-link nav-cta" href="/index.html#ebooks">E-book</a></li>
-                    <li><a class="main-nav-link" href="/pages/contato.html">Contato</a></li>
-                    <li><a class="main-nav-link" href="/pages/login.html">Login</a></li>
-                    <li><a id="logout-link"  class="main-nav-link" href="#"   style="display: none;">Sair</a></li>
-    
-                </ul>
+                <li><a class="main-nav-link" href="/index.html#aboutme"> Chef</a></li>
+                <li><a class="main-nav-link" href="/index.html#creations">Creacoes</a></li>
+                <li><a class="main-nav-link" href="/index.html#recipe">Receitas</a></li>
+                <li><a class="main-nav-link nav-cta" href="/index.html#ebooks">E-book</a></li>
+                <li><a class="main-nav-link" href="/pages/contato.html">Contato</a></li>
+                <li><a class="main-nav-link" href="/pages/login.html">Login</a></li>
+                <li><a id="logout-link"  class="main-nav-link" href="#"   style="display: none;">Sair</a></li>
+            </ul>
         </nav>
    <!-- Botão de menu hambúrguer para telas menores -->
    <button class="hamburger" aria-label="Menu" aria-expanded="false">
@@ -59,45 +57,38 @@
         
         
     </header>
+    
     <main>
-        <section class="section-form
-        " id="contact">
-        
-
+        <section class="section-form">
             <div class="contact">
-                <div class="contact-info">
-                    <h2>Informações de Contato</h2>
-    
-                    <p><ion-icon name="call-outline"></ion-icon> 12 99138 9080</p>
-                    <p><ion-icon name="mail-outline"></ion-icon> nozakiandrea@gmail.com</p>
-                    <p><ion-icon name="location-outline"></ion-icon> Rua das Almeias , 48 São Paulo – SP</p>
-                </div>
-
-                <form id="contactForm" method="POST" action="http://localhost:3001/contact" class="form flash-effect">
-                    <h class="heading-form">Preencha o formulario e fale conosco:</h>
-    
-                    <input type="text" name="name" required placeholder="Nome:">
-                    <input type="email" name="email" required placeholder="E-mail:">
-                    <textarea name="message" cols="30" rows="8" required placeholder="Mensagem:"></textarea>
-                    <button type="submit" class="btn-main">Enviar</button>
+                <form id="loginForm" method="POST" action="http://localhost:3001/login" class="form">
+                    <h2 class="heading-form">Login</h2>
+                    <input type="email" id="email" name="email" required placeholder="Email">
+                    <input type="password" id="password" name="password" required placeholder="Senha">
+                    <button type="submit" class="btn-main">Entrar</button>
+                    
+                    <p class="forgot-password-link">
+                        <a href="forgotpass.html" style="text-decoration: none; color: #f96408fe;">Esqueci a senha</a>
+                    </p>
+                
+                    <a href="register.html" class="btn-create-account" style="text-decoration: none; padding: 10px 20px; background-color: #007BFF; color: white; border-radius: 5px; display: inline-block; text-align: center;">Criar conta</a>
                 </form>
                 
-        
+               
             </div>
-          </section>
         
-
+        </section>
       
     </main>
  
         
-   
 
     <footer class="footer">
         <!-- Footer Content Here -->
     </footer>
 
-    
+  
+
 
 
     

@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
  
+    <script src="/js/script.js" defer></script>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script
@@ -29,17 +30,20 @@
 </head>
 
 <body>
-    <header class="header flash-effect">
-        <!-- <a href="index.html">
-            <img class="logo" src="img/base/logo/lo2.png" alt="logo" ">
-        </a>-->
+    <header class="header flash-effect nav-close">
+        <a href="../index.html">
+            <img class="logo" src="../img/base/logo/lo2.png" alt="logo" id="logo">
+        </a>
         <nav class="main-nav">
             <ul class="main-nav-list">
-                <li><a class="main-nav-link" href="index.html#aboutme"> Chef</a></li>
-                <li><a class="main-nav-link" href="index.html#creations">Creacoes</a></li>
-                <li><a class="main-nav-link" href="index.html#recipe">Receitas</a></li>
-                <li><a class="main-nav-link" href="index.html#contact">Contato</a></li>
-                <li><a class="main-nav-link nav-cta" href="index.html#ebook">E-book</a></li>
+                <li><a class="main-nav-link" href="/index.html#aboutme"> Chef</a></li>
+                <li><a class="main-nav-link" href="/index.html#creations">Creacoes</a></li>
+                <li><a class="main-nav-link" href="/index.html#recipe">Receitas</a></li>
+                <li><a class="main-nav-link nav-cta" href="/index.html#ebooks">E-book</a></li>
+                <li><a class="main-nav-link" href="/pages/contato.html">Contato</a></li>
+                <li><a class="main-nav-link" href="/pages/login.html">Login</a></li>
+                <li><a id="logout-link"  class="main-nav-link" href="#"   style="display: none;">Sair</a></li>
+
             </ul>
         </nav>
         <button class="btn-mobile-nav">
