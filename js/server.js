@@ -15,6 +15,8 @@ const csvWriter = require('csv-writer').createObjectCsvStringifier; // Para gera
 const app = express();
 const port = 3001;
 
+
+
 // Middleware para habilitar CORS
 app.use(cors({
   origin: '*'  // Permite qualquer origem

@@ -86,6 +86,10 @@ document.addEventListener('DOMContentLoaded', function () {
         alert('Erro ao registrar usuário. Tente novamente.');
       });
     });
+
+    
+
+
   }
 
   // Função de redefinição de senha
@@ -168,79 +172,75 @@ document.addEventListener('DOMContentLoaded', function () {
     loadComments();
   }
 
+   
   // Controle de exibição dos formulários de vendas e relatórios apenas para o chef
-   // Controle de exibição dos formulários de vendas e relatórios apenas para o chef
-   const loginForm = document.getElementById('loginForm');
-    const salesFormContainer = document.querySelector('.vendas-container');
-    const reportFormContainer = document.querySelector('.relatorio-container');
+const loginForm = document.getElementById('loginForm');
+const salesFormContainer = document.querySelector('.vendas-container');
+const reportFormContainer = document.querySelector('.relatorio-container');
+const loggedInEmail = localStorage.getItem('loggedInEmail');
 
-    // Verifica se o chef está logado ao carregar a página
-    if (localStorage.getItem('isChefLoggedIn') === 'true') {
+if (localStorage.getItem('isChefLoggedIn') === 'true') {
+    if (loggedInEmail === 'andreaflordoceu@gmail.com') {
         salesFormContainer.style.display = 'block';
         reportFormContainer.style.display = 'block';
+    } else {
+        salesFormContainer.style.display = 'none';
+        reportFormContainer.style.display = 'none';
     }
+}
+if (loginForm) {
+  loginForm.addEventListener('submit', function (e) {
+      e.preventDefault();
 
-    if (loginForm) {
-        loginForm.addEventListener('submit', function (e) {
-            e.preventDefault();
+      const email = document.querySelector('input[name="email"]').value;
+      const password = document.querySelector('input[name="password"]').value;
 
-            const email = document.querySelector('input[name="email"]').value;
-            const password = document.querySelector('input[name="password"]').value;
+      fetch('http://localhost:3001/login', {
+          method: 'POST',
+          headers: {
+              'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ email, password })
+      })
+      .then(response => {
+          if (response.status === 200) {
+              return response.json();
+          } else if (response.status === 401) {
+              alert('Usuário não encontrado ou senha incorreta.');
+              throw new Error('Usuário não encontrado ou senha incorreta.');
+          } else {
+              throw new Error('Erro no servidor.');
+          }
+      })
+      .then(data => {
+          alert(data.message);
+          localStorage.setItem('loggedInEmail', email);
 
-            fetch('http://localhost:3001/login', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ email, password })
-            })
-            .then(response => {
-                if (response.status === 200) {
-                    return response.json();
-                } else if (response.status === 401) {
-                    alert('Usuário não encontrado ou senha incorreta.');
-                    throw new Error('Usuário não encontrado ou senha incorreta.');
-                } else {
-                    throw new Error('Erro no servidor.');
-                }
-            })
-            .then(data => {
-                alert(data.message);
-                if (email === 'andreaflordoceu@gmail.com' && password === 'deia0101') {
-                    localStorage.setItem('isChefLoggedIn', 'true');
-                    salesFormContainer.style.display = 'block';
-                    reportFormContainer.style.display = 'block';
-                    window.location.href = 'index.html';
-                } else {
-                    localStorage.removeItem('isChefLoggedIn');
-                }
-            })
-            .catch(error => {
-                console.error('Erro ao fazer login:', error);
-            });
-        });
-      }
-
-//alternar login e Sair
-     // Alternar entre login e sair
-function toggleLoginLogout() {
-  const isChefLoggedIn = localStorage.getItem('isChefLoggedIn') === 'true';
-  const loginLink = document.querySelector('.main-nav-link[href="login.html"]');
-  const logoutLink = document.getElementById('logout-link');
-
-  if (isChefLoggedIn) {
-      loginLink.style.visibility = 'hidden'; // Esconde visualmente o botão Login, mas mantém o espaço
-      logoutLink.style.display = 'block'; // Mostra o botão Sair
-  } else {
-      loginLink.style.visibility = 'visible'; // Mostra o botão Login novamente
-      logoutLink.style.display = 'none'; // Esconde o botão Sair
-  }
+          if (data.message === 'Login bem-sucedido') {
+              localStorage.setItem('isChefLoggedIn', email === 'andreaflordoceu@gmail.com' ? 'true' : 'false');
+              
+              // Limpa o formulário de login
+              loginForm.reset();
+              
+              // Redireciona para a página index.html
+              window.location.href = 'index.html';
+          } else {
+              localStorage.removeItem('isChefLoggedIn');
+              localStorage.removeItem('loggedInEmail');
+          }
+      })
+      .catch(error => {
+          console.error('Erro ao fazer login:', error);
+      });
+  });
 }
 
-// Chame a função no carregamento da página para verificar o estado inicial
-document.addEventListener('DOMContentLoaded', toggleLoginLogout);
 
-    
+
+
+
+
+
 
 
 // Função para registro de venda de produtos
@@ -310,28 +310,53 @@ if (salesForm) {
     });
   }
 
-  //hambr
-// hambr
-const hamburger = document.querySelector('.hamburger');
-const mainNav = document.querySelector('.main-nav');
-const loginLink = document.querySelector('.main-nav-link[href="login.html"]');
-const logoutLink = document.getElementById('logout-link');
+  const hamburger = document.querySelector('.hamburger');
+  const mainNav = document.querySelector('.main-nav');
+  const loginLink = document.querySelector('.main-nav-link[href="login.html"]');
+  const logoutLink = document.getElementById('logout-link');
+  
+  // Função para alternar entre Login e Sair com base no estado de login
+  function toggleLoginLogout() {
+      const loggedInEmail = localStorage.getItem('loggedInEmail'); // Verifica se há um usuário logado
+  
+      if (loggedInEmail) {
+          // Se qualquer usuário estiver logado, esconde o botão Login e mostra o botão Sair
+          if (loginLink) loginLink.style.display = 'none';
+          if (logoutLink) logoutLink.style.display = 'block';
+      } else {
+          // Se ninguém estiver logado, mostra o botão Login e esconde o botão Sair
+          if (loginLink) loginLink.style.display = 'block';
+          if (logoutLink) logoutLink.style.display = 'none';
+      }
+  }
+  
+  // Chama a função ao carregar a página para definir o estado inicial
+  toggleLoginLogout();
+  
+  // Evento para abrir/fechar o menu hambúrguer e atualizar os botões
+  if (hamburger && mainNav) {
+      hamburger.addEventListener('click', function () {
+          mainNav.classList.toggle('active');
+          hamburger.classList.toggle('active');
+          const isExpanded = hamburger.getAttribute('aria-expanded') === 'true';
+          hamburger.setAttribute('aria-expanded', !isExpanded);
+  
+          // Atualiza o botão de Login/Sair ao abrir o menu
+          toggleLoginLogout();
+      });
+  }
+  
+  // Evento para deslogar o usuário ao clicar no botão Sair
+  if (logoutLink) {
+      logoutLink.addEventListener('click', function (e) {
+          e.preventDefault();
+          localStorage.removeItem('loggedInEmail'); // Remove o email do usuário logado
+          window.location.reload(); // Recarrega a página para atualizar o estado
+      });
+  }
+  
 
-// Função para alternar entre Login e Sair com base no estado de login
-function toggleLoginLogout() {
-    const isChefLoggedIn = localStorage.getItem('isChefLoggedIn') === 'true';
 
-     if (isChefLoggedIn) {
-        if (loginLink) loginLink.style.display = 'none'; // Esconde o botão Login
-        if (logoutLink) logoutLink.style.display = 'block'; // Mostra o botão Sair
-    } else {
-        if (loginLink) loginLink.style.display = 'block'; // Mostra o botão Login
-        if (logoutLink) logoutLink.style.display = 'none'; // Esconde o botão Sair
-    }
-}
-
-// Chama a função ao carregar a página para definir o estado inicial
-toggleLoginLogout();
 
 // Evento para abrir/fechar o menu hambúrguer e atualizar os botões
 if (hamburger && mainNav) {
@@ -386,47 +411,5 @@ logoutLink.addEventListener('click', function (e) {
       activateTracking();
     }
   }
-
-// Função para enviar feedback
-    const contactForm = document.getElementById('contactForm');
-    const feedbackMessage = document.getElementById('feedbackMessage');
-
-    if (contactForm) {
-        contactForm.addEventListener('submit', function (e) {
-            e.preventDefault();
-
-            const formData = new FormData(contactForm);
-            const name = formData.get('name');
-            const email = formData.get('email');
-            const message = formData.get('message');
-
-            fetch('http://localhost:3001/contact', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ name, email, message })
-            })
-            .then(response => response.json())
-            .then(data => {
-                // Exibir a mensagem de feedback
-                feedbackMessage.textContent = data.message;
-                feedbackMessage.classList.add('success');
-
-                // Limpar o formulário após o envio
-                contactForm.reset();
-            })
-            .catch(error => {
-                console.error('Erro ao enviar feedback:', error);
-                feedbackMessage.textContent = 'Erro ao enviar mensagem. Tente novamente.';
-                feedbackMessage.classList.add('error');
-            });
-        });
-    }
-    
-    //contato ao clicar
-    
-
-
-
-
 
 });
