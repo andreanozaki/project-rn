@@ -491,6 +491,206 @@ body {
   color: #333;
 }
 
+.vendas-container, .relatorio-container {
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 30px auto;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+}
+
+.vendas-container h2, .relatorio-container h2 {
+  font-size: 2.4rem;
+  color: #333;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.vendas-container form label, .relatorio-container form label {
+  display: block;
+  font-size: 1.6rem;
+  margin-bottom: 10px;
+  color: #555;
+}
+
+.vendas-container form input, .vendas-container form select,
+.vendas-container form button,
+.relatorio-container form input, .relatorio-container form select,
+.relatorio-container form button {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 1.4rem;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+.vendas-container form input:focus, .relatorio-container form input:focus,
+.vendas-container form select:focus, .relatorio-container form select:focus {
+  border-color: #7a5a37;
+}
+
+.vendas-container form button, .relatorio-container form button {
+  background-color: #533a1d;
+  color: white;
+  font-size: 1.6rem;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.vendas-container form button:hover, .relatorio-container form button:hover {
+  background-color: #7a5a37;
+}
+
+/* Seção de comentários */
+.comment-section {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  border: 1px solid #e0e0e0;
+}
+
+.comment-section h2 {
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 15px;
+  text-align: center;
+  font-weight: 600;
+}
+
+.comment-section form input,
+.comment-section form textarea {
+  width: 100%;
+  margin-bottom: 12px;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  background-color: #f9f9f9;
+}
+
+.comment-section button {
+  background-color: #533a1d;
+  color: #fff;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.comment-section button:hover {
+  background-color: #7a5a37;
+}
+
+/* Mensagem de sucesso/erro */
+.message {
+  text-align: center;
+  margin-top: 8px;
+  font-size: 0.95rem;
+  color: #333;
+}
+
+/* Lista de comentários */
+.comment-list {
+  max-width: 800px;
+  margin: 30px auto;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 10px;
+}
+
+.comment-list h3 {
+  font-size: 1.8rem;
+  color: #333;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+#comments {
+  text-decoration: none;
+  color: #353533;
+  width: 100%;
+  text-align: start;
+  list-style: none;
+  line-height: 2;
+}
+
+.comment-item {
+  border-bottom: 1px solid #e0e0e0;
+  padding: 15px 0;
+}
+
+.comment-item:last-child {
+  width: 90%; /* Ocupa 90% da div */
+  margin: 0 auto 15px; /* Centraliza e adiciona espaçamento inferior */
+  padding: 15px;
+  background-color: #f5f5f5;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.comment-item p {
+  margin: 0;
+  font-size: 1rem;
+  color: #555;
+}
+
+.comment-item p strong {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 1.1rem;
+  color: #333;
+}
+
+/* Botões de compartilhamento */
+.share-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.share-btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+  color: #fff;
+  font-size: 1rem;
+  transition: background-color 0.3s;
+}
+
+.share-btn.instagram {
+  background-color: #E1306C; /* Cor do Instagram */
+}
+
+.share-btn.instagram:hover {
+  background-color: #c6255a;
+}
+
+.share-btn.facebook {
+  background-color: #3b5998; /* Cor do Facebook */
+}
+
+.share-btn.facebook:hover {
+  background-color: #2d4373;
+}
+
+.share-btn ion-icon {
+  margin-right: 10px;
+  font-size: 1.2rem;
+}
+
 .chef-formation {
   position: absolute;
   bottom: 0;
@@ -1177,6 +1377,11 @@ body {
   height: 65%;
   width: 100%;
 }
+@media (max-width: 710px) {
+  .ebook .ebook-photo {
+    width: 85%;
+  }
+}
 .ebook .ebook-text {
   font-family: sans-serif;
   text-align: center;
@@ -1649,166 +1854,130 @@ body {
 }
 
 .ebook-1-content {
-  padding: 10rem 5rem 0 5rem;
+  max-width: 1200px; /* Limita a largura máxima do container */
+  margin: 0 auto; /* Centraliza o container na tela */
+  padding: 5rem 3rem; /* Ajusta o espaçamento interno */
   display: flex;
-  justify-content: space-evenly;
-  align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 6rem; /* Espaçamento entre as divs internas */
+  align-items: flex-start; /* Alinha ao topo */
+}
+@media (max-width: 710px) {
+  .ebook-1-content {
+    gap: 0;
+  }
 }
 @media (max-width: 930px) {
   .ebook-1-content {
-    display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    align-items: center; /* Centraliza as divs em telas menores */
     width: 100%;
   }
 }
 @media (max-width: 710px) {
   .ebook-1-content {
-    padding: 3rem;
+    padding: 2rem; /* Reduz o padding em dispositivos móveis */
   }
 }
-@media (max-width: 930px) {
-  .ebook-1-content .ebook-1-right .paragraph {
-    max-width: 80%;
-    padding: 3rem;
+.ebook-1-content .paragraph {
+  width: 40vw; /* Ajusta a largura */
+  margin-bottom: 1rem; /* Espaçamento inferior */
+}
+@media (max-width: 75em) {
+  .ebook-1-content .paragraph {
+    width: 90%;
   }
 }
-@media (max-width: 930px) and (max-width: 710px) {
-  .ebook-1-content .ebook-1-right .heading-secondary {
-    font-size: 2rem;
-    font-weight: 500;
-    max-width: 70vw;
-  }
+.ebook-1-content .ebook-1-right {
+  width: 100%; /* Garante a ocupação de largura total */
+  text-align: center; /* Centraliza o texto */
+}
+.ebook-1-content .ebook-1-right .paragraph {
+  max-width: 100%; /* Expande a largura */
+  padding: 1rem 0; /* Ajusta o padding */
+}
+.ebook-1-content .ebook-1-right .heading-cta {
+  margin-bottom: 1rem; /* Espaçamento reduzido */
+  font-size: 3rem;
 }
 .ebook-1-content .ebook-1-left {
-  position: relative;
-  margin: 0 0 15rem 0;
+  max-width: 450px; /* Define o tamanho máximo */
+  display: flex;
+  justify-content: center; /* Centraliza a imagem */
+  align-items: center; /* Centraliza verticalmente */
+  margin: auto; /* Remove margens extras */
 }
-.ebook-1-content .ebook-1-left .ebook-inside {
-  padding: 5rem;
+.ebook-1-content .ebook-1-left .ebook-photo {
+  max-width: 450px; /* Define o tamanho máximo */
+  width: 100%; /* Responsivo */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transição suave */
+  border-radius: 10px; /* Bordas arredondadas */
 }
 @media (max-width: 710px) {
   .ebook-1-content .ebook-1-left .ebook-photo {
-    max-width: 70vw;
+    max-width: 300px;
   }
 }
-.ebook-1-content .ebook-1-left .ebook-inside {
-  position: absolute;
-  display: flex;
-  flex-direction: row;
-  gap: 1.5rem;
-  text-align: center;
-}
-@media (max-width: 710px) {
-  .ebook-1-content .ebook-1-left .ebook-inside {
-    padding: 0;
-  }
-}
-.ebook-1-content .ebook-1-left .ebook-inside .ebook-mini {
-  width: 60px;
-  height: 80px;
+.ebook-1-content .ebook-1-left .ebook-photo:hover {
+  transform: scale(1.05); /* Efeito de zoom */
 }
 
 .ebook-footer {
-  font-size: 28px;
-  max-width: 80vw;
-  padding: 5rem 5rem 5rem 20rem;
-}
-
-.ebook-cta {
-  display: flex; /* Define o layout flexível */
-  justify-content: center; /* Centraliza o botão horizontalmente */
-}
-
-.ebook-cta .ebook-cta-title {
-  display: inline-block;
-  text-align: center;
-  font-size: 1.5rem;
-  padding: 12px 24px;
-  background-color: #644812;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  text-transform: uppercase;
-  text-decoration: none;
-  cursor: pointer;
-  transition: background-color 0.3s, transform 0.2s;
-}
-
-.ebook-cta .ebook-cta-title:hover {
-  background-color: #50390f;
-}
-
-.ebook-cta .ebook-cta-title:active {
-  transform: scale(0.98);
-}
-
-.ebook-cta .ebook-cta-title:focus {
-  outline: none;
-  box-shadow: 0 0 0 3px rgba(100, 72, 18, 0.5);
-}
-
-.heading-cta {
-  display: inline-block; /* Permite ajuste de largura */
-  font-size: 2rem; /* Ajustado para destaque como título */
-  padding: 12px 24px; /* Mesmo padding do botão para consistência */
-  background-color: #644812; /* Cor de fundo semelhante ao botão */
-  color: white; /* Cor do texto */
-  border-radius: 5px; /* Bordas arredondadas */
-  text-transform: uppercase; /* Transforma o texto em maiúsculas */
+  padding: 2rem; /* Padding menor */
+  font-size: 1.5rem; /* Tamanho da fonte menor */
   text-align: center; /* Centraliza o texto */
-  margin: 1rem 0; /* Espaçamento em torno do título */
-  transition: background-color 0.3s, transform 0.2s; /* Transições para hover */
-}
-
-.heading-cta:hover {
-  background-color: #50390f; /* Cor de fundo ao passar o mouse */
-}
-
-.heading-cta:focus {
-  outline: none; /* Remove o outline padrão */
-  box-shadow: 0 0 0 3px rgba(100, 72, 18, 0.5); /* Adiciona um contorno visível ao focar */
 }
 
 .price-cta {
   display: inline-block;
-  font-size: 1.5rem; /* Tamanho de fonte ajustado */
-  font-weight: bold; /* Texto em negrito */
-  color: #644812; /* Cor que combina com os botões */
-  background-color: #fee4e4; /* Cor de fundo suave */
-  padding: 8px 16px; /* Espaçamento interno */
-  border-radius: 8px; /* Bordas arredondadas */
-  margin-top: 0.5rem; /* Espaçamento superior */
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra suave para destaque */
+  font-size: 1.8rem; /* Tamanho elegante */
+  font-weight: bold;
+  color: #4a2c18; /* Cor marrom clássica */
+  background-color: #f5f5f5; /* Fundo suave */
+  padding: 10px 20px; /* Padding generoso */
+  border-radius: 5px; /* Bordas arredondadas */
+  margin-top: 1rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra suave */
   text-align: center;
-  transition: transform 0.2s, box-shadow 0.3s; /* Transições para efeito de interação */
+  transition: transform 0.2s, box-shadow 0.3s; /* Transições */
 }
 
 .price-cta:hover {
-  transform: translateY(-3px); /* Elevação ao passar o mouse */
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* Sombra mais pronunciada */
+  transform: translateY(-2px); /* Efeito de elevação */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Sombra mais pronunciada */
 }
 
-#comments div {
-  margin-bottom: 15px; /* Espaçamento entre comentários */
-  padding: 10px;
-  background-color: #f9f9f9; /* Fundo claro */
-  border-radius: 8px; /* Cantos arredondados */
-  font-family: "Rubik", sans-serif; /* Alterar a fonte */
-  color: #333; /* Cor do texto */
+.ebook-cta {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center; /* Centraliza o botão */
 }
 
-#comments div strong {
-  display: block;
-  font-weight: bold;
-  color: #2c3e50; /* Cor personalizada para o email do usuário */
-  margin-bottom: 5px;
+.ebook-cta .ebook-cta-title {
+  font-size: 1.5rem; /* Tamanho de fonte */
+  font-weight: 500; /* Peso médio */
+  padding: 12px 30px; /* Padding para destaque */
+  background-color: #4a2c18; /* Cor clássica */
+  color: #fff; /* Cor do texto */
+  border-radius: 8px; /* Bordas arredondadas */
+  border: 1px solid #d2b48c; /* Borda */
+  text-decoration: none; /* Remove o sublinhado */
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s; /* Transições */
 }
 
-.message {
-  font-size: 14px;
-  color: green;
-  margin-top: 10px;
+.ebook-cta .ebook-cta-title:hover {
+  background-color: #3b2314; /* Cor mais escura */
+}
+
+.ebook-cta .ebook-cta-title:active {
+  transform: scale(0.98); /* Efeito de clique */
+}
+
+.ebook-cta .ebook-cta-title:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(74, 44, 24, 0.5); /* Destaque ao focar */
 }
 
 /*# sourceMappingURL=style.css.map */
