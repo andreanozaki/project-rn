@@ -11,7 +11,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
  
- 
     <script src="/js/script.js" defer></script>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -31,26 +30,34 @@
 </head>
 
 <body>
-    <header class="header flash-effect">
+    <header class="header ">
         <a href="../index.html">
-            <img class="logo" src="../img/base/logo/lo2.png" alt="logo" ">
+            <img class="logo" src="../img/base/logo/lo2.png" alt="logo" id="logo">
         </a>
+      
+        
+        
         <nav class="main-nav">
             <ul class="main-nav-list">
-                <li><a class="main-nav-link" href="/index.html#aboutme"> Chef</a></li>
-                <li><a class="main-nav-link" href="/index.html#creations">Creacoes</a></li>
-                <li><a class="main-nav-link" href="/index.html#recipe">Receitas</a></li>
-                <li><a class="main-nav-link nav-cta" href="/index.html#ebooks">E-book</a></li>
-                <li><a class="main-nav-link" href="/pages/contato.html">Contato</a></li>
-                <li><a class="main-nav-link" href="/login.html">Login</a></li>
-                <li><a id="logout-link"  class="main-nav-link" href="#"   style="display: none;">Sair</a></li>
-
-            </ul>
+                <ul class="main-nav-list">
+                    <li><a class="main-nav-link" href="/index.html#aboutme"> Chef</a></li>
+                    <li><a class="main-nav-link" href="/index.html#creations">Creacoes</a></li>
+                    <li><a class="main-nav-link" href="/index.html#recipe">Receitas</a></li>
+                    <li><a class="main-nav-link nav-cta" href="/index.html#ebooks">E-book</a></li>
+                    <li><a class="main-nav-link" href="/pages/contato.html">Contato</a></li>
+                    <li><a class="main-nav-link" href="/login.html">Login</a></li>
+                    <li><a id="logout-link"  class="main-nav-link" href="#"   style="display: none;">Sair</a></li>
+    
+                </ul>
         </nav>
-        <button class="btn-mobile-nav">
-            <ion-icon class="icon-mobile-nav" name="menu-outline"></ion-icon>
-            <ion-icon class="icon-mobile-nav" name="close-outline"></ion-icon>
-        </button>
+   <!-- Botão de menu hambúrguer para telas menores -->
+   <button class="hamburger" aria-label="Menu" aria-expanded="false">
+    <ion-icon name="menu-outline" class="icon-menu"></ion-icon>
+    <ion-icon name="close-outline" class="icon-close"></ion-icon>
+
+</button>
+        
+        
     </header>
 
     <main>
@@ -144,6 +151,7 @@
     
    
 
+    <script src="/js/cookie-banner.js" defer></script>
 
 </body>
 </html>

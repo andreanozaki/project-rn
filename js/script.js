@@ -360,6 +360,11 @@ if (hamburger && mainNav) {
         toggleLoginLogout();
     });
 }
+// Função de logout para remover a sessão do cookie
+function logout() {
+  sessionStorage.removeItem('cookieSession');
+  console.log('Usuário desconectado, a sessão foi reiniciada.');
+}
 
 // Evento para deslogar o usuário ao clicar no botão Sair
 logoutLink.addEventListener('click', function (e) {
@@ -370,42 +375,49 @@ logoutLink.addEventListener('click', function (e) {
 
 
 
-
-  // Gerenciamento do banner de cookies
+// Gerenciamento do banner de cookies
+document.addEventListener('DOMContentLoaded', function() {
   const cookieBanner = document.getElementById('cookieBanner');
+  
   if (cookieBanner) {
     const acceptCookiesButton = document.getElementById('acceptCookies');
     const declineCookiesButton = document.getElementById('declineCookies');
 
+    // Verifica o consentimento armazenado no localStorage
     const userConsent = localStorage.getItem('cookieConsent');
+    console.log('Valor do consentimento do usuário:', userConsent); // Para depuração
+
     if (!userConsent) {
+      // Exibe o banner apenas se não houver consentimento armazenado
       cookieBanner.style.display = 'flex';
+    } else {
+      // Oculta o banner se o consentimento já foi dado
+      cookieBanner.style.display = 'none';
     }
 
+    // Evento de clique para aceitar os cookies
     acceptCookiesButton.addEventListener('click', function() {
       localStorage.setItem('cookieConsent', 'accepted');
       cookieBanner.style.display = 'none';
       activateTracking();
     });
 
+    // Evento de clique para recusar os cookies
     declineCookiesButton.addEventListener('click', function() {
       localStorage.setItem('cookieConsent', 'declined');
       cookieBanner.style.display = 'none';
     });
 
+    // Função que simula a ativação de cookies de rastreamento
     function activateTracking() {
       console.log('Cookies de rastreamento ativados.');
     }
 
+    // Ativa o rastreamento se o consentimento for 'accepted'
     if (userConsent === 'accepted') {
       activateTracking();
     }
   }
-
-
-
-
-
-
+});
 
 });//fim Dom

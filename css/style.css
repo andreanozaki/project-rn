@@ -837,8 +837,8 @@ body {
   position: relative;
   border-top: 2px solid #eee;
   padding-top: 5rem;
-  background-color: #333;
-  padding: 1rem 2rem;
+  background-color: #282828;
+  width: 100vw;
 }
 
 .logo-col {
@@ -854,6 +854,7 @@ body {
 
 .copyright {
   height: 100%;
+  width: 100vw;
   padding: 2.5rem 0;
   background-color: #333;
   font-size: 1.6rem;
@@ -861,6 +862,7 @@ body {
   text-align: center;
   display: block;
   color: antiquewhite;
+  background-color: #333;
 }
 
 .footer-heading {
@@ -900,6 +902,10 @@ body {
   display: flex;
   gap: 2.8rem;
   padding-bottom: 6rem;
+}
+
+.developer {
+  color: #eee;
 }
 
 .section-form {
@@ -2145,13 +2151,6 @@ body {
   .privacy-columns .privacy-section-1, .privacy-columns .privacy-column {
     min-width: 100%; /* Ocupa toda a largura */
   }
-}
-
-.footer {
-  background-color: transparent;
-}
-.footer .footer-heading {
-  color: rgb(53, 34, 11);
 }
 
 /*# sourceMappingURL=style.css.map */
