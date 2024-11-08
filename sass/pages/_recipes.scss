@@ -254,3 +254,40 @@ padding: 12px 34px;
         }
     }
 }
+//all recipes
+.container-all-recipes{
+    width: 50vw;
+display: flex;
+gap: 3rem;
+flex-direction: row;
+padding:5rem 25rem;
+margin: auto;
+justify-content: space-evenly;
+@include respond(tab-land){
+display:flex;
+flex-direction: column-reverse;
+
+}
+.recipe-card{
+    width: 100%;
+ 
+
+   
+}
+    .recipe__image-all {
+
+        max-width: 300px;
+        border-radius: 12px;
+    
+     
+    }   
+
+    .title-recipe{
+        font-weight: 600;
+  width: 100%;
+    }
+    .paragraph{
+      width:68%;
+    }
+}
+

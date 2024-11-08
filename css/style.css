@@ -390,44 +390,6 @@ body {
   display: none;
 }
 
-.cookie-banner {
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  background-color: #333;
-  color: #fff;
-  padding: 10px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  z-index: 1000;
-  font-size: 14px;
-}
-
-.cookie-banner p {
-  margin: 0;
-  flex: 1;
-  text-align: left;
-}
-
-.cookie-banner a {
-  color: #202cd7;
-  text-decoration: underline;
-}
-
-.cookie-banner button {
-  margin-left: 10px;
-  padding: 8px 12px;
-  background-color: #f3eac7;
-  color: #1d1c1c;
-  border: none;
-  cursor: pointer;
-}
-
-.cookie-banner button:hover {
-  background-color: #a08e45;
-}
-
 .section-stats {
   padding: 3rem 0;
   text-align: center;
@@ -691,6 +653,124 @@ body {
   font-size: 1.2rem;
 }
 
+.section-manager {
+  text-align: center;
+  margin: 2rem 0;
+  padding: 2rem;
+  background-color: #f9f5ef; /* Cor suave de fundo */
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra para destaque */
+}
+
+.section-manager h1 {
+  font-size: 3rem;
+  font-weight: 600;
+  color: #644812; /* Cor principal do título */
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.section-manager p {
+  font-weight: 300;
+  font-family: "Open Sans", sans-serif; /* Fonte moderna e legível */
+  font-size: 20px; /* Tamanho de fonte padrão para legibilidade */
+  line-height: 1.5; /* Espaçamento entre linhas adequado */
+  color: #333; /* Cor do texto para bom contraste */
+  text-align: justify; /* Justifica o texto */
+  max-width: 700px;
+  margin: auto;
+  padding: 1rem 0 3rem 0;
+}
+
+.btn-cookies {
+  display: flex;
+  justify-content: space-evenly;
+  width: 30vw;
+}
+@media (max-width: 75em) {
+  .btn-cookies {
+    width: 40vw;
+    text-align: center;
+    padding: 0 3rem 0 5rem;
+  }
+}
+
+.cookie-banner {
+  position: fixed;
+  bottom: 0;
+  width: 100vw;
+  min-height: 105px;
+  justify-content: space-around;
+  color: rgba(20, 19, 19, 0.6862745098);
+  padding: 10px;
+  background-color: #f4f6fa;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  z-index: 1000;
+  font-size: 14px;
+  text-align: center;
+}
+
+.cookie-banner .link-pp {
+  color: rgba(29, 28, 28, 0.6549019608);
+}
+
+.cookie-banner p {
+  margin: 0;
+  flex: 1;
+  text-align: left;
+  max-width: 60vw;
+}
+
+.cookie-banner a {
+  text-decoration: underline;
+}
+
+.cookie-banner .btn-cookies {
+  display: flex;
+  gap: 10px; /* Espaçamento entre os botões */
+}
+
+.cookie-banner button {
+  flex: 1;
+  padding: 10px;
+  background-color: rgba(55, 41, 6, 0.9019607843);
+  color: #f3eaea;
+  border: none;
+  cursor: pointer;
+  width: 100%; /* Para telas maiores, mantém uma largura razoável */
+}
+
+.cookie-banner button:hover {
+  background-color: #a08e45;
+}
+
+#declineCookies {
+  border: 2px solid #5a3a1e; /* Borda marrom escura */
+  background-color: transparent;
+  color: #5a3a1e; /* Cor da fonte marrom escura */
+}
+
+#acceptCookies {
+  background-color: #5a3a1e; /* Fundo marrom escuro */
+  color: #ffffff; /* Cor da fonte branca */
+}
+
+@media (max-width: 768px) {
+  .cookie-banner {
+    flex-direction: column;
+    width: 100%;
+    min-height: 200px;
+    align-items: center;
+  }
+  .btn-cookies {
+    width: 100%;
+  }
+  .btn-cookies button {
+    width: 50%; /* Cada botão ocupa 50% da largura em telas menores */
+  }
+}
 .chef-formation {
   position: absolute;
   bottom: 0;
@@ -1761,6 +1841,36 @@ body {
   }
 }
 
+.container-all-recipes {
+  width: 50vw;
+  display: flex;
+  gap: 3rem;
+  flex-direction: row;
+  padding: 5rem 25rem;
+  margin: auto;
+  justify-content: space-evenly;
+}
+@media (max-width: 75em) {
+  .container-all-recipes {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+}
+.container-all-recipes .recipe-card {
+  width: 100%;
+}
+.container-all-recipes .recipe__image-all {
+  max-width: 300px;
+  border-radius: 12px;
+}
+.container-all-recipes .title-recipe {
+  font-weight: 600;
+  width: 100%;
+}
+.container-all-recipes .paragraph {
+  width: 68%;
+}
+
 .container-my-ebooks {
   padding: 2rem 15rem; /* Ajustado para melhorar o espaçamento em telas grandes */
   display: flex;
@@ -1978,6 +2088,70 @@ body {
 .ebook-cta .ebook-cta-title:focus {
   outline: none;
   box-shadow: 0 0 0 3px rgba(74, 44, 24, 0.5); /* Destaque ao focar */
+}
+
+.privacy-columns {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+  padding: 10rem;
+  /* Responsividade para telas menores (tab-land e abaixo) */
+}
+.privacy-columns .main-title {
+  color: rgba(0, 0, 0, 0.719);
+  font-size: 3rem;
+}
+.privacy-columns .privacy-section-1 {
+  flex: 1;
+  min-width: 300px;
+  padding: 1.5rem;
+  font-size: 1.8rem;
+}
+.privacy-columns .privacy-column {
+  flex: 1;
+  min-width: 300px;
+  font-size: 1.8rem;
+}
+.privacy-columns .privacy-section {
+  padding: 1.5rem;
+  font-size: 1.8rem;
+  margin-bottom: 2rem;
+}
+.privacy-columns .section-title {
+  font-size: 1.8rem;
+  color: #444;
+  margin-bottom: 1rem;
+}
+.privacy-columns .text {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+  font-size: 1.6rem;
+  color: rgba(0, 0, 0, 0.719);
+}
+.privacy-columns .info-list, .privacy-columns .purpose-list {
+  padding-left: 20px;
+  list-style-type: disc;
+}
+.privacy-columns .list-item {
+  margin-bottom: 0.5rem;
+  color: rgba(0, 0, 0, 0.719);
+}
+@media (max-width: 1024px) {
+  .privacy-columns .privacy-columns {
+    flex-direction: column;
+    width: 100%;
+  }
+  .privacy-columns .privacy-section-1, .privacy-columns .privacy-column {
+    min-width: 100%; /* Ocupa toda a largura */
+  }
+}
+
+.footer {
+  background-color: transparent;
+}
+.footer .footer-heading {
+  color: rgb(53, 34, 11);
 }
 
 /*# sourceMappingURL=style.css.map */

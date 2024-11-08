@@ -55,6 +55,8 @@
   outline: none; /* Remove o outline padrão */
   box-shadow: 0 0 0 3px rgba(100, 72, 18, 0.5); /* Adiciona um contorno visível ao focar */
 }
+  
+
 
 //PARAGRAPH
 
@@ -179,44 +181,8 @@
 #gerenciamento-receitas {
   display: none;
 }
-//cookie banner
-.cookie-banner {
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  background-color: #333;
-  color: #fff;
-  padding: 10px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  z-index: 1000;
-  font-size: 14px;
-}
 
-.cookie-banner p {
-  margin: 0;
-  flex: 1;
-  text-align: left;
-}
 
-.cookie-banner a {
-  color: #202cd7;
-  text-decoration: underline;
-}
-
-.cookie-banner button {
-  margin-left: 10px;
-  padding: 8px 12px;
-  background-color: #f3eac7;
-  color: #1d1c1c;
-  border: none;
-  cursor: pointer;
-}
-
-.cookie-banner button:hover {
-  background-color: #a08e45;
-}
 //stats
 .section-stats {
   padding: 3rem 0;
@@ -493,4 +459,126 @@
 .share-btn ion-icon {
   margin-right: 10px;
   font-size: 1.2rem;
+}
+.section-manager {
+  text-align: center;
+  margin: 2rem 0;
+  padding: 2rem;
+  background-color: #f9f5ef; /* Cor suave de fundo */
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra para destaque */
+
+  
+}
+
+
+.section-manager h1 {
+  font-size: 3rem;
+  font-weight: 600;
+  color: #644812; /* Cor principal do título */
+  margin-bottom: 1rem;
+  text-align: center
+}
+
+.section-manager p {
+  font-weight: 300;
+  font-family: 'Open Sans', sans-serif; /* Fonte moderna e legível */
+  font-size: 20px; /* Tamanho de fonte padrão para legibilidade */
+  line-height: 1.5; /* Espaçamento entre linhas adequado */
+  color: #333; /* Cor do texto para bom contraste */
+text-align: justify; /* Justifica o texto */
+  max-width: 700px;
+margin: auto;
+padding: 1rem 0 3rem 0;
+}
+
+//cookies
+.btn-cookies{
+  display: flex;
+  justify-content: space-evenly;
+  width: 30vw;
+@include respond(tab-land){
+  width: 40vw;
+  text-align: center;
+ padding: 0 3rem 0 5rem;
+}
+
+}
+.cookie-banner {
+  position: fixed;
+  bottom: 0;
+  width: 100vw;
+  min-height: 105px;
+  justify-content: space-around;
+  color: #141313af;
+  padding: 10px;
+  background-color: #f4f6fa;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  z-index: 1000;
+  font-size: 14px;
+  text-align: center;
+}
+
+.cookie-banner .link-pp {
+  color: #1d1c1ca7;
+}
+
+.cookie-banner p {
+  margin: 0;
+  flex: 1;
+  text-align: left;
+  max-width: 60vw;
+}
+
+.cookie-banner a {
+  text-decoration: underline;
+}
+
+.cookie-banner .btn-cookies {
+  display: flex;
+  gap: 10px; /* Espaçamento entre os botões */
+}
+
+.cookie-banner button {
+  flex: 1;
+  padding: 10px;
+  background-color: #372906e6;
+  color: #f3eaea;
+  border: none;
+  cursor: pointer;
+  width:100%; /* Para telas maiores, mantém uma largura razoável */
+}
+
+.cookie-banner button:hover {
+  background-color: #a08e45;
+}
+
+#declineCookies {
+  border: 2px solid #5a3a1e; /* Borda marrom escura */
+  background-color: transparent;
+  color: #5a3a1e; /* Cor da fonte marrom escura */
+}
+
+#acceptCookies {
+  background-color: #5a3a1e; /* Fundo marrom escuro */
+  color: #ffffff; /* Cor da fonte branca */
+}
+
+@media (max-width: 768px) {
+  .cookie-banner {
+    flex-direction: column;
+    width: 100%;
+    min-height: 200px;
+    align-items: center;
+  }
+
+  .btn-cookies {
+    width: 100%;
+  }
+
+  .btn-cookies button {
+    width: 50%; /* Cada botão ocupa 50% da largura em telas menores */
+  }
 }

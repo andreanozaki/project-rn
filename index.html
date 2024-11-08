@@ -261,56 +261,62 @@
         
 
        
-        
-        <div class="vendas-container" style="display: none;">
-            <h2>Registrar Venda de Produtos</h2>
-            <form id="salesForm">
-                <label for="product">Produto:</label>
-                <select id="product" name="product" required>
-                    <option value="Curso Online">Curso Online</option>
-                    <option value="Curso Presencial">Curso Presencial</option>
-                    <option value="Consultoria">Consultoria</option>
-                    <option value="Encomenda">Encomenda</option>
-                    <option value="Buffet Fechado">Buffet Fechado</option>
-                </select>
-        
-                <label for="sale_date">Data da Venda:</label>
-                <input type="date" id="sale_date" name="sale_date" required>
-        
-                <label for="price">Preço (R$):</label>
-                <input type="number" id="price" name="price" min="0.01" step="0.01" placeholder="150.00" required>
-        
-                <button type="submit">Registrar Venda</button>
-            </form>
+       
+            <div class="vendas-container" style="display: none;">
+                <div class="section-manager">
+                    <h1>Gestão de Vendas e Relatórios</h1> <!-- Título da seção -->
+                    <p>Gerencie suas vendas de produtos e gere relatórios detalhados para acompanhar o desempenho. Utilize os formulários abaixo para registrar novas vendas ou criar relatórios de vendas mensais e anuais de forma rápida e eficiente.</p>
+                <h2>Registrar Venda de Produtos</h2>
+                <form id="salesForm">
+                    <label for="product">Produto:</label>
+                    <select id="product" name="product" required>
+                        <option value="Curso Online">Curso Online</option>
+                        <option value="Curso Presencial">Curso Presencial</option>
+                        <option value="Consultoria">Consultoria</option>
+                        <option value="Encomenda">Encomenda</option>
+                        <option value="Buffet Fechado">Buffet Fechado</option>
+                    </select>
+            
+                    <label for="sale_date">Data da Venda:</label>
+                    <input type="date" id="sale_date" name="sale_date" required>
+            
+                    <label for="price">Preço (R$):</label>
+                    <input type="number" id="price" name="price" min="0.01" step="0.01" placeholder="150.00" required>
+            
+                    <button type="submit">Registrar Venda</button>
+                </form>
+            </div>
+            
+            <div class="relatorio-container" style="display: none;">
+                <h2>Gerar Relatório de Vendas</h2>
+                <form id="reportForm">
+                    <label for="month">Mês:</label>
+                    <select id="month" name="month" required>
+                        <option value="all">Todos os meses</option>
+                        <option value="01">Janeiro</option>
+                        <option value="02">Fevereiro</option>
+                        <option value="03">Março</option>
+                        <option value="04">Abril</option>
+                        <option value="05">Maio</option>
+                        <option value="06">Junho</option>
+                        <option value="07">Julho</option>
+                        <option value="08">Agosto</option>
+                        <option value="09">Setembro</option>
+                        <option value="10">Outubro</option>
+                        <option value="11">Novembro</option>
+                        <option value="12">Dezembro</option>
+                    </select>
+            
+                    <label for="year">Ano:</label>
+                    <input type="number" id="year" name="year" min="2020" max="2030" value="2024" required>
+            
+                    <button type="submit">Gerar Relatório</button>
+                </form>
+            </div>
+            
+
         </div>
-        
-        <div class="relatorio-container" style="display: none;">
-            <h2>Gerar Relatório de Vendas</h2>
-            <form id="reportForm">
-                <label for="month">Mês:</label>
-                <select id="month" name="month" required>
-                    <option value="all">Todos os meses</option>
-                    <option value="01">Janeiro</option>
-                    <option value="02">Fevereiro</option>
-                    <option value="03">Março</option>
-                    <option value="04">Abril</option>
-                    <option value="05">Maio</option>
-                    <option value="06">Junho</option>
-                    <option value="07">Julho</option>
-                    <option value="08">Agosto</option>
-                    <option value="09">Setembro</option>
-                    <option value="10">Outubro</option>
-                    <option value="11">Novembro</option>
-                    <option value="12">Dezembro</option>
-                </select>
-        
-                <label for="year">Ano:</label>
-                <input type="number" id="year" name="year" min="2020" max="2030" value="2024" required>
-        
-                <button type="submit">Gerar Relatório</button>
-            </form>
-        </div>
-        
+       
 
 
         <footer class="footer ">
@@ -354,14 +360,22 @@
             <p class="copyright"> &copy; 2023 Ricardo Nozaki.Todos os direitos reservados. Site por <a href="https://andreanozaki.com/">AN Sites</a></p>
 
         </footer>
-        <div class="cookie-banner" id="cookieBanner">
-            <p>Valorizamos sua privacidade <br>
 
-                Utilizamos cookies para aprimorar sua experiência de navegação
-                 e analisar nosso tráfego. Ao clicar em “Aceitar todos”, você 
-                 concorda com nosso uso de cookies. <a href="politica_privacidade.html">Política de Privacidade</a>.</p>
-            <button id="acceptCookies">Aceitar</button>
-            <button id="declineCookies">Recusar</button>
+
+        <div class="cookie-banner" id="cookieBanner">
+            <div>
+                <p>Valorizamos sua privacidade <br>
+
+                    Utilizamos cookies para aprimorar sua experiência de navegação
+                     e analisar nosso tráfego. Ao clicar em “Aceitar todos”, você 
+                     concorda com nosso uso de cookies. <a href="politica_privacidade.html" class="link-pp">Política de Privacidade</a>.</p>
+            </div>
+           
+                 <div class="btn-cookies">
+                    <button id="declineCookies" class="btn-main" >Recusar</button>
+
+                    <button id="acceptCookies" class="btn-main">Aceitar</button>
+                 </div>
         </div>
     </main> 
    
