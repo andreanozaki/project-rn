@@ -1312,7 +1312,7 @@ body {
 }
 .section-creations__gallery .gallery-link {
   height: 100%;
-  background-color: aliceblue;
+  background-color: transparent; /* Garante que não haja fundo colorido */
   text-decoration: none;
   color: inherit;
   transition: transform 0.3s;
@@ -1428,6 +1428,11 @@ body {
     opacity: 0;
     transform: none;
   }
+}
+.section-creations .gallery-item-img {
+  width: 100%;
+  height: auto;
+  object-fit: contain; /* Para garantir que as imagens não distorçam */
 }
 
 .ebook {

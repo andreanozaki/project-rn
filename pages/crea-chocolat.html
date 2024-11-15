@@ -101,7 +101,13 @@
             
 
         </div>
-    
+        <form action="http://localhost:3001/upload" method="POST" enctype="multipart/form-data">
+            <input type="hidden" name="page" value="creation-chocolat"> <!-- Verifique se o valor está correto -->
+            <input type="file" name="image" accept="image/*" required>
+            <button type="submit">Upload de Imagem</button>
+        </form>
+        
+        
    
     </section>
 
@@ -165,6 +171,39 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox.min.js" integrity="sha512-Ixzuzfxv1EqafeQlTCufWfaC6ful6WFqIz4G+dWvK0beHw0NVJwvCKSgafpy5gwNqKmgUfIBraVwkKI+Cz0SEQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     <script src="/js/cookie-banner.js" defer></script>
+    <script>
+
+document.addEventListener('DOMContentLoaded', () => {
+  fetch('http://localhost:3001/images/creation-chocolat')
+    .then(response => response.json())
+    .then(data => {
+      const gallery = document.querySelector('.section-creations__gallery');
+      if (gallery) {
+        data.forEach(image => {
+          const linkElement = document.createElement('a');
+          linkElement.href = image.image_path;
+          linkElement.classList.add('gallery-link', 'no-background');
+          linkElement.setAttribute('data-lightbox', 'models');
+
+          const figureElement = document.createElement('figure');
+          figureElement.classList.add('gallery-item');
+
+          const imgElement = document.createElement('img');
+          imgElement.src = image.image_path;
+          imgElement.alt = 'Imagem carregada';
+          imgElement.classList.add('gallery-item-img'); // Classe opcional para estilização
+
+          figureElement.appendChild(imgElement);
+          linkElement.appendChild(figureElement);
+          gallery.appendChild(linkElement);
+        });
+      }
+    })
+    .catch(error => console.error('Erro ao carregar imagens:', error));
+});
+
+    </script>
+      
 
 </body>
 </html>

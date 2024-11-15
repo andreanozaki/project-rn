@@ -4,13 +4,13 @@ const bodyParser = require('body-parser');
 const connection = require('./db'); // Importa a conexão do db.js
 
 const cors = require('cors'); // Importar o pacote CORS
-const multer = require('multer');
 const fs = require('fs');
 const path = require('path');
 const mysql = require('mysql2'); // Para a conexão do MySQL com os comentários
 const nodemailer = require('nodemailer'); // Para enviar e-mails
 const PDFDocument = require('pdfkit'); // Para gerar PDF (npm install pdfkit)
 const csvWriter = require('csv-writer').createObjectCsvStringifier; // Para gerar CSV (npm install csv-writer)
+const multer = require('multer');
 
 const app = express();
 const port = 3001;
@@ -26,18 +26,26 @@ app.use(cors({
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json()); // Para processar JSON enviado no corpo da requisição
 
-// Configuração do multer para upload de imagens
+
+// Middleware para servir imagens estáticas
+app.use('/img', express.static(path.join(__dirname, '../img')));
+
+
+// Configuração do multer
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, 'recipes-assets/img'); // Pasta onde as imagens serão salvas
+    const folder = path.resolve(__dirname, '../img/creation-main', req.body.page);
+    if (!fs.existsSync(folder)) {
+      fs.mkdirSync(folder, { recursive: true });
+    }
+    cb(null, folder);
   },
   filename: (req, file, cb) => {
-    cb(null, Date.now() + path.extname(file.originalname)); // Nome único para a imagem
+    cb(null, Date.now() + path.extname(file.originalname));
   }
 });
+
 const upload = multer({ storage });
-
-
 
 
 // Rota para registrar usuário
@@ -255,6 +263,48 @@ app.get('/generate-report', (req, res) => {
     doc.end();
   });
 });
+
+
+
+
+app.post('/upload', upload.single('image'), (req, res) => {
+  console.log('Rota /upload chamada');
+  console.log('Dados recebidos:', req.body);
+  console.log('Arquivo:', req.file);
+
+  // Lógica para salvar o caminho no banco de dados
+  const imagePath = `/img/creation-main/${req.body.page}/${req.file.filename}`;
+  const query = 'INSERT INTO images (page, image_path) VALUES (?, ?)';
+  connection.query(query, [req.body.page, imagePath], (err) => {
+    if (err) {
+      console.error('Erro ao inserir no banco de dados:', err);
+      return res.status(500).send();
+    }
+    res.status(200).send(); // Responde apenas com status 200 sem mensagem
+  });
+});
+
+
+
+
+//rota buscar img no bd 
+app.get('/images/:page', (req, res) => {
+  const page = req.params.page;
+  const query = 'SELECT image_path FROM images WHERE page = ?';
+
+  connection.query(query, [page], (err, results) => {
+    if (err) {
+      console.error('Erro ao buscar imagens:', err);
+      return res.status(500).json({ message: 'Erro ao buscar imagens' });
+    }
+    if (results.length === 0) {
+      return res.status(404).json({ message: 'Nenhuma imagem encontrada' });
+    }
+    res.status(200).json(results);
+  });
+});
+
+
 
 
 // Iniciar o servidor
