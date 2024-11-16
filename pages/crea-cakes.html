@@ -71,9 +71,9 @@
         <span class="subheading subheading--2 flash-effect-2">Cakes</span>
         <span class="subheading subheading--3 flash-effect">Cakes</span>
         <div class=" section-creations__gallery grid-3cols ">
-            <a href="../img/creation-main/creation-cake/7.png" class="gallery-link no-background" data-lightbox="models" data-title="Caption1">
+            <a href="../img/creation-main/creation-cake/1.png" class="gallery-link no-background" data-lightbox="models" data-title="Caption1">
                 <figure class="gallery-item">
-                    <img src="../img/creation-main/creation-cake/7.png"alt="photo2" class="">
+                    <img src="../img/creation-main/creation-cake/1.png"alt="photo2" class="">
                 </figure>
             </a>
             <a href="../img/creation-main/creation-cake/2.png" class="gallery-link no-background" data-lightbox="models" data-title="Caption1">
@@ -81,44 +81,50 @@
                     <img src="../img/creation-main/creation-cake/2.png" alt="photo2" class="">
                 </figure>
             </a>
-            <a href="../img/creation-main/creation-cake/1.png" class="gallery-link no-background" data-lightbox="models" data-title="Caption1">
+            <a href="../img/creation-main/creation-cake/3.png" class="gallery-link no-background" data-lightbox="models" data-title="Caption1">
                 <figure class="gallery-item">
-                    <img src="../img/creation-main/creation-cake/1.png" alt="photo2" class="">
-                </figure>
-            </a>
-            <a href="../img/creation-main/creation-cake/8.png" class="gallery-link no-background" data-lightbox="models" data-title="Caption1">
-                <figure class="gallery-item">
-                    <img src="../img/creation-main/creation-cake/8.png" alt="photo2" class="">
-                </figure>
-            </a>
-            <a href="../img/creation-main/creation-cake/10.png" class="gallery-link no-background" data-lightbox="models" data-title="Caption1">
-                <figure class="gallery-item">
-                    <img src="../img/creation-main/creation-cake/10.png"alt="photo2" class="">
-                </figure>
-            </a>
-            <a href="../img/creation-main/creation-cake/11.png" class="gallery-link no-background" data-lightbox="models" data-title="Caption1">
-                <figure class="gallery-item">
-                    <img src="../img/creation-main/creation-cake/11.png " alt="photo2" class="">
-                </figure>
-            </a>
-            <a href="../img/creation-main/creation-cake/12.png" class="gallery-link no-background" data-lightbox="models" data-title="Caption1">
-                <figure class="gallery-item">
-                    <img src="../img/creation-main/creation-cake/12.png " alt="photo2" class="">
+                    <img src="../img/creation-main/creation-cake/3.png" alt="photo2" class="">
                 </figure>
             </a>
             <a href="../img/creation-main/creation-cake/4.png" class="gallery-link no-background" data-lightbox="models" data-title="Caption1">
                 <figure class="gallery-item">
-                    <img src="../img/creation-main/creation-cake/4.png " alt="photo2" class="">
+                    <img src="../img/creation-main/creation-cake/4.png" alt="photo2" class="">
                 </figure>
             </a>
             <a href="../img/creation-main/creation-cake/5.png" class="gallery-link no-background" data-lightbox="models" data-title="Caption1">
                 <figure class="gallery-item">
-                    <img src="../img/creation-main/creation-cake/5.png " alt="photo2" class="">
+                    <img src="../img/creation-main/creation-cake/5.png"alt="photo2" class="">
                 </figure>
             </a>
+            <a href="../img/creation-main/creation-cake/6.png" class="gallery-link no-background" data-lightbox="models" data-title="Caption1">
+                <figure class="gallery-item">
+                    <img src="../img/creation-main/creation-cake/6.png " alt="photo2" class="">
+                </figure>
+            </a>
+            <a href="../img/creation-main/creation-cake/7.png" class="gallery-link no-background" data-lightbox="models" data-title="Caption1">
+                <figure class="gallery-item">
+                    <img src="../img/creation-main/creation-cake/7.png " alt="photo2" class="">
+                </figure>
+            </a>
+            <a href="../img/creation-main/creation-cake/8.png" class="gallery-link no-background" data-lightbox="models" data-title="Caption1">
+                <figure class="gallery-item">
+                    <img src="../img/creation-main/creation-cake/8.png " alt="photo2" class="">
+                </figure>
+            </a>
+            <a href="../img/creation-main/creation-cake/9.png" class="gallery-link no-background" data-lightbox="models" data-title="Caption1">
+                <figure class="gallery-item">
+                    <img src="../img/creation-main/creation-cake/9.png " alt="photo2" class="">
+                </figure>
+            </a>
+           
+         
 
         </div>
-    
+        <form action="http://localhost:3001/upload" method="POST" enctype="multipart/form-data" style="display: none;">
+            <input type="hidden" name="page" value="creation-cake"> <!-- Verifique se o valor está correto -->
+            <input type="file" name="image" accept="image/*" required>
+            <button type="submit">Upload de Imagem</button>
+        </form>
    
     </section>
 
@@ -182,6 +188,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox.min.js" integrity="sha512-Ixzuzfxv1EqafeQlTCufWfaC6ful6WFqIz4G+dWvK0beHw0NVJwvCKSgafpy5gwNqKmgUfIBraVwkKI+Cz0SEQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     <script src="/js/cookie-banner.js" defer></script>
+    <script src="/js/upload-script.js"></script>
 
 </body>
 </html>

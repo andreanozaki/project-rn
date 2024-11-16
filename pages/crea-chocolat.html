@@ -15,7 +15,6 @@
 
 
 
-    
     <script src="/js/script.js" defer></script>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -67,35 +66,29 @@
    <div class="container-gallery">
     <section class="section-creations" id="creations">
            
-        <span class="subheading subheading--1 flash-effect" >Cakes</span>
-        <span class="subheading subheading--2 flash-effect-2">Cakes</span>
-        <span class="subheading subheading--3 flash-effect">Cakes</span>
+        <span class="subheading subheading--1 flash-effect" >Chocolat</span>
+        <span class="subheading subheading--2 flash-effect-2">Chocolat</span>
+        <span class="subheading subheading--3 flash-effect">Chocolat</span>
         <div class=" section-creations__gallery grid-3cols ">
 
             
             <a href="../img/creation-main/creation-chocolat/1.png" class="gallery-link no-background" data-lightbox="models" data-title="Caption1">
-                <figure class="gallery-item">
-                    <img src="../img/creation-main/creation-chocolat/1.png" alt="photo2" class="">
+                <figure class="gallery-item" data-backup>
+                    <img src="../img/creation-main/creation-chocolat/1.png" alt="photo1" class="">
                 </figure>
             </a>
-
-            <a href="../img/creation-main/creation-chocolat/4.png" class="gallery-link no-background" data-lightbox="models" data-title="Caption1">
-                <figure class="gallery-item">
-                    <img src="../img/creation-main/creation-chocolat/4.png" alt="photo2" class="">
-                </figure>
-            </a>
-
-            <a href="../img/creation-main/creation-chocolat/3.png" class="gallery-link no-background" data-lightbox="models" data-title="Caption1">
-                <figure class="gallery-item">
-                    <img src="../img/creation-main/creation-chocolat/3.png" alt="photo2" class="">
-                </figure>
-            </a>
-            <a href="../img/creation-main/creation-chocolat/5.png" class="gallery-link no-background" data-lightbox="models" data-title="Caption1">
-                <figure class="gallery-item">
+            <a href="../img/creation-main/creation-chocolat/5.png" class="gallery-link no-background" data-lightbox="models" data-title="Caption2">
+                <figure class="gallery-item" data-backup>
                     <img src="../img/creation-main/creation-chocolat/5.png" alt="photo2" class="">
                 </figure>
             </a>
+            <a href="../img/creation-main/creation-chocolat/3.png" class="gallery-link no-background" data-lightbox="models" data-title="Caption3">
+                <figure class="gallery-item" data-backup>
+                    <img src="../img/creation-main/creation-chocolat/3.png" alt="photo3" class="">
+                </figure>
+            </a>          
           
+            
             
        
             
@@ -171,83 +164,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox.min.js" integrity="sha512-Ixzuzfxv1EqafeQlTCufWfaC6ful6WFqIz4G+dWvK0beHw0NVJwvCKSgafpy5gwNqKmgUfIBraVwkKI+Cz0SEQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     <script src="/js/cookie-banner.js" defer></script>
+    <script src="/js/upload-script.js"></script>
 
-    <script>
-document.addEventListener('DOMContentLoaded', () => {
-  // Verificação de login do chef usando sessionStorage
-  const isChef = sessionStorage.getItem('isChef') === 'true';
-  console.log('isChef:', isChef); // Verifique no console se o valor está correto
-
-  // Mostrar o formulário de upload se o usuário for o chef
-  if (isChef) {
-    document.querySelector('form[action="http://localhost:3001/upload"]').style.display = 'block';
-  }
-
-  fetch('http://localhost:3001/images/creation-chocolat')
-    .then(response => response.json())
-    .then(data => {
-      console.log('Imagens carregadas:', data); // Verifica se os dados incluem `id`
-      const gallery = document.querySelector('.section-creations__gallery');
-      if (gallery) {
-        data.forEach(image => {
-          const figureElement = document.createElement('figure');
-          figureElement.classList.add('gallery-item');
-
-          const imgElement = document.createElement('img');
-          imgElement.src = image.image_path;
-          imgElement.alt = 'Imagem carregada';
-          imgElement.classList.add('gallery-item-img');
-
-          figureElement.appendChild(imgElement);
-
-          // Adicionar o botão de deletar apenas se o usuário for o chef
-          if (isChef) {
-            const deleteButton = document.createElement('button');
-            deleteButton.textContent = 'Deletar';
-            deleteButton.classList.add('delete-button');
-            deleteButton.onclick = (event) => {
-              event.preventDefault();
-              event.stopPropagation();
-              console.log('ID da imagem para exclusão:', image.id);
-              deleteImage(image.id);
-            };
-
-            figureElement.appendChild(deleteButton);
-          }
-
-          const linkElement = document.createElement('a');
-          linkElement.href = image.image_path;
-          linkElement.classList.add('gallery-link', 'no-background');
-          linkElement.setAttribute('data-lightbox', 'models');
-          linkElement.appendChild(figureElement);
-
-          gallery.appendChild(linkElement);
-        });
-      }
-    })
-    .catch(error => console.error('Erro ao carregar imagens:', error));
-});
-
-function deleteImage(imageId) {
-  fetch(`/delete-image/${imageId}`, {
-    method: 'DELETE'
-  })
-  .then(response => {
-    if (response.ok) {
-      alert('Imagem deletada com sucesso.');
-      location.reload(); // Atualiza a página para refletir a exclusão
-    } else {
-      alert('Erro ao deletar a imagem.');
-    }
-  })
-  .catch(error => {
-    console.error('Erro:', error);
-    alert('Erro ao deletar a imagem.');
-  });
-}
-
-    </script>
-      
+   
 
 </body>
 </html>

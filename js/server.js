@@ -19,8 +19,10 @@ const port = 3001;
 
 // Middleware para habilitar CORS
 app.use(cors({
-  origin: '*'  // Permite qualquer origem
+  origin: '*', // Verifique se isso é seguro para sua aplicação
+  methods: ['GET', 'POST', 'DELETE', 'PUT']
 }));
+
 
 // Middleware para processar dados enviados no formato application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -286,64 +288,76 @@ app.post('/upload', upload.single('image'), (req, res) => {
 
 
 
-
-//rota buscar img no bd 
+//rota
 app.get('/images/:page', (req, res) => {
   const page = req.params.page;
-  const query = 'SELECT id, image_path FROM images WHERE page = ?'; // Inclua o `id`
+  const imageDir = path.join(__dirname, '../img/creation-main', page);
 
-  connection.query(query, [page], (err, results) => {
-    if (err) {
-      console.error('Erro ao buscar imagens:', err);
-      return res.status(500).json({ message: 'Erro ao buscar imagens' });
-    }
-    if (results.length === 0) {
-      return res.status(404).json({ message: 'Nenhuma imagem encontrada' });
-    }
-    res.status(200).json(results);
+  fs.readdir(imageDir, (err, files) => {
+      if (err) {
+          console.error('Erro ao ler a pasta:', err);
+          return res.status(500).json({ error: 'Erro ao carregar imagens' });
+      }
+
+      const images = files
+          .filter(file => /\.(jpg|jpeg|png|gif)$/i.test(file))
+          .map(file => ({
+              image_path: `/img/creation-main/${page}/${file}`,
+              id: file
+          }));
+
+      console.log('Imagens retornadas:', images);
+      res.json(images);
   });
 });
 
+
+
+
+
+//rota
 
 app.delete('/delete-image/:id', (req, res) => {
-  console.log('Requisição recebida para deletar imagem com ID:', req.params.id); // Log para depuração
+  console.log('Requisição recebida para deletar imagem com ID:', req.params.id); 
   const imageId = req.params.id;
 
-  const query = 'SELECT image_path FROM images WHERE id = ?';
-  connection.query(query, [imageId], (err, results) => {
-    if (err) {
-      console.error('Erro ao buscar imagem:', err);
-      return res.status(500).json({ message: 'Erro ao buscar imagem' });
-    }
+  // Ajuste a consulta para buscar pelo nome do arquivo em vez de `id` se necessário
+  const query = 'SELECT image_path FROM images WHERE image_path LIKE ?';
+  connection.query(query, [`%${imageId}`], (err, results) => {
+      console.log('Resultado da consulta:', results); // Adicione esta linha para verificar o resultado da consulta
 
-    if (results.length > 0) {
-      const imagePath = path.join(__dirname, '..', results[0].image_path);
+      if (err) {
+          console.error('Erro ao buscar imagem:', err);
+          return res.status(500).json({ message: 'Erro ao buscar imagem' });
+      }
 
-      // Excluir o arquivo do sistema de arquivos
-      fs.unlink(imagePath, (err) => {
-        if (err) {
-          console.error('Erro ao deletar arquivo:', err);
-          return res.status(500).json({ message: 'Erro ao deletar arquivo' });
-        }
+      if (results.length > 0) {
+          const imagePath = path.join(__dirname, '..', results[0].image_path);
+          console.log('Caminho da imagem:', imagePath); // Para verificar o caminho
 
-        // Excluir a entrada do banco de dados
-        const deleteQuery = 'DELETE FROM images WHERE id = ?';
-        connection.query(deleteQuery, [imageId], (err) => {
-          if (err) {
-            console.error('Erro ao deletar do banco de dados:', err);
-            return res.status(500).json({ message: 'Erro ao deletar do banco de dados' });
-          }
+          // Excluir o arquivo do sistema de arquivos
+          fs.unlink(imagePath, (err) => {
+              if (err) {
+                  console.error('Erro ao deletar arquivo:', err);
+                  return res.status(500).json({ message: 'Erro ao deletar arquivo' });
+              }
 
-          res.status(200).json({ message: 'Imagem deletada com sucesso' });
-        });
-      });
-    } else {
-      res.status(404).json({ message: 'Imagem não encontrada' });
-    }
+              // Excluir a entrada do banco de dados
+              const deleteQuery = 'DELETE FROM images WHERE image_path LIKE ?';
+              connection.query(deleteQuery, [`%${imageId}`], (err) => {
+                  if (err) {
+                      console.error('Erro ao deletar do banco de dados:', err);
+                      return res.status(500).json({ message: 'Erro ao deletar do banco de dados' });
+                  }
+
+                  res.status(200).json({ message: 'Imagem deletada com sucesso' });
+              });
+          });
+      } else {
+          res.status(404).json({ message: 'Imagem não encontrada' });
+      }
   });
 });
-
-
 
 // Iniciar o servidor
 app.listen(port, () => {

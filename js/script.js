@@ -423,6 +423,27 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 
+function deleteImage(imageId) {
+  fetch(`http://localhost:3001/delete-image/${imageId}`, {
+      method: 'DELETE'
+  })
+  .then(response => {
+      if (response.ok) {
+          alert('Imagem deletada com sucesso.');
+          location.reload();
+      } else {
+          alert('Erro ao deletar a imagem.');
+      }
+  })
+  .catch(error => {
+      console.error('Erro:', error);
+      alert('Erro ao deletar a imagem.');
+  });
+}
+
+
+
+
 
 
 

@@ -86,13 +86,19 @@
                     </figure>
                   </a>
         
-        
+                
         </section>
        
     
 
     </div>
-   
+    <form action="http://localhost:3001/upload" method="POST" enctype="multipart/form-data" style="display: none;">
+        <input type="hidden" name="page" value="creation-simple"> <!-- Verifique se o valor está correto -->
+        <input type="file" name="image" accept="image/*" required>
+        <button type="submit">Upload de Imagem</button>
+    </form>
+    
+    
     <footer class="footer ">
         <div class=" grid-5cols">
 
@@ -143,6 +149,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox.min.js" integrity="sha512-Ixzuzfxv1EqafeQlTCufWfaC6ful6WFqIz4G+dWvK0beHw0NVJwvCKSgafpy5gwNqKmgUfIBraVwkKI+Cz0SEQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     <script src="/js/cookie-banner.js" defer></script>
+    <script src="/js/upload-script.js" defer></script>
+
 
 </body>
 </html>
