@@ -1435,6 +1435,29 @@ body {
   object-fit: contain; /* Para garantir que as imagens não distorçam */
 }
 
+.gallery-item {
+  position: relative;
+  display: inline-block;
+  margin: 10px;
+}
+
+.delete-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: rgba(255, 0, 0, 0.672); /* Cor de fundo vermelha com transparência */
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  font-size: 12px;
+  border-radius: 5px;
+}
+
+.delete-button:hover {
+  background-color: rgb(255, 0, 0); /* Fundo sólido ao passar o mouse */
+}
+
 .ebook {
   height: 75vh;
   display: flex;

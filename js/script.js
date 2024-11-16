@@ -183,6 +183,8 @@ const loggedInEmail = localStorage.getItem('loggedInEmail');
 
 if (localStorage.getItem('isChefLoggedIn') === 'true') {
     if (loggedInEmail === 'andreaflordoceu@gmail.com') {
+      sessionStorage.setItem('isChef', 'true');
+
         salesFormContainer.style.display = 'block';
         reportFormContainer.style.display = 'block';
     } else {
