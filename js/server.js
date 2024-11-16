@@ -381,27 +381,72 @@ app.delete('/delete-image/:id', (req, res) => {
 
 
  // Rota para upload de pré-visualização de receitas
-// Rota para upload de pré-visualização de receitas
-app.post('/add-recipe-preview', uploadPreRecipe.single('recipeImage'), (req, res) => {
-  console.log('Dados do formulário recebidos:', req.body);
-  console.log('Arquivo recebido:', req.file);
 
-  if (!req.file) {
-      return res.status(400).json({ message: 'Erro: Nenhuma imagem enviada' });
-  }
+ 
+ app.post('/add-recipe-preview', uploadPreRecipe.single('recipeImage'), (req, res) => {
+     const { recipeTitle, recipeDescription } = req.body;
+     const imagePath = `/img/pre-recipe/${req.file.filename}`;
+ 
+     // Gera o nome do arquivo com base no título da receita
+     const pageName = recipeTitle.toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]+/g, '') + '.html';
+ 
+     const pageContent = `
+     <!DOCTYPE html>
+     <html lang="pt-br">
+     <head>
+         <meta charset="UTF-8">
+         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+         <title>${recipeTitle}</title>
+         <link rel="stylesheet" href="../css/style.css">
+     </head>
+     <body>
+         <header>
+             <!-- Conteúdo do header -->
+         </header>
+         <div class="recipes">
+             <div class="left-side">
+                 <h2 class="left-side__title">${recipeTitle}</h2>
+                 <img src="${imagePath}" alt="${recipeTitle}" class="left-side__photo">
+             </div>
+             <div class="right-side">
+                 <h2 class="right-side__description">${recipeDescription}</h2>
+                 <ul class="ingredients">
+                     <li>Exemplo de ingrediente 1</li>
+                     <li>Exemplo de ingrediente 2</li>
+                 </ul>
+                 <div class="prepare">
+                     <p>Exemplo de passo a passo da receita.</p>
+                 </div>
+             </div>
+         </div>
+         <footer>
+             <!-- Conteúdo do footer -->
+         </footer>
+     </body>
+     </html>`;
+ 
+     const filePath = path.join(__dirname, '../pages', pageName);
+ 
+     fs.writeFile(filePath, pageContent, (err) => {
+         if (err) {
+             console.error('Erro ao criar a página da receita:', err);
+             return res.status(500).json({ message: 'Erro ao criar a página da receita' });
+         }
+ 
+         // Insere as informações da receita no banco de dados com o link gerado automaticamente
+         const query = 'INSERT INTO recipe_previews (title, description, image_path, page_link) VALUES (?, ?, ?, ?)';
+         connection.query(query, [recipeTitle, recipeDescription, imagePath, `/pages/${pageName}`], (err, results) => {
+             if (err) {
+                 console.error('Erro ao inserir prévia da receita no banco de dados:', err);
+                 return res.status(500).json({ message: 'Erro ao adicionar prévia da receita' });
+             }
+             res.status(200).json({ message: 'Prévia da receita e página completa criadas com sucesso' });
+         });
+     });
+ });
+ 
 
-  const { recipeTitle, recipeDescription, recipeLink } = req.body;
-  const imagePath = `/img/pre-recipe/${req.file.filename}`;
 
-  const query = 'INSERT INTO recipe_previews (title, description, image_path, page_link) VALUES (?, ?, ?, ?)';
-  connection.query(query, [recipeTitle, recipeDescription, imagePath, recipeLink], (err, results) => {
-      if (err) {
-          console.error('Erro ao inserir prévia da receita no banco de dados:', err);
-          return res.status(500).json({ message: 'Erro ao adicionar prévia da receita' });
-      }
-      res.status(200).json({ message: 'Prévia da receita adicionada com sucesso' });
-  });
-});
 
 
 app.get('/get-recipe-previews', (req, res) => {

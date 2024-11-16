@@ -432,9 +432,49 @@ function deleteImage(imageId) {
 }
 
 
+// Código para manipular a resposta da criação de receita
+document.getElementById('newRecipeForm').addEventListener('submit', function (e) {
+  e.preventDefault();
+
+  const formData = new FormData(this);
+
+  fetch('http://localhost:3001/add-recipe-preview', {
+      method: 'POST',
+      body: formData
+  })
+  .then(response => response.json())
+  .then(data => {
+      alert(data.message);
+      if (data.link) {
+          console.log('Nova página criada:', data.link);
+          // Atualize ou redirecione para a nova página se necessário
+      }
+  })
+  .catch(error => console.error('Erro ao adicionar prévia da receita:', error));
+});
 
 
 
+
+document.getElementById('newRecipeForm').addEventListener('submit', function (e) {
+  e.preventDefault();
+
+  const formData = new FormData(this);
+
+  fetch('http://localhost:3001/add-recipe-preview', {
+      method: 'POST',
+      body: formData
+  })
+  .then(response => response.json())
+  .then(data => {
+      alert(data.message);
+      if (data.link) {
+          console.log('Nova página criada:', data.link);
+          window.location.href = data.link; // Redireciona para a nova página automaticamente
+      }
+  })
+  .catch(error => console.error('Erro ao adicionar prévia da receita:', error));
+});
 
 
 });//fim Dom

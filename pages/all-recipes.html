@@ -91,24 +91,25 @@
    
     
 
-     <!-- Formulário para o chef preencher -->
-     <form id="newRecipeForm" action="http://localhost:3001/add-recipe-preview" method="POST" enctype="multipart/form-data">
-        <h2>Adicionar Nova Receita</h2>
+     <!-- Formulário de Adicionar Receita -->
+    
+    <!-- Formulário de Adicionar Prévia de Receita -->
+<div class="form-section">
+    <h2>Adicionar Prévia de Receita</h2>
+    <form id="newRecipePreviewForm" action="http://localhost:3001/add-recipe-preview" method="POST" enctype="multipart/form-data">
         <label for="recipeImage">Imagem da Receita:</label>
         <input type="file" id="recipeImage" name="recipeImage" accept="image/*" required>
-        
+
         <label for="recipeTitle">Título da Receita:</label>
-        <input type="text" id="recipeTitle" name="recipeTitle" placeholder="Digite o título da receita" required>
-        
+        <input type="text" id="recipeTitle" name="recipeTitle" required>
+
         <label for="recipeDescription">Descrição:</label>
-        <textarea id="recipeDescription" name="recipeDescription" rows="4" placeholder="Digite a descrição da receita" required></textarea>
-        
-        <label for="recipeLink">Link da Página:</label>
-        <input type="text" id="recipeLink" name="recipeLink" placeholder="Digite o link da página" required>
-    
-        <button type="submit">Adicionar Receita</button>
+        <textarea id="recipeDescription" name="recipeDescription" rows="4" required></textarea>
+
+        <button type="submit">Adicionar Prévia</button>
     </form>
-    
+</div>
+
     <footer class="footer">
         <div class="grid-5cols">
             <div class="logo-col">
