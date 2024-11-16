@@ -50,6 +50,24 @@ const storage = multer.diskStorage({
 const upload = multer({ storage });
 
 
+
+//nova instancia do multer , conf separada 
+// Configuração do multer para pré-visualização de receitas
+const storagePreRecipe = multer.diskStorage({
+  destination: (req, file, cb) => {
+    const folder = path.resolve(__dirname, '../img/pre-recipe');
+    if (!fs.existsSync(folder)) {
+      fs.mkdirSync(folder, { recursive: true });
+    }
+    cb(null, folder);
+  },
+  filename: (req, file, cb) => {
+    cb(null, Date.now() + path.extname(file.originalname));
+  }
+});
+
+const uploadPreRecipe = multer({ storage: storagePreRecipe });
+
 // Rota para registrar usuário
 app.post('/register', (req, res) => {
   const { email, password } = req.body;
@@ -358,6 +376,47 @@ app.delete('/delete-image/:id', (req, res) => {
       }
   });
 });
+
+
+
+
+ // Rota para upload de pré-visualização de receitas
+// Rota para upload de pré-visualização de receitas
+app.post('/add-recipe-preview', uploadPreRecipe.single('recipeImage'), (req, res) => {
+  console.log('Dados do formulário recebidos:', req.body);
+  console.log('Arquivo recebido:', req.file);
+
+  if (!req.file) {
+      return res.status(400).json({ message: 'Erro: Nenhuma imagem enviada' });
+  }
+
+  const { recipeTitle, recipeDescription, recipeLink } = req.body;
+  const imagePath = `/img/pre-recipe/${req.file.filename}`;
+
+  const query = 'INSERT INTO recipe_previews (title, description, image_path, page_link) VALUES (?, ?, ?, ?)';
+  connection.query(query, [recipeTitle, recipeDescription, imagePath, recipeLink], (err, results) => {
+      if (err) {
+          console.error('Erro ao inserir prévia da receita no banco de dados:', err);
+          return res.status(500).json({ message: 'Erro ao adicionar prévia da receita' });
+      }
+      res.status(200).json({ message: 'Prévia da receita adicionada com sucesso' });
+  });
+});
+
+
+app.get('/get-recipe-previews', (req, res) => {
+    const query = 'SELECT * FROM recipe_previews';
+    connection.query(query, (err, results) => {
+        if (err) {
+            console.error('Erro ao buscar receitas:', err);
+            return res.status(500).json({ message: 'Erro ao buscar receitas' });
+        }
+        res.json(results);
+    });
+});
+
+
+
 
 // Iniciar o servidor
 app.listen(port, () => {

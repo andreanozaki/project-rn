@@ -90,58 +90,77 @@
    </div>
    
     
-   <footer class="footer ">
-    <div class=" grid-5cols">
 
-        <div class="logo-col">
-            <a href="../index.html">
-                <img src="../img/base/logo/lo2.png" alt="logo" class="logo">
-            </a>
-         
-        </div>
-
-        <div class="address-col">
-            <p class="footer-heading">Contate-nos</p>
-            <a class="footer-link" href="mailto:elitecakes@br.com"><ion-icon name="mail"></ion-icon> ricardonozaki@gmail.com</a> 
-        </div>
-
+     <!-- Formulário para o chef preencher -->
+     <form id="newRecipeForm" action="http://localhost:3001/add-recipe-preview" method="POST" enctype="multipart/form-data">
+        <h2>Adicionar Nova Receita</h2>
+        <label for="recipeImage">Imagem da Receita:</label>
+        <input type="file" id="recipeImage" name="recipeImage" accept="image/*" required>
         
-
-        <div class="address-col">
-            <p class="footer-heading">Links Uteis</p>
-            <ul>
-                <li><a class="footer-link" href="#recipe">Receitas</a></li>
-                <li><a class="footer-link" href="#ebooks">E-books</a></li>
-                <li><a class="footer-link" href="#contact">Contato</a></li>   
-            </ul>
+        <label for="recipeTitle">Título da Receita:</label>
+        <input type="text" id="recipeTitle" name="recipeTitle" placeholder="Digite o título da receita" required>
+        
+        <label for="recipeDescription">Descrição:</label>
+        <textarea id="recipeDescription" name="recipeDescription" rows="4" placeholder="Digite a descrição da receita" required></textarea>
+        
+        <label for="recipeLink">Link da Página:</label>
+        <input type="text" id="recipeLink" name="recipeLink" placeholder="Digite o link da página" required>
+    
+        <button type="submit">Adicionar Receita</button>
+    </form>
+    
+    <footer class="footer">
+        <div class="grid-5cols">
+            <div class="logo-col">
+                <a href="../index.html">
+                    <img src="../img/base/logo/lo2.png" alt="logo" class="logo">
+                </a>
+            </div>
+            <div class="address-col">
+                <p class="footer-heading">Contate-nos</p>
+                <a class="footer-link" href="mailto:elitecakes@br.com"><ion-icon name="mail"></ion-icon> ricardonozaki@gmail.com</a>
+            </div>
+            <div class="address-col">
+                <p class="footer-heading">Links Úteis</p>
+                <ul>
+                    <li><a class="footer-link" href="#recipe">Receitas</a></li>
+                    <li><a class="footer-link" href="#ebooks">E-books</a></li>
+                    <li><a class="footer-link" href="#contact">Contato</a></li>
+                </ul>
+            </div>
+            <div class="social-links">
+                <p class="footer-heading">Siga-me:</p>
+                <ul class="social-media-footer">
+                    <li><a href="https://www.instagram.com/andreahcodes/" target="_blank" class="icon"><ion-icon name="logo-instagram"></ion-icon></a></li>
+                    <li><a href="https://www.linkedin.com/in/andreahcodes/" target="_blank" class="icon"><ion-icon name="logo-facebook"></ion-icon></a></li>
+                </ul>
+            </div>
         </div>
+        <p class="copyright">&copy; 2023 Ricardo Nozaki. Todos os direitos reservados. Site por <a href="https://andreanozaki.com/">AN Sites</a></p>
+    </footer>
+    <script src="/js/cookie-banner.js" defer></script>
+    <script>
+       document.addEventListener('DOMContentLoaded', function () {
+    fetch('http://localhost:3001/get-recipe-previews')
+    .then(response => response.json())
+    .then(data => {
+        const container = document.querySelector('.container-all-recipes');
+        data.forEach(recipe => {
+            const recipeCard = `
+                <div class="recipe__card">
+                    <img src="${recipe.image_path}" alt="${recipe.title}" class="recipe__image-all flash-effect-2">
+                    <p class="paragraph title-recipe">${recipe.title}</p>
+                    <p class="paragraph">${recipe.description}</p>
+                    <a href="${recipe.page_link}" class="btn-main">Ver Receita</a>
+                    <h3 class="recipe__creator"><ion-icon name="person"></ion-icon> por Ricardo Nozaki</h3>
+                </div>
+            `;
+            container.innerHTML += recipeCard;
+        });
+    })
+    .catch(error => console.error('Erro ao carregar as receitas:', error));
+});
 
-        <div class="social-links">
-            <p class="footer-heading">Siga-me:</p>
-
-            <ul class="social-media-footer ">
-                <li><a href="https://www.instagram.com/andreahcodes/" target="_blank" class="icon"><ion-icon
-                    name="logo-instagram"></ion-icon></a></li>
-
-                <li><a href="https://www.linkedin.com/in/andreahcodes/" target="_blank" class="icon"><ion-icon
-                            name="logo-facebook"></ion-icon></a></li>
-
-
-            </ul>
-        </div>
-       
-      
-       
-       
-    </div>
-
-    <p class="copyright"> &copy; 2023 Ricardo Nozaki.Todos os direitos reservados. Site por <a href="https://andreanozaki.com/">AN Sites</a></p>
-
-
-</footer>
-<script src="js/cookie-banner.js" defer></script>
-
-
+    </script>
 </body>
-
 </html>

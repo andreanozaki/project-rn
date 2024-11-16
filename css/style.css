@@ -1876,33 +1876,53 @@ body {
 }
 
 .container-all-recipes {
-  width: 50vw;
-  display: flex;
-  gap: 3rem;
-  flex-direction: row;
-  padding: 5rem 25rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  padding: 2rem;
+  width: 100%;
   margin: auto;
-  justify-content: space-evenly;
 }
-@media (max-width: 75em) {
-  .container-all-recipes {
-    display: flex;
-    flex-direction: column-reverse;
-  }
-}
-.container-all-recipes .recipe-card {
-  width: 100%;
-}
-.container-all-recipes .recipe__image-all {
-  max-width: 300px;
+
+.recipe__card {
+  background-color: #fff;
   border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+  text-align: center;
 }
-.container-all-recipes .title-recipe {
+
+.recipe__image-all {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+.title-recipe {
+  font-size: 1.8rem;
   font-weight: 600;
-  width: 100%;
+  margin-bottom: 0.5rem;
 }
-.container-all-recipes .paragraph {
-  width: 68%;
+
+.paragraph {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+.btn-main {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background-color: #b83e3e;
+  color: #fff;
+  border-radius: 8px;
+  text-decoration: none;
+  margin-bottom: 0.5rem;
+}
+
+.recipe__creator {
+  font-size: 1.1rem;
+  color: #666;
 }
 
 .container-my-ebooks {

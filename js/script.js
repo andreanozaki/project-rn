@@ -20,25 +20,8 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  const hamburger = document.querySelector('.hamburger');
-  const mainNav = document.querySelector('.main-nav');
-  const loginLink = document.querySelector('.main-nav-link[href="login.html"]');
-  const logoutLink = document.getElementById('logout-link');
+
   
-
-// Evento para abrir/fechar o menu hambúrguer e atualizar os botões
-if (hamburger && mainNav) {
-  hamburger.addEventListener('click', function () {
-      console.log('Botão de menu clicado'); // Adicione esta linha para verificar o clique
-      mainNav.classList.toggle('active');
-      hamburger.classList.toggle('active');
-      const isExpanded = hamburger.getAttribute('aria-expanded') === 'true';
-      hamburger.setAttribute('aria-expanded', !isExpanded);
-  });
-}
-
-
-
   // Função para revelar elementos com scroll
   function revealElements() {
     const reveals = document.querySelectorAll('.reveal, .reveal-from-right');
@@ -333,7 +316,11 @@ if (salesForm) {
     });
   }
 
-
+  const hamburger = document.querySelector('.hamburger');
+  const mainNav = document.querySelector('.main-nav');
+  const loginLink = document.querySelector('.main-nav-link[href="login.html"]');
+  const logoutLink = document.getElementById('logout-link');
+  
   // Função para alternar entre Login e Sair com base no estado de login
   function toggleLoginLogout() {
       const loggedInEmail = localStorage.getItem('loggedInEmail'); // Verifica se há um usuário logado
