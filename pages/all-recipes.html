@@ -147,20 +147,41 @@
     .then(data => {
         const container = document.querySelector('.container-all-recipes');
         data.forEach(recipe => {
-            const recipeCard = `
-                <div class="recipe__card">
-                    <img src="${recipe.image_path}" alt="${recipe.title}" class="recipe__image-all flash-effect-2">
-                    <p class="paragraph title-recipe">${recipe.title}</p>
-                    <p class="paragraph">${recipe.description}</p>
-                    <a href="${recipe.page_link}" class="btn-main">Ver Receita</a>
-                    <h3 class="recipe__creator"><ion-icon name="person"></ion-icon> por Ricardo Nozaki</h3>
-                </div>
-            `;
-            container.innerHTML += recipeCard;
-        });
+    const recipeCard = `
+        <div class="recipe__card">
+            <img src="${recipe.image_path}" alt="${recipe.title}" class="recipe__image-all flash-effect-2">
+            <p class="paragraph title-recipe">${recipe.title}</p>
+            <p class="paragraph">${recipe.description}</p>
+            <a href="${recipe.page_link}" class="btn-main">Ver Receita</a>
+            <h3 class="recipe__creator"><ion-icon name="person"></ion-icon> por Ricardo Nozaki</h3>
+<button class="delete-btn" onclick="deleteRecipe(${recipe.preview_id})">Deletar</button>
+        </div>
+    `;
+    container.innerHTML += recipeCard;
+});
+
     })
     .catch(error => console.error('Erro ao carregar as receitas:', error));
 });
+
+function deleteRecipe(recipeId) {
+    if (confirm('Tem certeza que deseja deletar esta prévia de receita?')) {
+        fetch(`http://localhost:3001/delete-recipe-preview/${recipeId}`, {
+            method: 'DELETE'
+        })
+        .then(response => response.json())
+        .then(data => {
+            alert(data.message);
+            location.reload();
+        })
+        .catch(error => {
+            console.error('Erro ao deletar a prévia da receita:', error);
+            alert('Erro ao deletar a receita. Tente novamente.');
+        });
+    }
+}
+
+
 
     </script>
 </body>

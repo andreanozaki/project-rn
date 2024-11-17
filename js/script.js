@@ -477,4 +477,8 @@ document.getElementById('newRecipeForm').addEventListener('submit', function (e)
 });
 
 
+
+
+
+
 });//fim Dom

@@ -449,18 +449,56 @@ app.delete('/delete-image/:id', (req, res) => {
 
 
 
-app.get('/get-recipe-previews', (req, res) => {
-    const query = 'SELECT * FROM recipe_previews';
-    connection.query(query, (err, results) => {
-        if (err) {
-            console.error('Erro ao buscar receitas:', err);
-            return res.status(500).json({ message: 'Erro ao buscar receitas' });
-        }
-        res.json(results);
-    });
+ app.get('/get-recipe-previews', (req, res) => {
+  const query = 'SELECT preview_id, title, description, image_path, page_link FROM recipe_previews';
+  connection.query(query, (err, results) => {
+      if (err) {
+          console.error('Erro ao buscar receitas:', err);
+          return res.status(500).json({ message: 'Erro ao buscar receitas' });
+      }
+      res.json(results);
+  });
 });
 
 
+app.delete('/delete-recipe-preview/:id', (req, res) => {
+  const recipeId = req.params.id;
+
+  const selectQuery = 'SELECT page_link, image_path FROM recipe_previews WHERE preview_id = ?';
+  connection.query(selectQuery, [recipeId], (err, results) => {
+      if (err) {
+          console.error('Erro ao buscar a receita:', err);
+          return res.status(500).json({ message: 'Erro ao buscar a receita' });
+      }
+
+      if (results.length > 0) {
+          const { page_link, image_path } = results[0];
+
+          fs.unlink(path.join(__dirname, '..', page_link), (err) => {
+              if (err) {
+                  console.error('Erro ao deletar a página da receita:', err);
+              }
+          });
+
+          fs.unlink(path.join(__dirname, '..', image_path), (err) => {
+              if (err) {
+                  console.error('Erro ao deletar a imagem da receita:', err);
+              }
+          });
+
+          const deleteQuery = 'DELETE FROM recipe_previews WHERE preview_id = ?';
+          connection.query(deleteQuery, [recipeId], (err) => {
+              if (err) {
+                  console.error('Erro ao deletar o registro da receita:', err);
+                  return res.status(500).json({ message: 'Erro ao deletar o registro da receita' });
+              }
+              res.status(200).json({ message: 'Prévia da receita deletada com sucesso' });
+          });
+      } else {
+          res.status(404).json({ message: 'Receita não encontrada' });
+      }
+  });
+});
 
 
 // Iniciar o servidor
