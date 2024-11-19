@@ -432,53 +432,46 @@ function deleteImage(imageId) {
 }
 
 
-// Código para manipular a resposta da criação de receita
-document.getElementById('newRecipeForm').addEventListener('submit', function (e) {
+combinedRecipeForm.addEventListener('submit', function(e) {
   e.preventDefault();
 
-  const formData = new FormData(this);
+  const formDataPreview = new FormData();
+  formDataPreview.append('recipeImage', document.getElementById('recipeImage').files[0]);
+  formDataPreview.append('recipeTitle', document.getElementById('recipeTitle').value);
+  formDataPreview.append('recipeDescription', document.getElementById('recipeDescription').value);
 
   fetch('http://localhost:3001/add-recipe-preview', {
       method: 'POST',
-      body: formData
+      body: formDataPreview
+  })
+  .then(response => response.json())
+  .then(data => {
+      if (data.success) {
+          alert(data.message);
+
+          const formDataComplete = new FormData();
+          formDataComplete.append('recipeId', data.recipeId);
+          formDataComplete.append('ingredients', document.getElementById('ingredients').value);
+          formDataComplete.append('preparation', document.getElementById('preparation').value);
+
+          return fetch('http://localhost:3001/complete-recipe', {
+              method: 'POST',
+              body: formDataComplete
+          });
+      } else {
+          throw new Error('Erro ao criar a prévia da receita.');
+      }
   })
   .then(response => response.json())
   .then(data => {
       alert(data.message);
-      if (data.link) {
-          console.log('Nova página criada:', data.link);
-          // Atualize ou redirecione para a nova página se necessário
-      }
+      window.location.reload();
   })
-  .catch(error => console.error('Erro ao adicionar prévia da receita:', error));
+  .catch(error => {
+      console.error('Erro:', error);
+      alert('Erro ao adicionar a receita. Tente novamente.');
+  });
 });
-
-
-
-
-document.getElementById('newRecipeForm').addEventListener('submit', function (e) {
-  e.preventDefault();
-
-  const formData = new FormData(this);
-
-  fetch('http://localhost:3001/add-recipe-preview', {
-      method: 'POST',
-      body: formData
-  })
-  .then(response => response.json())
-  .then(data => {
-      alert(data.message);
-      if (data.link) {
-          console.log('Nova página criada:', data.link);
-          window.location.href = data.link; // Redireciona para a nova página automaticamente
-      }
-  })
-  .catch(error => console.error('Erro ao adicionar prévia da receita:', error));
-});
-
-
-
-
 
 
 });//fim Dom

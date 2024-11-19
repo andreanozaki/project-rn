@@ -72,44 +72,65 @@
                 class="btn-main">Ver Receita</a></h2>
         <h3 class="recipe__creator"><ion-icon name="person"></ion-icon> por Ricardo Nozaki</h3> 
     </div>
-
-
     <div class="recipe__card">
-        <img src="../img/receitas/Design sem nome-24.png" alt="" class="recipe__image-all flash-effect-2">
-        <p class="paragraph title-recipe">Chocolate Quente com Rum!</p>
-        <p class="paragraph">O Chocolate Quente perfeito combinacao de chocolate e rum.
-            Saboroso e cremoso!</p>
-        <a href="../pages/recipe-1.html"
-                class="btn-main">Ver Receita</a></h2>
-        <h3 class="recipe__creator"><ion-icon name="person"></ion-icon> por Ricardo Nozaki</h3> 
+        <img src="/img/pre-recipe/1732046328582.png" alt="e" class="recipe__image-all flash-effect-2">
+        <p class="paragraph title-recipe">e</p>
+        <p class="paragraph">e</p>
+        <a href="/pages/e.html" class="btn-main">Ver Receita</a>
+        <h3 class="recipe__creator"><ion-icon name="person"></ion-icon> por Ricardo Nozaki</h3>
     </div>
-    
+    <div class="recipe__card">
+        <img src="/img/pre-recipe/1732046456118.png" alt="titulo" class="recipe__image-all flash-effect-2">
+        <p class="paragraph title-recipe">titulo</p>
+        <p class="paragraph">des</p>
+        <a href="/pages/titulo.html" class="btn-main">Ver Receita</a>
+        <h3 class="recipe__creator"><ion-icon name="person"></ion-icon> por Ricardo Nozaki</h3>
+    </div>
+
 
     
+
+    <div id="recipePreviewsContainer"></div>
+          <div class="recipe__card">
+              <img src="/img/pre-recipe/1732049276788.png" alt="s" class="recipe__image-all flash-effect-2">
+              <p class="paragraph title-recipe">s</p>
+              <p class="paragraph">s</p>
+              <a href="/pages/s.html" class="btn-main">Ver Receita</a>
+              <h3 class="recipe__creator"><ion-icon name="person"></ion-icon> por Ricardo Nozaki</h3>
+          </div>
+
 
    </div>
    
-    
+   <div class="form-section">
+    <h2>Adicionar Receita</h2>
+    <form id="combinedRecipeForm">
+        <!-- Formulário de Prévia de Receita -->
+        <div class="form-group">
+            <label for="recipeImage">Imagem da Receita:</label>
+            <input type="file" id="recipeImage" name="recipeImage" accept="image/*" required>
 
-     <!-- Formulário de Adicionar Receita -->
-    
-    <!-- Formulário de Adicionar Prévia de Receita -->
-<div class="form-section">
-    <h2>Adicionar Prévia de Receita</h2>
-    <form id="newRecipePreviewForm" action="http://localhost:3001/add-recipe-preview" method="POST" enctype="multipart/form-data">
-        <label for="recipeImage">Imagem da Receita:</label>
-        <input type="file" id="recipeImage" name="recipeImage" accept="image/*" required>
+            <label for="recipeTitle">Título da Receita:</label>
+            <input type="text" id="recipeTitle" name="recipeTitle" required>
 
-        <label for="recipeTitle">Título da Receita:</label>
-        <input type="text" id="recipeTitle" name="recipeTitle" required>
+            <label for="recipeDescription">Descrição:</label>
+            <textarea id="recipeDescription" name="recipeDescription" rows="4" required></textarea>
+        </div>
 
-        <label for="recipeDescription">Descrição:</label>
-        <textarea id="recipeDescription" name="recipeDescription" rows="4" required></textarea>
+        <!-- Formulário Completo de Receita -->
+        <div class="form-group">
+            <label for="ingredients">Ingredientes:</label>
+            <textarea id="ingredients" name="ingredients" rows="4" placeholder="Digite os ingredientes aqui..." required></textarea>
 
-        <button type="submit">Adicionar Prévia</button>
+            <label for="preparation">Modo de Preparo:</label>
+            <textarea id="preparation" name="preparation" rows="6" placeholder="Descreva o modo de preparo..." required></textarea>
+        </div>
+
+        <button type="submit">Adicionar e Publicar Receita</button>
     </form>
 </div>
 
+    
     <footer class="footer">
         <div class="grid-5cols">
             <div class="logo-col">
@@ -140,49 +161,45 @@
         <p class="copyright">&copy; 2023 Ricardo Nozaki. Todos os direitos reservados. Site por <a href="https://andreanozaki.com/">AN Sites</a></p>
     </footer>
     <script src="/js/cookie-banner.js" defer></script>
+  
     <script>
-       document.addEventListener('DOMContentLoaded', function () {
-    fetch('http://localhost:3001/get-recipe-previews')
-    .then(response => response.json())
-    .then(data => {
-        const container = document.querySelector('.container-all-recipes');
-        data.forEach(recipe => {
-    const recipeCard = `
-        <div class="recipe__card">
-            <img src="${recipe.image_path}" alt="${recipe.title}" class="recipe__image-all flash-effect-2">
-            <p class="paragraph title-recipe">${recipe.title}</p>
-            <p class="paragraph">${recipe.description}</p>
-            <a href="${recipe.page_link}" class="btn-main">Ver Receita</a>
-            <h3 class="recipe__creator"><ion-icon name="person"></ion-icon> por Ricardo Nozaki</h3>
-<button class="delete-btn" onclick="deleteRecipe(${recipe.preview_id})">Deletar</button>
-        </div>
-    `;
-    container.innerHTML += recipeCard;
-});
+document.addEventListener('DOMContentLoaded', function() {
+    const combinedRecipeForm = document.getElementById('combinedRecipeForm');
 
-    })
-    .catch(error => console.error('Erro ao carregar as receitas:', error));
-});
+    if (combinedRecipeForm) {
+        combinedRecipeForm.addEventListener('submit', function(e) {
+            e.preventDefault();
 
-function deleteRecipe(recipeId) {
-    if (confirm('Tem certeza que deseja deletar esta prévia de receita?')) {
-        fetch(`http://localhost:3001/delete-recipe-preview/${recipeId}`, {
-            method: 'DELETE'
-        })
-        .then(response => response.json())
-        .then(data => {
-            alert(data.message);
-            location.reload();
-        })
-        .catch(error => {
-            console.error('Erro ao deletar a prévia da receita:', error);
-            alert('Erro ao deletar a receita. Tente novamente.');
+            const formData = new FormData(combinedRecipeForm);
+
+            fetch('http://localhost:3001/add-complete-recipe', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert('Receita completa publicada com sucesso!');
+                    window.location.href = data.link;
+                } else {
+                    alert(data.message);
+                }
+            })
+            .catch(error => {
+                console.error('Erro:', error);
+                alert('Erro ao adicionar a receita. Tente novamente.');
+            });
         });
     }
-}
+});
 
 
 
     </script>
+    
+
 </body>
 </html>
+          
+       
+         
