@@ -15,23 +15,18 @@ const multer = require('multer');
 const app = express();
 const port = 3001;
 
-
-
 // Middleware para habilitar CORS
 app.use(cors({
-  origin: '*', // Verifique se isso é seguro para sua aplicação
+  origin: '*',
   methods: ['GET', 'POST', 'DELETE', 'PUT']
 }));
-
 
 // Middleware para processar dados enviados no formato application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json()); // Para processar JSON enviado no corpo da requisição
 
-
 // Middleware para servir imagens estáticas
 app.use('/img', express.static(path.join(__dirname, '../img')));
-
 
 // Configuração do multer
 const storage = multer.diskStorage({
@@ -49,9 +44,6 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage });
 
-
-
-//nova instancia do multer , conf separada 
 // Configuração do multer para pré-visualização de receitas
 const storagePreRecipe = multer.diskStorage({
   destination: (req, file, cb) => {
@@ -124,7 +116,7 @@ app.post('/login', (req, res) => {
   });
 });
 
-//contact
+// Rota para contato
 app.post('/contact', (req, res) => {
   console.log('Dados recebidos:', req.body); // Verifica se os dados estão sendo recebidos
   const { name, email, message } = req.body;
@@ -140,7 +132,7 @@ app.post('/contact', (req, res) => {
   });
 });
 
-//forgot password
+// Rota para redefinição de senha
 app.post('/forgot-password', (req, res) => {
   const { email } = req.body;
 
@@ -153,14 +145,12 @@ app.post('/forgot-password', (req, res) => {
       }
       
       if (results.length > 0) {
-          // Enviar email para redefinir senha (configurar serviço de e-mail)
           return res.json({ message: 'Instruções para redefinição de senha enviadas para seu email.' });
       } else {
           return res.status(404).json({ message: 'Email não encontrado.' });
       }
   });
 });
-
 
 // Rota para registrar venda de produtos
 app.post('/register-sale', (req, res) => {
@@ -175,6 +165,7 @@ app.post('/register-sale', (req, res) => {
     res.json({ message: 'Venda registrada com sucesso!' });
   });
 });
+
 // Rota para visualizar todas as vendas
 app.get('/sales', (req, res) => {
   const query = 'SELECT * FROM sales';
@@ -185,17 +176,11 @@ app.get('/sales', (req, res) => {
       return res.status(500).json({ message: 'Erro ao buscar vendas' });
     }
     
-    console.log('Vendas registradas:');
-    results.forEach((sale) => {
-      console.log(`ID: ${sale.id}, Produto: ${sale.product}, Preço: R$${sale.price}, Data da Venda: ${sale.sale_date}`);
-    });
-
     res.json(results);
   });
 });
 
-
-//rota relatorio pdf
+// Rota para gerar relatório em PDF
 app.get('/generate-report', (req, res) => {
   const { month, year } = req.query;
   const query = month === 'all' 
@@ -225,7 +210,6 @@ app.get('/generate-report', (req, res) => {
     let currentMonth = '';
     let totalPrice = 0; // variável para armazenar a soma dos preços
 
-    // Cabeçalho da tabela
     const drawHeader = () => {
       doc.fontSize(12).text('ID', startX, tableTop, { width: columnWidths.id, align: 'center' });
       doc.text('Produto', startX + columnWidths.id, tableTop, { width: columnWidths.product, align: 'center' });
@@ -276,7 +260,6 @@ app.get('/generate-report', (req, res) => {
       }
     });
 
-    // Exibe o total ao final do relatório
     yPosition += 20;
     doc.fontSize(12).font('Helvetica-Bold').text(`Total Preço: R$ ${totalPrice.toFixed(2)}`, startX, yPosition, { align: 'right' });
 
@@ -284,15 +267,12 @@ app.get('/generate-report', (req, res) => {
   });
 });
 
-
-
-
+// Rota para upload de imagens
 app.post('/upload', upload.single('image'), (req, res) => {
   console.log('Rota /upload chamada');
   console.log('Dados recebidos:', req.body);
   console.log('Arquivo:', req.file);
 
-  // Lógica para salvar o caminho no banco de dados
   const imagePath = `/img/creation-main/${req.body.page}/${req.file.filename}`;
   const query = 'INSERT INTO images (page, image_path) VALUES (?, ?)';
   connection.query(query, [req.body.page, imagePath], (err) => {
@@ -300,13 +280,11 @@ app.post('/upload', upload.single('image'), (req, res) => {
       console.error('Erro ao inserir no banco de dados:', err);
       return res.status(500).send();
     }
-    res.status(200).send(); // Responde apenas com status 200 sem mensagem
+    res.status(200).send();
   });
 });
 
-
-
-//rota
+// Rota para obter imagens
 app.get('/images/:page', (req, res) => {
   const page = req.params.page;
   const imageDir = path.join(__dirname, '../img/creation-main', page);
@@ -329,21 +307,13 @@ app.get('/images/:page', (req, res) => {
   });
 });
 
-
-
-
-
-//rota
-
+// Rota para deletar imagens
 app.delete('/delete-image/:id', (req, res) => {
   console.log('Requisição recebida para deletar imagem com ID:', req.params.id); 
   const imageId = req.params.id;
 
-  // Ajuste a consulta para buscar pelo nome do arquivo em vez de `id` se necessário
   const query = 'SELECT image_path FROM images WHERE image_path LIKE ?';
   connection.query(query, [`%${imageId}`], (err, results) => {
-      console.log('Resultado da consulta:', results); // Adicione esta linha para verificar o resultado da consulta
-
       if (err) {
           console.error('Erro ao buscar imagem:', err);
           return res.status(500).json({ message: 'Erro ao buscar imagem' });
@@ -351,16 +321,13 @@ app.delete('/delete-image/:id', (req, res) => {
 
       if (results.length > 0) {
           const imagePath = path.join(__dirname, '..', results[0].image_path);
-          console.log('Caminho da imagem:', imagePath); // Para verificar o caminho
 
-          // Excluir o arquivo do sistema de arquivos
           fs.unlink(imagePath, (err) => {
               if (err) {
                   console.error('Erro ao deletar arquivo:', err);
                   return res.status(500).json({ message: 'Erro ao deletar arquivo' });
               }
 
-              // Excluir a entrada do banco de dados
               const deleteQuery = 'DELETE FROM images WHERE image_path LIKE ?';
               connection.query(deleteQuery, [`%${imageId}`], (err) => {
                   if (err) {
@@ -374,27 +341,6 @@ app.delete('/delete-image/:id', (req, res) => {
       } else {
           res.status(404).json({ message: 'Imagem não encontrada' });
       }
-  });
-});
-
-
-
-
-
-app.post('/add-recipe-preview', uploadPreRecipe.single('recipeImage'), (req, res) => {
-  const { recipeTitle, recipeDescription } = req.body;
-  const imagePath = `/img/pre-recipe/${req.file.filename}`;
-
-  // Nome da página gerada com base no título da receita
-  const pageName = recipeTitle.toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]+/g, '') + '.html';
-
-  connection.query('INSERT INTO recipe_previews (title, description, image_path, page_link) VALUES (?, ?, ?, ?)', 
-  [recipeTitle, recipeDescription, imagePath, `/pages/${pageName}`], (err, results) => {
-      if (err) {
-          console.error('Erro ao inserir prévia da receita no banco de dados:', err);
-          return res.status(500).json({ message: 'Erro ao adicionar prévia da receita' });
-      }
-      res.status(200).json({ success: true, recipeId: results.insertId, message: 'Prévia criada com sucesso.' });
   });
 });
 
