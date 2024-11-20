@@ -472,6 +472,38 @@ combinedRecipeForm.addEventListener('submit', function(e) {
       alert('Erro ao adicionar a receita. Tente novamente.');
   });
 });
-
-
 });//fim Dom
+
+
+document.addEventListener('DOMContentLoaded', function () {
+
+//clique p deletar receita
+  document.body.addEventListener('click', (event) => {
+      if (event.target.classList.contains('delete-recipe-btn')) {
+          const recipeId = event.target.getAttribute('data-id');
+
+          if (confirm('Tem certeza que deseja deletar esta receita?')) {
+              fetch(`http://localhost:3001/delete-recipe/${recipeId}`, {
+                  method: 'DELETE'
+              })
+              .then(response => response.json())
+              .then(data => {
+                  if (data.success) {
+                      alert('Receita deletada com sucesso!');
+                      // Remove o card ou redireciona
+                      event.target.closest('.recipe__card')?.remove();
+                  } else {
+                      alert(data.message);
+                  }
+              })
+              .catch(error => {
+                  console.error('Erro ao deletar a receita:', error);
+                  alert('Erro ao deletar a receita. Tente novamente.');
+              });
+          }
+      }
+  });
+});
+
+
+

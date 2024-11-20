@@ -346,6 +346,7 @@ app.delete('/delete-image/:id', (req, res) => {
 
 
  // Rota para upload de pré-visualização de receitas
+  
 // Rota para upload de pré-visualização de receitas
 app.post('/add-complete-recipe', uploadPreRecipe.single('recipeImage'), (req, res) => {
   const { recipeTitle, recipeDescription, ingredients, preparation } = req.body;
@@ -382,6 +383,8 @@ app.post('/add-complete-recipe', uploadPreRecipe.single('recipeImage'), (req, re
                   <h3>Modo de Preparo:</h3>
                   <p>${preparation.replace(/\n/g, '<br>')}</p>
               </div>
+                      <button class="delete-recipe-btn" data-id="${results.insertId}">Deletar Receita</button>
+
           </div>
           <footer class="footer"></footer>
       </body>
@@ -403,8 +406,9 @@ app.post('/add-complete-recipe', uploadPreRecipe.single('recipeImage'), (req, re
               <p class="paragraph">${recipeDescription}</p>
               <a href="/pages/${pageName}" class="btn-main">Ver Receita</a>
               <h3 class="recipe__creator"><ion-icon name="person"></ion-icon> por Ricardo Nozaki</h3>
+              <button class="delete-recipe-btn" data-id="${results.insertId}">Deletar Receita</button>
           </div>`;
-
+          
           const allRecipesPath = path.join(__dirname, '../pages/all-recipes.html');
 
           fs.readFile(allRecipesPath, 'utf8', (err, data) => {
@@ -456,57 +460,26 @@ app.get('/pages/:pageName', (req, res) => {
   res.sendFile(path.join(__dirname, `../pages/${pageName}`));
 });
 
-
-
-app.delete('/delete-recipe-preview/:id', (req, res) => {
+app.delete('/delete-recipe/:id', (req, res) => {
   const recipeId = req.params.id;
 
-  const selectQuery = 'SELECT page_link, image_path FROM recipe_previews WHERE preview_id = ?';
-  connection.query(selectQuery, [recipeId], (err, results) => {
+  const deleteQuery = 'DELETE FROM recipe_previews WHERE preview_id = ?';
+
+  connection.query(deleteQuery, [recipeId], (err, result) => {
       if (err) {
-          console.error('Erro ao buscar a receita:', err);
-          return res.status(500).json({ message: 'Erro ao buscar a receita' });
+          console.error('Erro ao executar a query:', err);
+          return res.status(500).json({ success: false, message: 'Erro ao deletar a receita.' });
       }
 
-      if (results.length > 0) {
-          const { page_link, image_path } = results[0];
-
-          fs.unlink(path.join(__dirname, '..', page_link), (err) => {
-              if (err) {
-                  console.error('Erro ao deletar a página da receita:', err);
-              }
-          });
-
-          fs.unlink(path.join(__dirname, '..', image_path), (err) => {
-              if (err) {
-                  console.error('Erro ao deletar a imagem da receita:', err);
-              }
-          });
-
-          const deleteQuery = 'DELETE FROM recipe_previews WHERE preview_id = ?';
-          connection.query(deleteQuery, [recipeId], (err) => {
-              if (err) {
-                  console.error('Erro ao deletar o registro da receita:', err);
-                  return res.status(500).json({ message: 'Erro ao deletar o registro da receita' });
-              }
-              res.status(200).json({ message: 'Prévia da receita deletada com sucesso' });
-          });
+      if (result.affectedRows > 0) {
+          console.log(`Receita com preview_id ${recipeId} deletada com sucesso.`);
+          res.json({ success: true, message: 'Receita deletada com sucesso.' });
       } else {
-          res.status(404).json({ message: 'Receita não encontrada' });
+          console.warn(`Receita com preview_id ${recipeId} não encontrada.`);
+          res.status(404).json({ success: false, message: 'Receita não encontrada.' });
       }
   });
 });
-
-
-
-
-
-
-
-
-
-
-
 
 // Iniciar o servidor
 app.listen(port, () => {
