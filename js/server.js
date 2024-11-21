@@ -359,36 +359,110 @@ app.post('/add-complete-recipe', uploadPreRecipe.single('recipeImage'), (req, re
           console.error('Erro ao inserir a receita completa no banco de dados:', err);
           return res.status(500).json({ message: 'Erro ao adicionar a receita completa' });
       }
+// Criação da página completa da receita
+const pageContent = `
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>${recipeTitle}</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <script src="/js/script.js" defer></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule="" src="https://unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.js"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Unica+One&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <a href="../index.html">
+            <img class="logo" src="../img/base/logo/lo2.png" alt="logo" id="logo">
+        </a>
+        <nav class="main-nav">
+            <ul class="main-nav-list">
+                <li><a class="main-nav-link" href="/index.html#aboutme">Chef</a></li>
+                <li><a class="main-nav-link" href="/index.html#creations">Criações</a></li>
+                <li><a class="main-nav-link" href="/index.html#recipe">Receitas</a></li>
+                <li><a class="main-nav-link nav-cta" href="/index.html#ebooks">E-book</a></li>
+                <li><a class="main-nav-link" href="/pages/contato.html">Contato</a></li>
+                <li><a class="main-nav-link" href="/login.html">Login</a></li>
+                <li><a id="logout-link" class="main-nav-link" href="#" style="display: none;">Sair</a></li>
+            </ul>
+        </nav>
+        <button class="hamburger" aria-label="Menu" aria-expanded="false">
+            <ion-icon name="menu-outline" class="icon-menu"></ion-icon>
+            <ion-icon name="close-outline" class="icon-close"></ion-icon>
+        </button>
+    </header>
+    <div class="recipes">
+        <div class="left-side">
+            <h2 class="left-side__title">${recipeTitle}</h2>
+            <h3 class="left-side__subheading"><ion-icon name="person"></ion-icon> Receita feita por Chef Ricardo Nozaki</h3>
+            <img src="${imagePath}" alt="${recipeTitle}" class="left-side__photo">
+        </div>
+        <div class="right-side">
+            <h2 class="right-side__description paragraph">Confira essa deliciosa receita:</h2>
+            <div class="status-recipe">
+                <div class="time">
+                    <span class="icon-recipe">TEMPO</span><br>
+                    <span><ion-icon name="time" class="icon-recipe"></ion-icon> 20 min</span>
+                </div>
+                <div class="nivel">
+                    <span class="icon-recipe">NÍVEL</span><br>
+                    <span><ion-icon name="trending-up" class="icon-recipe"></ion-icon> Fácil</span>
+                </div>
+                <div class="rendimento">
+                    <span class="icon-recipe">RENDIMENTO</span><br>
+                    <span><ion-icon name="cafe" class="icon-recipe"></ion-icon> 4 porções</span>
+                </div>
+            </div>
+            <span class="topic"><strong>Ingredientes:</strong></span>
+            <ul class="ingredients">
+                ${ingredients.split('\n').map(ing => `<li class="paragraph">${ing}</li>`).join('')}
+            </ul>
+            <div class="prepare">
+                <span class="topic"><strong>Modo de Preparo:</strong></span>
+                <p>${preparation.replace(/\n/g, '<br>')}</p>
+            </div>
+        </div>
+    </div>
+    <footer class="footer">
+        <div class="grid-5cols">
+            <div class="logo-col">
+                <a href="index.html">
+                    <img src="../img/base/logo/lo2.png" alt="logo" class="logo">
+                </a>
+            </div>
+            <div class="address-col">
+                <p class="footer-heading">Contate-nos</p>
+                <a class="footer-link" href="mailto:elitecakes@br.com"><ion-icon name="mail"></ion-icon> ricardonozaki@gmail.com</a>
+            </div>
+            <div class="address-col">
+                <p class="footer-heading">Links Úteis</p>
+                <ul>
+                    <li><a class="footer-link" href="#recipe">Receitas</a></li>
+                    <li><a class="footer-link" href="#ebooks">E-books</a></li>
+                    <li><a class="footer-link" href="#contact">Contato</a></li>
+                </ul>
+            </div>
+            <div class="social-links">
+                <p class="footer-heading">Siga-me:</p>
+                <ul class="social-media-footer">
+                    <li><a href="https://www.instagram.com/andreahcodes/" target="_blank" class="icon"><ion-icon name="logo-instagram"></ion-icon></a></li>
+                    <li><a href="https://www.linkedin.com/in/andreahcodes/" target="_blank" class="icon"><ion-icon name="logo-facebook"></ion-icon></a></li>
+                </ul>
+            </div>
+        </div>
+        <p class="copyright">&copy; 2023 Ricardo Nozaki. Todos os direitos reservados. Site por <a href="https://andreanozaki.com/">AN Sites</a></p>
+    </footer>
+    <script src="/js/cookie-banner.js" defer></script>
+</body>
+</html>`;
 
-      // Criação da página completa da receita
-      const pageContent = `
-      <!DOCTYPE html>
-      <html lang="pt-br">
-      <head>
-          <meta charset="UTF-8">
-          <meta name="viewport" content="width=device-width, initial-scale=1.0">
-          <title>${recipeTitle}</title>
-          <link rel="stylesheet" href="../css/style.css">
-      </head>
-      <body>
-          <header class="header"></header>
-          <div class="recipes">
-              <div class="left-side">
-                  <h2 class="left-side__title">${recipeTitle}</h2>
-                  <img src="${imagePath}" alt="${recipeTitle}" class="left-side__photo">
-              </div>
-              <div class="right-side">
-                  <h3>Ingredientes:</h3>
-                  <ul class="ingredients">${ingredients.split('\n').map(ing => `<li>${ing}</li>`).join('')}</ul>
-                  <h3>Modo de Preparo:</h3>
-                  <p>${preparation.replace(/\n/g, '<br>')}</p>
-              </div>
-                      <button class="delete-recipe-btn" data-id="${results.insertId}">Deletar Receita</button>
-
-          </div>
-          <footer class="footer"></footer>
-      </body>
-      </html>`;
 
       const filePath = path.join(__dirname, '../pages', pageName);
 
@@ -462,24 +536,25 @@ app.get('/pages/:pageName', (req, res) => {
 
 app.delete('/delete-recipe/:id', (req, res) => {
   const recipeId = req.params.id;
+  console.log('Recebendo requisição para deletar ID:', recipeId); // Log adicional
 
-  const deleteQuery = 'DELETE FROM recipe_previews WHERE preview_id = ?';
-
-  connection.query(deleteQuery, [recipeId], (err, result) => {
+  const query = 'DELETE FROM recipe_previews WHERE preview_id = ?';
+  connection.query(query, [recipeId], (err, results) => {
       if (err) {
-          console.error('Erro ao executar a query:', err);
-          return res.status(500).json({ success: false, message: 'Erro ao deletar a receita.' });
+          console.error('Erro ao deletar receita do banco de dados:', err);
+          return res.status(500).json({ success: false, message: 'Erro ao deletar receita.' });
       }
 
-      if (result.affectedRows > 0) {
-          console.log(`Receita com preview_id ${recipeId} deletada com sucesso.`);
-          res.json({ success: true, message: 'Receita deletada com sucesso.' });
+      if (results.affectedRows > 0) {
+          console.log('Receita deletada com sucesso, ID:', recipeId); // Log adicional
+          res.status(200).json({ success: true, message: 'Receita deletada com sucesso!' });
       } else {
-          console.warn(`Receita com preview_id ${recipeId} não encontrada.`);
+          console.warn('Receita não encontrada, ID:', recipeId); // Log adicional
           res.status(404).json({ success: false, message: 'Receita não encontrada.' });
       }
   });
 });
+
 
 // Iniciar o servidor
 app.listen(port, () => {
