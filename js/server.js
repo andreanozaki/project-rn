@@ -556,6 +556,27 @@ app.delete('/delete-recipe/:id', (req, res) => {
 });
 
 
+// Rota para enviar feedback
+app.post('/feedback', (req, res) => {
+  const { user_email, rating, comment } = req.body;
+
+  // Validar se a avaliação está entre os valores permitidos
+  const validRatings = ['sim', 'não', 'parcialmente'];
+  if (!validRatings.includes(rating)) {
+      return res.status(400).json({ message: 'Avaliação inválida.' });
+  }
+
+  const query = 'INSERT INTO feedbacks (user_email, rating, comment) VALUES (?, ?, ?)';
+  connection.query(query, [user_email || null, rating, comment || null], (err) => {
+      if (err) {
+          console.error('Erro ao salvar feedback no banco de dados:', err);
+          return res.status(500).json({ message: 'Erro ao salvar feedback.' });
+      }
+      res.json({ message: 'Feedback enviado com sucesso!' });
+  });
+});
+
+
 // Iniciar o servidor
 app.listen(port, () => {
   console.log(`Servidor rodando na porta ${port}`);

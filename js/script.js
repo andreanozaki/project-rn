@@ -472,10 +472,75 @@ combinedRecipeForm.addEventListener('submit', function(e) {
       alert('Erro ao adicionar a receita. Tente novamente.');
   });
 });
+
+
+
+document.addEventListener('DOMContentLoaded', () => {
+  const feedbackButton = document.getElementById('openFeedbackForm');
+  const feedbackModal = document.getElementById('feedbackModal');
+  const closeModalButton = document.querySelector('.close-modal');
+  const feedbackForm = document.getElementById('feedbackForm');
+
+  // Abrir o modal ao clicar no botão de feedback
+  feedbackButton.addEventListener('click', () => {
+      feedbackModal.classList.remove('hidden');
+      feedbackModal.style.display = 'flex';
+  });
+
+  // Fechar o modal ao clicar no botão de fechar
+  closeModalButton.addEventListener('click', () => {
+      feedbackModal.style.display = 'none';
+  });
+
+  // Fechar o modal ao clicar fora do conteúdo do modal
+  window.addEventListener('click', (event) => {
+      if (event.target === feedbackModal) {
+          feedbackModal.style.display = 'none';
+      }
+  });
+
+  // Enviar o feedback
+  feedbackForm.addEventListener('submit', (event) => {
+      event.preventDefault();
+
+      const rating = document.getElementById('rating').value;
+      const comment = document.getElementById('comment').value;
+
+      if (!rating) {
+          alert('Por favor, selecione uma avaliação.');
+          return;
+      }
+
+      fetch('http://localhost:3001/feedback', {
+          method: 'POST',
+          headers: {
+              'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ rating, comment }),
+      })
+          .then((response) => {
+              if (!response.ok) {
+                  throw new Error('Erro ao enviar feedback.');
+              }
+              return response.json();
+          })
+          .then((data) => {
+              alert(data.message);
+              feedbackForm.reset();
+              feedbackModal.style.display = 'none';
+          })
+          .catch((error) => {
+              console.error('Erro ao enviar feedback:', error);
+              alert('Erro ao enviar feedback. Tente novamente.');
+          });
+  });
+});
+
+
+
 });//fim Dom
 
 
-document.addEventListener('DOMContentLoaded', function () {
 
 //clique p deletar receita
   document.body.addEventListener('click', (event) => {
@@ -503,7 +568,4 @@ document.addEventListener('DOMContentLoaded', function () {
           }
       }
   });
-});
-
-
 
