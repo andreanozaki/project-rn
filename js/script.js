@@ -185,17 +185,26 @@ const loggedInEmail = localStorage.getItem('loggedInEmail');
 
 // Função para exibir ou ocultar elementos com base no login do chef
 function toggleChefFeatures(isChef) {
-    if (isChef) {
-        sessionStorage.setItem('isChef', 'true');
-        if (salesFormContainer) salesFormContainer.style.display = 'block';
-        if (reportFormContainer) reportFormContainer.style.display = 'block';
-        if (uploadForm) uploadForm.style.display = 'block'; // Exibe o formulário de upload
-    } else {
-        sessionStorage.removeItem('isChef');
-        if (salesFormContainer) salesFormContainer.style.display = 'none';
-        if (reportFormContainer) reportFormContainer.style.display = 'none';
-        if (uploadForm) uploadForm.style.display = 'none'; // Oculta o formulário de upload
-    }
+  const viewFeedbacksButton = document.getElementById('viewFeedbacksButton'); // Seleciona o botão
+  const feedbackButton = document.getElementById('openFeedbackForm'); // Seleciona o botão "Deixar Feedback"
+
+  if (isChef) {
+      sessionStorage.setItem('isChef', 'true');
+      if (salesFormContainer) salesFormContainer.style.display = 'block';
+      if (reportFormContainer) reportFormContainer.style.display = 'block';
+      if (uploadForm) uploadForm.style.display = 'block'; // Exibe o formulário de upload
+      if (viewFeedbacksButton) viewFeedbacksButton.style.display = 'block'; // Exibe o botão para o chef
+      if (feedbackButton) feedbackButton.style.display = 'none'; // Oculta o botão "Deixar Feedback"
+
+  } else {
+      sessionStorage.removeItem('isChef');
+      if (salesFormContainer) salesFormContainer.style.display = 'none';
+      if (reportFormContainer) reportFormContainer.style.display = 'none';
+      if (uploadForm) uploadForm.style.display = 'none'; // Oculta o formulário de upload
+      if (viewFeedbacksButton) viewFeedbacksButton.style.display = 'none'; // Oculta o botão para outros usuários
+      if (feedbackButton) feedbackButton.style.display = 'block'; // Exibe o botão "Deixar Feedback"
+
+  }
 }
 
 // Verifica se o chef está logado ao carregar a página
