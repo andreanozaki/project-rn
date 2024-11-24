@@ -534,22 +534,74 @@ app.get('/pages/:pageName', (req, res) => {
   res.sendFile(path.join(__dirname, `../pages/${pageName}`));
 });
 
+
+
 app.delete('/delete-recipe/:id', (req, res) => {
   const recipeId = req.params.id;
-  console.log('Recebendo requisição para deletar ID:', recipeId); // Log adicional
 
-  const query = 'DELETE FROM recipe_previews WHERE preview_id = ?';
+  // Buscar a receita no banco de dados para obter informações
+  const query = 'SELECT page_link, image_path FROM recipe_previews WHERE preview_id = ?';
   connection.query(query, [recipeId], (err, results) => {
       if (err) {
-          console.error('Erro ao deletar receita do banco de dados:', err);
-          return res.status(500).json({ success: false, message: 'Erro ao deletar receita.' });
+          console.error('Erro ao buscar a receita para deletar:', err);
+          return res.status(500).json({ success: false, message: 'Erro ao buscar a receita para deletar.' });
       }
 
-      if (results.affectedRows > 0) {
-          console.log('Receita deletada com sucesso, ID:', recipeId); // Log adicional
-          res.status(200).json({ success: true, message: 'Receita deletada com sucesso!' });
+      if (results.length > 0) {
+          const { page_link, image_path } = results[0];
+          const pagePath = path.join(__dirname, '../pages', path.basename(page_link));
+          const imagePath = path.join(__dirname, '..', image_path);
+          const allRecipesPath = path.join(__dirname, '../pages/all-recipes.html');
+
+          // Deletar o registro do banco de dados
+          const deleteQuery = 'DELETE FROM recipe_previews WHERE preview_id = ?';
+          connection.query(deleteQuery, [recipeId], (deleteErr) => {
+              if (deleteErr) {
+                  console.error('Erro ao deletar receita do banco de dados:', deleteErr);
+                  return res.status(500).json({ success: false, message: 'Erro ao deletar a receita.' });
+              }
+
+              // Deletar o arquivo da página da receita
+              fs.unlink(pagePath, (fsErr) => {
+                  if (fsErr && fsErr.code !== 'ENOENT') {
+                      console.error('Erro ao deletar o arquivo da página:', fsErr);
+                  }
+
+                  // Deletar o arquivo da imagem da receita
+                  fs.unlink(imagePath, (imageErr) => {
+                      if (imageErr && imageErr.code !== 'ENOENT') {
+                          console.error('Erro ao deletar a imagem da receita:', imageErr);
+                      }
+
+                      // Atualizar o arquivo all-recipes.html
+                      fs.readFile(allRecipesPath, 'utf8', (readErr, fileContent) => {
+                          if (readErr) {
+                              console.error('Erro ao ler o arquivo all-recipes.html:', readErr);
+                              return res.status(500).json({ success: false, message: 'Erro ao atualizar a página de receitas.' });
+                          }
+
+                          // Usar regex para encontrar e remover a div correspondente
+                          const recipeDivRegex = new RegExp(
+                              `<div class="recipe__card">[\\s\\S]*?data-id="${recipeId}"[\\s\\S]*?</div>`,
+                              'g'
+                          );
+                          const updatedContent = fileContent.replace(recipeDivRegex, '');
+
+                          fs.writeFile(allRecipesPath, updatedContent, 'utf8', (writeErr) => {
+                              if (writeErr) {
+                                  console.error('Erro ao atualizar o arquivo all-recipes.html:', writeErr);
+                                  return res.status(500).json({ success: false, message: 'Erro ao atualizar a página de receitas.' });
+                              }
+
+                              console.log(`Receita, página e prévia deletadas com sucesso, ID: ${recipeId}`);
+                              res.status(200).json({ success: true, message: 'Receita e prévia deletadas com sucesso!' });
+                          });
+                      });
+                  });
+              });
+          });
       } else {
-          console.warn('Receita não encontrada, ID:', recipeId); // Log adicional
+          console.warn('Receita não encontrada, ID:', recipeId);
           res.status(404).json({ success: false, message: 'Receita não encontrada.' });
       }
   });

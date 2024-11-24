@@ -1,7 +1,6 @@
 
+
 document.addEventListener('DOMContentLoaded', function () {
-
-
 
   // Função para animações na página principal
   function activateAnimations() {
@@ -389,7 +388,6 @@ logoutLink.addEventListener('click', function (e) {
 
 
 // Gerenciamento do banner de cookies
-document.addEventListener('DOMContentLoaded', function() {
   const cookieBanner = document.getElementById('cookieBanner');
   
   if (cookieBanner) {
@@ -431,7 +429,6 @@ document.addEventListener('DOMContentLoaded', function() {
       activateTracking();
     }
   }
-});
 
 
 function deleteImage(imageId) {
@@ -452,76 +449,32 @@ function deleteImage(imageId) {
   });
 }
 
+//funccao para 
+document.body.addEventListener('click', (event) => {
+  if (event.target.classList.contains('delete-recipe-btn')) {
+      const recipeId = event.target.getAttribute('data-id');
 
-combinedRecipeForm.addEventListener('submit', function(e) {
-  e.preventDefault();
-
-  const formDataPreview = new FormData();
-  formDataPreview.append('recipeImage', document.getElementById('recipeImage').files[0]);
-  formDataPreview.append('recipeTitle', document.getElementById('recipeTitle').value);
-  formDataPreview.append('recipeDescription', document.getElementById('recipeDescription').value);
-
-  fetch('http://localhost:3001/add-recipe-preview', {
-      method: 'POST',
-      body: formDataPreview
-  })
-  .then(response => response.json())
-  .then(data => {
-      if (data.success) {
-          alert(data.message);
-
-          const formDataComplete = new FormData();
-          formDataComplete.append('recipeId', data.recipeId);
-          formDataComplete.append('ingredients', document.getElementById('ingredients').value);
-          formDataComplete.append('preparation', document.getElementById('preparation').value);
-
-          return fetch('http://localhost:3001/complete-recipe', {
-              method: 'POST',
-              body: formDataComplete
+      if (confirm('Tem certeza que deseja deletar esta receita?')) {
+          fetch(`http://localhost:3001/delete-recipe/${recipeId}`, {
+              method: 'DELETE'
+          })
+          .then(response => response.json())
+          .then(data => {
+              if (data.success) {
+                  alert(data.message);
+                  // Remove a div correspondente
+                  const recipeCard = event.target.closest('.recipe__card');
+                  if (recipeCard) recipeCard.remove();
+              } else {
+                  alert(data.message);
+              }
+          })
+          .catch(error => {
+              console.error('Erro ao deletar a receita:', error);
+              alert('Erro ao deletar a receita. Tente novamente.');
           });
-      } else {
-          throw new Error('Erro ao criar a prévia da receita.');
       }
-  })
-  .then(response => response.json())
-  .then(data => {
-      alert(data.message);
-      window.location.reload();
-  })
-  .catch(error => {
-      console.error('Erro:', error);
-      alert('Erro ao adicionar a receita. Tente novamente.');
-  });
+  }
 });
 
 });//fim Dom
-
-
-
-//clique p deletar receita
-  document.body.addEventListener('click', (event) => {
-      if (event.target.classList.contains('delete-recipe-btn')) {
-          const recipeId = event.target.getAttribute('data-id');
-
-          if (confirm('Tem certeza que deseja deletar esta receita?')) {
-              fetch(`http://localhost:3001/delete-recipe/${recipeId}`, {
-                  method: 'DELETE'
-              })
-              .then(response => response.json())
-              .then(data => {
-                  if (data.success) {
-                      alert('Receita deletada com sucesso!');
-                      // Remove o card ou redireciona
-                      event.target.closest('.recipe__card')?.remove();
-                  } else {
-                      alert(data.message);
-                  }
-              })
-              .catch(error => {
-                  console.error('Erro ao deletar a receita:', error);
-                  alert('Erro ao deletar a receita. Tente novamente.');
-              });
-          }
-      }
-  });
-
