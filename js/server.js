@@ -576,6 +576,32 @@ app.post('/feedback', (req, res) => {
   });
 });
 
+// Rota para buscar todas as mensagens de contato
+app.get('/contact-messages', (req, res) => {
+  const query = 'SELECT * FROM contacts ORDER BY created_at DESC';
+  connection.query(query, (err, results) => {
+      if (err) {
+          console.error('Erro ao buscar mensagens:', err);
+          return res.status(500).json({ message: 'Erro ao buscar mensagens.' });
+      }
+      res.json(results);
+  });
+});
+
+// Rota para buscar todos os feedbacks
+app.get('/feedbacks', (req, res) => {
+  const query = 'SELECT * FROM feedbacks ORDER BY created_at DESC';
+  connection.query(query, (err, results) => {
+      if (err) {
+          console.error('Erro ao buscar feedbacks:', err);
+          return res.status(500).json({ message: 'Erro ao buscar feedbacks.' });
+      }
+      console.log('Feedbacks encontrados:', results); // Log dos resultados para depuração
+      res.json(results);
+  });
+});
+
+
 
 // Iniciar o servidor
 app.listen(port, () => {

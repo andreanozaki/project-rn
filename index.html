@@ -209,7 +209,6 @@
         <section class="section-aboutme" id="aboutme">
 
             <div class="section-aboutme__content">
-                <!-- Div com fundo cinza para a imagem do chef -->
 
                     <img src="img/base/chef.png" alt="Chef Ricardo Nozaki em preto e branco" class="chefmain reveal-from-right flash-effect">
               
@@ -325,8 +324,20 @@
         
             <button type="submit">Enviar</button>
         </form>
-        
-        
+    </div>
+</div>
+<!-- Botão para abrir a lista de feedbacks -->
+<button id="viewFeedbacksButton" class="btn-main">Ver Meus Feedbacks</button>
+<div id="feedbackOverlay" class="modal-overlay"></div>
+
+<!-- Modal para exibir os feedbacks -->
+<div id="feedbackListModal" class="modal hidden">
+  <div class="modal-content modalview">
+        <span class="close-modal">&times;</span>
+        <h2>Feedbacks Recebidos</h2>
+        <ul id="feedbackList">
+            <!-- Feedbacks serão carregados aqui via JavaScript -->
+        </ul>
     </div>
 </div>
 
@@ -382,26 +393,40 @@
 <script>
 
     document.addEventListener('DOMContentLoaded', () => {
+
+//modal para deixar comentarios
+
     const feedbackButton = document.getElementById('openFeedbackForm');
     const feedbackModal = document.getElementById('feedbackModal');
     const closeModalButton = document.querySelector('.close-modal');
     const feedbackForm = document.getElementById('feedbackForm');
+    const feedbackOverlay = document.getElementById('feedbackOverlay'); // Seleciona o overlay
+
 
     // Abrir o modal ao clicar no botão de feedback
     feedbackButton.addEventListener('click', () => {
         feedbackModal.classList.remove('hidden');
         feedbackModal.style.display = 'flex';
+        feedbackOverlay.style.display = 'block'; // Mostra o overlay branco
+
+
     });
 
     // Fechar o modal ao clicar no botão de fechar
     closeModalButton.addEventListener('click', () => {
         feedbackModal.style.display = 'none';
+        feedbackOverlay.style.display = 'none'; // Oculta o overlay 
+
+
     });
 
     // Fechar o modal ao clicar fora do conteúdo do modal
     window.addEventListener('click', (event) => {
         if (event.target === feedbackModal) {
             feedbackModal.style.display = 'none';
+            feedbackOverlay.style.display = 'none'; // Oculta o overlay 
+
+
         }
     });
 
@@ -440,7 +465,105 @@
                 alert('Erro ao enviar feedback. Tente novamente.');
             });
     });
-});
+
+     // Função para carregar mensagens do banco de dados
+     function loadMessages() {
+        fetch('http://localhost:3001/contact-messages')
+            .then((response) => {
+                if (!response.ok) throw new Error('Erro ao buscar mensagens.');
+                return response.json();
+            })
+            .then((messages) => {
+                const messagesList = document.getElementById('messagesList');
+                messagesList.innerHTML = ''; // Limpa a lista antes de adicionar
+
+                messages.forEach((message) => {
+                    const listItem = document.createElement('li');
+                    listItem.innerHTML = `
+                        <strong>Nome:</strong> ${message.name || 'Anônimo'}<br>
+                        <strong>Email:</strong> ${message.email || 'Não informado'}<br>
+                        <strong>Mensagem:</strong> ${message.message || 'Sem mensagem'}<br>
+                        <small>Enviado em: ${new Date(message.created_at).toLocaleString()}</small>
+                    `;
+                    messagesList.appendChild(listItem);
+                });
+            })
+            .catch((error) => {
+                console.error('Erro ao carregar mensagens:', error);
+            });
+    }
+
+
+    
+});//fim dom
+
+//modal para visualizar comentarios
+    const viewFeedbacksButton = document.getElementById('viewFeedbacksButton');
+    const feedbackListModal = document.getElementById('feedbackListModal');
+    const closeModalButton = feedbackListModal.querySelector('.close-modal');
+    const feedbackList = document.getElementById('feedbackList');
+    const body = document.body;
+    const feedbackOverlay = document.getElementById('feedbackOverlay'); // Seleciona o overlay
+
+
+    // Abrir o modal ao clicar no botão
+    viewFeedbacksButton.addEventListener('click', () => {
+        feedbackListModal.classList.remove('hidden');
+        feedbackListModal.style.display = 'flex';
+        body.classList.add('no-scroll'); // Impede a rolagem do site
+        feedbackOverlay.style.display = 'block'; // Mostra o overlay branco
+
+
+
+        // Fazer a requisição para buscar os feedbacks
+        fetch('http://localhost:3001/feedbacks')
+            .then(response => {
+                if (!response.ok) throw new Error('Erro ao buscar feedbacks.');
+                return response.json();
+            })
+            .then(feedbacks => {
+                feedbackList.innerHTML = ''; // Limpa a lista antes de adicionar os feedbacks
+
+                if (feedbacks.length === 0) {
+                    feedbackList.innerHTML = '<li>Nenhum feedback encontrado.</li>';
+                } else {
+                    feedbacks.forEach(feedback => {
+                        const listItem = document.createElement('li');
+                        listItem.innerHTML = `
+                            <strong>Email:</strong> ${feedback.user_email || 'Anônimo'}<br>
+                            <strong>Avaliação:</strong> ${feedback.rating}<br>
+                            <strong>Comentário:</strong> ${feedback.comment || 'Nenhum comentário'}<br>
+                            <small>Enviado em: ${new Date(feedback.created_at).toLocaleString()}</small>
+                        `;
+                        feedbackList.appendChild(listItem);
+                    });
+                }
+            })
+            .catch(error => {
+                console.error('Erro ao carregar feedbacks:', error);
+                feedbackList.innerHTML = '<li>Erro ao carregar feedbacks.</li>';
+            });
+    });
+
+    // Fechar o modal ao clicar no botão de fechar
+    closeModalButton.addEventListener('click', () => {
+        feedbackListModal.style.display = 'none';
+        body.classList.remove('no-scroll'); // Permite rolar novamente
+        feedbackOverlay.style.display = 'none'; // Oculta o overlay 
+
+
+    });
+
+    // Fechar o modal ao clicar fora do conteúdo
+    window.addEventListener('click', (event) => {
+        if (event.target === feedbackListModal) {
+            feedbackListModal.style.display = 'none';
+            body.classList.remove('no-scroll'); // Permite rolar novamente
+            feedbackOverlay.style.display = 'none'; // Oculta o overlay 
+
+
+        }
+    });
 
 </script>
 </body>

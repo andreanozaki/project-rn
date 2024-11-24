@@ -176,71 +176,83 @@ document.addEventListener('DOMContentLoaded', function () {
     loadComments();
   }
 
-   
-  // Controle de exibição dos formulários de vendas e relatórios apenas para o chef
+  // Controle de exibição dos formulários de vendas, relatórios e upload apenas para o chef
 const loginForm = document.getElementById('loginForm');
 const salesFormContainer = document.querySelector('.vendas-container');
 const reportFormContainer = document.querySelector('.relatorio-container');
+const uploadForm = document.querySelector('form[action="http://localhost:3001/upload"]'); // Formulário de upload
 const loggedInEmail = localStorage.getItem('loggedInEmail');
 
-if (localStorage.getItem('isChefLoggedIn') === 'true') {
-    if (loggedInEmail === 'andreaflordoceu@gmail.com') {
-      sessionStorage.setItem('isChef', 'true');
-
-        salesFormContainer.style.display = 'block';
-        reportFormContainer.style.display = 'block';
+// Função para exibir ou ocultar elementos com base no login do chef
+function toggleChefFeatures(isChef) {
+    if (isChef) {
+        sessionStorage.setItem('isChef', 'true');
+        if (salesFormContainer) salesFormContainer.style.display = 'block';
+        if (reportFormContainer) reportFormContainer.style.display = 'block';
+        if (uploadForm) uploadForm.style.display = 'block'; // Exibe o formulário de upload
     } else {
-        salesFormContainer.style.display = 'none';
-        reportFormContainer.style.display = 'none';
+        sessionStorage.removeItem('isChef');
+        if (salesFormContainer) salesFormContainer.style.display = 'none';
+        if (reportFormContainer) reportFormContainer.style.display = 'none';
+        if (uploadForm) uploadForm.style.display = 'none'; // Oculta o formulário de upload
     }
 }
+
+// Verifica se o chef está logado ao carregar a página
+const isChefLoggedIn = localStorage.getItem('isChefLoggedIn') === 'true' && loggedInEmail === 'andreaflordoceu@gmail.com';
+toggleChefFeatures(isChefLoggedIn);
+
 if (loginForm) {
-  loginForm.addEventListener('submit', function (e) {
-      e.preventDefault();
+    loginForm.addEventListener('submit', function (e) {
+        e.preventDefault();
 
-      const email = document.querySelector('input[name="email"]').value;
-      const password = document.querySelector('input[name="password"]').value;
+        const email = document.querySelector('input[name="email"]').value;
+        const password = document.querySelector('input[name="password"]').value;
 
-      fetch('http://localhost:3001/login', {
-          method: 'POST',
-          headers: {
-              'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({ email, password })
-      })
-      .then(response => {
-          if (response.status === 200) {
-              return response.json();
-          } else if (response.status === 401) {
-              alert('Usuário não encontrado ou senha incorreta.');
-              throw new Error('Usuário não encontrado ou senha incorreta.');
-          } else {
-              throw new Error('Erro no servidor.');
-          }
-      })
-      .then(data => {
-          alert(data.message);
-          localStorage.setItem('loggedInEmail', email);
+        fetch('http://localhost:3001/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ email, password })
+        })
+        .then(response => {
+            if (response.status === 200) {
+                return response.json();
+            } else if (response.status === 401) {
+                alert('Usuário não encontrado ou senha incorreta.');
+                throw new Error('Usuário não encontrado ou senha incorreta.');
+            } else {
+                throw new Error('Erro no servidor.');
+            }
+        })
+        .then(data => {
+            alert(data.message);
+            localStorage.setItem('loggedInEmail', email);
 
-          if (data.message === 'Login bem-sucedido') {
-              localStorage.setItem('isChefLoggedIn', email === 'andreaflordoceu@gmail.com' ? 'true' : 'false');
-              
-              // Limpa o formulário de login
-              loginForm.reset();
-              
-              // Redireciona para a página index.html
-              window.location.href = 'index.html';
-          } else {
-              localStorage.removeItem('isChefLoggedIn');
-              localStorage.removeItem('loggedInEmail');
-          }
-      })
-      .catch(error => {
-          console.error('Erro ao fazer login:', error);
-      });
-  });
+            if (data.message === 'Login bem-sucedido') {
+                const isChef = email === 'andreaflordoceu@gmail.com';
+                localStorage.setItem('isChefLoggedIn', isChef ? 'true' : 'false');
+
+                // Atualiza a exibição das funcionalidades do chef
+                toggleChefFeatures(isChef);
+
+                // Limpa o formulário de login
+                loginForm.reset();
+
+                // Redireciona para a página index.html
+                window.location.href = 'index.html';
+            } else {
+                localStorage.removeItem('isChefLoggedIn');
+                localStorage.removeItem('loggedInEmail');
+                toggleChefFeatures(false);
+            }
+        })
+        .catch(error => {
+            console.error('Erro ao fazer login:', error);
+        });
+    });
 }
-
 
 
 
@@ -472,71 +484,6 @@ combinedRecipeForm.addEventListener('submit', function(e) {
       alert('Erro ao adicionar a receita. Tente novamente.');
   });
 });
-
-
-
-document.addEventListener('DOMContentLoaded', () => {
-  const feedbackButton = document.getElementById('openFeedbackForm');
-  const feedbackModal = document.getElementById('feedbackModal');
-  const closeModalButton = document.querySelector('.close-modal');
-  const feedbackForm = document.getElementById('feedbackForm');
-
-  // Abrir o modal ao clicar no botão de feedback
-  feedbackButton.addEventListener('click', () => {
-      feedbackModal.classList.remove('hidden');
-      feedbackModal.style.display = 'flex';
-  });
-
-  // Fechar o modal ao clicar no botão de fechar
-  closeModalButton.addEventListener('click', () => {
-      feedbackModal.style.display = 'none';
-  });
-
-  // Fechar o modal ao clicar fora do conteúdo do modal
-  window.addEventListener('click', (event) => {
-      if (event.target === feedbackModal) {
-          feedbackModal.style.display = 'none';
-      }
-  });
-
-  // Enviar o feedback
-  feedbackForm.addEventListener('submit', (event) => {
-      event.preventDefault();
-
-      const rating = document.getElementById('rating').value;
-      const comment = document.getElementById('comment').value;
-
-      if (!rating) {
-          alert('Por favor, selecione uma avaliação.');
-          return;
-      }
-
-      fetch('http://localhost:3001/feedback', {
-          method: 'POST',
-          headers: {
-              'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ rating, comment }),
-      })
-          .then((response) => {
-              if (!response.ok) {
-                  throw new Error('Erro ao enviar feedback.');
-              }
-              return response.json();
-          })
-          .then((data) => {
-              alert(data.message);
-              feedbackForm.reset();
-              feedbackModal.style.display = 'none';
-          })
-          .catch((error) => {
-              console.error('Erro ao enviar feedback:', error);
-              alert('Erro ao enviar feedback. Tente novamente.');
-          });
-  });
-});
-
-
 
 });//fim Dom
 
