@@ -89,13 +89,19 @@ app.post('/add-comment', (req, res) => {
 // Rota para carregar comentários
 app.get('/comments/:recipe_id', (req, res) => {
   const { recipe_id } = req.params;
-  const query = 'SELECT * FROM comments WHERE recipe_id = ?';
+  const query = `
+      SELECT email, comment, created_at 
+      FROM comments 
+      WHERE recipe_id = ? 
+      ORDER BY created_at ASC
+  `;
+
   connection.query(query, [recipe_id], (err, results) => {
-    if (err) {
-      console.error('Erro ao carregar comentários:', err);
-      return res.status(500).json({ message: 'Erro ao carregar comentários' });
-    }
-    res.json(results);
+      if (err) {
+          console.error('Erro ao carregar comentários:', err);
+          return res.status(500).json({ message: 'Erro ao carregar comentários' });
+      }
+      res.json(results); // Retorna todos os comentários ordenados por `created_at`
   });
 });
 
@@ -349,19 +355,27 @@ app.delete('/delete-image/:id', (req, res) => {
   
 // Rota para upload de pré-visualização de receitas
 app.post('/add-complete-recipe', uploadPreRecipe.single('recipeImage'), (req, res) => {
-  const { recipeTitle, recipeDescription, ingredients, preparation } = req.body;
+  const { recipeTitle, recipeDescription, ingredients, preparation, time, level, yield: recipeYield } = req.body;
   const imagePath = `/img/pre-recipe/${req.file.filename}`;
   const pageName = recipeTitle.toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]+/g, '') + '.html';
 
-  const query = 'INSERT INTO recipe_previews (title, description, image_path, page_link, ingredients, preparation) VALUES (?, ?, ?, ?, ?, ?)';
-  connection.query(query, [recipeTitle, recipeDescription, imagePath, `/pages/${pageName}`, ingredients, preparation], (err, results) => {
-      if (err) {
-          console.error('Erro ao inserir a receita completa no banco de dados:', err);
-          return res.status(500).json({ message: 'Erro ao adicionar a receita completa' });
-      }
+  const query = `
+      INSERT INTO recipe_previews (title, description, image_path, page_link, ingredients, preparation, time, level, yield) 
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+  `;
+
+  connection.query(
+      query,
+      [recipeTitle, recipeDescription, imagePath, `/pages/${pageName}`, ingredients, preparation, time, level, recipeYield],
+      (err, results) => {
+          if (err) {
+              console.error('Erro ao inserir a receita completa no banco de dados:', err);
+              return res.status(500).json({ message: 'Erro ao adicionar a receita completa' });
+          }
 
       // Obtemos o ID gerado automaticamente
       const recipeId = results.insertId;
+// Criação da página completa da receita
 // Criação da página completa da receita
 const pageContent = `
 <!DOCTYPE html>
@@ -371,35 +385,17 @@ const pageContent = `
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>${recipeTitle}</title>
     <link rel="stylesheet" href="../css/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <script src="/js/script.js" defer></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script type="module" src="https://unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule="" src="https://unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.js"></script>
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Unica+One&display=swap" rel="stylesheet">
 </head>
 <body>
     <header class="header">
         <a href="../index.html">
             <img class="logo" src="../img/base/logo/lo2.png" alt="logo" id="logo">
         </a>
+        <!-- Navegação -->
         <nav class="main-nav">
-            <ul class="main-nav-list">
-                <li><a class="main-nav-link" href="/index.html#aboutme">Chef</a></li>
-                <li><a class="main-nav-link" href="/index.html#creations">Criações</a></li>
-                <li><a class="main-nav-link" href="/index.html#recipe">Receitas</a></li>
-                <li><a class="main-nav-link nav-cta" href="/index.html#ebooks">E-book</a></li>
-                <li><a class="main-nav-link" href="/pages/contato.html">Contato</a></li>
-                <li><a class="main-nav-link" href="/login.html">Login</a></li>
-                <li><a id="logout-link" class="main-nav-link" href="#" style="display: none;">Sair</a></li>
-            </ul>
+            <!-- Links da navegação -->
         </nav>
-        <button class="hamburger" aria-label="Menu" aria-expanded="false">
-            <ion-icon name="menu-outline" class="icon-menu"></ion-icon>
-            <ion-icon name="close-outline" class="icon-close"></ion-icon>
-        </button>
     </header>
     <div class="recipes">
         <div class="left-side">
@@ -412,20 +408,20 @@ const pageContent = `
             <div class="status-recipe">
                 <div class="time">
                     <span class="icon-recipe">TEMPO</span><br>
-                    <span><ion-icon name="time" class="icon-recipe"></ion-icon> 20 min</span>
+                    <span>${time || 'Não informado'}</span>
                 </div>
                 <div class="nivel">
                     <span class="icon-recipe">NÍVEL</span><br>
-                    <span><ion-icon name="trending-up" class="icon-recipe"></ion-icon> Fácil</span>
+                    <span>${level || 'Não informado'}</span>
                 </div>
                 <div class="rendimento">
                     <span class="icon-recipe">RENDIMENTO</span><br>
-                    <span><ion-icon name="cafe" class="icon-recipe"></ion-icon> 4 porções</span>
+                    <span>${recipeYield || 'Não informado'}</span>
                 </div>
             </div>
             <span class="topic"><strong>Ingredientes:</strong></span>
             <ul class="ingredients">
-                ${ingredients.split('\n').map(ing => `<li class="paragraph">${ing}</li>`).join('')}
+                ${ingredients.split('\n').map(ing => `<li>${ing}</li>`).join('')}
             </ul>
             <div class="prepare">
                 <span class="topic"><strong>Modo de Preparo:</strong></span>
@@ -433,36 +429,29 @@ const pageContent = `
             </div>
         </div>
     </div>
+    <!-- Adicionar o formulário de comentários -->
+    <div class="comment-section">
+        <h2>Escrever Comentário</h2>
+        <form id="commentForm">
+            <input type="hidden" id="recipe_id" name="recipe_id" value="${recipeId}">
+            <input type="email" id="email" name="email" placeholder="Digite seu email..." required>
+            <textarea id="comment" name="comment" rows="4" placeholder="Digite seu comentário..." required></textarea>
+            <button type="submit">Enviar Comentário</button>
+        </form>
+        <!-- Mensagem de sucesso ou erro -->
+        <p id="message" class="message"></p>
+    </div>
+    <!-- Exibir comentários -->
+    <div class="comment-list">
+        <h3>Comentários:</h3>
+        <ul id="comments">
+            <!-- Os comentários específicos da receita aparecerão aqui -->
+        </ul>
+    </div>
     <footer class="footer">
-        <div class="grid-5cols">
-            <div class="logo-col">
-                <a href="index.html">
-                    <img src="../img/base/logo/lo2.png" alt="logo" class="logo">
-                </a>
-            </div>
-            <div class="address-col">
-                <p class="footer-heading">Contate-nos</p>
-                <a class="footer-link" href="mailto:elitecakes@br.com"><ion-icon name="mail"></ion-icon> ricardonozaki@gmail.com</a>
-            </div>
-            <div class="address-col">
-                <p class="footer-heading">Links Úteis</p>
-                <ul>
-                    <li><a class="footer-link" href="#recipe">Receitas</a></li>
-                    <li><a class="footer-link" href="#ebooks">E-books</a></li>
-                    <li><a class="footer-link" href="#contact">Contato</a></li>
-                </ul>
-            </div>
-            <div class="social-links">
-                <p class="footer-heading">Siga-me:</p>
-                <ul class="social-media-footer">
-                    <li><a href="https://www.instagram.com/andreahcodes/" target="_blank" class="icon"><ion-icon name="logo-instagram"></ion-icon></a></li>
-                    <li><a href="https://www.linkedin.com/in/andreahcodes/" target="_blank" class="icon"><ion-icon name="logo-facebook"></ion-icon></a></li>
-                </ul>
-            </div>
-        </div>
-        <p class="copyright">&copy; 2023 Ricardo Nozaki. Todos os direitos reservados. Site por <a href="https://andreanozaki.com/">AN Sites</a></p>
+        <!-- Conteúdo do footer -->
     </footer>
-    <script src="/js/cookie-banner.js" defer></script>
+    <script src="/js/script.js" defer></script>
 </body>
 </html>`;
 
