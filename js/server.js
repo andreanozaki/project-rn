@@ -359,6 +359,9 @@ app.post('/add-complete-recipe', uploadPreRecipe.single('recipeImage'), (req, re
           console.error('Erro ao inserir a receita completa no banco de dados:', err);
           return res.status(500).json({ message: 'Erro ao adicionar a receita completa' });
       }
+
+      // Obtemos o ID gerado automaticamente
+      const recipeId = results.insertId;
 // Criação da página completa da receita
 const pageContent = `
 <!DOCTYPE html>
@@ -463,54 +466,52 @@ const pageContent = `
 </body>
 </html>`;
 
+const filePath = path.join(__dirname, '../pages', pageName);
 
-      const filePath = path.join(__dirname, '../pages', pageName);
+fs.writeFile(filePath, pageContent, (err) => {
+    if (err) {
+        console.error('Erro ao criar a página da receita:', err);
+        return res.status(500).json({ message: 'Erro ao criar a página da receita' });
+    }
 
-      fs.writeFile(filePath, pageContent, (err) => {
-          if (err) {
-              console.error('Erro ao criar a página da receita:', err);
-              return res.status(500).json({ message: 'Erro ao criar a página da receita' });
-          }
+    // Adiciona a prévia à página all-recipes.html
+    const previewContent = `
+    <div class="recipe__card" data-id="${recipeId}">
+        <img src="${imagePath}" alt="${recipeTitle}" class="recipe__image-all flash-effect-2">
+        <p class="paragraph title-recipe">${recipeTitle}</p>
+        <p class="paragraph">${recipeDescription}</p>
+        <a href="/pages/${pageName}" class="btn-main">Ver Receita</a>
+        <h3 class="recipe__creator"><ion-icon name="person"></ion-icon> por Ricardo Nozaki</h3>
+        <button class="delete-recipe-btn" data-id="${recipeId}">Deletar Receita</button>
+    </div>`;
+    
+    const allRecipesPath = path.join(__dirname, '../pages/all-recipes.html');
 
-          // Adiciona a prévia à página all-recipes.html
-          const previewContent = `
-          <div class="recipe__card">
-              <img src="${imagePath}" alt="${recipeTitle}" class="recipe__image-all flash-effect-2">
-              <p class="paragraph title-recipe">${recipeTitle}</p>
-              <p class="paragraph">${recipeDescription}</p>
-              <a href="/pages/${pageName}" class="btn-main">Ver Receita</a>
-              <h3 class="recipe__creator"><ion-icon name="person"></ion-icon> por Ricardo Nozaki</h3>
-              <button class="delete-recipe-btn" data-id="${results.insertId}">Deletar Receita</button>
-          </div>`;
-          
-          const allRecipesPath = path.join(__dirname, '../pages/all-recipes.html');
+    fs.readFile(allRecipesPath, 'utf8', (err, data) => {
+        if (err) {
+            console.error('Erro ao ler a página all-recipes.html:', err);
+            return res.status(500).json({ message: 'Erro ao ler a página all-recipes.html' });
+        }
 
-          fs.readFile(allRecipesPath, 'utf8', (err, data) => {
-              if (err) {
-                  console.error('Erro ao ler a página all-recipes.html:', err);
-                  return res.status(500).json({ message: 'Erro ao ler a página all-recipes.html' });
-              }
+        const containerTag = '<div id="recipePreviewsContainer"></div>';
+        if (data.includes(containerTag)) {
+            const updatedContent = data.replace(containerTag, containerTag + previewContent);
 
-              // Verifica se a tag de contêiner existe
-              const containerTag = '<div id="recipePreviewsContainer"></div>';
-              if (data.includes(containerTag)) {
-                  // Insere a nova prévia dentro da tag
-                  const updatedContent = data.replace(containerTag, containerTag + previewContent);
+            fs.writeFile(allRecipesPath, updatedContent, 'utf8', (err) => {
+                if (err) {
+                    console.error('Erro ao atualizar a página all-recipes.html:', err);
+                    return res.status(500).json({ message: 'Erro ao atualizar a página com a nova prévia' });
+                }
 
-                  fs.writeFile(allRecipesPath, updatedContent, 'utf8', (err) => {
-                      if (err) {
-                          console.error('Erro ao atualizar a página all-recipes.html:', err);
-                          return res.status(500).json({ message: 'Erro ao atualizar a página com a nova prévia' });
-                      }
-                      res.status(200).json({ success: true, link: `/pages/${pageName}`, message: 'Receita completa publicada com sucesso!' });
-                  });
-              } else {
-                  console.error('Container de prévias não encontrado na página.');
-                  return res.status(500).json({ message: 'Container de prévias não encontrado na página.' });
-              }
-          });
-      });
-  });
+                res.status(200).json({ success: true, link: `/pages/${pageName}`, message: 'Receita completa publicada com sucesso!' });
+            });
+        } else {
+            console.error('Container de prévias não encontrado na página.');
+            return res.status(500).json({ message: 'Container de prévias não encontrado na página.' });
+        }
+    });
+});
+});
 });
 
 
@@ -533,18 +534,15 @@ app.get('/pages/:pageName', (req, res) => {
   const pageName = req.params.pageName;
   res.sendFile(path.join(__dirname, `../pages/${pageName}`));
 });
-
-
-
 app.delete('/delete-recipe/:id', (req, res) => {
   const recipeId = req.params.id;
 
-  // Buscar a receita no banco de dados para obter informações
+  // Buscar receita no banco de dados
   const query = 'SELECT page_link, image_path FROM recipe_previews WHERE preview_id = ?';
   connection.query(query, [recipeId], (err, results) => {
       if (err) {
-          console.error('Erro ao buscar a receita para deletar:', err);
-          return res.status(500).json({ success: false, message: 'Erro ao buscar a receita para deletar.' });
+          console.error('Erro ao buscar receita:', err);
+          return res.status(500).json({ success: false, message: 'Erro ao buscar a receita.' });
       }
 
       if (results.length > 0) {
@@ -553,60 +551,65 @@ app.delete('/delete-recipe/:id', (req, res) => {
           const imagePath = path.join(__dirname, '..', image_path);
           const allRecipesPath = path.join(__dirname, '../pages/all-recipes.html');
 
-          // Deletar o registro do banco de dados
+          // Deletar do banco
           const deleteQuery = 'DELETE FROM recipe_previews WHERE preview_id = ?';
           connection.query(deleteQuery, [recipeId], (deleteErr) => {
               if (deleteErr) {
-                  console.error('Erro ao deletar receita do banco de dados:', deleteErr);
+                  console.error('Erro ao deletar do banco:', deleteErr);
                   return res.status(500).json({ success: false, message: 'Erro ao deletar a receita.' });
               }
 
-              // Deletar o arquivo da página da receita
+              // Deletar página e imagem
               fs.unlink(pagePath, (fsErr) => {
                   if (fsErr && fsErr.code !== 'ENOENT') {
-                      console.error('Erro ao deletar o arquivo da página:', fsErr);
+                      console.error('Erro ao deletar página:', fsErr);
+                  }
+              });
+
+              fs.unlink(imagePath, (imageErr) => {
+                  if (imageErr && imageErr.code !== 'ENOENT') {
+                      console.error('Erro ao deletar imagem:', imageErr);
+                  }
+              });
+
+              // Atualizar `all-recipes.html`
+              fs.readFile(allRecipesPath, 'utf8', (readErr, fileContent) => {
+                  if (readErr) {
+                      console.error('Erro ao ler all-recipes.html:', readErr);
+                      return res.status(500).json({ success: false, message: 'Erro ao ler a página.' });
                   }
 
-                  // Deletar o arquivo da imagem da receita
-                  fs.unlink(imagePath, (imageErr) => {
-                      if (imageErr && imageErr.code !== 'ENOENT') {
-                          console.error('Erro ao deletar a imagem da receita:', imageErr);
+                      // Usar Regex para localizar o card correto no arquivo HTML
+                      const recipeDivRegex = new RegExp(
+                        `<div class="recipe__card" data-id="${recipeId}"[\\s\\S]*?</div>`,
+                        'g'
+                    );
+
+                    if (!recipeDivRegex.test(fileContent)) {
+                        return res.status(404).json({ success: false, message: 'Receita não encontrada no arquivo.' });
+                    }
+                  // Substituir a div correspondente pela string vazia
+                  const updatedContent = fileContent.replace(recipeDivRegex, '');
+
+                  fs.writeFile(allRecipesPath, updatedContent, 'utf8', (writeErr) => {
+                      if (writeErr) {
+                          console.error('Erro ao atualizar all-recipes.html:', writeErr);
+                          return res.status(500).json({ success: false, message: 'Erro ao atualizar a página.' });
                       }
 
-                      // Atualizar o arquivo all-recipes.html
-                      fs.readFile(allRecipesPath, 'utf8', (readErr, fileContent) => {
-                          if (readErr) {
-                              console.error('Erro ao ler o arquivo all-recipes.html:', readErr);
-                              return res.status(500).json({ success: false, message: 'Erro ao atualizar a página de receitas.' });
-                          }
-
-                          // Usar regex para encontrar e remover a div correspondente
-                          const recipeDivRegex = new RegExp(
-                              `<div class="recipe__card">[\\s\\S]*?data-id="${recipeId}"[\\s\\S]*?</div>`,
-                              'g'
-                          );
-                          const updatedContent = fileContent.replace(recipeDivRegex, '');
-
-                          fs.writeFile(allRecipesPath, updatedContent, 'utf8', (writeErr) => {
-                              if (writeErr) {
-                                  console.error('Erro ao atualizar o arquivo all-recipes.html:', writeErr);
-                                  return res.status(500).json({ success: false, message: 'Erro ao atualizar a página de receitas.' });
-                              }
-
-                              console.log(`Receita, página e prévia deletadas com sucesso, ID: ${recipeId}`);
-                              res.status(200).json({ success: true, message: 'Receita e prévia deletadas com sucesso!' });
-                          });
-                      });
+                      console.log(`Receita ID ${recipeId} deletada com sucesso.`);
+                      res.status(200).json({ success: true, message: 'Receita deletada com sucesso!' });
                   });
               });
           });
       } else {
-          console.warn('Receita não encontrada, ID:', recipeId);
           res.status(404).json({ success: false, message: 'Receita não encontrada.' });
       }
   });
 });
 
+
+            
 
 // Rota para enviar feedback
 app.post('/feedback', (req, res) => {

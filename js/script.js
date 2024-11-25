@@ -2,6 +2,50 @@
 
 document.addEventListener('DOMContentLoaded', function () {
 
+  document.body.addEventListener('click', (event) => {
+    if (event.target.classList.contains('delete-recipe-btn')) {
+        const recipeId = event.target.getAttribute('data-id'); // Verifica o ID da receita
+
+        if (!recipeId) {
+            alert('Erro: ID da receita não encontrado.');
+            return;
+        }
+
+        if (confirm('Tem certeza que deseja deletar esta receita?')) {
+            fetch(`http://localhost:3001/delete-recipe/${recipeId}`, {
+                method: 'DELETE',
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert(data.message);
+                    const recipeCard = document.querySelector(`.recipe__card[data-id="${recipeId}"]`);
+                    if (recipeCard) recipeCard.remove(); // Remove o card
+                } else {
+                    alert(data.message);
+                }
+            })
+            .catch(error => {
+                console.error('Erro ao deletar a receita:', error);
+                alert('Erro ao deletar a receita. Tente novamente.');
+            });
+        }
+    }
+});
+
+
+  document.querySelectorAll('.delete-recipe-btn').forEach(button => {
+    button.addEventListener('click', function () {
+        const recipeId = this.getAttribute('data-id'); // Obtém o ID da receita
+        const recipeCard = document.querySelector(`.recipe__card[data-id="${recipeId}"]`); // Seleciona a div específica
+        if (recipeCard) {
+            recipeCard.remove(); // Remove apenas a div correspondente
+            console.log(`Receita com ID ${recipeId} foi deletada.`);
+        }
+    });
+});
+
+
   // Função para animações na página principal
   function activateAnimations() {
     const sectionMainElement = document.querySelector('.section-main');
@@ -449,32 +493,6 @@ function deleteImage(imageId) {
   });
 }
 
-//funccao para 
-document.body.addEventListener('click', (event) => {
-  if (event.target.classList.contains('delete-recipe-btn')) {
-      const recipeId = event.target.getAttribute('data-id');
 
-      if (confirm('Tem certeza que deseja deletar esta receita?')) {
-          fetch(`http://localhost:3001/delete-recipe/${recipeId}`, {
-              method: 'DELETE'
-          })
-          .then(response => response.json())
-          .then(data => {
-              if (data.success) {
-                  alert(data.message);
-                  // Remove a div correspondente
-                  const recipeCard = event.target.closest('.recipe__card');
-                  if (recipeCard) recipeCard.remove();
-              } else {
-                  alert(data.message);
-              }
-          })
-          .catch(error => {
-              console.error('Erro ao deletar a receita:', error);
-              alert('Erro ao deletar a receita. Tente novamente.');
-          });
-      }
-  }
-});
 
 });//fim Dom

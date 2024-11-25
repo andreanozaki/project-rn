@@ -392,7 +392,7 @@
     <script src="/js/cookie-banner.js" defer></script>
 <script>
 
-    document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', () => {
 
 //modal para deixar comentarios
 
@@ -495,26 +495,22 @@
 
 
     
-});//fim dom
+
 
 //modal para visualizar comentarios
     const viewFeedbacksButton = document.getElementById('viewFeedbacksButton');
     const feedbackListModal = document.getElementById('feedbackListModal');
-    const closeModalButton = feedbackListModal.querySelector('.close-modal');
     const feedbackList = document.getElementById('feedbackList');
     const body = document.body;
-    const feedbackOverlay = document.getElementById('feedbackOverlay'); // Seleciona o overlay
 
 
     // Abrir o modal ao clicar no botão
     viewFeedbacksButton.addEventListener('click', () => {
-        feedbackListModal.classList.remove('hidden');
-        feedbackListModal.style.display = 'flex';
-        body.classList.add('no-scroll'); // Impede a rolagem do site
-        feedbackOverlay.style.display = 'block'; // Mostra o overlay branco
-
-
-
+    feedbackListModal.classList.remove('hidden');
+    feedbackListModal.style.display = 'flex';
+    body.classList.add('no-scroll'); // Impede a rolagem do site
+    feedbackOverlay.style.display = 'block'; // Mostra o overlay branco
+    
         // Fazer a requisição para buscar os feedbacks
         fetch('http://localhost:3001/feedbacks')
             .then(response => {
@@ -562,7 +558,7 @@
             feedbackOverlay.style.display = 'none'; // Oculta o overlay 
         }
     });
-
+});//fim dom
 </script>
 </body>
 
