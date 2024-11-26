@@ -163,9 +163,14 @@ document.addEventListener('DOMContentLoaded', function () {
       });
     });
   }
+
+
+
+
 // Função para envio de comentário
 const commentForm = document.getElementById('commentForm');
-if (commentForm) {
+if (commentForm && !commentForm.dataset.listener) {
+  commentForm.dataset.listener = true; // Marca que o listener foi adicionado
   commentForm.addEventListener('submit', function (e) {
     e.preventDefault();
 
@@ -193,6 +198,7 @@ if (commentForm) {
       });
   });
 }
+
 
 // Função para carregar os comentários
 function loadComments() {
@@ -422,13 +428,13 @@ function logout() {
   console.log('Usuário desconectado, a sessão foi reiniciada.');
 }
 
-// Evento para deslogar o usuário ao clicar no botão Sair
+/*// Evento para deslogar o usuário ao clicar no botão Sair
 logoutLink.addEventListener('click', function (e) {
     e.preventDefault();
     localStorage.removeItem('isChefLoggedIn'); // Remove o estado de login
     window.location.reload(); // Recarrega a página para atualizar o estado
 });
-
+*/
 
 
 // Gerenciamento do banner de cookies

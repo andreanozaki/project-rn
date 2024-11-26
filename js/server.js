@@ -77,20 +77,36 @@ app.post('/register', (req, res) => {
 app.post('/add-comment', (req, res) => {
   const { email, comment, recipe_id } = req.body;
 
-  const query = `
-    INSERT INTO comments (email, comment, recipe_id)
-    VALUES (?, ?, ?)
-  `;
+  if (!email || !comment || !recipe_id) {
+    return res.status(400).json({ message: 'Todos os campos são obrigatórios.' });
+  }
 
-  connection.query(query, [email, comment, recipe_id], (err) => {
-    if (err) {
-      console.error('Erro ao adicionar comentário:', err);
-      return res.status(500).json({ message: 'Erro ao adicionar comentário' });
+  // Verifica se o comentário já existe
+  const checkQuery = 'SELECT * FROM comments WHERE email = ? AND comment = ? AND recipe_id = ?';
+  connection.query(checkQuery, [email, comment, recipe_id], (checkErr, results) => {
+    if (checkErr) {
+      console.error('Erro ao verificar comentário existente:', checkErr);
+      return res.status(500).json({ message: 'Erro ao verificar comentário existente.' });
     }
 
-    res.status(200).json({ message: 'Comentário adicionado com sucesso!' });
+    if (results.length > 0) {
+      return res.status(409).json({ message: 'Comentário já foi adicionado anteriormente.' });
+    }
+
+    // Adiciona o comentário
+    const query = 'INSERT INTO comments (email, comment, recipe_id) VALUES (?, ?, ?)';
+    connection.query(query, [email, comment, recipe_id], (err, result) => {
+      if (err) {
+        console.error('Erro ao adicionar comentário:', err);
+        return res.status(500).json({ message: 'Erro ao adicionar comentário.' });
+      }
+
+      res.status(201).json({ message: 'Comentário adicionado com sucesso!' });
+    });
   });
 });
+
+
 
 // Rota para carregar comentários
 app.get('/comments/:recipe_id', (req, res) => {
