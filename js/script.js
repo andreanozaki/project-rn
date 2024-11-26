@@ -163,62 +163,62 @@ document.addEventListener('DOMContentLoaded', function () {
       });
     });
   }
+// Função para envio de comentário
+const commentForm = document.getElementById('commentForm');
+if (commentForm) {
+  commentForm.addEventListener('submit', function (e) {
+    e.preventDefault();
 
-  // Função para envio de comentário
-  const commentForm = document.getElementById('commentForm');
-  if (commentForm) {
-    commentForm.addEventListener('submit', function (e) {
-      e.preventDefault();
+    const email = document.getElementById('email').value;
+    const comment = document.getElementById('comment').value;
+    const recipe_id = document.getElementById('recipe_id').value; // Obtém o ID da receita
 
-      const email = document.getElementById('email').value;
-      const comment = document.getElementById('comment').value;
-      const recipe_id = 1;
-
-      fetch('http://localhost:3001/add-comment', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ email, comment, recipe_id })
-      })
-      .then(response => response.json())
-      .then(data => {
-        loadComments();
+    fetch('http://localhost:3001/add-comment', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ email, comment, recipe_id }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        loadComments(); // Atualiza os comentários
         document.getElementById('email').value = '';
         document.getElementById('comment').value = '';
         alert(data.message);
       })
-      .catch(error => {
+      .catch((error) => {
         console.error('Erro ao adicionar comentário:', error);
         alert('Erro ao adicionar comentário. Tente novamente.');
       });
-    });
-  }
+  });
+}
 
-  // Função para carregar os comentários
-  function loadComments() {
-    const recipe_id = 1;
-    fetch(`http://localhost:3001/comments/${recipe_id}`)
-      .then(response => response.json())
-      .then(data => {
-        const commentsList = document.getElementById('comments');
-        commentsList.innerHTML = '';
-        data.forEach(comment => {
-          const commentItem = document.createElement('li');
-          commentItem.innerHTML = `<strong>${comment.email}:</strong> ${comment.comment}`;
-          commentsList.appendChild(commentItem);
-        });
-      })
-      .catch(error => {
-        console.error('Erro ao carregar comentários:', error);
+// Função para carregar os comentários
+function loadComments() {
+  const recipe_id = document.getElementById('recipe_id').value; // Obtém o ID da receita
+  fetch(`http://localhost:3001/comments/${recipe_id}`)
+    .then((response) => response.json())
+    .then((data) => {
+      const commentsList = document.getElementById('comments');
+      commentsList.innerHTML = '';
+      data.forEach((comment) => {
+        const commentItem = document.createElement('li');
+        commentItem.innerHTML = `<strong>${comment.email}:</strong> ${comment.comment}`;
+        commentsList.appendChild(commentItem);
       });
-  }
+    })
+    .catch((error) => {
+      console.error('Erro ao carregar comentários:', error);
+    });
+}
 
-  // Carregar comentários ao carregar a página
-  if (document.getElementById('comments')) {
-    loadComments();
-  }
+// Carregar comentários ao carregar a página
+if (document.getElementById('comments')) {
+  loadComments();
+}
 
+ 
   // Controle de exibição dos formulários de vendas, relatórios e upload apenas para o chef
 const loginForm = document.getElementById('loginForm');
 const salesFormContainer = document.querySelector('.vendas-container');

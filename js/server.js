@@ -76,13 +76,19 @@ app.post('/register', (req, res) => {
 // Rota para adicionar comentário
 app.post('/add-comment', (req, res) => {
   const { email, comment, recipe_id } = req.body;
-  const query = 'INSERT INTO comments (email, comment, recipe_id) VALUES (?, ?, ?)';
+
+  const query = `
+    INSERT INTO comments (email, comment, recipe_id)
+    VALUES (?, ?, ?)
+  `;
+
   connection.query(query, [email, comment, recipe_id], (err) => {
     if (err) {
       console.error('Erro ao adicionar comentário:', err);
       return res.status(500).json({ message: 'Erro ao adicionar comentário' });
     }
-    res.json({ message: 'Comentário adicionado com sucesso' });
+
+    res.status(200).json({ message: 'Comentário adicionado com sucesso!' });
   });
 });
 
@@ -354,28 +360,33 @@ app.delete('/delete-image/:id', (req, res) => {
  // Rota para upload de pré-visualização de receitas
   
 // Rota para upload de pré-visualização de receitas
+// Rota para upload de receitas completas
 app.post('/add-complete-recipe', uploadPreRecipe.single('recipeImage'), (req, res) => {
   const { recipeTitle, recipeDescription, ingredients, preparation, time, level, yield: recipeYield } = req.body;
+
+  if (!req.file) {
+    return res.status(400).json({ message: 'Imagem da receita é obrigatória.' });
+  }
+
   const imagePath = `/img/pre-recipe/${req.file.filename}`;
   const pageName = recipeTitle.toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]+/g, '') + '.html';
 
   const query = `
-      INSERT INTO recipe_previews (title, description, image_path, page_link, ingredients, preparation, time, level, yield) 
-      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+    INSERT INTO recipe_previews (title, description, image_path, page_link, ingredients, preparation, time, level, yield) 
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
   `;
 
   connection.query(
-      query,
-      [recipeTitle, recipeDescription, imagePath, `/pages/${pageName}`, ingredients, preparation, time, level, recipeYield],
-      (err, results) => {
-          if (err) {
-              console.error('Erro ao inserir a receita completa no banco de dados:', err);
-              return res.status(500).json({ message: 'Erro ao adicionar a receita completa' });
-          }
+    query,
+    [recipeTitle, recipeDescription, imagePath, `/pages/${pageName}`, ingredients, preparation, time, level, recipeYield],
+    (err, results) => {
+      if (err) {
+        console.error('Erro ao inserir a receita completa no banco de dados:', err);
+        return res.status(500).json({ message: 'Erro ao adicionar a receita completa' });
+      }
 
-      // Obtemos o ID gerado automaticamente
       const recipeId = results.insertId;
-// Criação da página completa da receita
+
 // Criação da página completa da receita
 const pageContent = `
 <!DOCTYPE html>
@@ -473,39 +484,39 @@ fs.writeFile(filePath, pageContent, (err) => {
         <h3 class="recipe__creator"><ion-icon name="person"></ion-icon> por Ricardo Nozaki</h3>
         <button class="delete-recipe-btn" data-id="${recipeId}">Deletar Receita</button>
     </div>`;
-    
     const allRecipesPath = path.join(__dirname, '../pages/all-recipes.html');
 
-    fs.readFile(allRecipesPath, 'utf8', (err, data) => {
-        if (err) {
+        fs.readFile(allRecipesPath, 'utf8', (err, data) => {
+          if (err) {
             console.error('Erro ao ler a página all-recipes.html:', err);
             return res.status(500).json({ message: 'Erro ao ler a página all-recipes.html' });
-        }
+          }
 
-        const containerTag = '<div id="recipePreviewsContainer"></div>';
-        if (data.includes(containerTag)) {
+          const containerTag = '<div id="recipePreviewsContainer"></div>';
+          if (data.includes(containerTag)) {
             const updatedContent = data.replace(containerTag, containerTag + previewContent);
 
             fs.writeFile(allRecipesPath, updatedContent, 'utf8', (err) => {
-                if (err) {
-                    console.error('Erro ao atualizar a página all-recipes.html:', err);
-                    return res.status(500).json({ message: 'Erro ao atualizar a página com a nova prévia' });
-                }
+              if (err) {
+                console.error('Erro ao atualizar a página all-recipes.html:', err);
+                return res.status(500).json({ message: 'Erro ao atualizar a página com a nova prévia' });
+              }
 
-                res.status(200).json({ success: true, link: `/pages/${pageName}`, message: 'Receita completa publicada com sucesso!' });
+              res.status(200).json({
+                success: true,
+                link: `/pages/${pageName}`,
+                message: 'Receita completa publicada com sucesso!',
+              });
             });
-        } else {
+          } else {
             console.error('Container de prévias não encontrado na página.');
             return res.status(500).json({ message: 'Container de prévias não encontrado na página.' });
-        }
-    });
+          }
+        });
+      });
+    }
+  );
 });
-});
-});
-
-
-
-
 
 app.get('/get-recipe-previews', (req, res) => {
   const query = 'SELECT preview_id, title, description, image_path, page_link FROM recipe_previews';
