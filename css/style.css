@@ -1234,6 +1234,14 @@ body {
 }
 .main-nav-list .main-nav-link:link,
 .main-nav-list .main-nav-link:visited {
+  /*font-family:'Unica One', sans-serif;Mantém o estilo da navegação e alinha o link de Login à direita */
+  /* Oculta a navegação padrão em telas menores e define o estilo do menu */
+  /* Oculta o menu de navegação padrão para telas menores que `tab-land` */
+  /* Ícone de hambúrguer */
+  /* Ícone de fechar, oculto por padrão */
+  /* Exibir o ícone de fechar e ocultar o de hambúrguer quando o menu está ativo */
+  /* Exibe o menu de hambúrguer e oculta o menu principal em telas menores */
+  /* Ajustar os links de navegação para ficarem alinhados no centro */
   display: inline-block;
   text-decoration: none;
   color: var(--color-primary--light);
@@ -1242,6 +1250,154 @@ body {
   letter-spacing: 2px;
   font-weight: 800;
   transition: all 0.3s;
+}
+.main-nav-list .main-nav-link:link .main-nav-list,
+.main-nav-list .main-nav-link:visited .main-nav-list {
+  list-style: none;
+  display: flex;
+  gap: 4.8rem;
+  align-items: center;
+  font-family: "Unica One", sans-serif;
+  /* Estilo específico para o item de sair */
+}
+.main-nav-list .main-nav-link:link .main-nav-list .main-nav-link:link,
+.main-nav-list .main-nav-link:link .main-nav-list .main-nav-link:visited,
+.main-nav-list .main-nav-link:visited .main-nav-list .main-nav-link:link,
+.main-nav-list .main-nav-link:visited .main-nav-list .main-nav-link:visited {
+  display: inline-block;
+  text-decoration: none;
+  color: var(--color-primary--light);
+  font-size: 26px;
+  line-height: 22px;
+  letter-spacing: 2px;
+  font-weight: 800;
+  transition: all 0.3s;
+}
+.main-nav-list .main-nav-link:link .main-nav-list .main-nav-link:hover,
+.main-nav-list .main-nav-link:link .main-nav-list .main-nav-link:active,
+.main-nav-list .main-nav-link:visited .main-nav-list .main-nav-link:hover,
+.main-nav-list .main-nav-link:visited .main-nav-list .main-nav-link:active {
+  color: #dbd4af;
+}
+.main-nav-list .main-nav-link:link .main-nav-list .main-nav-link.nav-cta:link,
+.main-nav-list .main-nav-link:link .main-nav-list .main-nav-link.nav-cta:visited,
+.main-nav-list .main-nav-link:visited .main-nav-list .main-nav-link.nav-cta:link,
+.main-nav-list .main-nav-link:visited .main-nav-list .main-nav-link.nav-cta:visited {
+  padding: 1.2rem 2.4rem;
+  border-radius: 9px;
+  color: var(--color-primary);
+  background-color: #dbd4af;
+}
+.main-nav-list .main-nav-link:link .main-nav-list .main-nav-link.nav-cta:hover,
+.main-nav-list .main-nav-link:link .main-nav-list .main-nav-link.nav-cta:active,
+.main-nav-list .main-nav-link:visited .main-nav-list .main-nav-link.nav-cta:hover,
+.main-nav-list .main-nav-link:visited .main-nav-list .main-nav-link.nav-cta:active {
+  background-color: var(--color-primary-light);
+  color: rgb(26, 26, 26);
+}
+.main-nav-list .main-nav-link:link .forgotpass-page .main-nav-list,
+.main-nav-list .main-nav-link:visited .forgotpass-page .main-nav-list {
+  width: 80vw; /* Garante que a lista ocupe toda a largura disponível */
+}
+@media (max-width: 75em) {
+  .main-nav-list .main-nav-link:link .forgotpass-page .main-nav-list,
+  .main-nav-list .main-nav-link:visited .forgotpass-page .main-nav-list {
+    width: 70vw;
+  }
+}
+.main-nav-list .main-nav-link:link .forgotpass-page .main-nav-link,
+.main-nav-list .main-nav-link:visited .forgotpass-page .main-nav-link {
+  color: #242121; /* Ajuste para a cor original do link */
+  background-color: beige;
+  text-decoration: none;
+  padding: 15px 20px; /* Padding para manter o estilo */
+  border-radius: 4px;
+}
+.main-nav-list .main-nav-link:link .forgotpass-page .main-nav-link:hover,
+.main-nav-list .main-nav-link:visited .forgotpass-page .main-nav-link:hover {
+  color: #eba350;
+}
+.main-nav-list .main-nav-link:link .hamburger,
+.main-nav-list .main-nav-link:visited .hamburger {
+  display: none; /* Oculta o hambúrguer em telas maiores */
+  font-size: 3rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #dbd4af;
+  position: relative;
+}
+.main-nav-list .main-nav-link:link .icon-menu,
+.main-nav-list .main-nav-link:visited .icon-menu {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.main-nav-list .main-nav-link:link .icon-close,
+.main-nav-list .main-nav-link:visited .icon-close {
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-60%, -50%); /* Desloca um pouco para a esquerda */
+  color: #0e0d0a; /* Cor do ícone "X" */
+  z-index: 15;
+}
+.main-nav-list .main-nav-link:link .hamburger.active .icon-menu,
+.main-nav-list .main-nav-link:visited .hamburger.active .icon-menu {
+  display: none;
+}
+.main-nav-list .main-nav-link:link .hamburger.active .icon-close,
+.main-nav-list .main-nav-link:visited .hamburger.active .icon-close {
+  display: inline;
+}
+@media (max-width: 1200px) {
+  .main-nav-list .main-nav-link:link,
+  .main-nav-list .main-nav-link:visited { /* Ajuste para o breakpoint `tab-land` */
+    /* Ocultar o menu de navegação por padrão em telas menores */
+    /* Exibir o menu de navegação de forma vertical quando a classe .active é adicionada */
+  }
+  .main-nav-list .main-nav-link:link .hamburger,
+  .main-nav-list .main-nav-link:visited .hamburger {
+    display: block; /* Exibe o botão de hambúrguer em telas menores */
+  }
+  .main-nav-list .main-nav-link:link .main-nav,
+  .main-nav-list .main-nav-link:visited .main-nav {
+    display: none;
+    transition: all 0.3s ease-in-out;
+  }
+  .main-nav-list .main-nav-link:link .main-nav.active,
+  .main-nav-list .main-nav-link:visited .main-nav.active {
+    display: flex !important;
+    flex-direction: column;
+    position: absolute;
+    top: 5px;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: #f4f2e9;
+    color: #eba350;
+    z-index: 10;
+  }
+}
+@media (max-width: 75em) {
+  .main-nav-list .main-nav-link:link,
+  .main-nav-list .main-nav-link:visited {
+    /* Estilo dos links no menu */
+  }
+  .main-nav-list .main-nav-link:link .main-nav-list,
+  .main-nav-list .main-nav-link:visited .main-nav-list {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+  }
+  .main-nav-list .main-nav-link:link .main-nav-link,
+  .main-nav-list .main-nav-link:visited .main-nav-link {
+    font-size: 18px;
+    color: var(--color-primary--light);
+  }
 }
 .main-nav-list .main-nav-link:hover,
 .main-nav-list .main-nav-link:active {

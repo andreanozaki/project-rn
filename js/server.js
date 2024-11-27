@@ -73,6 +73,7 @@ app.post('/register', (req, res) => {
   });
 });
 
+
 // Rota para adicionar comentário
 app.post('/add-comment', (req, res) => {
   const { email, comment, recipe_id } = req.body;
@@ -126,6 +127,9 @@ app.get('/comments/:recipe_id', (req, res) => {
       res.json(results); // Retorna todos os comentários ordenados por `created_at`
   });
 });
+
+
+
 
 // Rota para login
 app.post('/login', (req, res) => {

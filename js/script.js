@@ -2,6 +2,65 @@
 
 document.addEventListener('DOMContentLoaded', function () {
 
+
+   // Seleciona os elementos do menu
+   const hamburger = document.querySelector('.hamburger');
+   const mainNav = document.querySelector('.main-nav');
+   const menuLinks = document.querySelectorAll('.main-nav-link');
+ 
+   if (hamburger && mainNav) {
+     // Alterna a exibição do menu ao clicar no hambúrguer
+     hamburger.addEventListener('click', () => {
+       const isExpanded = hamburger.getAttribute('aria-expanded') === 'true';
+ 
+       // Alterna as classes e o atributo de acessibilidade
+       hamburger.classList.toggle('active');
+       mainNav.classList.toggle('active');
+       hamburger.setAttribute('aria-expanded', !isExpanded);
+     });
+ 
+     // Fecha o menu ao clicar em qualquer link
+     menuLinks.forEach(link => {
+       link.addEventListener('click', () => {
+         mainNav.classList.remove('active');
+         hamburger.classList.remove('active');
+         hamburger.setAttribute('aria-expanded', 'false');
+       });
+     });
+   }
+
+ 
+
+ // Controle de Login/Logout
+ const loginLink = document.querySelector('.main-nav-link[href="login.html"]');
+ const logoutLink = document.getElementById('logout-link');
+
+ function toggleLoginLogout() {
+   const loggedInEmail = localStorage.getItem('loggedInEmail');
+
+   if (loggedInEmail) {
+     if (loginLink) loginLink.style.display = 'none';
+     if (logoutLink) logoutLink.style.display = 'block';
+   } else {
+     if (loginLink) loginLink.style.display = 'block';
+     if (logoutLink) logoutLink.style.display = 'none';
+   }
+ }
+
+ toggleLoginLogout();
+
+ if (logoutLink) {
+   logoutLink.addEventListener('click', function (e) {
+     e.preventDefault();
+     localStorage.removeItem('loggedInEmail');
+     localStorage.removeItem('isChefLoggedIn');
+     window.location.reload();
+   });
+ }
+
+
+
+
   document.body.addEventListener('click', (event) => {
     if (event.target.classList.contains('delete-recipe-btn')) {
         const recipeId = event.target.getAttribute('data-id'); // Verifica o ID da receita
@@ -386,55 +445,8 @@ if (salesForm) {
     });
   }
 
-  const hamburger = document.querySelector('.hamburger');
-  const mainNav = document.querySelector('.main-nav');
-  const loginLink = document.querySelector('.main-nav-link[href="login.html"]');
-  const logoutLink = document.getElementById('logout-link');
-  
-  // Função para alternar entre Login e Sair com base no estado de login
-  function toggleLoginLogout() {
-      const loggedInEmail = localStorage.getItem('loggedInEmail'); // Verifica se há um usuário logado
-  
-      if (loggedInEmail) {
-          // Se qualquer usuário estiver logado, esconde o botão Login e mostra o botão Sair
-          if (loginLink) loginLink.style.display = 'none';
-          if (logoutLink) logoutLink.style.display = 'block';
-      } else {
-          // Se ninguém estiver logado, mostra o botão Login e esconde o botão Sair
-          if (loginLink) loginLink.style.display = 'block';
-          if (logoutLink) logoutLink.style.display = 'none';
-      }
-  }
-  
-  // Chama a função ao carregar a página para definir o estado inicial
-  toggleLoginLogout();
-
-  
-  // Evento para deslogar o usuário ao clicar no botão Sair
-  if (logoutLink) {
-      logoutLink.addEventListener('click', function (e) {
-          e.preventDefault();
-          localStorage.removeItem('loggedInEmail'); // Remove o email do usuário logado
-          window.location.reload(); // Recarrega a página para atualizar o estado
-      });
-  }
   
 
-
-
-// Função de logout para remover a sessão do cookie
-function logout() {
-  sessionStorage.removeItem('cookieSession');
-  console.log('Usuário desconectado, a sessão foi reiniciada.');
-}
-
-/*// Evento para deslogar o usuário ao clicar no botão Sair
-logoutLink.addEventListener('click', function (e) {
-    e.preventDefault();
-    localStorage.removeItem('isChefLoggedIn'); // Remove o estado de login
-    window.location.reload(); // Recarrega a página para atualizar o estado
-});
-*/
 
 
 // Gerenciamento do banner de cookies
@@ -446,7 +458,6 @@ logoutLink.addEventListener('click', function (e) {
 
     // Verifica o consentimento armazenado no localStorage
     const userConsent = localStorage.getItem('cookieConsent');
-    console.log('Valor do consentimento do usuário:', userConsent); // Para depuração
 
     if (!userConsent) {
       // Exibe o banner apenas se não houver consentimento armazenado
