@@ -2000,11 +2000,23 @@ body {
 }
 .ebook .ebook-photo {
   height: 65%;
-  width: 100%;
+  width: 500px;
+}
+@media (max-width: 75em) {
+  .ebook .ebook-photo {
+    min-width: 450px;
+  }
+}
+@media (max-width: 59em) {
+  .ebook .ebook-photo {
+    width: 300px;
+    height: 100%;
+  }
 }
 @media (max-width: 710px) {
   .ebook .ebook-photo {
-    width: 85%;
+    width: 300px;
+    height: 100%;
   }
 }
 .ebook .ebook-text {

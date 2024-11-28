@@ -3,7 +3,38 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log('isChef:', isChef);
 
     if (isChef) {
-        document.querySelector('form[action="http://localhost:3001/upload"]').style.display = 'block';
+        const uploadForm = document.querySelector('form[action="http://localhost:3001/upload"]');
+        if (uploadForm) {
+            uploadForm.style.display = 'block';
+
+            // Listener para interceptar o envio do formulário
+            uploadForm.addEventListener('submit', async (event) => {
+                event.preventDefault(); // Impede o envio tradicional do formulário
+
+                const formData = new FormData(uploadForm);
+                try {
+                    const response = await fetch(uploadForm.action, {
+                        method: 'POST',
+                        body: formData,
+                    });
+
+                    if (!response.ok) {
+                        // Exibe erro se o servidor responder com status não OK
+                        const errorDetails = await response.json();
+                        throw new Error(errorDetails.error || 'Erro ao enviar a imagem.');
+                    }
+
+                    const result = await response.json();
+                    alert(result.message || 'Imagem enviada com sucesso!');
+
+                    // Recarrega a página para atualizar automaticamente
+                    window.location.reload();
+                } catch (error) {
+                    console.error('Erro ao enviar a imagem:', error.message);
+                    alert('Erro ao enviar a imagem: ' + error.message);
+                }
+            });
+        }
     }
 
     // Obtém o nome da página atual (sem a extensão .html)

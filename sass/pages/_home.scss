@@ -399,10 +399,18 @@ position: relative;
 
 .ebook-photo{
   height: 65%;
-  width: 100%;
-  @include respond (mobile){
-    width: 85%;
+  width: 500px;
+  @include respond (tab-land){
+min-width: 450px;
   }
+  @include respond (tab-port){
+    width: 300px;
+    height: 100%;
+      }
+      @include respond (mobile){
+        width: 300px;
+        height: 100%;
+          }
 }
 
 .ebook-text{

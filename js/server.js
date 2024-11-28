@@ -305,16 +305,22 @@ app.post('/upload', upload.single('image'), (req, res) => {
   console.log('Dados recebidos:', req.body);
   console.log('Arquivo:', req.file);
 
+  if (!req.file) {
+    return res.status(400).json({ error: 'Nenhuma imagem foi enviada.' });
+  }
+
   const imagePath = `/img/creation-main/${req.body.page}/${req.file.filename}`;
   const query = 'INSERT INTO images (page, image_path) VALUES (?, ?)';
+
   connection.query(query, [req.body.page, imagePath], (err) => {
     if (err) {
       console.error('Erro ao inserir no banco de dados:', err);
-      return res.status(500).send();
+      return res.status(500).json({ error: 'Erro no banco de dados' });
     }
-    res.status(200).send();
+    res.status(200).json({ message: 'Imagem enviada com sucesso!' });
   });
 });
+
 
 // Rota para obter imagens
 app.get('/images/:page', (req, res) => {
