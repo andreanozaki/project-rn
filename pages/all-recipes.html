@@ -63,6 +63,7 @@
    <div class="container-all-recipes">
  
     <div id="recipePreviewsContainer"></div>
+    
     <div class="recipe__card" data-id="13">
         <img src="/img/pre-recipe/1732646507053.png" alt="br" class="recipe__image-all flash-effect-2">
         <p class="paragraph title-recipe">Bolo Tropical</p>
@@ -145,6 +146,25 @@
   
     <script>
 document.addEventListener('DOMContentLoaded', function() {
+
+
+    const formSection = document.querySelector('.form-section');
+
+    if (!formSection) {
+        console.error('Elemento .form-section não encontrado');
+        return;
+    }
+
+    const isChefLoggedIn = localStorage.getItem('isChefLoggedIn') === 'true' &&
+                           localStorage.getItem('loggedInEmail') === 'andreaflordoceu@gmail.com';
+
+    if (isChefLoggedIn) {
+        formSection.style.display = 'block';
+    } else {
+        formSection.style.display = 'none';
+    }
+
+    
     //funcao para add receitas.
     const combinedRecipeForm = document.getElementById('combinedRecipeForm');
 

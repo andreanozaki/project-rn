@@ -284,6 +284,7 @@ if (document.getElementById('comments')) {
 }
 
  
+
   // Controle de exibição dos formulários de vendas, relatórios e upload apenas para o chef
 const loginForm = document.getElementById('loginForm');
 const salesFormContainer = document.querySelector('.vendas-container');
