@@ -32,7 +32,7 @@ describe('Funções de Animação', () => {
     ];
     const windowHeight = 400; // Define uma altura de janela (windowHeight)
 
-    // Executa a função revealElements
+    // Executa a função revealElements0
     revealElements(reveals, windowHeight);
 
     // Verifica se a classe active é adicionada ou removida com base na posição
