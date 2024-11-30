@@ -19,7 +19,7 @@ Este projeto foi desenvolvido para atender às necessidades de profissionais da 
 - 🖥️ **Responsividade:** Compatível com diferentes dispositivos (desktop e mobile).
 - 🔒 **Segurança de Dados:** Implementação de boas práticas de proteção de dados, alinhadas à LGPD.
 - 📝 **Registro de Vendas:** Permite ao chef registrar manualmente vendas realizadas, especificando o produto/serviço, data e valor. As vendas podem ser usadas para gerar relatórios detalhados.
-- 🛒 **Gerenciamento de Produtos:** Permite ao chef adicionar, editar e excluir produtos (como e-books), incluindo nome, descrição, preço e imagem. 
+- 🛒 **Gerenciamento de Produtos:** Permite ao chef adicionar, editar e excluir produtos, incluindo nome, descrição, preço e imagem. 
 ---
 
 ## 🛠️ Tecnologias Utilizadas
