@@ -8,11 +8,11 @@
     <link rel="stylesheet" href="../css/style.css">
 
     <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
     <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/css/lightbox.min.css" rel="stylesheet">
 
- 
     <script src="/js/script.js" defer></script>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -61,44 +61,30 @@
         
         
     </header>
-
     <div class="container-gallery">
         <section class="section-creations" id="creations">
-        
-            <span class="subheading subheading--1 flash-effect" >Basic</span>
-            <span class="subheading subheading--2 flash-effect-2">Basic</span>
-            <span class="subheading subheading--3 flash-effect">Basic</span>
-    
+            <span class="subheading subheading--1 flash-effect" >Eventos</span>
+            <span class="subheading subheading--2 flash-effect-2">Eventos</span>
+            <span class="subheading subheading--3 flash-effect">Eventos</span>
             <div class="section-creations__gallery grid-3cols">
-                <a href="../img/creation-main/creation-simple/1.png" class="gallery-link no-background" data-lightbox="models" data-title="Caption1">
-                    <figure class="gallery-item">
-                        <img src="../img/creation-main/creation-simple/1.png"alt="photo2" class="">
-                    </figure>
-                  </a>
-                  <a href="../img/creation-main/creation-simple/2.png" class="gallery-link no-background" data-lightbox="models" data-title="Caption1">
-                    <figure class="gallery-item">
-                        <img src="../img/creation-main/creation-simple/2.png"alt="photo2" class="">
-                    </figure>
-                  </a>
-                  <a href="../img/creation-main/creation-simple/3.png" class="gallery-link no-background" data-lightbox="models" data-title="Caption1">
-                    <figure class="gallery-item">
-                        <img src="../img/creation-main/creation-simple/3.png" alt="photo2" class="">
-                    </figure>
+    
+                
                   </a>
         
-                
+            </div>
+         
+            <form action="http://localhost:3001/upload" method="POST" enctype="multipart/form-data" style="display: none;">
+                <input type="hidden" name="page" value="creation-events"> <!-- Verifique se o valor está correto -->
+                <input type="file" name="image" accept="image/*" required>
+                <button type="submit">Upload de Imagem</button>
+            </form>
         </section>
-       
-    
 
     </div>
-    <form action="http://localhost:3001/upload" method="POST" enctype="multipart/form-data" style="display: none;">
-        <input type="hidden" name="page" value="creation-simple"> <!-- Verifique se o valor está correto -->
-        <input type="file" name="image" accept="image/*" required>
-        <button type="submit">Upload de Imagem</button>
-    </form>
+
     
-    
+
+
     <footer class="footer ">
         <div class=" grid-5cols">
 
@@ -138,18 +124,22 @@
 
                 </ul>
             </div>
-         
+           
+          
+           
+           
         </div>
   
         <p class="copyright"> &copy; 2023 Ricardo Nozaki.Todos os direitos reservados. Site por <a href="https://andreanozaki.com/">AN Sites</a></p>
 
     
     </footer>
-   
+    
+  
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox.min.js" integrity="sha512-Ixzuzfxv1EqafeQlTCufWfaC6ful6WFqIz4G+dWvK0beHw0NVJwvCKSgafpy5gwNqKmgUfIBraVwkKI+Cz0SEQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     <script src="/js/cookie-banner.js" defer></script>
-    <script src="/js/upload-script.js" defer></script>
+    <script src="/js/upload-script.js"></script>
 
 
 </body>

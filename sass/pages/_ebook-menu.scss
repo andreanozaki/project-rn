@@ -3,6 +3,7 @@
   display: flex;
   flex-direction: column;
   gap: 2rem;
+  min-height: 100%; /* Garante que o container cresça com o conteúdo */
 
   @media (max-width: 1200px) {
     padding: 2rem 10rem;
@@ -10,42 +11,89 @@
 
   @media (max-width: 900px) {
     padding: 2rem;
+    height: 100%;
   }
+
+  .paragraph{
+    font-size: 2.4rem;
+    font-weight: 500;
+  }
+}
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+footer {
+  margin-top: auto;
 }
 
 .ebook-content {
+  height: auto;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Ajuste dinâmico */
   gap: 2rem;
 
   @include respond(tab-port){
   grid-template-columns: 1fr;
   }
+  @include respond (tab-land){
+    height: 100%;
+  }
 }
 
 .ebook-box {
+  display: flex; /* Adiciona flexbox para alinhar o conteúdo interno */
+  flex-direction: column; /* Garante que os elementos fiquem empilhados */
+  justify-content: space-between; /* Espaça uniformemente os itens */
+  height: auto; /* Ajusta a altura com base no conteúdo */
+  max-width: 600px;
   border-radius: 10px;
-  overflow: hidden;
+  overflow: hidden; /* Evita corte indesejado */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   text-align: center;
   transition: transform 0.3s;
   cursor: pointer;
 
-  @include respond (tab-land){
+  @include respond(tab-land) {
     max-width: 350px;
-  margin: auto;
-    
+    margin: auto;
   }
-  
+
+  @include respond(mobile) {
+    width: 100%;
+  }
 }
 
+.ebook-price {
+  margin-top: 1rem; /* Espaçamento para não grudar no conteúdo acima */
+  padding: 1rem 0; /* Adiciona espaço interno para melhor aparência */
+  text-align: center; /* Centraliza o conteúdo */
+}
+
+.ebook-title {
+  display: block;
+  font-size: 2.4rem;
+  color: #333;
+  margin: 0.5rem 0;
+  text-decoration: none;
+}
+
+.price {
+  font-size: 2rem;
+  color: #3d3c3c;
+}
+
+
 .ebook-capa {
+  height: 100%;
   position: relative;
   @include respond (tab-land){
     max-width: 350px;
-  
+    height: 100%;
     
   }
+
 }
 
 .ebook-photo-small,
@@ -72,16 +120,4 @@
   opacity: 1;
 }
 
-.ebook-title {
-  display: block;
-  font-size: 1.5rem;
-  color: #333;
-  margin: 1rem 0 0.5rem;
-  text-decoration: none;
-}
-
-.price {
-  font-size: 1.25rem;
-  color: #888;
-}
 

@@ -749,11 +749,15 @@ body {
 .modal-content {
   position: relative; /* Certifique-se de que o modal não seja desfocado */
   background: #fff;
-  padding: 20px;
+  padding: 30px;
   border-radius: 10px;
   width: 90%;
   max-width: 400px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.modal .modal-content {
+  font-size: 2rem !important;
 }
 
 .modal-content h2 {
@@ -849,8 +853,8 @@ body {
 
 .modal-content h2 {
   margin-bottom: 20px;
-  font-size: 1.5rem;
-  color: #333;
+  font-size: 2.5rem;
+  color: #361e11;
 }
 
 #feedbackList {
@@ -874,7 +878,8 @@ body {
   top: 10px;
   right: 10px;
   cursor: pointer;
-  font-size: 1.2rem;
+  font-size: 2.8rem;
+  padding: 1rem;
 }
 
 /* Classe para aplicar desfoque ao conteúdo de fundo */
@@ -1868,19 +1873,23 @@ body {
 
 .delete-button {
   position: absolute;
-  top: 10px;
-  right: 10px;
-  background-color: rgba(255, 0, 0, 0.672); /* Cor de fundo vermelha com transparência */
+  top: 80%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* Centraliza o botão */
+  background-color: rgb(255, 0, 0); /* Fundo sólido ao passar o mouse */
   color: white;
   border: none;
-  padding: 5px 10px;
+  padding: 12px 24px; /* Aumenta o espaço interno (10px em cima/baixo, 20px nas laterais) */
+  font-size: 1.8rem !important; /* Aumenta o tamanho do texto e força sua aplicação */
+  font-weight: 400;
+  transition: all 0.3s ease; /* Transição suave para hover */
   cursor: pointer;
   font-size: 12px;
   border-radius: 5px;
 }
 
 .delete-button:hover {
-  background-color: rgb(255, 0, 0); /* Fundo sólido ao passar o mouse */
+  background-color: rgb(226, 47, 24); /* Fundo sólido ao passar o mouse */
 }
 
 .ebook {
@@ -2033,6 +2042,15 @@ body {
     max-width: 95vw;
   }
 }
+.container-history--text .middle {
+  color: aliceblue;
+  font-size: 2.4rem;
+  font-weight: 100;
+}
+.container-history--text .paragraph {
+  font-weight: 200;
+  font-size: 2.4rem;
+}
 .container-history .experience {
   display: flex;
   flex-direction: column;
@@ -2059,7 +2077,7 @@ body {
 }
 
 .cor {
-  background-color: rgba(42, 41, 40, 0.41);
+  background-color: #333;
 }
 
 @media (max-width: 945px) {
@@ -2112,9 +2130,6 @@ body {
   position: relative;
   z-index: 1; /* Coloca o conteúdo acima da sobreposição */
   text-align: center;
-}
-.section-recipe .recipe-card .paragraph {
-  font-size: 2.2rem;
 }
 .section-recipe .recipe-card .recipe-creator {
   font-size: 2em;
@@ -2360,12 +2375,13 @@ body {
 }
 
 .paragraph {
-  font-size: 1.2rem;
+  padding: 1.5rem;
+  font-size: 2.2rem;
   margin-bottom: 1rem;
 }
 
 .recipe__creator {
-  font-size: 1.1rem;
+  font-size: 2rem;
   color: #666;
 }
 
@@ -2374,6 +2390,7 @@ body {
   display: flex;
   flex-direction: column;
   gap: 2rem;
+  min-height: 100%; /* Garante que o container cresça com o conteúdo */
 }
 @media (max-width: 1200px) {
   .container-my-ebooks {
@@ -2383,12 +2400,28 @@ body {
 @media (max-width: 900px) {
   .container-my-ebooks {
     padding: 2rem;
+    height: 100%;
   }
+}
+.container-my-ebooks .paragraph {
+  font-size: 2.4rem;
+  font-weight: 500;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+footer {
+  margin-top: auto;
 }
 
 .ebook-content {
+  height: auto;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Ajuste dinâmico */
   gap: 2rem;
 }
 @media (max-width: 59em) {
@@ -2396,10 +2429,20 @@ body {
     grid-template-columns: 1fr;
   }
 }
+@media (max-width: 75em) {
+  .ebook-content {
+    height: 100%;
+  }
+}
 
 .ebook-box {
+  display: flex; /* Adiciona flexbox para alinhar o conteúdo interno */
+  flex-direction: column; /* Garante que os elementos fiquem empilhados */
+  justify-content: space-between; /* Espaça uniformemente os itens */
+  height: auto; /* Ajusta a altura com base no conteúdo */
+  max-width: 600px;
   border-radius: 10px;
-  overflow: hidden;
+  overflow: hidden; /* Evita corte indesejado */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   text-align: center;
   transition: transform 0.3s;
@@ -2411,13 +2454,39 @@ body {
     margin: auto;
   }
 }
+@media (max-width: 710px) {
+  .ebook-box {
+    width: 100%;
+  }
+}
+
+.ebook-price {
+  margin-top: 1rem; /* Espaçamento para não grudar no conteúdo acima */
+  padding: 1rem 0; /* Adiciona espaço interno para melhor aparência */
+  text-align: center; /* Centraliza o conteúdo */
+}
+
+.ebook-title {
+  display: block;
+  font-size: 2.4rem;
+  color: #333;
+  margin: 0.5rem 0;
+  text-decoration: none;
+}
+
+.price {
+  font-size: 2rem;
+  color: #3d3c3c;
+}
 
 .ebook-capa {
+  height: 100%;
   position: relative;
 }
 @media (max-width: 75em) {
   .ebook-capa {
     max-width: 350px;
+    height: 100%;
   }
 }
 
@@ -2446,19 +2515,6 @@ body {
 .ebook-box:hover .ebook-photo-new {
   display: block;
   opacity: 1;
-}
-
-.ebook-title {
-  display: block;
-  font-size: 1.5rem;
-  color: #333;
-  margin: 1rem 0 0.5rem;
-  text-decoration: none;
-}
-
-.price {
-  font-size: 1.25rem;
-  color: #888;
 }
 
 .ebook-1-content {

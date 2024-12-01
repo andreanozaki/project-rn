@@ -6,6 +6,7 @@
   flex-direction: row;
   justify-content: space-evenly;
   align-items: center;
+  
   @include respond (tab-port){
     height: 100vh;
       padding: 5rem 15rem 0 15rem;
@@ -50,8 +51,17 @@
       max-width: 95vw;
    
     }
-  
-    
+ 
+    .middle{
+      color: aliceblue;
+      font-size: 2.4rem;
+      font-weight: 100;
+    }
+    .paragraph{
+      font-weight: 200;
+      font-size: 2.4rem;
+
+    }
 
   }
 
@@ -82,7 +92,8 @@
   background-color: rgba(221, 215, 183, 0.29); /* Transparência ajustada */
 }
 .cor{
-  background-color: rgba(42, 41, 40, 0.41);
+  background-color: #333;
+ 
 }
 
 

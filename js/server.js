@@ -382,10 +382,6 @@ app.delete('/delete-image/:id', (req, res) => {
   });
 });
 
-
- // Rota para upload de pré-visualização de receitas
-  
-// Rota para upload de pré-visualização de receitas
 // Rota para upload de receitas completas
 app.post('/add-complete-recipe', uploadPreRecipe.single('recipeImage'), (req, res) => {
   const { recipeTitle, recipeDescription, ingredients, preparation, time, level, yield: recipeYield } = req.body;

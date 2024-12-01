@@ -2,7 +2,6 @@
 
 document.addEventListener('DOMContentLoaded', function () {
 
-
    // Seleciona os elementos do menu
    const hamburger = document.querySelector('.hamburger');
    const mainNav = document.querySelector('.main-nav');
@@ -469,7 +468,7 @@ if (salesForm) {
     }
 
     // Evento de clique para aceitar os cookies
-    acceptCookiesButton.addEventListener('click', function() {
+      acceptCookiesButton.addEventListener('click', function() {
       localStorage.setItem('cookieConsent', 'accepted');
       cookieBanner.style.display = 'none';
       activateTracking();

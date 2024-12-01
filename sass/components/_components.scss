@@ -561,15 +561,16 @@
 
 .modal-content {
   position: relative; /* Certifique-se de que o modal não seja desfocado */
-
   background: #fff;
-  padding: 20px;
+  padding: 30px;
   border-radius: 10px;
   width: 90%;
   max-width: 400px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
-
+.modal .modal-content{
+  font-size: 2rem !important;
+}
 .modal-content h2 {
   margin: 0 0 15px;
   font-size: 24px;
@@ -662,8 +663,8 @@
 
 .modal-content h2 {
   margin-bottom: 20px;
-  font-size: 1.5rem;
-  color: #333;
+  font-size: 2.5rem;
+  color: #361e11;
 }
 
 #feedbackList {
@@ -687,7 +688,8 @@
   top: 10px;
   right: 10px;
   cursor: pointer;
-  font-size: 1.2rem;
+  font-size: 2.8rem;
+  padding: 1rem;
 }
 /* Classe para aplicar desfoque ao conteúdo de fundo */
 .blurred {

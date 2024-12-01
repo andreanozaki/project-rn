@@ -352,19 +352,25 @@ position: relative;
 
 .delete-button {
   position: absolute;
-  top: 10px;
-  right: 10px;
-  background-color: rgba(255, 0, 0, 0.672); /* Cor de fundo vermelha com transparência */
+  top: 80%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* Centraliza o botão */
+  background-color: rgba(255, 0, 0, 1); /* Fundo sólido ao passar o mouse */
   color: white;
   border: none;
-  padding: 5px 10px;
+  padding: 12px 24px; /* Aumenta o espaço interno (10px em cima/baixo, 20px nas laterais) */
+  font-size: 1.8rem !important; /* Aumenta o tamanho do texto e força sua aplicação */
+  font-weight: 400;
+  transition: all 0.3s ease; /* Transição suave para hover */
+
+
   cursor: pointer;
   font-size: 12px;
   border-radius: 5px;
 }
 
 .delete-button:hover {
-  background-color: rgba(255, 0, 0, 1); /* Fundo sólido ao passar o mouse */
+  background-color: rgb(226, 47, 24); /* Fundo sólido ao passar o mouse */
 }
 
 //EBOOK-SECTION

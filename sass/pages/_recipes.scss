@@ -36,9 +36,7 @@
         position: relative;
         z-index: 1; /* Coloca o conteúdo acima da sobreposição */
         text-align: center;
-.paragraph{
-    font-size: 2.2rem;
-}
+
         .recipe-creator {
             font-size: 2em;
             font-weight: 400;
@@ -260,7 +258,7 @@ padding: 12px 34px;
         }
     }
 }
-//all recipes
+//ALL RECIPES
 .container-all-recipes {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -292,12 +290,13 @@ padding: 12px 34px;
 }
 
 .paragraph {
-    font-size: 1.2rem;
+    padding: 1.5rem;
+    font-size:2.2rem;
     margin-bottom: 1rem;
 }
 
 
 .recipe__creator {
-    font-size: 1.1rem;
+    font-size: 2rem;
     color: #666;
 }

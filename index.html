@@ -190,7 +190,7 @@
                 </a>
                 <a href="pages/crea-events.html" class="gallery-link reveal">
                     <figure class="gallery-item">
-                        <img src="./img/creation-main/capas-box-main/Design sem nome-24.png" alt="Petit four de salmao e ovas de peixe em cima." class="">
+                        <img src="./img/creation-main/capas-box-main/events.png" alt="Petit four de salmao e ovas de peixe em cima." class="">
                         <span class="gallery-box-description">Eventos <br><ion-icon name="eye-outline"
                                 class="icon-creation"></ion-icon></span>
                     </figure>
@@ -312,7 +312,7 @@
             <label for="user_email">Seu Email (opcional):</label>
             <input type="email" id="user_email" name="user_email" placeholder="Digite seu email">
         
-            <label for="rating">Avaliação:</label>
+            <label for="rating">O site atendeu às suas necessidades?:</label>
             <select id="rating" name="rating" required>
                 <option value="" disabled selected>Selecione</option>
                 <option value="sim">Sim</option>
@@ -431,39 +431,42 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Enviar o feedback
     feedbackForm.addEventListener('submit', (event) => {
-        event.preventDefault();
+    event.preventDefault();
 
-        const rating = document.getElementById('rating').value;
-        const comment = document.getElementById('comment').value;
+    const rating = document.getElementById('rating').value;
+    const comment = document.getElementById('comment').value;
 
-        if (!rating) {
-            alert('Por favor, selecione uma avaliação.');
-            return;
-        }
+    if (!rating) {
+        alert('Por favor, selecione uma avaliação.');
+        return;
+    }
 
-        fetch('http://localhost:3001/feedback', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ rating, comment }),
+    fetch('http://localhost:3001/feedback', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ rating, comment }),
+    })
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error('Erro ao enviar feedback.');
+            }
+            return response.json();
         })
-            .then((response) => {
-                if (!response.ok) {
-                    throw new Error('Erro ao enviar feedback.');
-                }
-                return response.json();
-            })
-            .then((data) => {
-                alert(data.message);
-                feedbackForm.reset();
-                feedbackModal.style.display = 'none';
-            })
-            .catch((error) => {
-                console.error('Erro ao enviar feedback:', error);
-                alert('Erro ao enviar feedback. Tente novamente.');
-            });
-    });
+        .then((data) => {
+            alert(data.message);
+            feedbackForm.reset();
+            feedbackModal.style.display = 'none'; // Fecha o modal
+            feedbackOverlay.style.display = 'none'; // Oculta o overlay
+        })
+        .catch((error) => {
+            console.error('Erro ao enviar feedback:', error);
+            alert('Erro ao enviar feedback. Tente novamente.');
+        });
+});
+
+    
 
      // Função para carregar mensagens do banco de dados
      function loadMessages() {
@@ -520,7 +523,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         const listItem = document.createElement('li');
                         listItem.innerHTML = `
                             <strong>Email:</strong> ${feedback.user_email || 'Anônimo'}<br>
-                            <strong>Avaliação:</strong> ${feedback.rating}<br>
+                            <strong>O site atendeu suas expectativas:</strong> ${feedback.rating}<br>
                             <strong>Comentário:</strong> ${feedback.comment || 'Nenhum comentário'}<br>
                             <small>Enviado em: ${new Date(feedback.created_at).toLocaleString()}</small>
                         `;
@@ -550,6 +553,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
+
 
 //fim dom
   </script>
