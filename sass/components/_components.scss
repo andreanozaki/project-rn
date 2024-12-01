@@ -3,15 +3,11 @@
     height: 12rem;
     @include respond(mobile){
       height: 10rem;
-
   }
   }
 
 .container {
   padding: 0 15rem;
-
-
- 
 }
 .container-gallery{
   padding: 0 10%;
@@ -24,19 +20,16 @@
   list-style: none;
 }
 
-
-
-
 //BTN
 
 .btn-main {
   margin-top: 1rem;
-  font-size: 2rem;
-  padding: 14px 28px;
+  font-size: 2.4rem;
+  padding: 18px 46px;
   background-color: #644812;
-  color: #ffffff;
+  color: rgb(249, 244, 244);
   border: none;
-  border-radius: 25px;
+  border-radius: 46px;
   text-decoration: none;
   cursor: pointer; /* Adiciona um cursor de pointer para indicar clicável */
   display: inline-block; /* Garante que o botão se comporte corretamente */
@@ -57,15 +50,11 @@
   box-shadow: 0 0 0 3px rgba(100, 72, 18, 0.5); /* Adiciona um contorno visível ao focar */
 }
   
-
-
 //PARAGRAPH
-
-
 .paragraph {
-  font-weight: 300;
+  font-weight:300;
   font-family: 'Open Sans', sans-serif; /* Fonte moderna e legível */
-  font-size: 20px; /* Tamanho de fonte padrão para legibilidade */
+  font-size: 1.4rem; /* Tamanho de fonte padrão para legibilidade */
   line-height: 1.5; /* Espaçamento entre linhas adequado */
   color: #333; /* Cor do texto para bom contraste */
   margin-top: 1rem;
@@ -86,8 +75,8 @@
 }
 
 .icon {
-  color: rgb(135, 131, 131);
-  font-size: 2.8rem;
+  color:#e9dcc4;
+  font-size: 3.2rem;
   text-decoration: none;
   transition: color 0.3s, transform 0.3s;
 }
@@ -108,13 +97,12 @@
   gap: 2rem;
   list-style: none;
   text-decoration: none;
-
   position: absolute;
   top: 34%;
+
   .icon{
     color: #ddc392;
   }
-
 }
 
 
@@ -157,6 +145,7 @@
   opacity: 1;
   transform: translateY(0);
 }
+
 .reveal-from-right {
   opacity: 0;
   transform: translateX(40px); /* Ajuste a distância conforme necessário */
@@ -433,14 +422,22 @@
 }
 
 //cookies
+
 .btn-cookies{
   display: flex;
   justify-content: space-evenly;
-  width: 30vw;
-@include respond(tab-land){
   width: 40vw;
-  text-align: center;
- padding: 0 3rem 0 5rem;
+  padding: 0 5rem 0 1rem;
+@include respond(tab-port){
+ width:40vw;
+}
+
+
+@include respond (mobile){
+  width:90vw;
+  margin: auto;
+  padding:0;
+
 }
 
 }
@@ -451,13 +448,13 @@
   min-height: 105px;
   justify-content: space-around;
   color: #141313af;
-  padding: 10px;
+  padding: 2rem;
   background-color: #f4f6fa;
   display: flex;
   flex-direction: row;
   align-items: center;
   z-index: 1000;
-  font-size: 14px;
+  font-size: 2rem;
   text-align: center;
 }
 
@@ -478,7 +475,8 @@
 
 .cookie-banner .btn-cookies {
   display: flex;
-  gap: 10px; /* Espaçamento entre os botões */
+  gap: 1rem; /* Espaçamento entre os botões */
+
 }
 
 .cookie-banner button {
@@ -499,6 +497,7 @@
   border: 2px solid #5a3a1e; /* Borda marrom escura */
   background-color: transparent;
   color: #5a3a1e; /* Cor da fonte marrom escura */
+
 }
 
 #acceptCookies {
@@ -515,7 +514,7 @@
   }
 
   .btn-cookies {
-    width: 100%;
+    width:90%;
   }
 
   .btn-cookies button {
@@ -530,13 +529,14 @@
 
 //FEEDBACK
 /* Botão de feedback */
+
 .btn-feedback {
   background-color: #683407;
   color: #fff;
   border: none;
-  padding: 10px 20px;
-  font-size: 16px;
-  border-radius: 5px;
+  padding: 18px 34px;
+  font-size: 2rem;
+  border-radius:10px;
   cursor: pointer;
   transition: background-color 0.3s;
 }
@@ -843,6 +843,7 @@
   box-sizing: border-box;
   transition: border-color 0.3s;
   background-color: #ffffff;
+  
 }
 
 .form-section input:focus,
@@ -890,4 +891,83 @@
 }
 #recipePreviewsContainer:empty {
   display: none;
+}
+
+//saida receitas 
+.recipes {
+  display: flex;
+  flex-wrap: wrap; /* Permite que os itens se ajustem em telas menores */
+  justify-content: space-between;
+  margin: 20px auto;
+  max-width: 100%; /* Garante que o container principal não ultrapasse os limites */
+}
+
+.left-side,
+.right-side {
+  width: 100%; /* Garante largura total em telas menores */
+  box-sizing: border-box; /* Inclui padding e bordas no tamanho */
+  margin-bottom: 20px; /* Espaçamento inferior para os blocos */
+}
+
+@media (min-width: 768px) {
+  .left-side {
+    width: 40%; /* Ocupa 40% da largura em telas maiores */
+  }
+
+  .right-side {
+    width: 60%; /* Ocupa 60% da largura em telas maiores */
+  }
+}
+
+.left-side__photo {
+  width: 100%; /* Faz a imagem ocupar todo o espaço disponível */
+  height: auto; /* Mantém a proporção da imagem */
+  border-radius: 8px;
+}
+
+.ingredients,
+.prepare p {
+  word-wrap: break-word; /* Quebra palavras longas */
+  overflow-wrap: break-word; /* Suporte para navegadores modernos */
+  line-height: 1.6; /* Espaçamento entre linhas */
+  font-size: 1.2rem; /* Tamanho da fonte ajustável */
+  max-width: 100%; /* Garante que não ultrapasse o limite do container pai */
+}
+
+.ingredients li {
+  margin-bottom: 10px; /* Espaçamento entre os itens */
+}
+
+.prepare {
+  margin-top: 20px; /* Adiciona espaçamento acima do modo de preparo */
+}
+
+.prepare p {
+  white-space: pre-wrap; /* Preserva quebras de linha inseridas pelo chef */
+}
+
+.icon-recipe {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 5px; /* Espaçamento entre o título e o conteúdo */
+  text-align: center; /* Centraliza o texto */
+}
+
+.status-recipe {
+  display: flex;
+  justify-content: space-around; /* Espaçamento uniforme entre os itens */
+  margin: 20px 0; /* Espaçamento acima e abaixo do status */
+  text-align: center; /* Centraliza o texto */
+}
+
+.time,
+.nivel,
+.rendimento {
+  flex: 1; /* Faz os itens ocuparem o mesmo espaço */
+  padding: 10px; /* Adiciona espaçamento interno */
+}
+
+.topic {
+  display: block;
+  margin-bottom: 10px; /* Espaçamento entre o título e o conteúdo */
 }

@@ -56,7 +56,7 @@
 }
 :root {
   --color-primary:#292929 ;
-  --color-primary-light:#61CE70;
+  --color-primary-light:#ecc380;
   --color-primary-dark:#323232 ; /* h2 fundo
 
 
@@ -140,18 +140,13 @@ body {
 
 .subheading {
   text-align: center;
-  font-size: 3.5rem;
+  font-size: 4.5rem;
   font-weight: 700;
   color: #333333;
   text-transform: uppercase;
   letter-spacing: 0.75px;
   font-family: "Unica One", sans-serif;
   display: block;
-}
-@media (max-width: 710px) {
-  .subheading {
-    font-size: 3rem;
-  }
 }
 .subheading--1 {
   color: #eae1cb;
@@ -247,12 +242,12 @@ body {
 
 .btn-main {
   margin-top: 1rem;
-  font-size: 2rem;
-  padding: 14px 28px;
+  font-size: 2.4rem;
+  padding: 18px 46px;
   background-color: #644812;
-  color: #ffffff;
+  color: rgb(249, 244, 244);
   border: none;
-  border-radius: 25px;
+  border-radius: 46px;
   text-decoration: none;
   cursor: pointer; /* Adiciona um cursor de pointer para indicar clicável */
   display: inline-block; /* Garante que o botão se comporte corretamente */
@@ -276,7 +271,7 @@ body {
 .paragraph {
   font-weight: 300;
   font-family: "Open Sans", sans-serif; /* Fonte moderna e legível */
-  font-size: 20px; /* Tamanho de fonte padrão para legibilidade */
+  font-size: 1.4rem; /* Tamanho de fonte padrão para legibilidade */
   line-height: 1.5; /* Espaçamento entre linhas adequado */
   color: #333; /* Cor do texto para bom contraste */
   margin-top: 1rem;
@@ -298,8 +293,8 @@ body {
 }
 
 .icon {
-  color: rgb(135, 131, 131);
-  font-size: 2.8rem;
+  color: #e9dcc4;
+  font-size: 3.2rem;
   text-decoration: none;
   transition: color 0.3s, transform 0.3s;
 }
@@ -625,13 +620,19 @@ body {
 .btn-cookies {
   display: flex;
   justify-content: space-evenly;
-  width: 30vw;
+  width: 40vw;
+  padding: 0 5rem 0 1rem;
 }
-@media (max-width: 75em) {
+@media (max-width: 59em) {
   .btn-cookies {
     width: 40vw;
-    text-align: center;
-    padding: 0 3rem 0 5rem;
+  }
+}
+@media (max-width: 710px) {
+  .btn-cookies {
+    width: 90vw;
+    margin: auto;
+    padding: 0;
   }
 }
 
@@ -642,13 +643,13 @@ body {
   min-height: 105px;
   justify-content: space-around;
   color: rgba(20, 19, 19, 0.6862745098);
-  padding: 10px;
+  padding: 2rem;
   background-color: #f4f6fa;
   display: flex;
   flex-direction: row;
   align-items: center;
   z-index: 1000;
-  font-size: 14px;
+  font-size: 2rem;
   text-align: center;
 }
 
@@ -669,7 +670,7 @@ body {
 
 .cookie-banner .btn-cookies {
   display: flex;
-  gap: 10px; /* Espaçamento entre os botões */
+  gap: 1rem; /* Espaçamento entre os botões */
 }
 
 .cookie-banner button {
@@ -705,7 +706,7 @@ body {
     align-items: center;
   }
   .btn-cookies {
-    width: 100%;
+    width: 90%;
   }
   .btn-cookies button {
     width: 50%; /* Cada botão ocupa 50% da largura em telas menores */
@@ -720,9 +721,9 @@ body {
   background-color: #683407;
   color: #fff;
   border: none;
-  padding: 10px 20px;
-  font-size: 16px;
-  border-radius: 5px;
+  padding: 18px 34px;
+  font-size: 2rem;
+  border-radius: 10px;
   cursor: pointer;
   transition: background-color 0.3s;
 }
@@ -1075,6 +1076,82 @@ body {
   display: none;
 }
 
+.recipes {
+  display: flex;
+  flex-wrap: wrap; /* Permite que os itens se ajustem em telas menores */
+  justify-content: space-between;
+  margin: 20px auto;
+  max-width: 100%; /* Garante que o container principal não ultrapasse os limites */
+}
+
+.left-side,
+.right-side {
+  width: 100%; /* Garante largura total em telas menores */
+  box-sizing: border-box; /* Inclui padding e bordas no tamanho */
+  margin-bottom: 20px; /* Espaçamento inferior para os blocos */
+}
+
+@media (min-width: 768px) {
+  .left-side {
+    width: 40%; /* Ocupa 40% da largura em telas maiores */
+  }
+  .right-side {
+    width: 60%; /* Ocupa 60% da largura em telas maiores */
+  }
+}
+.left-side__photo {
+  width: 100%; /* Faz a imagem ocupar todo o espaço disponível */
+  height: auto; /* Mantém a proporção da imagem */
+  border-radius: 8px;
+}
+
+.ingredients,
+.prepare p {
+  word-wrap: break-word; /* Quebra palavras longas */
+  overflow-wrap: break-word; /* Suporte para navegadores modernos */
+  line-height: 1.6; /* Espaçamento entre linhas */
+  font-size: 1.2rem; /* Tamanho da fonte ajustável */
+  max-width: 100%; /* Garante que não ultrapasse o limite do container pai */
+}
+
+.ingredients li {
+  margin-bottom: 10px; /* Espaçamento entre os itens */
+}
+
+.prepare {
+  margin-top: 20px; /* Adiciona espaçamento acima do modo de preparo */
+}
+
+.prepare p {
+  white-space: pre-wrap; /* Preserva quebras de linha inseridas pelo chef */
+}
+
+.icon-recipe {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 5px; /* Espaçamento entre o título e o conteúdo */
+  text-align: center; /* Centraliza o texto */
+}
+
+.status-recipe {
+  display: flex;
+  justify-content: space-around; /* Espaçamento uniforme entre os itens */
+  margin: 20px 0; /* Espaçamento acima e abaixo do status */
+  text-align: center; /* Centraliza o texto */
+}
+
+.time,
+.nivel,
+.rendimento {
+  flex: 1; /* Faz os itens ocuparem o mesmo espaço */
+  padding: 10px; /* Adiciona espaçamento interno */
+}
+
+.topic {
+  display: block;
+  margin-bottom: 10px; /* Espaçamento entre o título e o conteúdo */
+}
+
 .chef-formation {
   position: absolute;
   bottom: 0;
@@ -1341,195 +1418,45 @@ body {
   gap: 4.8rem;
   align-items: center;
   font-family: "Unica One", sans-serif;
-  /* Estilo específico para o item de sair */
-}
-.main-nav-list .main-nav-link:link,
-.main-nav-list .main-nav-link:visited {
-  /*font-family:'Unica One', sans-serif;Mantém o estilo da navegação e alinha o link de Login à direita */
-  /* Oculta a navegação padrão em telas menores e define o estilo do menu */
-  /* Oculta o menu de navegação padrão para telas menores que `tab-land` */
-  /* Ícone de hambúrguer */
-  /* Ícone de fechar, oculto por padrão */
-  /* Exibir o ícone de fechar e ocultar o de hambúrguer quando o menu está ativo */
-  /* Exibe o menu de hambúrguer e oculta o menu principal em telas menores */
-  /* Ajustar os links de navegação para ficarem alinhados no centro */
-  display: inline-block;
-  text-decoration: none;
-  color: var(--color-primary--light);
-  font-size: 26px;
-  line-height: 22px;
-  letter-spacing: 2px;
-  font-weight: 800;
-  transition: all 0.3s;
-}
-.main-nav-list .main-nav-link:link .main-nav-list,
-.main-nav-list .main-nav-link:visited .main-nav-list {
-  list-style: none;
-  display: flex;
-  gap: 4.8rem;
-  align-items: center;
-  font-family: "Unica One", sans-serif;
-  /* Estilo específico para o item de sair */
-}
-.main-nav-list .main-nav-link:link .main-nav-list .main-nav-link:link,
-.main-nav-list .main-nav-link:link .main-nav-list .main-nav-link:visited,
-.main-nav-list .main-nav-link:visited .main-nav-list .main-nav-link:link,
-.main-nav-list .main-nav-link:visited .main-nav-list .main-nav-link:visited {
-  display: inline-block;
-  text-decoration: none;
-  color: var(--color-primary--light);
-  font-size: 26px;
-  line-height: 22px;
-  letter-spacing: 2px;
-  font-weight: 800;
-  transition: all 0.3s;
-}
-.main-nav-list .main-nav-link:link .main-nav-list .main-nav-link:hover,
-.main-nav-list .main-nav-link:link .main-nav-list .main-nav-link:active,
-.main-nav-list .main-nav-link:visited .main-nav-list .main-nav-link:hover,
-.main-nav-list .main-nav-link:visited .main-nav-list .main-nav-link:active {
-  color: #dbd4af;
-}
-.main-nav-list .main-nav-link:link .main-nav-list .main-nav-link.nav-cta:link,
-.main-nav-list .main-nav-link:link .main-nav-list .main-nav-link.nav-cta:visited,
-.main-nav-list .main-nav-link:visited .main-nav-list .main-nav-link.nav-cta:link,
-.main-nav-list .main-nav-link:visited .main-nav-list .main-nav-link.nav-cta:visited {
-  padding: 1.2rem 2.4rem;
-  border-radius: 9px;
-  color: var(--color-primary);
-  background-color: #dbd4af;
-}
-.main-nav-list .main-nav-link:link .main-nav-list .main-nav-link.nav-cta:hover,
-.main-nav-list .main-nav-link:link .main-nav-list .main-nav-link.nav-cta:active,
-.main-nav-list .main-nav-link:visited .main-nav-list .main-nav-link.nav-cta:hover,
-.main-nav-list .main-nav-link:visited .main-nav-list .main-nav-link.nav-cta:active {
-  background-color: var(--color-primary-light);
-  color: rgb(26, 26, 26);
-}
-.main-nav-list .main-nav-link:link .forgotpass-page .main-nav-list,
-.main-nav-list .main-nav-link:visited .forgotpass-page .main-nav-list {
-  width: 80vw; /* Garante que a lista ocupe toda a largura disponível */
+  /* Ajustes responsivos */
 }
 @media (max-width: 75em) {
-  .main-nav-list .main-nav-link:link .forgotpass-page .main-nav-list,
-  .main-nav-list .main-nav-link:visited .forgotpass-page .main-nav-list {
-    width: 70vw;
-  }
-}
-.main-nav-list .main-nav-link:link .forgotpass-page .main-nav-link,
-.main-nav-list .main-nav-link:visited .forgotpass-page .main-nav-link {
-  color: #242121; /* Ajuste para a cor original do link */
-  background-color: beige;
-  text-decoration: none;
-  padding: 15px 20px; /* Padding para manter o estilo */
-  border-radius: 4px;
-}
-.main-nav-list .main-nav-link:link .forgotpass-page .main-nav-link:hover,
-.main-nav-list .main-nav-link:visited .forgotpass-page .main-nav-link:hover {
-  color: #eba350;
-}
-.main-nav-list .main-nav-link:link .hamburger,
-.main-nav-list .main-nav-link:visited .hamburger {
-  display: none; /* Oculta o hambúrguer em telas maiores */
-  font-size: 3rem;
-  background: none;
-  border: none;
-  cursor: pointer;
-  color: #dbd4af;
-  position: relative;
-}
-.main-nav-list .main-nav-link:link .icon-menu,
-.main-nav-list .main-nav-link:visited .icon-menu {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-.main-nav-list .main-nav-link:link .icon-close,
-.main-nav-list .main-nav-link:visited .icon-close {
-  display: none;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-60%, -50%); /* Desloca um pouco para a esquerda */
-  color: #0e0d0a; /* Cor do ícone "X" */
-  z-index: 15;
-}
-.main-nav-list .main-nav-link:link .hamburger.active .icon-menu,
-.main-nav-list .main-nav-link:visited .hamburger.active .icon-menu {
-  display: none;
-}
-.main-nav-list .main-nav-link:link .hamburger.active .icon-close,
-.main-nav-list .main-nav-link:visited .hamburger.active .icon-close {
-  display: inline;
-}
-@media (max-width: 1200px) {
-  .main-nav-list .main-nav-link:link,
-  .main-nav-list .main-nav-link:visited { /* Ajuste para o breakpoint `tab-land` */
-    /* Ocultar o menu de navegação por padrão em telas menores */
-    /* Exibir o menu de navegação de forma vertical quando a classe .active é adicionada */
-  }
-  .main-nav-list .main-nav-link:link .hamburger,
-  .main-nav-list .main-nav-link:visited .hamburger {
-    display: block; /* Exibe o botão de hambúrguer em telas menores */
-  }
-  .main-nav-list .main-nav-link:link .main-nav,
-  .main-nav-list .main-nav-link:visited .main-nav {
-    display: none;
-    transition: all 0.3s ease-in-out;
-  }
-  .main-nav-list .main-nav-link:link .main-nav.active,
-  .main-nav-list .main-nav-link:visited .main-nav.active {
-    display: flex !important;
-    flex-direction: column;
-    position: absolute;
-    top: 5px;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    background-color: #f4f2e9;
-    color: #eba350;
-    z-index: 10;
-  }
-}
-@media (max-width: 75em) {
-  .main-nav-list .main-nav-link:link,
-  .main-nav-list .main-nav-link:visited {
-    /* Estilo dos links no menu */
-  }
-  .main-nav-list .main-nav-link:link .main-nav-list,
-  .main-nav-list .main-nav-link:visited .main-nav-list {
+  .main-nav-list {
     flex-direction: column;
     align-items: center;
     justify-content: center;
     margin: auto;
   }
-  .main-nav-list .main-nav-link:link .main-nav-link,
-  .main-nav-list .main-nav-link:visited .main-nav-link {
-    font-size: 18px;
-    color: var(--color-primary--light);
-  }
 }
-.main-nav-list .main-nav-link:hover,
-.main-nav-list .main-nav-link:active {
+
+.main-nav-link {
+  display: inline-block;
+  text-decoration: none;
+  color: var(--color-primary--light);
+  font-size: 26px;
+  line-height: 22px;
+  letter-spacing: 2px;
+  font-weight: 800;
+  transition: all 0.3s;
+}
+.main-nav-link:hover, .main-nav-link:active {
   color: #dbd4af;
 }
-.main-nav-list .main-nav-link.nav-cta:link,
-.main-nav-list .main-nav-link.nav-cta:visited {
+
+.main-nav-link.nav-cta {
   padding: 1.2rem 2.4rem;
   border-radius: 9px;
   color: var(--color-primary);
   background-color: #dbd4af;
 }
-.main-nav-list .main-nav-link.nav-cta:hover,
-.main-nav-list .main-nav-link.nav-cta:active {
+.main-nav-link.nav-cta:hover, .main-nav-link.nav-cta:active {
   background-color: var(--color-primary-light);
   color: rgb(26, 26, 26);
 }
 
-/*font-family:'Unica One', sans-serif;Mantém o estilo da navegação e alinha o link de Login à direita */
+/* Estilo específico para a página de esquecimento de senha */
 .forgotpass-page .main-nav-list {
-  width: 80vw; /* Garante que a lista ocupe toda a largura disponível */
+  width: 80vw;
 }
 @media (max-width: 75em) {
   .forgotpass-page .main-nav-list {
@@ -1538,19 +1465,17 @@ body {
 }
 
 .forgotpass-page .main-nav-link {
-  color: #242121; /* Ajuste para a cor original do link */
+  color: #242121;
   background-color: beige;
   text-decoration: none;
-  padding: 15px 20px; /* Padding para manter o estilo */
+  padding: 15px 20px;
   border-radius: 4px;
 }
-
 .forgotpass-page .main-nav-link:hover {
   color: #eba350;
 }
 
-/* Oculta a navegação padrão em telas menores e define o estilo do menu */
-/* Oculta o menu de navegação padrão para telas menores que `tab-land` */
+/* Estilos do menu hamburguer */
 .hamburger {
   display: none; /* Oculta o hambúrguer em telas maiores */
   font-size: 3rem;
@@ -1560,46 +1485,36 @@ body {
   color: #dbd4af;
   position: relative;
 }
+.hamburger.active .icon-menu {
+  display: none;
+}
+.hamburger.active .icon-close {
+  display: inline;
+}
 
-/* Ícone de hambúrguer */
-.icon-menu {
+.icon-menu,
+.icon-close {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
 
-/* Ícone de fechar, oculto por padrão */
 .icon-close {
   display: none;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-60%, -50%); /* Desloca um pouco para a esquerda */
-  color: #0e0d0a; /* Cor do ícone "X" */
+  color: #0e0d0a;
   z-index: 15;
 }
 
-/* Exibir o ícone de fechar e ocultar o de hambúrguer quando o menu está ativo */
-.hamburger.active .icon-menu {
-  display: none;
-}
-
-.hamburger.active .icon-close {
-  display: inline;
-}
-
-/* Exibe o menu de hambúrguer e oculta o menu principal em telas menores */
-@media (max-width: 1200px) { /* Ajuste para o breakpoint `tab-land` */
+/* Menu responsivo */
+@media (max-width: 1200px) {
   .hamburger {
-    display: block; /* Exibe o botão de hambúrguer em telas menores */
+    display: block;
   }
-  /* Ocultar o menu de navegação por padrão em telas menores */
   .main-nav {
     display: none;
     transition: all 0.3s ease-in-out;
   }
-  /* Exibir o menu de navegação de forma vertical quando a classe .active é adicionada */
   .main-nav.active {
     display: flex !important;
     flex-direction: column;
@@ -1612,16 +1527,11 @@ body {
     color: #eba350;
     z-index: 10;
   }
-}
-/* Ajustar os links de navegação para ficarem alinhados no centro */
-@media (max-width: 75em) {
   .main-nav-list {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin: auto;
   }
-  /* Estilo dos links no menu */
   .main-nav-link {
     font-size: 18px;
     color: var(--color-primary--light);
@@ -1629,7 +1539,7 @@ body {
 }
 .section-main {
   position: relative;
-  height: 75vh;
+  height: 65vh;
   width: 100%;
   margin: 0;
   display: flex;
@@ -1639,8 +1549,6 @@ body {
   background: url("/img/base/wd.png") center/cover no-repeat;
   background-size: cover;
   z-index: 1;
-  filter: brightness(0.9) contrast(0.9) saturate(0.9); /* Filtro para tons suaves */
-  /* Filtro pastel na imagem de fundo */
 }
 @media (max-width: 75em) {
   .section-main {
@@ -1656,8 +1564,7 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(82, 82, 78, 0.142); /* Suaviza com um tom pastel */
-  mix-blend-mode: overlay; /* Mistura as cores */
+  background-color: rgba(43, 41, 41, 0.5); /* Cor cinza com 50% de opacidade */
   z-index: 2;
 }
 
@@ -1684,13 +1591,13 @@ body {
   font-size: 4rem;
   font-weight: 900;
   letter-spacing: 0.25rem;
-  color: rgb(237, 244, 206);
+  color: #ddd8c2;
   z-index: 9999;
 }
 .heading-primary--sub {
   display: block;
   font-size: 3rem;
-  color: rgba(246, 247, 223, 0.996);
+  color: #ddd8c2;
   font-weight: bolder;
   letter-spacing: 1rem;
   font-family: "Unica One", sans-serif;
@@ -1759,11 +1666,25 @@ body {
   }
 }
 .section-aboutme .paragraph--chef {
+  font-size: 2.3rem;
   color: #201f1f;
   max-width: 40vw;
   display: block;
-  padding-bottom: 20rem;
+  padding-bottom: 2rem;
   text-align: start;
+}
+@media (max-width: 59em) {
+  .section-aboutme .paragraph--chef {
+    max-width: 80vw;
+    text-align: center;
+    padding: 0;
+  }
+}
+@media (max-width: 710px) {
+  .section-aboutme .paragraph--chef {
+    font-size: 2.2rem;
+    padding: 2.5rem 0;
+  }
 }
 .section-aboutme .paragraph--chef .subheading {
   color: #0e0e0d;
@@ -1772,13 +1693,6 @@ body {
 @media (max-width: 59em) {
   .section-aboutme .paragraph--chef .subheading {
     text-align: center;
-  }
-}
-@media (max-width: 59em) {
-  .section-aboutme .paragraph--chef {
-    max-width: 80vw;
-    text-align: center;
-    padding: 0;
   }
 }
 .section-aboutme .btn-main:hover {
@@ -1970,7 +1884,7 @@ body {
 }
 
 .ebook {
-  height: 75vh;
+  height: 65vh;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -2023,6 +1937,14 @@ body {
   font-family: sans-serif;
   text-align: center;
   width: 100%;
+}
+.ebook .ebook-text .paragraph {
+  font-size: 2.2rem;
+}
+@media (max-width: 710px) {
+  .ebook .ebook-text .paragraph {
+    font-size: 2rem;
+  }
 }
 .ebook .ebook-description {
   max-width: 50%;
@@ -2191,6 +2113,9 @@ body {
   z-index: 1; /* Coloca o conteúdo acima da sobreposição */
   text-align: center;
 }
+.section-recipe .recipe-card .paragraph {
+  font-size: 2.2rem;
+}
 .section-recipe .recipe-card .recipe-creator {
   font-size: 2em;
   font-weight: 400;
@@ -2239,6 +2164,12 @@ body {
 .section-recipe .recipe-cta .paragraph {
   text-align: center;
   color: #ddd;
+  font-size: 2.2rem;
+}
+@media (max-width: 710px) {
+  .section-recipe .recipe-cta .paragraph {
+    font-size: 2rem;
+  }
 }
 @media (max-width: 966px) {
   .section-recipe {

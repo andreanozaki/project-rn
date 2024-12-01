@@ -1,89 +1,70 @@
 .main-nav-list {
-    list-style: none;
-    display: flex;
-    gap: 4.8rem;
-    align-items: center;
-    
-    font-family:'Unica One', sans-serif;
-
-   
-    
-
-  .main-nav-link:link,
-  .main-nav-link:visited {.main-nav-list {
-    list-style: none;
-    display: flex;
-    gap: 4.8rem;
-    align-items: center;
-    
-    font-family:'Unica One', sans-serif;
-
-   
-    
-
-  .main-nav-link:link,
-  .main-nav-link:visited {
-    display: inline-block;
-    text-decoration: none;
-    color:var(--color-primary--light);
-    font-size: 26px;
-    line-height: 22px;
-    letter-spacing: 2px;
-    font-weight: 800;
-    transition: all 0.3s;
-  }
+  list-style: none;
+  display: flex;
+  gap: 4.8rem;
+  align-items: center;
+  font-family: 'Unica One', sans-serif;
   
-  .main-nav-link:hover,
-  .main-nav-link:active {
+  /* Ajustes responsivos */
+  @include respond(tab-land) {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+  }
+}
+
+.main-nav-link {
+  display: inline-block;
+  text-decoration: none;
+  color: var(--color-primary--light);
+  font-size: 26px;
+  line-height: 22px;
+  letter-spacing: 2px;
+  font-weight: 800;
+  transition: all 0.3s;
+
+  &:hover,
+  &:active {
     color: #dbd4af;
   }
-  
-  .main-nav-link.nav-cta:link,
-  .main-nav-link.nav-cta:visited {
-    padding: 1.2rem 2.4rem;
-    border-radius: 9px;
-    color:var(--color-primary);  
-    background-color:#dbd4af; 
- }
-  
-  .main-nav-link.nav-cta:hover,
-  .main-nav-link.nav-cta:active {
+}
+
+.main-nav-link.nav-cta {
+  padding: 1.2rem 2.4rem;
+  border-radius: 9px;
+  color: var(--color-primary);
+  background-color: #dbd4af;
+
+  &:hover,
+  &:active {
     background-color: var(--color-primary-light);
     color: rgb(26, 26, 26);
   }
- /* Estilo específico para o item de sair */
-
- 
-
-
 }
 
-
-
- /*font-family:'Unica One', sans-serif;Mantém o estilo da navegação e alinha o link de Login à direita */
+/* Estilo específico para a página de esquecimento de senha */
 .forgotpass-page .main-nav-list {
+  width: 80vw;
 
-    width: 80vw; /* Garante que a lista ocupe toda a largura disponível */
-@include respond (tab-land){
-  width: 70vw;
-}
+  @include respond(tab-land) {
+    width: 70vw;
   }
+}
 
 .forgotpass-page .main-nav-link {
-  color: #242121; /* Ajuste para a cor original do link */
+  color: #242121;
   background-color: beige;
   text-decoration: none;
-  padding: 15px 20px; /* Padding para manter o estilo */
+  padding: 15px 20px;
   border-radius: 4px;
+
+  &:hover {
+    color: #eba350;
+  }
 }
 
-.forgotpass-page .main-nav-link:hover {
-  color: #eba350; 
-}
-
-//hamb
-/* Oculta a navegação padrão em telas menores e define o estilo do menu */
-/* Oculta o menu de navegação padrão para telas menores que `tab-land` */
+/* Estilos do menu hamburguer */
 .hamburger {
   display: none; /* Oculta o hambúrguer em telas maiores */
   font-size: 3rem;
@@ -92,52 +73,42 @@
   cursor: pointer;
   color: #dbd4af;
   position: relative;
+
+  &.active .icon-menu {
+    display: none;
+  }
+
+  &.active .icon-close {
+    display: inline;
+  }
 }
 
-/* Ícone de hambúrguer */
-.icon-menu {
+.icon-menu,
+.icon-close {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
 
-/* Ícone de fechar, oculto por padrão */
 .icon-close {
   display: none;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-60%, -50%); /* Desloca um pouco para a esquerda */
-  color: #0e0d0a; /* Cor do ícone "X" */
+  color: #0e0d0a;
   z-index: 15;
 }
 
-/* Exibir o ícone de fechar e ocultar o de hambúrguer quando o menu está ativo */
-.hamburger.active .icon-menu {
-  display: none;
-}
-
-.hamburger.active .icon-close {
-  display: inline;
-}
-
-/* Exibe o menu de hambúrguer e oculta o menu principal em telas menores */
-@media (max-width: 1200px) { /* Ajuste para o breakpoint `tab-land` */
+/* Menu responsivo */
+@media (max-width: 1200px) {
   .hamburger {
-      display: block; /* Exibe o botão de hambúrguer em telas menores */
+    display: block;
   }
 
-  /* Ocultar o menu de navegação por padrão em telas menores */
   .main-nav {
-      display: none;
-      transition: all 0.3s ease-in-out;
+    display: none;
+    transition: all 0.3s ease-in-out;
 
-  }
-
-  /* Exibir o menu de navegação de forma vertical quando a classe .active é adicionada */
-  .main-nav.active {
-    display: flex !important;
+    &.active {
+      display: flex !important;
       flex-direction: column;
       position: absolute;
       top: 5px;
@@ -147,166 +118,17 @@
       background-color: #f4f2e9;
       color: #eba350;
       z-index: 10;
+    }
   }
-}
 
-/* Ajustar os links de navegação para ficarem alinhados no centro */
-@include respond (tab-land){
   .main-nav-list {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin: auto;
   }
-  
-  /* Estilo dos links no menu */
+
   .main-nav-link {
     font-size: 18px;
     color: var(--color-primary--light);
   }
-  
-}
-
-    display: inline-block;
-    text-decoration: none;
-    color:var(--color-primary--light);
-    font-size: 26px;
-    line-height: 22px;
-    letter-spacing: 2px;
-    font-weight: 800;
-    transition: all 0.3s;
-  }
-  
-  .main-nav-link:hover,
-  .main-nav-link:active {
-    color: #dbd4af;
-  }
-  
-  .main-nav-link.nav-cta:link,
-  .main-nav-link.nav-cta:visited {
-    padding: 1.2rem 2.4rem;
-    border-radius: 9px;
-    color:var(--color-primary);  
-    background-color:#dbd4af; 
- }
-  
-  .main-nav-link.nav-cta:hover,
-  .main-nav-link.nav-cta:active {
-    background-color: var(--color-primary-light);
-    color: rgb(26, 26, 26);
-  }
- /* Estilo específico para o item de sair */
-
- 
-
-
-}
-
-
-
- /*font-family:'Unica One', sans-serif;Mantém o estilo da navegação e alinha o link de Login à direita */
-.forgotpass-page .main-nav-list {
-
-    width: 80vw; /* Garante que a lista ocupe toda a largura disponível */
-@include respond (tab-land){
-  width: 70vw;
-}
-  }
-
-.forgotpass-page .main-nav-link {
-  color: #242121; /* Ajuste para a cor original do link */
-  background-color: beige;
-  text-decoration: none;
-  padding: 15px 20px; /* Padding para manter o estilo */
-  border-radius: 4px;
-}
-
-.forgotpass-page .main-nav-link:hover {
-  color: #eba350; 
-}
-
-//hamb
-/* Oculta a navegação padrão em telas menores e define o estilo do menu */
-/* Oculta o menu de navegação padrão para telas menores que `tab-land` */
-.hamburger {
-  display: none; /* Oculta o hambúrguer em telas maiores */
-  font-size: 3rem;
-  background: none;
-  border: none;
-  cursor: pointer;
-  color: #dbd4af;
-  position: relative;
-}
-
-/* Ícone de hambúrguer */
-.icon-menu {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-/* Ícone de fechar, oculto por padrão */
-.icon-close {
-  display: none;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-60%, -50%); /* Desloca um pouco para a esquerda */
-  color: #0e0d0a; /* Cor do ícone "X" */
-  z-index: 15;
-}
-
-/* Exibir o ícone de fechar e ocultar o de hambúrguer quando o menu está ativo */
-.hamburger.active .icon-menu {
-  display: none;
-}
-
-.hamburger.active .icon-close {
-  display: inline;
-}
-
-/* Exibe o menu de hambúrguer e oculta o menu principal em telas menores */
-@media (max-width: 1200px) { /* Ajuste para o breakpoint `tab-land` */
-  .hamburger {
-      display: block; /* Exibe o botão de hambúrguer em telas menores */
-  }
-
-  /* Ocultar o menu de navegação por padrão em telas menores */
-  .main-nav {
-      display: none;
-      transition: all 0.3s ease-in-out;
-
-  }
-
-  /* Exibir o menu de navegação de forma vertical quando a classe .active é adicionada */
-  .main-nav.active {
-    display: flex !important;
-      flex-direction: column;
-      position: absolute;
-      top: 5px;
-      left: 0;
-      width: 100%;
-      height: 100vh;
-      background-color: #f4f2e9;
-      color: #eba350;
-      z-index: 10;
-  }
-}
-
-/* Ajustar os links de navegação para ficarem alinhados no centro */
-@include respond (tab-land){
-  .main-nav-list {
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin: auto;
-  }
-  
-  /* Estilo dos links no menu */
-  .main-nav-link {
-    font-size: 18px;
-    color: var(--color-primary--light);
-  }
-  
 }

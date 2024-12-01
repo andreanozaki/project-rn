@@ -24,6 +24,7 @@
   .paragraph {
     width: 40vw; /* Ajusta a largura */
     margin-bottom: 1rem; /* Espaçamento inferior */
+    
     @include respond(tab-land) {
       width: 90%;
     }

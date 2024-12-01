@@ -71,7 +71,7 @@ Este projeto foi desenvolvido para atender às necessidades de profissionais da 
    DB_PASSWORD=sua_senha
    DB_NAME=comments_db
    PORT=3001
-   Inoicie o Servidor  com npm start
+   Inicie o Servidor  com npm start
 
 
 Após iniciar, acesse o website em: http://localhost:3001

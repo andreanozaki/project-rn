@@ -12,7 +12,7 @@
             @content;
         }
     } @else if $breakpoint == big-desktop {
-        @media (min-width: 75em) { // ≈1200px e acima
+        @media (min-width: 90em) {  // ≈1440px e acima
             @content;
         }
     }

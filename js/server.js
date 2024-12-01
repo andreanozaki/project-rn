@@ -485,10 +485,56 @@ const pageContent = `
             <!-- Os comentários específicos da receita aparecerão aqui -->
         </ul>
     </div>
+    <div class="share-buttons">
+        <a href="https://www.instagram.com/share?url=https://yourwebsite.com/receita-${recipeId}.html" target="_blank" class="share-btn instagram">
+            <ion-icon name="logo-instagram"></ion-icon> Compartilhar no Instagram
+        </a>
+        <a href="https://www.facebook.com/sharer/sharer.php?u=https://yourwebsite.com/receita-${recipeId}.html" target="_blank" class="share-btn facebook">
+            <ion-icon name="logo-facebook"></ion-icon> Compartilhar no Facebook
+        </a>
+    </div>
+
+   
+    
+
     <footer class="footer">
-        <!-- Conteúdo do footer -->
+        <div class="grid-5cols">
+            <div class="logo-col">
+                <a href="index.html">
+                    <img src="../img/base/logo/lo2.png" alt="logo" class="logo">
+                </a>
+            </div>
+            <div class="address-col">
+                <p class="footer-heading">Contate-nos</p>
+                <a class="footer-link" href="mailto:ricardonozaki@gmail.com">
+                    <ion-icon name="mail"></ion-icon> ricardonozaki@gmail.com
+                </a>
+            </div>
+            <div class="address-col">
+                <p class="footer-heading">Links Úteis</p>
+                <ul>
+                    <li><a class="footer-link" href="#recipe">Receitas</a></li>
+                    <li><a class="footer-link" href="#ebooks">E-books</a></li>
+                    <li><a class="footer-link" href="#contact">Contato</a></li>
+                </ul>
+            </div>
+            <div class="social-links">
+                <p class="footer-heading">Siga-me:</p>
+                <ul class="social-media-footer">
+                    <li><a href="https://www.instagram.com/andreahcodes/" target="_blank" class="icon">
+                        <ion-icon name="logo-instagram"></ion-icon>
+                    </a></li>
+                    <li><a href="https://www.linkedin.com/in/andreahcodes/" target="_blank" class="icon">
+                        <ion-icon name="logo-facebook"></ion-icon>
+                    </a></li>
+                </ul>
+            </div>
+        </div>
+        <p class="copyright">
+            &copy; 2023 Ricardo Nozaki. Todos os direitos reservados. Site por 
+            <a href="https://andreanozaki.com/">AN Sites</a>
+        </p>
     </footer>
-    <script src="/js/script.js" defer></script>
 </body>
 </html>`;
 
