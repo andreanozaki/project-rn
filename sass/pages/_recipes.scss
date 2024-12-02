@@ -46,14 +46,15 @@
         .recipe-image {
             position: relative;
             display: block;
-            max-width: 300px;
+            max-width: 360px;
             border-radius: 12px;
+            margin: 0 auto;
 
             @include respond(tab-land) {
-                max-width: 300px;
+                max-width: 350px;
             }
             @include respond(tab-port) {
-                max-width: 250px;
+                max-width: 300px;
                 margin: 0 auto;
             }
         }
@@ -65,10 +66,9 @@ position: absolute;
 top: 50%;
 left: 50%;
 transform: translate(-50%,-50%);  
-padding: 12px 34px;
+padding: 20px 34px;
 
-}
-            
+}         
     }
 
     .recipe-cta {
@@ -193,16 +193,12 @@ padding: 12px 34px;
      }
 
             .time, .nivel, .rendimento {
-                font-size: 1.6rem; /* Tamanho um pouco menor */
+                font-size: 2.4rem; /* Tamanho um pouco menor */
                 padding: 1.5rem;
                 background-color: transparent; /* Remove o fundo dos tópicos */
                 margin: 0.5rem;
                 border-radius: 8px;
 
-                @media (max-width: 933px) {
-                    padding: 1rem;
-                    font-size: 1.4rem;
-                }
             }
 
             .icon-recipe {
@@ -212,68 +208,95 @@ padding: 12px 34px;
         }
 
         .paragraph {
-            font-size: 1.6rem; /* Tamanho ajustado para consistência */
+            font-size: 2rem; 
             width: 90%;
             margin-bottom: 1.5rem;
             text-align: justify;
 
-            @media (max-width: 933px) {
-                width: 100%;
-                font-size: 1.4rem;
-            }
+            
         }
 
         .topic {
             padding: 0.5rem;
-            text-transform: uppercase;
-            font-size: 1.8rem; /* Reduzido para um layout mais clean */
+            font-size: 2.4rem; /* Reduzido para um layout mais clean */
             font-weight: 600;
             color: #922626;
             text-align: left;
             border-radius: 4px; /* Bordas mais suaves */
             background-color: transparent; /* Remove o fundo */
         }
+    
+ /* Ingredientes - Adiciona padding ao redor da lista */
+.ingredients {
+    padding: 3rem; /* Aumenta o espaçamento ao redor da lista */
+    list-style-type: disc;
+    text-align: left;
+    font-size: 2.2rem; /* Ajusta o tamanho da fonte */
+    background-color: #f9f9f9; /* Opcional: adiciona um fundo suave */
+    border-radius: 8px; /* Bordas arredondadas para o container */
+    margin-bottom: 2rem; /* Espaço entre a lista e os outros elementos */
+    font-weight:300;
+   @include respond (mobile){
+    font-size: 2rem;
+   }
+}
 
-        .ingredients {
-            padding: 0.5rem;
-            list-style-type: disc;
-            text-align: left;
-            font-size: 1.6rem; /* Ajustado para consistência */
+/* Modo de Preparo - Ajuste de fonte e espaçamento */
+.prepare p {
+    padding:1rem 2rem;
+    font-size: 2.2rem; 
+    line-height: 1.6; 
+    margin-bottom: 1.5rem; 
+    text-align: justify;
+    font-weight: 200;
+@include respond(mobile){
+    font-size: 2rem;
+   
+}
+ 
+}
 
-            @media (max-width: 933px) {
-                font-size: 1.4rem;
-                padding: 0.5rem;
-            }
-        }
-
-        .prepare {
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem; /* Espaçamento mais ajustado */
-            font-size: 1.6rem;
-
-            @media (max-width: 933px) {
-                font-size: 1.4rem;
-            }
-        }
+      
     }
 }
 //ALL RECIPES
 .container-all-recipes {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
     gap: 2rem;
-    padding: 2rem;
-    width: 100%;
+    padding: 2rem 5rem;
+    width: 90%;
     margin: auto;
-}
+
+    @include respond(tab-port){
+        width:90%;
+        padding: 5rem;
+    }
+    @include respond(mobile){
+        padding:2rem 4rem;
+    }
+
+    }
+  
+
 
 .recipe__card {
+    height: 100%;
     background-color: #fff;
     border-radius: 12px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 1rem;
-    text-align: center;
+     margin: 3rem;    text-align: center;
+    @include respond(tab-port){
+        text-align: center;
+        margin: auto;
+        height: 100%;
+        margin-bottom: 2rem;
+        border: 1px solid rgba(0, 0, 0, 0.1); /* Borda fina e levemente transparente */
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Leve sombra para realce */
+
+    
+
+    }
 }
 
 .recipe__image-all {
@@ -281,6 +304,7 @@ padding: 12px 34px;
     height: auto;
     border-radius: 8px;
     margin-bottom: 1rem;
+ 
 }
 
 .title-recipe {
@@ -299,4 +323,31 @@ padding: 12px 34px;
 .recipe__creator {
     font-size: 2rem;
     color: #666;
+}
+/* Botão de deletar receita */
+.delete-recipe-btn {
+    display: inline-block;
+    background-color: #d9534f; /* Vermelho para indicar ação de deletar */
+    color: #fff; /* Texto branco */
+    border: none;
+    padding: 12px 34px;
+    font-size:2rem;
+    border-radius: 6px; /* Cantos arredondados */
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s; /* Animação suave */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+}
+
+/* Efeito de hover no botão */
+.delete-recipe-btn:hover {
+    background-color: #c9302c; /* Vermelho mais escuro no hover */
+    transform: translateY(-2px); /* Efeito de elevação */
+}
+
+/* Efeito de clique no botão */
+.delete-recipe-btn:active {
+    background-color: #ac2925; /* Vermelho ainda mais escuro no clique */
+    transform: translateY(0); /* Remove a elevação */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Sombra reduzida */
+
 }

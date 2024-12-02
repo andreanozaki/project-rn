@@ -45,4 +45,6 @@ document.addEventListener('DOMContentLoaded', function() {
     if (userConsent === 'accepted') {
         activateTracking();
     }
+    //localStorage.removeItem('cookieConsent');
+
 });

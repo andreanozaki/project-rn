@@ -65,14 +65,19 @@
                 <form id="loginForm" method="POST" action="http://localhost:3001/login" class="form">
                     <h2 class="heading-form">Login</h2>
                     <input type="email" id="email" name="email" required placeholder="Email">
-                    <input type="password" id="password" name="password" required placeholder="Senha">
+                    <div class="password-container">
+                        <input type="password" id="password" name="password" required placeholder="Senha">
+                        <i id="togglePassword" class="fas fa-eye toggle-password"></i> <!-- Ícone de olho -->
+                    </div>
+                    
+
                     <button type="submit" class="btn-main">Entrar</button>
                     
                     <p class="forgot-password-link">
-                        <a href="forgotpass.html" style="text-decoration: none; color: #f96408fe;">Esqueci a senha</a>
+                        <a href="forgotpass.html" style="text-decoration: none; color: #1c1b1be3;font-size: 2rem;font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Esqueci a senha</a>
                     </p>
                 
-                    <a href="register.html" class="btn-create-account" style="text-decoration: none; padding: 10px 20px; background-color: #007BFF; color: white; border-radius: 5px; display: inline-block; text-align: center;">Criar conta</a>
+                    <a href="register.html" class="btn-main">Criar conta</a>
                 </form>
                 
                
@@ -89,7 +94,22 @@
     </footer>
 
   
+    <script>
+document.addEventListener('DOMContentLoaded', () => {
+    const passwordField = document.getElementById('password');
+    const togglePassword = document.getElementById('togglePassword');
 
+    togglePassword.addEventListener('click', () => {
+        // Alterna o tipo entre "password" e "text"
+        const type = passwordField.type === 'password' ? 'text' : 'password';
+        passwordField.type = type;
+
+        // O ícone "👁️" não muda; permanece constante
+    });
+});
+
+
+    </script>
     <script src="/js/cookie-banner.js" defer></script>
 
 

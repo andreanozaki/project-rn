@@ -122,7 +122,7 @@ body {
 }
 
 .heading-secondary {
-  font-size: 2rem;
+  font-size: 2.4rem;
   text-transform: uppercase;
   font-weight: 400;
   background-color: #644812;
@@ -174,7 +174,7 @@ body {
 }
 
 .heading-form {
-  font-size: 3rem;
+  font-size: 4rem;
   text-transform: uppercase;
   text-align: center;
   color: #333333;
@@ -236,14 +236,18 @@ body {
 .social-media {
   display: flex;
   align-items: center;
-  gap: 2rem; /* Ajuste o espaço entre os ícones */
+  gap: 3rem; /* Ajuste o espaço entre os ícones */
   list-style: none;
+  position: absolute;
+  top: 90%;
+  left: 45%;
+  transform: translate(-50%, 50%);
 }
 
 .btn-main {
   margin-top: 1rem;
   font-size: 2.4rem;
-  padding: 18px 46px;
+  padding: 20px 46px;
   background-color: #644812;
   color: rgb(249, 244, 244);
   border: none;
@@ -452,7 +456,7 @@ body {
 /* Adicionando estilos específicos para textarea */
 .form-section form textarea {
   resize: vertical;
-  min-height: 80px;
+  min-height: 180px;
 }
 
 /* Estilo adicional para formulários de receitas */
@@ -466,7 +470,7 @@ body {
     max-width: 90%;
   }
   .vendas-container h2, .relatorio-container h2, .form-section h2 {
-    font-size: 2rem;
+    font-size: 3rem;
   }
   .form-section form textarea {
     min-height: 60px; /* Ajusta para telas menores */
@@ -474,17 +478,18 @@ body {
 }
 /* Seção de comentários */
 .comment-section {
-  max-width: 800px;
-  margin: 40px auto;
-  padding: 20px;
+  max-width: 900px;
+  padding: 2px;
   background-color: #ffffff;
   border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
   border: 1px solid #e0e0e0;
+  text-align: center;
+  margin: auto;
 }
 
 .comment-section h2 {
-  font-size: 2rem;
+  font-size: 2.4rem;
   color: #333;
   margin-bottom: 15px;
   text-align: center;
@@ -493,13 +498,14 @@ body {
 
 .comment-section form input,
 .comment-section form textarea {
-  width: 100%;
+  width: 80%;
   margin-bottom: 12px;
   padding: 10px;
   border-radius: 8px;
   border: 1px solid #ccc;
-  font-size: 1rem;
+  font-size: 1.6rem;
   background-color: #f9f9f9;
+  align-items: center;
 }
 
 .comment-section button {
@@ -508,7 +514,7 @@ body {
   padding: 12px;
   border: none;
   border-radius: 8px;
-  font-size: 1.1rem;
+  font-size: 1.8rem;
   cursor: pointer;
   transition: background-color 0.3s;
 }
@@ -521,7 +527,7 @@ body {
 .message {
   text-align: center;
   margin-top: 8px;
-  font-size: 0.95rem;
+  font-size: 1.2rem;
   color: #333;
 }
 
@@ -533,9 +539,12 @@ body {
   background-color: #ffffff;
   border-radius: 10px;
 }
+.comment-list #comments {
+  font-size: 1.8rem;
+}
 
 .comment-list h3 {
-  font-size: 1.8rem;
+  font-size: 2.2rem;
   color: #333;
   margin-bottom: 20px;
   font-weight: 600;
@@ -566,14 +575,14 @@ body {
 
 .comment-item p {
   margin: 0;
-  font-size: 1rem;
+  font-size: 2rem;
   color: #555;
 }
 
 .comment-item p strong {
   display: block;
   margin-bottom: 5px;
-  font-size: 1.1rem;
+  font-size: 2rem;
   color: #333;
 }
 
@@ -581,18 +590,30 @@ body {
 .share-buttons {
   display: flex;
   justify-content: center;
-  gap: 20px;
-  margin-top: 20px;
+  gap: 2rem;
+  margin-top: 2rem;
+  padding-bottom: 5rem;
+}
+@media (max-width: 59em) {
+  .share-buttons {
+    display: flex;
+    flex-direction: column;
+    max-width: 700px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+  }
 }
 
 .share-btn {
   display: inline-flex;
   align-items: center;
-  padding: 10px 20px;
-  border-radius: 5px;
+  padding: 18px 24px;
+  border-radius: 35px;
   text-decoration: none;
   color: #fff;
-  font-size: 1rem;
+  font-size: 1.8rem;
   transition: background-color 0.3s;
 }
 
@@ -1157,6 +1178,76 @@ body {
   margin-bottom: 10px; /* Espaçamento entre o título e o conteúdo */
 }
 
+/* Aumenta o tamanho da fonte dos inputs */
+input[type=email],
+textarea,
+select {
+  font-size: 2rem; /* Ajuste o valor conforme necessário */
+  padding: 1.4rem; /* Opcional: melhora o espaçamento interno */
+}
+
+/* Ajusta o placeholder no <textarea> */
+textarea::placeholder {
+  font-size: 1.8rem; /* Ajuste o valor conforme necessário */
+  color: #999;
+}
+
+/* Aumenta o tamanho do texto no <select> */
+select {
+  font-size: 2rem; /* Ajuste conforme necessário */
+  padding: 0.5rem; /* Espaçamento interno para uma aparência mais consistente */
+  border: 1px solid #ccc; /* Opcional: borda para melhor visibilidade */
+  border-radius: 5px; /* Opcional: arredonda os cantos */
+  width: 100%; /* Opcional: ajusta a largura do <select> */
+}
+
+/* Aumenta o tamanho do texto nas opções do dropdown */
+select option {
+  font-size: 2rem; /* Certifica que as opções tenham o mesmo tamanho de texto */
+}
+
+/* Estilo do ícone "olho" np senha login*/
+/* Estilo para o container da senha */
+/* Container da senha */
+.password-container {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+/* Campo de senha */
+.password-container input {
+  width: 100%;
+  padding: 10px;
+  padding-right: 40px; /* Espaço para o ícone */
+  font-size: 1.6rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+/* Foco no input */
+.password-container input:focus {
+  border-color: #000; /* Destaque na borda */
+}
+
+/* Ícone de olho */
+.password-container .toggle-password {
+  position: absolute;
+  right: 10px;
+  font-size: 1.6rem;
+  cursor: pointer;
+  color: #888; /* Cor neutra */
+  transition: color 0.3s;
+}
+
+/* Hover no ícone */
+.password-container .toggle-password:hover {
+  color: #444; /* Leve destaque ao passar o mouse */
+}
+
 .chef-formation {
   position: absolute;
   bottom: 0;
@@ -1297,6 +1388,7 @@ body {
 .section-form {
   height: 100vh;
   width: 100%;
+  padding: 10rem 2rem;
 }
 .section-form .contact {
   padding: 5rem 15rem;
@@ -1319,18 +1411,19 @@ body {
   flex-direction: column;
   justify-content: space-evenly;
   gap: 2rem;
-  padding-bottom: 2em;
   background-color: #fff;
   padding: 30px;
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 700px;
+  margin: 0 auto;
 }
 .section-form .form input, .section-form textarea {
   background-color: rgb(250, 250, 250);
   border-radius: 8px;
   font-size: 2rem;
   border: none;
-  padding: 1.5rem;
+  padding: 2rem;
 }
 .section-form .form textarea {
   resize: none;
@@ -1341,6 +1434,9 @@ body {
 }
 .section-form .btn-main {
   border: none;
+  font-family: initial;
+  font-weight: 200;
+  text-align: center;
 }
 .section-form #contact {
   display: none;
@@ -1544,7 +1640,7 @@ body {
 }
 .section-main {
   position: relative;
-  height: 65vh;
+  height: 60vh;
   width: 100%;
   margin: 0;
   display: flex;
@@ -1593,7 +1689,7 @@ body {
 }
 .heading-primary--main {
   display: block;
-  font-size: 4rem;
+  font-size: 6rem;
   font-weight: 900;
   letter-spacing: 0.25rem;
   color: #ddd8c2;
@@ -1899,11 +1995,11 @@ body {
   align-items: center;
   text-align: center;
   justify-content: space-evenly;
-  padding: 2rem 25rem;
+  padding: 0rem 25rem;
 }
 @media (max-width: 75em) {
   .ebook {
-    padding: 2rem 5rem;
+    padding: 1rem;
   }
 }
 @media (max-width: 59em) {
@@ -1949,10 +2045,22 @@ body {
 }
 .ebook .ebook-text .paragraph {
   font-size: 2.2rem;
+  min-width: 400px;
+}
+@media (max-width: 75em) {
+  .ebook .ebook-text .paragraph {
+    width: 450px;
+  }
+}
+@media (max-width: 59em) {
+  .ebook .ebook-text .paragraph {
+    width: 100%;
+  }
 }
 @media (max-width: 710px) {
   .ebook .ebook-text .paragraph {
     font-size: 2rem;
+    width: 100%;
   }
 }
 .ebook .ebook-description {
@@ -2139,17 +2247,18 @@ body {
 .section-recipe .recipe-card .recipe-image {
   position: relative;
   display: block;
-  max-width: 300px;
+  max-width: 360px;
   border-radius: 12px;
+  margin: 0 auto;
 }
 @media (max-width: 75em) {
   .section-recipe .recipe-card .recipe-image {
-    max-width: 300px;
+    max-width: 350px;
   }
 }
 @media (max-width: 59em) {
   .section-recipe .recipe-card .recipe-image {
-    max-width: 250px;
+    max-width: 300px;
     margin: 0 auto;
   }
 }
@@ -2161,7 +2270,7 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  padding: 12px 34px;
+  padding: 20px 34px;
 }
 .section-recipe .recipe-cta {
   position: relative;
@@ -2260,6 +2369,8 @@ body {
   background-color: #fff;
   border-radius: 8px; /* Bordas suavizadas */
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  /* Ingredientes - Adiciona padding ao redor da lista */
+  /* Modo de Preparo - Ajuste de fonte e espaçamento */
 }
 @media (max-width: 933px) {
   .recipes .right-side {
@@ -2282,38 +2393,25 @@ body {
   }
 }
 .recipes .right-side .status-recipe .time, .recipes .right-side .status-recipe .nivel, .recipes .right-side .status-recipe .rendimento {
-  font-size: 1.6rem; /* Tamanho um pouco menor */
+  font-size: 2.4rem; /* Tamanho um pouco menor */
   padding: 1.5rem;
   background-color: transparent; /* Remove o fundo dos tópicos */
   margin: 0.5rem;
   border-radius: 8px;
-}
-@media (max-width: 933px) {
-  .recipes .right-side .status-recipe .time, .recipes .right-side .status-recipe .nivel, .recipes .right-side .status-recipe .rendimento {
-    padding: 1rem;
-    font-size: 1.4rem;
-  }
 }
 .recipes .right-side .status-recipe .icon-recipe {
   color: #b83e3e;
   font-size: 1.8rem;
 }
 .recipes .right-side .paragraph {
-  font-size: 1.6rem; /* Tamanho ajustado para consistência */
+  font-size: 2rem;
   width: 90%;
   margin-bottom: 1.5rem;
   text-align: justify;
 }
-@media (max-width: 933px) {
-  .recipes .right-side .paragraph {
-    width: 100%;
-    font-size: 1.4rem;
-  }
-}
 .recipes .right-side .topic {
   padding: 0.5rem;
-  text-transform: uppercase;
-  font-size: 1.8rem; /* Reduzido para um layout mais clean */
+  font-size: 2.4rem; /* Reduzido para um layout mais clean */
   font-weight: 600;
   color: #922626;
   text-align: left;
@@ -2321,44 +2419,71 @@ body {
   background-color: transparent; /* Remove o fundo */
 }
 .recipes .right-side .ingredients {
-  padding: 0.5rem;
+  padding: 3rem; /* Aumenta o espaçamento ao redor da lista */
   list-style-type: disc;
   text-align: left;
-  font-size: 1.6rem; /* Ajustado para consistência */
+  font-size: 2.2rem; /* Ajusta o tamanho da fonte */
+  background-color: #f9f9f9; /* Opcional: adiciona um fundo suave */
+  border-radius: 8px; /* Bordas arredondadas para o container */
+  margin-bottom: 2rem; /* Espaço entre a lista e os outros elementos */
+  font-weight: 300;
 }
-@media (max-width: 933px) {
+@media (max-width: 710px) {
   .recipes .right-side .ingredients {
-    font-size: 1.4rem;
-    padding: 0.5rem;
+    font-size: 2rem;
   }
 }
-.recipes .right-side .prepare {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem; /* Espaçamento mais ajustado */
-  font-size: 1.6rem;
+.recipes .right-side .prepare p {
+  padding: 1rem 2rem;
+  font-size: 2.2rem;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+  text-align: justify;
+  font-weight: 200;
 }
-@media (max-width: 933px) {
-  .recipes .right-side .prepare {
-    font-size: 1.4rem;
+@media (max-width: 710px) {
+  .recipes .right-side .prepare p {
+    font-size: 2rem;
   }
 }
 
 .container-all-recipes {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   gap: 2rem;
-  padding: 2rem;
-  width: 100%;
+  padding: 2rem 5rem;
+  width: 90%;
   margin: auto;
+}
+@media (max-width: 59em) {
+  .container-all-recipes {
+    width: 90%;
+    padding: 5rem;
+  }
+}
+@media (max-width: 710px) {
+  .container-all-recipes {
+    padding: 2rem 4rem;
+  }
 }
 
 .recipe__card {
+  height: 100%;
   background-color: #fff;
   border-radius: 12px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  padding: 1rem;
+  margin: 3rem;
   text-align: center;
+}
+@media (max-width: 59em) {
+  .recipe__card {
+    text-align: center;
+    margin: auto;
+    height: 100%;
+    margin-bottom: 2rem;
+    border: 1px solid rgba(0, 0, 0, 0.1); /* Borda fina e levemente transparente */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Leve sombra para realce */
+  }
 }
 
 .recipe__image-all {
@@ -2383,6 +2508,33 @@ body {
 .recipe__creator {
   font-size: 2rem;
   color: #666;
+}
+
+/* Botão de deletar receita */
+.delete-recipe-btn {
+  display: inline-block;
+  background-color: #d9534f; /* Vermelho para indicar ação de deletar */
+  color: #fff; /* Texto branco */
+  border: none;
+  padding: 12px 34px;
+  font-size: 2rem;
+  border-radius: 6px; /* Cantos arredondados */
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s; /* Animação suave */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+}
+
+/* Efeito de hover no botão */
+.delete-recipe-btn:hover {
+  background-color: #c9302c; /* Vermelho mais escuro no hover */
+  transform: translateY(-2px); /* Efeito de elevação */
+}
+
+/* Efeito de clique no botão */
+.delete-recipe-btn:active {
+  background-color: #ac2925; /* Vermelho ainda mais escuro no clique */
+  transform: translateY(0); /* Remove a elevação */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Sombra reduzida */
 }
 
 .container-my-ebooks {
@@ -2518,14 +2670,15 @@ footer {
 }
 
 .ebook-1-content {
-  max-width: 1200px; /* Limita a largura máxima do container */
-  margin: 0 auto; /* Centraliza o container na tela */
-  padding: 5rem 3rem; /* Ajusta o espaçamento interno */
+  max-width: 1500px;
+  margin: 0 auto;
+  padding: 5rem 3rem;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  gap: 6rem; /* Espaçamento entre as divs internas */
-  align-items: flex-start; /* Alinha ao topo */
+  gap: 6rem;
+  align-items: flex-start;
+  text-align: center;
 }
 @media (max-width: 710px) {
   .ebook-1-content {
@@ -2535,48 +2688,35 @@ footer {
 @media (max-width: 930px) {
   .ebook-1-content {
     flex-direction: column;
-    align-items: center; /* Centraliza as divs em telas menores */
+    align-items: center;
     width: 100%;
   }
 }
-@media (max-width: 710px) {
+@media (max-width: 59em) {
   .ebook-1-content {
-    padding: 2rem; /* Reduz o padding em dispositivos móveis */
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
   }
-}
-.ebook-1-content .paragraph {
-  width: 40vw; /* Ajusta a largura */
-  margin-bottom: 1rem; /* Espaçamento inferior */
-}
-@media (max-width: 75em) {
-  .ebook-1-content .paragraph {
-    width: 90%;
-  }
-}
-.ebook-1-content .ebook-1-right {
-  width: 100%; /* Garante a ocupação de largura total */
-  text-align: center; /* Centraliza o texto */
-}
-.ebook-1-content .ebook-1-right .paragraph {
-  max-width: 100%; /* Expande a largura */
-  padding: 1rem 0; /* Ajusta o padding */
-}
-.ebook-1-content .ebook-1-right .heading-cta {
-  margin-bottom: 1rem; /* Espaçamento reduzido */
-  font-size: 3rem;
 }
 .ebook-1-content .ebook-1-left {
-  max-width: 450px; /* Define o tamanho máximo */
+  width: 40%;
+  max-width: 450px;
   display: flex;
-  justify-content: center; /* Centraliza a imagem */
-  align-items: center; /* Centraliza verticalmente */
-  margin: auto; /* Remove margens extras */
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+}
+@media (max-width: 59em) {
+  .ebook-1-content .ebook-1-left {
+    width: 60%;
+  }
 }
 .ebook-1-content .ebook-1-left .ebook-photo {
-  max-width: 450px; /* Define o tamanho máximo */
-  width: 100%; /* Responsivo */
-  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transição suave */
-  border-radius: 10px; /* Bordas arredondadas */
+  max-width: 450px;
+  width: 100%;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 10px;
 }
 @media (max-width: 710px) {
   .ebook-1-content .ebook-1-left .ebook-photo {
@@ -2584,62 +2724,78 @@ footer {
   }
 }
 .ebook-1-content .ebook-1-left .ebook-photo:hover {
-  transform: scale(1.05); /* Efeito de zoom */
+  transform: scale(1.05);
 }
-
-.ebook-footer {
-  padding: 2rem; /* Padding menor */
-  font-size: 1.5rem; /* Tamanho da fonte menor */
-  text-align: center; /* Centraliza o texto */
+.ebook-1-content .ebook-1-right {
+  width: 60%;
 }
-
-.price-cta {
+@media (max-width: 59em) {
+  .ebook-1-content .ebook-1-right {
+    width: 90%;
+  }
+}
+.ebook-1-content .ebook-1-right .paragraph {
+  max-width: 100%;
+  padding: 1rem 0;
+}
+.ebook-1-content .ebook-1-right .heading-cta {
+  margin-bottom: 1rem;
+  font-size: 3rem;
+  left: 50%;
+  top: 50%;
+  transform: translate(-24%, -50%);
+}
+@media (max-width: 75em) {
+  .ebook-1-content .ebook-1-right .heading-cta {
+    left: 50%;
+    top: 50%;
+    transform: translate(-14%, -50%);
+  }
+}
+.ebook-1-content .price-cta {
   display: inline-block;
-  font-size: 1.8rem; /* Tamanho elegante */
+  font-size: 2rem; /* Tamanho da fonte mais visível */
   font-weight: bold;
   color: #4a2c18; /* Cor marrom clássica */
   background-color: #f5f5f5; /* Fundo suave */
-  padding: 10px 20px; /* Padding generoso */
-  border-radius: 5px; /* Bordas arredondadas */
+  padding: 12px 24px; /* Padding mais generoso */
+  border-radius: 8px; /* Bordas arredondadas */
   margin-top: 1rem;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra suave */
   text-align: center;
-  transition: transform 0.2s, box-shadow 0.3s; /* Transições */
+  transition: transform 0.2s, box-shadow 0.3s; /* Transições suaves */
 }
-
-.price-cta:hover {
+.ebook-1-content .price-cta:hover {
   transform: translateY(-2px); /* Efeito de elevação */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Sombra mais pronunciada */
 }
-
-.ebook-cta {
+.ebook-1-content .price-cta:active {
+  transform: scale(0.98); /* Leve redução ao clicar */
+}
+.ebook-1-content .ebook-cta {
   margin-top: 2rem;
   display: flex;
   justify-content: center; /* Centraliza o botão */
 }
-
-.ebook-cta .ebook-cta-title {
-  font-size: 1.5rem; /* Tamanho de fonte */
-  font-weight: 500; /* Peso médio */
-  padding: 12px 30px; /* Padding para destaque */
+.ebook-1-content .ebook-cta .ebook-cta-title {
+  font-size: 2rem; /* Tamanho de fonte mais chamativo */
+  font-weight: 600; /* Peso médio */
+  padding: 16px 32px; /* Padding para destaque */
   background-color: #4a2c18; /* Cor clássica */
   color: #fff; /* Cor do texto */
   border-radius: 8px; /* Bordas arredondadas */
-  border: 1px solid #d2b48c; /* Borda */
+  border: 1px solid #d2b48c; /* Borda elegante */
   text-decoration: none; /* Remove o sublinhado */
   cursor: pointer;
-  transition: background-color 0.3s, transform 0.2s; /* Transições */
+  transition: background-color 0.3s, transform 0.2s; /* Transições suaves */
 }
-
-.ebook-cta .ebook-cta-title:hover {
-  background-color: #3b2314; /* Cor mais escura */
+.ebook-1-content .ebook-cta .ebook-cta-title:hover {
+  background-color: #492b19; /* Cor mais escura no hover */
 }
-
-.ebook-cta .ebook-cta-title:active {
-  transform: scale(0.98); /* Efeito de clique */
+.ebook-1-content .ebook-cta .ebook-cta-title:active {
+  transform: scale(0.98); /* Leve redução no clique */
 }
-
-.ebook-cta .ebook-cta-title:focus {
+.ebook-1-content .ebook-cta .ebook-cta-title:focus {
   outline: none;
   box-shadow: 0 0 0 3px rgba(74, 44, 24, 0.5); /* Destaque ao focar */
 }
