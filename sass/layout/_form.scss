@@ -36,10 +36,13 @@ padding:10rem  2rem;
         padding: 30px;
         border-radius: 8px;
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-
-         width: 700px;
+padding-left: 3rem;
+         width: 600px;
          margin: 0 auto;
-
+@include respond (tab-port){
+    padding-top: 5rem;
+    width: 400px;
+}
        
     }
    
@@ -73,11 +76,15 @@ padding:10rem  2rem;
 
 .contact-info p {
   display: flex;
-
+ font-size: 2rem;
   gap: 0.5rem;
-  margin: 0.5rem 0;
-  padding: 0.5rem;
+  margin: 0.5rem 2rem;
+  padding: 1rem;
 }
+.contact-info h2{
+    font-size: 2rem;
+text-align: center;
+gap: 3rem;}
 
 .contact-info ion-icon {
   font-size: 2.5rem;

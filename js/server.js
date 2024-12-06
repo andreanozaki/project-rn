@@ -459,19 +459,61 @@ const pageContent = `
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>${recipeTitle}</title>
-    <link rel="stylesheet" href="../css/style.css">
-    <script src="/js/script.js" defer></script>
+    <meta name="description" content="Course"/>
+
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+ 
+    <script src="js/script.js" defer></script>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script
+    type="module"
+    src="https://unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.esm.js"></script>
+  <script
+    nomodule
+    src="https://unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.js"></script>
+  
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Unica+One&display=swap" rel="stylesheet">
+<title>Ricardo Nozaki Pastry Chef</title>
+
 </head>
+
 <body>
-    <header class="header">
-        <a href="../index.html">
-            <img class="logo" src="../img/base/logo/lo2.png" alt="logo" id="logo">
+    <header class="header ">
+        <a href="index.html">
+            <img class="logo" src="img/base/logo/lo2.png" alt="logo">
         </a>
-        <!-- Navegação -->
+      
+        
+     
         <nav class="main-nav">
-            <!-- Links da navegação -->
+            <ul class="main-nav-list">
+                <li><a class="main-nav-link" href="#aboutme">Chef</a></li>
+                <li><a class="main-nav-link" href="#creations">Criações</a></li>
+                <li><a class="main-nav-link" href="#recipe">Receitas</a></li>
+                <li><a class="main-nav-link nav-cta" href="#ebooks">E-book</a></li>
+                <li><a class="main-nav-link" href="pages/contato.html">Contato</a></li>
+                <li><a class="main-nav-link" href="login.html">Login</a></li>
+                <li><a id="logout-link"  class="main-nav-link" href="#"   style="display: none;">Sair</a></li>
+
+
+            </ul>
         </nav>
+   <!-- Botão de menu hambúrguer para telas menores -->
+
+   <button class="hamburger" aria-label="Menu" aria-expanded="false">
+    <ion-icon name="menu-outline" class="icon-menu"></ion-icon>
+    <ion-icon name="close-outline" class="icon-close"></ion-icon>
+
+</button>
     </header>
     <div class="recipes">
         <div class="left-side">
@@ -481,20 +523,7 @@ const pageContent = `
         </div>
         <div class="right-side">
             <h2 class="right-side__description paragraph">Confira essa deliciosa receita:</h2>
-            <div class="status-recipe">
-                <div class="time">
-                    <span class="icon-recipe">TEMPO</span><br>
-                    <span>${time || 'Não informado'}</span>
-                </div>
-                <div class="nivel">
-                    <span class="icon-recipe">NÍVEL</span><br>
-                    <span>${level || 'Não informado'}</span>
-                </div>
-                <div class="rendimento">
-                    <span class="icon-recipe">RENDIMENTO</span><br>
-                    <span>${recipeYield || 'Não informado'}</span>
-                </div>
-            </div>
+            
             <span class="topic"><strong>Ingredientes:</strong></span>
             <ul class="ingredients">
                 ${ingredients.split('\n').map(ing => `<li>${ing}</li>`).join('')}
@@ -538,11 +567,7 @@ const pageContent = `
 
     <footer class="footer">
         <div class="grid-5cols">
-            <div class="logo-col">
-                <a href="index.html">
-                    <img src="../img/base/logo/lo2.png" alt="logo" class="logo">
-                </a>
-            </div>
+            
             <div class="address-col">
                 <p class="footer-heading">Contate-nos</p>
                 <a class="footer-link" href="mailto:ricardonozaki@gmail.com">
@@ -554,7 +579,6 @@ const pageContent = `
                 <ul>
                     <li><a class="footer-link" href="#recipe">Receitas</a></li>
                     <li><a class="footer-link" href="#ebooks">E-books</a></li>
-                    <li><a class="footer-link" href="#contact">Contato</a></li>
                 </ul>
             </div>
             <div class="social-links">
