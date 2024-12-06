@@ -393,81 +393,72 @@
     </main> 
     <script src="/js/cookie-banner.js" defer></script>
 <script>
-
 document.addEventListener('DOMContentLoaded', () => {
-    
-
-    //modal para deixar comentarios
     const feedbackButton = document.getElementById('openFeedbackForm');
     const feedbackModal = document.getElementById('feedbackModal');
-    const closeModalButton = document.getElementById('closeModalButton');
+    const closeFeedbackModalButton = feedbackModal.querySelector('.close-modal'); // Botão de fechar do feedbackModal
+    const feedbackOverlay = document.getElementById('feedbackOverlay');
     const feedbackForm = document.getElementById('feedbackForm');
-    const feedbackOverlay = document.getElementById('feedbackOverlay'); // Seleciona o overlay
-
 
     // Abrir o modal ao clicar no botão de feedback
     feedbackButton.addEventListener('click', () => {
         feedbackModal.classList.remove('hidden');
         feedbackModal.style.display = 'flex';
-        feedbackOverlay.style.display = 'block'; // Mostra o overlay branco
-
-
+        feedbackOverlay.style.display = 'block'; // Mostra o overlay
     });
 
     // Fechar o modal ao clicar no botão de fechar
-    closeModalButton.addEventListener('click', () => {
-    feedbackModal.style.display = 'none';
-    feedbackOverlay.style.display = 'none'; // Oculta o overlay 
+    closeFeedbackModalButton.addEventListener('click', () => {
+        feedbackModal.style.display = 'none';
+        feedbackOverlay.style.display = 'none'; // Oculta o overlay
     });
 
     // Fechar o modal ao clicar fora do conteúdo do modal
     window.addEventListener('click', (event) => {
         if (event.target === feedbackModal) {
             feedbackModal.style.display = 'none';
-            feedbackOverlay.style.display = 'none'; // Oculta o overlay 
-
-
+            feedbackOverlay.style.display = 'none'; // Oculta o overlay
         }
     });
 
     // Enviar o feedback
     feedbackForm.addEventListener('submit', (event) => {
-    event.preventDefault();
+        event.preventDefault();
 
-    const rating = document.getElementById('rating').value;
-    const comment = document.getElementById('comment').value;
+        const rating = document.getElementById('rating').value;
+        const comment = document.getElementById('comment').value;
 
-    if (!rating) {
-        alert('Por favor, selecione uma avaliação.');
-        return;
-    }
+        if (!rating) {
+            alert('Por favor, selecione uma avaliação.');
+            return;
+        }
 
-    fetch('http://localhost:3001/feedback', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ rating, comment }),
-    })
-        .then((response) => {
-            if (!response.ok) {
-                throw new Error('Erro ao enviar feedback.');
-            }
-            return response.json();
+        fetch('http://localhost:3001/feedback', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ rating, comment }),
         })
-        .then((data) => {
-            alert(data.message);
-            feedbackForm.reset();
-            feedbackModal.style.display = 'none'; // Fecha o modal
-            feedbackOverlay.style.display = 'none'; // Oculta o overlay
-        })
-        .catch((error) => {
-            console.error('Erro ao enviar feedback:', error);
-            alert('Erro ao enviar feedback. Tente novamente.');
-        });
-});
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error('Erro ao enviar feedback.');
+                }
+                return response.json();
+            })
+            .then((data) => {
+                alert(data.message);
+                feedbackForm.reset();
+                feedbackModal.style.display = 'none'; // Fecha o modal
+                feedbackOverlay.style.display = 'none'; // Oculta o overlay
+            })
+            .catch((error) => {
+                console.error('Erro ao enviar feedback:', error);
+                alert('Erro ao enviar feedback. Tente novamente.');
+            });
+    });
 
-    
+
 
      // Função para carregar mensagens do banco de dados
      function loadMessages() {
@@ -554,7 +545,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
-
 
 //fim dom
   </script>
