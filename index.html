@@ -334,7 +334,8 @@
 <!-- Modal para exibir os feedbacks -->
 <div id="feedbackListModal" class="modal hidden">
   <div class="modal-content modalview">
-        <span class="close-modal">&times;</span>
+    <span id="closeModalButton" class="close-modal">&times;</span>
+
         <h2>Feedbacks Recebidos</h2>
         <ul id="feedbackList">
             <!-- Feedbacks serão carregados aqui via JavaScript -->
@@ -399,7 +400,7 @@ document.addEventListener('DOMContentLoaded', () => {
     //modal para deixar comentarios
     const feedbackButton = document.getElementById('openFeedbackForm');
     const feedbackModal = document.getElementById('feedbackModal');
-    const closeModalButton = document.querySelector('.close-modal');
+    const closeModalButton = document.getElementById('closeModalButton');
     const feedbackForm = document.getElementById('feedbackForm');
     const feedbackOverlay = document.getElementById('feedbackOverlay'); // Seleciona o overlay
 

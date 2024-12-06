@@ -2,6 +2,8 @@
 
 document.addEventListener('DOMContentLoaded', function () {
 
+
+
    // Seleciona os elementos do menu
    const hamburger = document.querySelector('.hamburger');
    const mainNav = document.querySelector('.main-nav');
@@ -28,34 +30,38 @@ document.addEventListener('DOMContentLoaded', function () {
      });
    }
 
- 
+  // Controle de Login/Logout
+const loginLink = document.querySelector('.main-nav-link[href="login.html"]'); // Botão de login
+const logoutLink = document.getElementById('logout-link'); // Botão de logout
 
- // Controle de Login/Logout
- const loginLink = document.querySelector('.main-nav-link[href="login.html"]');
- const logoutLink = document.getElementById('logout-link');
+// Função para alternar visibilidade dos botões
+function toggleLoginLogout() {
+  const loggedInEmail = localStorage.getItem('loggedInEmail'); // Verifica se há um usuário logado
 
- function toggleLoginLogout() {
-   const loggedInEmail = localStorage.getItem('loggedInEmail');
+  if (loggedInEmail) {
+    // Se qualquer usuário está logado, exibe "Sair" e oculta "Login"
+    if (loginLink) loginLink.style.display = 'none';
+    if (logoutLink) logoutLink.style.display = 'block';
+  } else {
+    // Caso contrário, exibe "Login" e oculta "Sair"
+    if (loginLink) loginLink.style.display = 'block';
+    if (logoutLink) logoutLink.style.display = 'none';
+  }
+}
 
-   if (loggedInEmail) {
-     if (loginLink) loginLink.style.display = 'none';
-     if (logoutLink) logoutLink.style.display = 'block';
-   } else {
-     if (loginLink) loginLink.style.display = 'block';
-     if (logoutLink) logoutLink.style.display = 'none';
-   }
- }
+// Inicializa a lógica de controle
+toggleLoginLogout();
 
- toggleLoginLogout();
-
- if (logoutLink) {
-   logoutLink.addEventListener('click', function (e) {
-     e.preventDefault();
-     localStorage.removeItem('loggedInEmail');
-     localStorage.removeItem('isChefLoggedIn');
-     window.location.reload();
-   });
- }
+// Evento para deslogar
+if (logoutLink) {
+  logoutLink.addEventListener('click', function (e) {
+    e.preventDefault();
+    // Remove o estado de login
+    localStorage.removeItem('loggedInEmail');
+    toggleLoginLogout(); // Atualiza os botões
+    window.location.href = '/index.html'; // Redireciona para a página inicial
+  });
+}
 
 
 
@@ -260,7 +266,7 @@ if (commentForm && !commentForm.dataset.listener) {
 
 // Função para carregar os comentários
 function loadComments() {
-  const recipe_id = document.getElementById('recipe_id').value; // Obtém o ID da receita
+  const recipe_id = document.getElementById('recipe_id').value;
   fetch(`http://localhost:3001/comments/${recipe_id}`)
     .then((response) => response.json())
     .then((data) => {
@@ -276,6 +282,7 @@ function loadComments() {
       console.error('Erro ao carregar comentários:', error);
     });
 }
+
 
 // Carregar comentários ao carregar a página
 if (document.getElementById('comments')) {
