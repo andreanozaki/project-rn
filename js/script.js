@@ -316,7 +316,7 @@ function toggleChefFeatures(isChef) {
 }
 
 // Verifica se o chef está logado ao carregar a página
-const isChefLoggedIn = localStorage.getItem('isChefLoggedIn') === 'true' && loggedInEmail === 'andreaflordoceu@gmail.com';
+const isChefLoggedIn = localStorage.getItem('isChefLoggedIn') === 'true' && loggedInEmail === 'chefadmin@gmail.com';
 toggleChefFeatures(isChefLoggedIn);
 
 if (loginForm) {
@@ -348,7 +348,7 @@ if (loginForm) {
             localStorage.setItem('loggedInEmail', email);
 
             if (data.message === 'Login bem-sucedido') {
-                const isChef = email === 'andreaflordoceu@gmail.com';
+                const isChef = email === 'chefadmin@gmail.com';
                 localStorage.setItem('isChefLoggedIn', isChef ? 'true' : 'false');
 
                 // Atualiza a exibição das funcionalidades do chef

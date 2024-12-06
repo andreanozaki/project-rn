@@ -15,6 +15,8 @@ const multer = require('multer');
 const app = express();
 const port = 3001;
 
+const bcrypt = require('bcrypt');
+const saltRounds = 10;
 // Middleware para habilitar CORS
 app.use(cors({
   origin: '*',
@@ -35,7 +37,7 @@ const storage = multer.diskStorage({
     if (!fs.existsSync(folder)) {
       fs.mkdirSync(folder, { recursive: true });
     }
-    cb(null, folder);z
+    cb(null, folder);
   },
   filename: (req, file, cb) => {
     cb(null, Date.now() + path.extname(file.originalname));
@@ -60,18 +62,39 @@ const storagePreRecipe = multer.diskStorage({
 
 const uploadPreRecipe = multer({ storage: storagePreRecipe });
 
-// Rota para registrar usuário
+
+
+
+
 app.post('/register', (req, res) => {
   const { email, password } = req.body;
-  const query = 'INSERT INTO users (email, password) VALUES (?, ?)';
-  connection.query(query, [email, password], (err) => {
+
+  // Gerar o hash da senha
+  bcrypt.hash(password, saltRounds, (err, hashedPassword) => {
     if (err) {
-      console.error('Erro ao registrar usuário:', err);
-      return res.status(500).json({ message: 'Erro ao registrar usuário' });
+      console.error('Erro ao gerar hash da senha:', err);
+      return res.status(500).json({ message: 'Erro ao gerar hash da senha' });
     }
-    res.json({ message: 'Usuário registrado com sucesso' });
+
+    // Inserir o usuário no banco de dados com a senha criptografada
+    const query = 'INSERT INTO users (email, password) VALUES (?, ?)';
+    connection.query(query, [email, hashedPassword], (err) => {
+      if (err) {
+        console.error('Erro ao registrar usuário:', err);
+        return res.status(500).json({ message: 'Erro ao registrar usuário' });
+      }
+      res.json({ message: 'Usuário registrado com sucesso' });
+    });
   });
 });
+
+
+
+
+
+
+
+
 
 
 // Rota para adicionar comentário
@@ -132,18 +155,38 @@ app.get('/comments/:recipe_id', (req, res) => {
 
 
 // Rota para login
+// Rota para login
 app.post('/login', (req, res) => {
   const { email, password } = req.body;
-  const query = 'SELECT * FROM users WHERE email = ? AND password = ?';
-  connection.query(query, [email, password], (err, results) => {
+
+  const query = 'SELECT * FROM users WHERE email = ?';
+  connection.query(query, [email], (err, results) => {
     if (err) {
       console.error('Erro ao fazer login:', err);
       return res.status(500).json({ message: 'Erro ao fazer login' });
     }
+
     if (results.length > 0) {
-      res.json({ message: 'Login bem-sucedido' });
+      const user = results[0];
+
+      bcrypt.compare(password, user.password, (err, result) => {
+        if (err) {
+          console.error('Erro ao comparar senha:', err);
+          return res.status(500).json({ message: 'Erro ao comparar senha' });
+        }
+
+        if (result) {
+          // Verificar o papel do usuário
+          const isChef = user.role === 'admin';
+          
+          // Enviar a resposta com a mensagem de sucesso e o papel do usuário
+          res.json({ message: 'Login bem-sucedido', isChef });
+        } else {
+          res.status(401).json({ message: 'Senha incorreta' });
+        }
+      });
     } else {
-      res.status(401).json({ message: 'Usuário não encontrado ou senha incorreta' });
+      res.status(404).json({ message: 'Usuário não encontrado' });
     }
   });
 });
@@ -725,6 +768,18 @@ app.get('/feedbacks', (req, res) => {
 });
 
 
+
+
+
+
+
+
+
+
+
+// Rota para registrar usuário com senha criptografada
+
+// Rota para registrar usuário com senha criptografada
 
 // Iniciar o servidor
 app.listen(port, () => {

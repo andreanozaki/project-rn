@@ -62,38 +62,28 @@
 
    <div class="container-all-recipes">
      <div id="recipePreviewsContainer"></div>
-    <div class="recipe__card" data-id="53">
-        <img src="/img/pre-recipe/1733197333685.png" alt="Brigadeiro Gourmet Crocante" class="recipe__image-all flash-effect-2">
-        <p class="paragraph title-recipe">Brigadeiro Gourmet Crocante</p>
-        <p class="paragraph">s</p>
-        <a href="/pages/brigadeiro-gourmet-crocante.html" class="btn-main">Ver Receita</a>
+    <div class="recipe__card" data-id="57">
+        <img src="/img/pre-recipe/1733457129054.png" alt="Panetone Tradicional" class="recipe__image-all flash-effect-2">
+        <p class="paragraph title-recipe">Panetone Tradicional</p>
+        <p class="paragraph">sdasdsassa</p>
+        <a href="/pages/panetone-tradicional.html" class="btn-main">Ver Receita</a>
         <h3 class="recipe__creator"><ion-icon name="person"></ion-icon> por Ricardo Nozaki</h3>
-        <button class="delete-recipe-btn" data-id="53">Deletar Receita</button>
+        <button class="delete-recipe-btn" data-id="57">Deletar Receita</button>
     </div>
-    <div class="recipe__card" data-id="52">
-        <img src="/img/pre-recipe/1733197321751.png" alt="Brigadeiro Gourmet Crocante" class="recipe__image-all flash-effect-2">
-        <p class="paragraph title-recipe">Brigadeiro Gourmet Crocante</p>
-        <p class="paragraph">s</p>
-        <a href="/pages/brigadeiro-gourmet-crocante.html" class="btn-main">Ver Receita</a>
+    
+    <div class="recipe__card" data-id="55">
+        <img src="/img/pre-recipe/1733367903227.png" alt="Panetone Tradicional" class="recipe__image-all flash-effect-2">
+        <p class="paragraph title-recipe">Panetone Tradicional</p>
+        <p class="paragraph">xccx</p>
+        <a href="/pages/panetone-tradicional.html" class="btn-main">Ver Receita</a>
         <h3 class="recipe__creator"><ion-icon name="person"></ion-icon> por Ricardo Nozaki</h3>
-        <button class="delete-recipe-btn" data-id="52">Deletar Receita</button>
+        <button class="delete-recipe-btn" data-id="55">Deletar Receita</button>
     </div>
-    <div class="recipe__card" data-id="51">
-        <img src="/img/pre-recipe/1733197311986.png" alt="Brigadeiro Gourmet Crocante" class="recipe__image-all flash-effect-2">
-        <p class="paragraph title-recipe">Brigadeiro Gourmet Crocante</p>
-        <p class="paragraph">s</p>
-        <a href="/pages/brigadeiro-gourmet-crocante.html" class="btn-main">Ver Receita</a>
-        <h3 class="recipe__creator"><ion-icon name="person"></ion-icon> por Ricardo Nozaki</h3>
-        <button class="delete-recipe-btn" data-id="51">Deletar Receita</button>
-    </div>
-    <div class="recipe__card" data-id="50">
-        <img src="/img/pre-recipe/1733197251285.png" alt="Brigadeiro Gourmet Crocante" class="recipe__image-all flash-effect-2">
-        <p class="paragraph title-recipe">Brigadeiro Gourmet Crocante</p>
-        <p class="paragraph">ghjewqw</p>
-        <a href="/pages/brigadeiro-gourmet-crocante.html" class="btn-main">Ver Receita</a>
-        <h3 class="recipe__creator"><ion-icon name="person"></ion-icon> por Ricardo Nozaki</h3>
-        <button class="delete-recipe-btn" data-id="50">Deletar Receita</button>
-    </div>
+    
+    
+    
+    
+    
     
    
     
@@ -164,7 +154,7 @@
     <script src="/js/cookie-banner.js" defer></script>
   
     <script>
-document.addEventListener('DOMContentLoaded', function() {
+      document.addEventListener('DOMContentLoaded', function() {
 
 
     const formSection = document.querySelector('.form-section');
@@ -175,7 +165,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     const isChefLoggedIn = localStorage.getItem('isChefLoggedIn') === 'true' &&
-                           localStorage.getItem('loggedInEmail') === 'andreaflordoceu@gmail.com';
+                           localStorage.getItem('loggedInEmail') === 'chefadmin@gmail.com';
 
     if (isChefLoggedIn) {
         formSection.style.display = 'block';
@@ -219,7 +209,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Ocultar os botões de deletar se o usuário logado não for o chef
   deleteButtons.forEach((button) => {
-    if (loggedInEmail !== 'andreaflordoceu@gmail.com') {
+    if (loggedInEmail !== 'chefadmin@gmail.com') {
       button.style.display = 'none';
     } else {
       button.style.display = 'inline-block'; // Mostra para o chef
